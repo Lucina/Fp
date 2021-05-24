@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "riina",
+  "classifications": [ "Common", "Console" ],
+  "identity": "riina.Fpt",
+  "name": "Fp tool skeleton",
+  "shortName": "fpt",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "Fpt",
+  "preferNameDirectory": "true"
+}

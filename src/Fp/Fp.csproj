@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
+    <LangVersion>9</LangVersion>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>NU5105</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackOnBuild>true</PackOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>riina,Lucina</Authors>
+    <Owners>riina,Lucina</Owners>
+    <Description>File processing</Description>
+    <Copyright>Copyright ©2020 riina</Copyright>
+    <PackageProjectUrl>https://github.com/riina/Fp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/riina/Fp</RepositoryUrl>
+    <Company>riina</Company>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageVersion>0.18.2</PackageVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0' Or '$(TargetFramework)'=='net472'">
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>
+
+</Project>

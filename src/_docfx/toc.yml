@@ -1,0 +1,8 @@
+- name: Articles
+  href: articles/
+- name: Fp API Reference
+  href: api/Fp
+  homepage: api/Fp/index.md
+- name: Fp.Plus API Reference
+  href: api/Fp.Plus
+  homepage: api/Fp.Plus/index.md
