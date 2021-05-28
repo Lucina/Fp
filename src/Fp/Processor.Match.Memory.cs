@@ -31,6 +31,7 @@ namespace Fp
                 throw new ArgumentException($"{nameof(maxCount)} has value {maxCount} but must be at least 1");
             }
 
+            sourceMaxOffset = Math.Min(source.Length, sourceMaxOffset);
             int count = 0;
             int basePos = sourceOffset;
             var subMatch = match.Slice(matchOffset, matchLength);

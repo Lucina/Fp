@@ -17,25 +17,25 @@ namespace Fp
         public void LogChunk(string log, bool tail, ConsoleColor? color = null)
         {
             StringBuilder.Append(log);
-            if (tail) StringBuilder.AppendLine();
+            if (tail) StringBuilder.Append('\n');
         }
 
         /// <inheritdoc />
         public void LogInformation(string log, ConsoleColor? color = null)
         {
-            StringBuilder.AppendLine(log);
+            StringBuilder.Append(log).Append('\n');
         }
 
         /// <inheritdoc />
         public void LogWarning(string log, ConsoleColor? color = null)
         {
-            StringBuilder.AppendLine(log);
+            StringBuilder.Append(log).Append('\n');
         }
 
         /// <inheritdoc />
         public void LogError(string log, ConsoleColor? color = null)
         {
-            StringBuilder.AppendLine(log);
+            StringBuilder.Append(log).Append('\n');
         }
     }
 }

@@ -4,7 +4,6 @@ using System.Runtime.Intrinsics.Arm;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Text;
-using Fp.Plus;
 using NUnit.Framework;
 using Aes = System.Security.Cryptography.Aes;
 
@@ -28,6 +27,18 @@ namespace Fp.Tests
             int next = 0;
             int mCount = 0;
             foreach (long match in Processor.Match(ms, 0, ms.Length, arr.AsMemory(), 0, arr.Length))
+            {
+                Assert.AreEqual(next, match);
+                next += arr.Length;
+                mCount++;
+            }
+
+            Assert.AreEqual(count, mCount);
+
+            next = 0;
+            mCount = 0;
+            byte[] msArr = ms.ToArray();
+            foreach (long match in Processor.Match(msArr, arr))
             {
                 Assert.AreEqual(next, match);
                 next += arr.Length;

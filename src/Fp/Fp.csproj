@@ -27,11 +27,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageVersion>0.18.2</PackageVersion>
+    <PackageVersion>0.18.3</PackageVersion>
     <AssemblyVersion>1.0.0</AssemblyVersion>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0' Or '$(TargetFramework)'=='net472'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="System.Memory" Version="4.5.4" />
   </ItemGroup>
 

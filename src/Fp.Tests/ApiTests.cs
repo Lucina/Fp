@@ -105,7 +105,7 @@ namespace Fp.Tests
 0x000000000C 0C 0D 0E 0F
 0x0000000010 10         ^
 
-".TrimStart('\n').Replace("^", ""), sbl.StringBuilder.ToString());
+".TrimStart('\r', '\n').Replace("\r", "").Replace("^", ""), sbl.StringBuilder.ToString());
         }
 
         [Test]
