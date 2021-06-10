@@ -54,7 +54,7 @@ public class PhantomBreakerProcessor : DataProcessor
 
         res.Add(Buffer($"{Name}_dec", a));
 
-        var (flags, _, _) = Args.IsolateFlags();
+        var flags = Args.IsolateFlags().flags;
         if (!flags.Contains("g"))
         {
             if (flags.Contains("c") ||
@@ -62,7 +62,7 @@ public class PhantomBreakerProcessor : DataProcessor
                 _pbbgChara.Contains(Name) ||
                 // PB:E
                 Name.StartsWith("c_"))
-                HandleMariko(NamePath, r, res);
+                HandleMariko(NamePathNoExt, r, res);
             if (flags.Contains("t") ||
                 // PB:BG
                 Name == "21560002" ||
@@ -116,12 +116,9 @@ public class PhantomBreakerProcessor : DataProcessor
             (int i, int j) = kvp.Key;
             if (i <= 3 || i == 6) continue;
             for (int p = 0; p < 8; p++)
-            {
-                if (!files.TryGetValue((6, p), out var palette)) continue;
-                string subName = $"ex_{p:D4}_{i:D4}_{j:D4}";
-                if (MarikoConvert(folder / "mariko" / subName, kvp.Value.Span, palette.Span) is { } res)
+                if (files.TryGetValue((6, p), out var palette) &&
+                    MarikoConvert(folder / "mariko" / $"ex_{p:D4}_{i:D4}_{j:D4}", kvp.Value.Span, palette.Span) is { } res)
                     set.Add(res);
-            }
         }
     }
 
@@ -129,15 +126,15 @@ public class PhantomBreakerProcessor : DataProcessor
     private Data? MarikoConvert(FpPath path, ReadOnlySpan<byte> buffer, ReadOnlySpan<byte> paletteBuffer)
     {
         var ctx = new ReadContext<byte>(buffer);
-        ushort w = u2l[ctx.ReadAdvance(2)], h = u2l[ctx.ReadAdvance(2)];
-        if (w - 1 >= 2048 || h - 1 >= 2048) return null;
+        ushort w = ctx.ReadU16L(), h = ctx.ReadU16L();
+        if (!w.ImageRes(2048) || !h.ImageRes(2048)) return null;
         try
         {
             uint[] arr = new uint[w * h];
             var wCtx = new WriteContext<uint>(arr);
-            while (ctx.IsAvailable(2))
+            while (ctx.CanRead16())
             {
-                int val = u2l[ctx.ReadAdvance(2)], num = val & 0xf;
+                int val = ctx.ReadU16L(), num = val & 0xf;
                 if (num == 0)
                     wCtx.Advance(val >> 4);
                 else
@@ -161,28 +158,25 @@ public class PhantomBreakerProcessor : DataProcessor
     {
         // Try to process all files as yunomi
         foreach (var kvp in files)
-        {
-            string subName = $"{kvp.Key.i:D4}_{kvp.Key.j:D4}";
-            if (YunomiConvert(folder / "yunomi" / subName, kvp.Value.Span) is { } data)
+            if (YunomiConvert(folder / "yunomi" / $"{kvp.Key.i:D4}_{kvp.Key.j:D4}", kvp.Value.Span) is { } data)
                 set.Add(data);
-        }
     }
 
     /// Process run-length graphics file
     private Data? YunomiConvert(FpPath path, ReadOnlySpan<byte> buffer)
     {
         var ctx = new ReadContext<byte>(buffer);
-        ushort w = u2l[ctx.ReadAdvance(2)], h = u2l[ctx.ReadAdvance(2)];
-        if (w - 1 >= 2048 || h - 1 >= 2048) return null;
+        ushort w = ctx.ReadU16L(), h = ctx.ReadU16L();
+        if (!w.ImageRes(2048) || !h.ImageRes(2048)) return null;
         try
         {
             uint[] arr = new uint[w * h];
             uint prevColor = 0;
             var wCtx = new WriteContext<uint>(arr);
-            while (ctx.IsAvailable(4))
+            while (ctx.CanRead32())
             {
-                uint color = ctx.ReadAdvance(4).FromBgra();
-                if (color == prevColor) wCtx.WriteAdvance(color, ctx.ReadAdvance() + 1);
+                uint color = ctx.Read32().FromBgra();
+                if (color == prevColor) wCtx.WriteAdvance(color, ctx.ReadU8() + 1);
                 else wCtx.WriteAdvance(color);
 
                 prevColor = color;
@@ -195,4 +189,22 @@ public class PhantomBreakerProcessor : DataProcessor
             return null;
         }
     }
+}
+
+
+public static class PendingUtil
+{
+    public static int AlignDown(this int value, int align) => align == 0 ? value : value / align * align;
+    public static int AlignUp(this int value, int align) => align == 0 ? value : (value + align - 1) / align * align;
+    public static bool ImageRes(this sbyte x, sbyte max) => (sbyte)(x - 1) < max;
+    public static bool ImageRes(this byte x, byte max) => (byte)(x - 1) < max;
+    public static bool ImageRes(this short x, short max) => (ushort)(x - 1) < max;
+    public static bool ImageRes(this ushort x, ushort max) => (ushort)(x - 1) < max;
+    public static bool ImageRes(this int x, int max) => (uint)(x - 1) < max;
+    public static bool ImageRes(this uint x, uint max) => (uint)(x - 1) < max;
+    public static byte ReadU8(this ReadContext<byte> context) => context.ReadAdvance();
+    public static ushort ReadU16L(this ReadContext<byte> context) => Processor.GetU16(context.ReadAdvance(2), true);
+    public static bool CanRead16(this ReadContext<byte> context) => context.IsAvailable(2);
+    public static ReadOnlySpan<byte> Read32(this ReadContext<byte> context) => context.ReadAdvance(4);
+    public static bool CanRead32(this ReadContext<byte> context) => context.IsAvailable(4);
 }
