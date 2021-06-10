@@ -1,22 +1,18 @@
 using Fp;
 using System;
-using System.Collections.Generic;
 
-public static class Yunomi
+public class Yunomi : ProcessorChild<(int i, int j)>
 {
-    public static bool Filter(string name) =>
-            // PB:BG
-            name == "21560002" ||
-            // PB:E
-            name == "Graphic";
+    public override string Flag => "t";
+    public override bool Filter => Name is "21560002" or "Graphic";
 
-    /// Process run-length graphics file container
-    public static void HandleYunomi(FpPath folder, Dictionary<(int i, int j), Memory<byte>> files, ISet<Data> set)
+    public override void Run()
     {
         // Try to process all files as yunomi
-        foreach (var kvp in files)
-            if (YunomiConvert(folder / "yunomi" / $"{kvp.Key.i:D4}_{kvp.Key.j:D4}", kvp.Value.Span) is { } data)
-                set.Add(data);
+        foreach (var kvp in Lookup)
+            if (YunomiConvert(NamePathNoExt / "yunomi" / $"{kvp.Key.i:D4}_{kvp.Key.j:D4}", kvp.Value.Span) is
+                { } data)
+                Content.Add(data);
     }
 
     /// Process run-length graphics file

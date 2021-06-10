@@ -2,13 +2,10 @@ using Fp;
 using System;
 using System.Collections.Generic;
 
-public static class Mariko
+public class Mariko : ProcessorChild<(int i, int j)>
 {
-    public static bool Filter(string name) =>
-            // PB:BG
-            PbbgChara.Contains(name) ||
-            // PB:E
-            name.StartsWith("c_");
+    public override string Flag => "c";
+    public override bool Filter => Lookup.ContainsKey((0, 0)) && (PbbgChara.Contains(Name) || Name.StartsWith("c_"));
 
     public static readonly HashSet<string> PbbgChara =
         new(new[]
@@ -24,10 +21,9 @@ public static class Mariko
             "59989544", "64678139", "73075369", "77046140", "77826178", "83521470"
         });
 
-    /// Process character graphics set
-    public static void HandleMariko(FpPath folder, Dictionary<(int i, int j), Memory<byte>> files, ISet<Data> set)
+    public override void Run()
     {
-        if (!files.TryGetValue((0, 0), out var a)) return;
+        var a = Lookup[(0, 0)];
 
         // Main graphics file
         for (int i = 0, hOffset = 0x800; i < 0x1000 / 4; i++, hOffset += 4)
@@ -36,26 +32,27 @@ public static class Mariko
             int offset = Processor.GetS32(s, true, hOffset), next = Processor.GetS32(s, true, hOffset + 4);
             for (int p = 0; p < 8; p++)
             {
-                if (!files.TryGetValue((3, p), out var palette)) continue;
+                if (!Lookup.TryGetValue((3, p), out var palette)) continue;
                 string subName = $"mn_{p:D4}_{i:D4}";
                 var b = a.Slice(0x1800 + offset, next - offset);
-                if (MarikoConvert(folder / "mariko" / subName, b.Span, palette.Span) is { } res)
-                    set.Add(res);
-                set.Add(Processor.Buffer(folder / "mariko_src" / $"{subName}.dat", b));
+                if (MarikoConvert(NamePathNoExt / "mariko" / subName, b.Span, palette.Span) is { } res)
+                    Content.Add(res);
+                Content.Add(Processor.Buffer(NamePathNoExt / "mariko_src" / $"{subName}.dat", b));
             }
 
             if (next >= a.Length - 0x1800) break;
         }
 
         // Sub-files
-        foreach (var kvp in files)
+        foreach (var kvp in Lookup)
         {
-            (int i, int j) = kvp.Key;
-            if (i <= 3 || i == 6) continue;
+            ((int i, int j), Memory<byte> b) = (kvp.Key, kvp.Value);
+            if (i is <= 3 or 6) continue;
             for (int p = 0; p < 8; p++)
-                if (files.TryGetValue((6, p), out var palette) &&
-                    MarikoConvert(folder / "mariko" / $"ex_{p:D4}_{i:D4}_{j:D4}", kvp.Value.Span, palette.Span) is { } res)
-                    set.Add(res);
+                if (Lookup.TryGetValue((6, p), out var palette) &&
+                    MarikoConvert(NamePathNoExt / "mariko" / $"ex_{p:D4}_{i:D4}_{j:D4}", b.Span, palette.Span) is
+                        { } res)
+                    Content.Add(res);
         }
     }
 
