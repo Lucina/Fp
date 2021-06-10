@@ -44,11 +44,11 @@ public static class PendingUtil
         return x;
     }
 
-    public static byte ReadU8(this ReadContext<byte> context) => context.ReadAdvance();
-    public static ushort ReadU16L(this ReadContext<byte> context) => Processor.GetU16(context.ReadAdvance(2), true);
-    public static bool CanRead16(this ReadContext<byte> context) => context.IsAvailable(2);
-    public static ReadOnlySpan<byte> Read32(this ReadContext<byte> context) => context.ReadAdvance(4);
-    public static bool CanRead32(this ReadContext<byte> context) => context.IsAvailable(4);
+    public static byte ReadU8(this ref ReadContext<byte> context) => context.ReadAdvance();
+    public static ushort ReadU16L(this ref ReadContext<byte> context) => Processor.GetU16(context.ReadAdvance(2), true);
+    public static bool CanRead16(this ref ReadContext<byte> context) => context.IsAvailable(2);
+    public static ReadOnlySpan<byte> Read32(this ref ReadContext<byte> context) => context.ReadAdvance(4);
+    public static bool CanRead32(this ref ReadContext<byte> context) => context.IsAvailable(4);
 
     public static WriteContext<uint> CreateImage(this FpPath path, int width, int height, out Data image)
     {

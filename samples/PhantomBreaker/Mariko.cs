@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public static class Mariko
 {
-    public static bool Filter(string name) => 
+    public static bool Filter(string name) =>
             // PB:BG
             PbbgChara.Contains(name) ||
             // PB:E
-            Name.StartsWith("c_");
+            name.StartsWith("c_");
 
     public static readonly HashSet<string> PbbgChara =
         new(new[]
