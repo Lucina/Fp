@@ -11,10 +11,12 @@
 
 [Documentation](https://riina.github.io/Fp) | [Samples](samples)
 
+Fp/Fp.Plus are rudimentary libraries for conveniently manipulating files/buffers on the level of primitives (numbers/strings) without excessive managed allocations. It can be used for designing extractors / converters for basic archive or content formats.
+
 ### Libraries
 * [Fp](src/Fp): Base file processing library
     - Minimum API: .NET Standard 2.0
-* [Fp.Plus](src/Fp.Plus): Extension library
+* [Fp.Plus](src/Fp.Plus): Extension library (e.g. RGBA32 image (through ImageSharp) / PCM WAVE output)
     - Minimum API: .NET Standard 2.0
 ### Scripting
 * [fpx](src/fpx): Script execution program (thin wrapper of [dotnet-script](https://github.com/filipw/dotnet-script))
