@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DataProcessor
+    <title>Class LayeredDataProcessor
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DataProcessor
+    <meta name="title" content="Class LayeredDataProcessor
    ">
     <meta name="generator" content="docfx 2.56.7.0">
     
@@ -68,21 +68,20 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Fp.DataProcessor">
+            <article class="content wrap" id="_content" data-uid="Fp.LayeredDataProcessor">
   
   
-  <h1 id="Fp_DataProcessor" data-uid="Fp.DataProcessor" class="text-break">Class DataProcessor
+  <h1 id="Fp_LayeredDataProcessor" data-uid="Fp.LayeredDataProcessor" class="text-break">Class LayeredDataProcessor
   </h1>
-  <div class="markdown level0 summary"><p>Represents a segmented processor that automatically opens <a class="xref" href="Fp.Processor.html#Fp_Processor_InputStream">InputStream</a>.</p>
+  <div class="markdown level0 summary"><p>Provides processor with additional sub-processing children.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Fp.Processor.html">Processor</a></div>
-    <div class="level2"><span class="xref">DataProcessor</span></div>
-      <div class="level3"><a class="xref" href="Fp.LayeredDataProcessor.html">LayeredDataProcessor</a></div>
-      <div class="level3"><a class="xref" href="Fp.LayeredDataProcessor-2.html">LayeredDataProcessor&lt;TKey, TValue&gt;</a></div>
+    <div class="level2"><a class="xref" href="Fp.DataProcessor.html">DataProcessor</a></div>
+    <div class="level3"><span class="xref">LayeredDataProcessor</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -90,6 +89,12 @@
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Fp.DataProcessor.html#Fp_DataProcessor_ProcessImpl">DataProcessor.ProcessImpl()</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.DataProcessor.html#Fp_DataProcessor_ProcessSegmentedImpl">DataProcessor.ProcessSegmentedImpl()</a>
+    </div>
     <div>
       <a class="xref" href="Fp.Processor.html#Fp_Processor_Buffer_FpPath_System_ReadOnlyMemory_System_Byte__">Processor.Buffer(FpPath, ReadOnlyMemory&lt;Byte&gt;)</a>
     </div>
@@ -1617,27 +1622,215 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
   <h6><strong>Assembly</strong>: Fp.dll</h6>
-  <h5 id="Fp_DataProcessor_syntax">Syntax</h5>
+  <h5 id="Fp_LayeredDataProcessor_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DataProcessor : Processor, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class LayeredDataProcessor : DataProcessor, IDisposable</code></pre>
   </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_Children.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.Children%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L20">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_Children_" data-uid="Fp.LayeredDataProcessor.Children*"></a>
+  <h4 id="Fp_LayeredDataProcessor_Children" data-uid="Fp.LayeredDataProcessor.Children">Children</h4>
+  <div class="markdown level1 summary"><p>Children to use.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual HashSet&lt;ProcessorChild&gt; Children { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.HashSet</span>&lt;<a class="xref" href="Fp.ProcessorChild.html">ProcessorChild</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_Content.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.Content%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L40">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_Content_" data-uid="Fp.LayeredDataProcessor.Content*"></a>
+  <h4 id="Fp_LayeredDataProcessor_Content" data-uid="Fp.LayeredDataProcessor.Content">Content</h4>
+  <div class="markdown level1 summary"><p>Current output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HashSet&lt;Data&gt; Content { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.HashSet</span>&lt;<a class="xref" href="Fp.Data.html">Data</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_Flags.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.Flags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L25">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_Flags_" data-uid="Fp.LayeredDataProcessor.Flags*"></a>
+  <h4 id="Fp_LayeredDataProcessor_Flags" data-uid="Fp.LayeredDataProcessor.Flags">Flags</h4>
+  <div class="markdown level1 summary"><p>Input flags.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HashSet&lt;string&gt; Flags { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.HashSet</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_OptKeys.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.OptKeys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L15">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_OptKeys_" data-uid="Fp.LayeredDataProcessor.OptKeys*"></a>
+  <h4 id="Fp_LayeredDataProcessor_OptKeys" data-uid="Fp.LayeredDataProcessor.OptKeys">OptKeys</h4>
+  <div class="markdown level1 summary"><p>Option keys.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual string[] OptKeys { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_Opts.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.Opts%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L30">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_Opts_" data-uid="Fp.LayeredDataProcessor.Opts*"></a>
+  <h4 id="Fp_LayeredDataProcessor_Opts" data-uid="Fp.LayeredDataProcessor.Opts">Opts</h4>
+  <div class="markdown level1 summary"><p>Input options.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, string&gt; Opts { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_PosArgs.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.PosArgs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L35">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_PosArgs_" data-uid="Fp.LayeredDataProcessor.PosArgs*"></a>
+  <h4 id="Fp_LayeredDataProcessor_PosArgs" data-uid="Fp.LayeredDataProcessor.PosArgs">PosArgs</h4>
+  <div class="markdown level1 summary"><p>Input positional arguments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; PosArgs { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_DataProcessor_ProcessData.md&amp;value=---%0Auid%3A%20Fp.DataProcessor.ProcessData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_ProcessData.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.ProcessData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/DataProcessor.cs/#L27">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L43">View Source</a>
   </span>
-  <a id="Fp_DataProcessor_ProcessData_" data-uid="Fp.DataProcessor.ProcessData*"></a>
-  <h4 id="Fp_DataProcessor_ProcessData" data-uid="Fp.DataProcessor.ProcessData">ProcessData()</h4>
+  <a id="Fp_LayeredDataProcessor_ProcessData_" data-uid="Fp.LayeredDataProcessor.ProcessData*"></a>
+  <h4 id="Fp_LayeredDataProcessor_ProcessData" data-uid="Fp.LayeredDataProcessor.ProcessData">ProcessData()</h4>
   <div class="markdown level1 summary"><p>Process current file in parts</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual IEnumerable&lt;Data&gt; ProcessData()</code></pre>
+    <pre><code class="lang-csharp hljs">protected override IEnumerable&lt;Data&gt; ProcessData()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1655,48 +1848,104 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Fp.DataProcessor.html#Fp_DataProcessor_ProcessData">DataProcessor.ProcessData()</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_DataProcessor_ProcessImpl.md&amp;value=---%0Auid%3A%20Fp.DataProcessor.ProcessImpl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_ProcessLayered.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.ProcessLayered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/DataProcessor.cs/#L11">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L57">View Source</a>
   </span>
-  <a id="Fp_DataProcessor_ProcessImpl_" data-uid="Fp.DataProcessor.ProcessImpl*"></a>
-  <h4 id="Fp_DataProcessor_ProcessImpl" data-uid="Fp.DataProcessor.ProcessImpl">ProcessImpl()</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_LayeredDataProcessor_ProcessLayered_" data-uid="Fp.LayeredDataProcessor.ProcessLayered*"></a>
+  <h4 id="Fp_LayeredDataProcessor_ProcessLayered" data-uid="Fp.LayeredDataProcessor.ProcessLayered">ProcessLayered()</h4>
+  <div class="markdown level1 summary"><p>Process using children.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override sealed void ProcessImpl()</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void ProcessLayered()</code></pre>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_DataProcessor_ProcessSegmentedImpl.md&amp;value=---%0Auid%3A%20Fp.DataProcessor.ProcessSegmentedImpl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_UseChild_System_Type___.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.UseChild(System.Type%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/DataProcessor.cs/#L17">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L76">View Source</a>
   </span>
-  <a id="Fp_DataProcessor_ProcessSegmentedImpl_" data-uid="Fp.DataProcessor.ProcessSegmentedImpl*"></a>
-  <h4 id="Fp_DataProcessor_ProcessSegmentedImpl" data-uid="Fp.DataProcessor.ProcessSegmentedImpl">ProcessSegmentedImpl()</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_LayeredDataProcessor_UseChild_" data-uid="Fp.LayeredDataProcessor.UseChild*"></a>
+  <h4 id="Fp_LayeredDataProcessor_UseChild_System_Type___" data-uid="Fp.LayeredDataProcessor.UseChild(System.Type[])">UseChild(Type[])</h4>
+  <div class="markdown level1 summary"><p>Register children of specified types.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override sealed IEnumerable&lt;Data&gt; ProcessSegmentedImpl()</code></pre>
+    <pre><code class="lang-csharp hljs">public void UseChild(params Type[] types)</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
+        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="Fp.Data.html">Data</a>&gt;</td>
-        <td></td>
+        <td><span class="xref">System.Type</span>[]</td>
+        <td><span class="parametername">types</span></td>
+        <td><p>Target types.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown if failed to use <span class="xref">System.Activator.CreateInstance(System.Type)</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor_UseChild__1.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor.UseChild%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L65">View Source</a>
+  </span>
+  <a id="Fp_LayeredDataProcessor_UseChild_" data-uid="Fp.LayeredDataProcessor.UseChild*"></a>
+  <h4 id="Fp_LayeredDataProcessor_UseChild__1" data-uid="Fp.LayeredDataProcessor.UseChild``1">UseChild&lt;TProcessorChild&gt;()</h4>
+  <div class="markdown level1 summary"><p>Register child of specified type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseChild&lt;TProcessorChild&gt;()
+    where TProcessorChild : ProcessorChild, new()</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TProcessorChild</span></td>
+        <td><p>Target type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1716,10 +1965,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_DataProcessor.md&amp;value=---%0Auid%3A%20Fp.DataProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_LayeredDataProcessor.md&amp;value=---%0Auid%3A%20Fp.LayeredDataProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/riina/Fp/blob/main/src/Fp/DataProcessor.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/riina/Fp/blob/main/src/Fp/LayeredDataProcessor.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
