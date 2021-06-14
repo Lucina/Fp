@@ -8,6 +8,12 @@ namespace Fp
     public class DataProcessor : Processor
     {
         /// <inheritdoc />
+        protected sealed override void ProcessImpl()
+        {
+            base.ProcessImpl();
+        }
+
+        /// <inheritdoc />
         protected sealed override IEnumerable<Data> ProcessSegmentedImpl()
         {
             OpenMainFile();

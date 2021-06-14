@@ -14,11 +14,11 @@
     /// </remarks>
     public static class HalfHelper
     {
-        private static readonly uint[] MantissaTable = GenerateMantissaTable();
-        private static readonly uint[] ExponentTable = GenerateExponentTable();
-        private static readonly ushort[] OffsetTable = GenerateOffsetTable();
-        private static readonly ushort[] BaseTable = GenerateBaseTable();
-        private static readonly sbyte[] ShiftTable = GenerateShiftTable();
+        private static readonly uint[] s_mantissaTable = GenerateMantissaTable();
+        private static readonly uint[] s_exponentTable = GenerateExponentTable();
+        private static readonly ushort[] s_offsetTable = GenerateOffsetTable();
+        private static readonly ushort[] s_baseTable = GenerateBaseTable();
+        private static readonly sbyte[] s_shiftTable = GenerateShiftTable();
 
         // Transforms the subnormal representation to a normalized one. 
         private static uint ConvertMantissa(int i)
@@ -183,7 +183,7 @@
         /// <returns>Single float</returns>
         public static unsafe float HalfToSingle(ushort half)
         {
-            uint result = MantissaTable[OffsetTable[half >> 10] + (half & 0x3ff)] + ExponentTable[half >> 10];
+            uint result = s_mantissaTable[s_offsetTable[half >> 10] + (half & 0x3ff)] + s_exponentTable[half >> 10];
             return *(float*)&result;
         }
 
@@ -195,7 +195,7 @@
         public static unsafe ushort SingleToHalf(float single)
         {
             uint value = *(uint*)&single;
-            return (ushort)(BaseTable[(value >> 23) & 0x1ff] + ((value & 0x007fffff) >> ShiftTable[value >> 23]));
+            return (ushort)(s_baseTable[(value >> 23) & 0x1ff] + ((value & 0x007fffff) >> s_shiftTable[value >> 23]));
         }
     }
 }

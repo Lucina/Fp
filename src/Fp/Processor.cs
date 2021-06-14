@@ -24,21 +24,21 @@ namespace Fp
         /// <summary>
         /// Currently running <see cref="Processor"/> on this thread.
         /// </summary>
-        public static Processor Current => _current ?? throw new InvalidOperationException();
+        public static Processor Current => s_current ?? throw new InvalidOperationException();
 
         /// <summary>
         /// Currently running <see cref="Processor"/> on this thread, or null.
         /// </summary>
-        public static Processor? NullableCurrent => _current;
+        public static Processor? NullableCurrent => s_current;
 
-        [ThreadStatic] internal static Processor? _current;
+        [ThreadStatic] internal static Processor? s_current;
 
         /// <summary>
         /// Per-thread instance.
         /// </summary>
-        public static Processor Instance => _instance ??= new Processor {LogReceiver = ConsoleLog.Default};
+        public static Processor Instance => s_instance ??= new Processor {LogReceiver = ConsoleLog.Default};
 
-        [ThreadStatic] private static Processor? _instance;
+        [ThreadStatic] private static Processor? s_instance;
 
         private const int StringDefaultCapacity = 4 * 1024;
         private const int StringExcessiveCapacity = 128 * 1024;
@@ -210,8 +210,8 @@ namespace Fp
 
         private MemoryStream TempMs => _tempMs ??= new MemoryStream();
         private MemoryStream? _tempMs;
-        private static byte[] TempBuffer => _tempBuffer ??= new byte[sizeof(long)];
-        [ThreadStatic] private static byte[]? _tempBuffer;
+        private static byte[] TempBuffer => s_tempBuffer ??= new byte[sizeof(long)];
+        [ThreadStatic] private static byte[]? s_tempBuffer;
 
         private Encoder Utf8Encoder => _utf8Encoder ??= Encoding.UTF8.GetEncoder();
         private Encoder? _utf8Encoder;
@@ -227,13 +227,13 @@ namespace Fp
         private static Encoding GetUtf16Encoding(bool bigEndian, bool bom) =>
             GUtf16Encodings[(bigEndian ? 1 : 0) + (bom ? 2 : 0)];
 
-        private static Encoding[] GUtf16Encodings => _gUtf16Encodings ??= new Encoding[]
+        private static Encoding[] GUtf16Encodings => s_gUtf16Encodings ??= new Encoding[]
         {
             new UnicodeEncoding(false, false), new UnicodeEncoding(true, false), new UnicodeEncoding(false, true),
             new UnicodeEncoding(true, true)
         };
 
-        private static Encoding[]? _gUtf16Encodings;
+        private static Encoding[]? s_gUtf16Encodings;
 
         #endregion
 
@@ -411,12 +411,12 @@ namespace Fp
         /// <summary>
         /// Set <see cref="Current"/>
         /// </summary>
-        public void ShieldUp() => _current = this;
+        public void ShieldUp() => s_current = this;
 
         /// <summary>
         /// Unset <see cref="Current"/>
         /// </summary>
-        public static void ShieldDown() => _current = null;
+        public static void ShieldDown() => s_current = null;
 
         /// <summary>
         /// Process current file

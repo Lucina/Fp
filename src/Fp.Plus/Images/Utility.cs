@@ -115,6 +115,8 @@ namespace Fp
 
         #endregion
 
+        #region Creation
+
         /// <summary>
         /// Creates 32bpp RGBA image data object.
         /// </summary>
@@ -137,6 +139,106 @@ namespace Fp
         public static Rgba32Data Image(this string name, int width, int height, ReadOnlyMemory<uint> buffer) =>
             new(name, width, height, buffer);
 
+        /// <summary>
+        /// Creates image write context.
+        /// </summary>
+        /// <param name="path">Bae path (without extension).</param>
+        /// <param name="width">Image width.</param>
+        /// <param name="height">Image height.</param>
+        /// <param name="image">Data object.</param>
+        /// <returns>32bpp RGBA buffer.</returns>
+        public static WriteContext<uint> CreateImage(this FpPath path, int width, int height, out Data image)
+        {
+            uint[] a = new uint[width * height];
+            image = path.Image(width, height, a);
+            return new WriteContext<uint>(a);
+        }
+
+        #endregion
+
+        #region Validation
+
+        /// <summary>
+        /// Ensure value is within pixel range between 0 and max.
+        /// </summary>
+        /// <param name="x">Input.</param>
+        /// <param name="max">Maximum size.</param>
+        /// <returns>Input.</returns>
+        /// <exception cref="ArgumentException">Thrown when size is negative or above max.</exception>
+        public static sbyte ImageRes(this sbyte x, sbyte max)
+        {
+            if ((byte)(x - 1) >= max) throw new ArgumentException();
+            return x;
+        }
+
+        /// <summary>
+        /// Ensure value is within pixel range between 0 and max.
+        /// </summary>
+        /// <param name="x">Input.</param>
+        /// <param name="max">Maximum size.</param>
+        /// <returns>Input.</returns>
+        /// <exception cref="ArgumentException">Thrown when size is negative or above max.</exception>
+        public static byte ImageRes(this byte x, byte max)
+        {
+            if ((byte)(x - 1) >= max) throw new ArgumentException();
+            return x;
+        }
+
+        /// <summary>
+        /// Ensure value is within pixel range between 0 and max.
+        /// </summary>
+        /// <param name="x">Input.</param>
+        /// <param name="max">Maximum size.</param>
+        /// <returns>Input.</returns>
+        /// <exception cref="ArgumentException">Thrown when size is negative or above max.</exception>
+        public static short ImageRes(this short x, short max)
+        {
+            if ((ushort)(x - 1) >= max) throw new ArgumentException();
+            return x;
+        }
+
+        /// <summary>
+        /// Ensure value is within pixel range between 0 and max.
+        /// </summary>
+        /// <param name="x">Input.</param>
+        /// <param name="max">Maximum size.</param>
+        /// <returns>Input.</returns>
+        /// <exception cref="ArgumentException">Thrown when size is negative or above max.</exception>
+        public static ushort ImageRes(this ushort x, ushort max)
+        {
+            if ((ushort)(x - 1) >= max) throw new ArgumentException();
+            return x;
+        }
+
+        /// <summary>
+        /// Ensure value is within pixel range between 0 and max.
+        /// </summary>
+        /// <param name="x">Input.</param>
+        /// <param name="max">Maximum size.</param>
+        /// <returns>Input.</returns>
+        /// <exception cref="ArgumentException">Thrown when size is negative or above max.</exception>
+        public static int ImageRes(this int x, int max)
+        {
+            if ((uint)(x - 1) >= max) throw new ArgumentException();
+            return x;
+        }
+
+        /// <summary>
+        /// Ensure value is within pixel range between 0 and max.
+        /// </summary>
+        /// <param name="x">Input.</param>
+        /// <param name="max">Maximum size.</param>
+        /// <returns>Input.</returns>
+        /// <exception cref="ArgumentException">Thrown when size is negative or above max.</exception>
+        public static uint ImageRes(this uint x, uint max)
+        {
+            if (x - 1 >= max) throw new ArgumentException();
+            return x;
+        }
+
+        #endregion
+
+        #region Pixel conversion
 
         /// <summary>
         /// Convert 24bpp RGB data to 32bpp RGBA.
@@ -199,5 +301,7 @@ namespace Fp
             target[3] = data[3];
             return result;
         }
+
+        #endregion
     }
 }

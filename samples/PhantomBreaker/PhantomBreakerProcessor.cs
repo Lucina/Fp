@@ -7,7 +7,7 @@ Processor.Run<PhantomBreakerProcessor>(args,
     "Decode / extract assets from Phantom Breaker series",
     (string?)null);
 
-public class PhantomBreakerProcessor : LayeredDataProcessor<(int i, int j)>
+public class PhantomBreakerProcessor : LayeredDataProcessor<(int i, int j), Memory<byte>>
 {
     protected override void ProcessLayered()
     {
@@ -23,7 +23,7 @@ public class PhantomBreakerProcessor : LayeredDataProcessor<(int i, int j)>
         {
             int ofsT1 = i4l[a, 8 + i * 4];
             if (ofsT1 == -1) continue;
-            int numT2 = i2l[a, posT2 + ofsT1], t2Bytes = numT2.Up1To8();
+            int numT2 = i2l[a, posT2 + ofsT1], t2Bytes = numT2.GetBytesForBits();
             var bits = new BitArray(a.SliceAlloc(posT2 + ofsT1 + 2, t2Bytes));
             // Table2: files
             for (int j = 0, p = posT2 + ofsT1 + 2 + t2Bytes; j < numT2; j++, p += 8)

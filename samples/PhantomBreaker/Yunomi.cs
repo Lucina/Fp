@@ -1,7 +1,7 @@
 using Fp;
 using System;
 
-public class Yunomi : ProcessorChild<(int i, int j)>
+public class Yunomi : ProcessorChild<(int i, int j), Memory<byte>>
 {
     public override string Flag => "t";
     public override bool Filter => Name is "21560002" or "Graphic";

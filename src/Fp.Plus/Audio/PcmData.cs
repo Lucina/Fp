@@ -17,7 +17,7 @@ namespace Fp.Plus.Audio
         /// </summary>
         public static readonly Guid PcmWave = Guid.Parse("3487955E-29BC-49FD-B374-C5AD6D2B145C");
 
-        private static readonly byte[] _chunkNames =
+        private static readonly byte[] s_chunkNames =
         {
             0x52, 0x49, 0x46, 0x46, 0x57, 0x41, 0x56, 0x45, 0x66, 0x6d, 0x74, 0x20, 0x64, 0x61, 0x74, 0x61
         };
@@ -113,12 +113,12 @@ namespace Fp.Plus.Audio
             try
             {
                 // RIFF (main chunk)
-                _chunkNames.AsSpan(0, 4).CopyTo(bufferSpan.Slice(0));
+                s_chunkNames.AsSpan(0, 4).CopyTo(bufferSpan.Slice(0));
                 BinaryPrimitives.WriteInt32LittleEndian(bufferSpan.Slice(4),
                     4 + 8 + pcmInfo.SubChunk1Size + 8 + pcmInfo.SubChunk2Size);
-                _chunkNames.AsSpan(4, 4).CopyTo(bufferSpan.Slice(8));
+                s_chunkNames.AsSpan(4, 4).CopyTo(bufferSpan.Slice(8));
                 // fmt (subchunk1)
-                _chunkNames.AsSpan(8, 4).CopyTo(bufferSpan.Slice(0xC));
+                s_chunkNames.AsSpan(8, 4).CopyTo(bufferSpan.Slice(0xC));
                 BinaryPrimitives.WriteInt32LittleEndian(bufferSpan.Slice(0x10), pcmInfo.SubChunk1Size);
                 BinaryPrimitives.WriteInt16LittleEndian(bufferSpan.Slice(0x14), pcmInfo.AudioFormat);
                 BinaryPrimitives.WriteInt16LittleEndian(bufferSpan.Slice(0x16), pcmInfo.NumChannels);
@@ -134,7 +134,7 @@ namespace Fp.Plus.Audio
 
                 // data (subchunk2)
                 int dataPos = 12 + 8 + pcmInfo.SubChunk1Size;
-                _chunkNames.AsSpan(0xC, 4).CopyTo(bufferSpan.Slice(dataPos));
+                s_chunkNames.AsSpan(0xC, 4).CopyTo(bufferSpan.Slice(dataPos));
                 BinaryPrimitives.WriteInt32LittleEndian(bufferSpan.Slice(dataPos + 4), pcmInfo.SubChunk2Size);
 
                 outputStream.Write(buffer, 0, hLen);

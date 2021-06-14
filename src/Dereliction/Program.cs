@@ -10,32 +10,32 @@ namespace Dereliction
     {
         public const string PROGRAM_NAME = nameof(Dereliction);
         public const string SCRIPT_DIRECTORY = "scripts";
-        private static string[]? _args;
-        private static string? _workingDirectory;
-        private static string? _mainScript;
+        private static string[]? s_args;
+        private static string? s_workingDirectory;
+        private static string? s_mainScript;
 
         private static void CategorizeArgs()
         {
-            if (_args != null) return;
-            _args = Environment.GetCommandLineArgs();
-            if (_args.Length == 1) return;
-            string main = _args[1];
-            if (Directory.Exists(main)) _workingDirectory = Path.GetFullPath(main);
-            else if (Processor.PathHasExtension(main, ".csx")) _mainScript = main;
+            if (s_args != null) return;
+            s_args = Environment.GetCommandLineArgs();
+            if (s_args.Length == 1) return;
+            string main = s_args[1];
+            if (Directory.Exists(main)) s_workingDirectory = Path.GetFullPath(main);
+            else if (Processor.PathHasExtension(main, ".csx")) s_mainScript = main;
         }
 
         public static string WorkingDirectory
         {
             get
             {
-                if (_args == null) CategorizeArgs();
-                if (_workingDirectory == null)
+                if (s_args == null) CategorizeArgs();
+                if (s_workingDirectory == null)
                 {
-                    _workingDirectory = Path.GetFullPath(SCRIPT_DIRECTORY);
-                    if (!Directory.Exists(_workingDirectory)) Directory.CreateDirectory(_workingDirectory);
+                    s_workingDirectory = Path.GetFullPath(SCRIPT_DIRECTORY);
+                    if (!Directory.Exists(s_workingDirectory)) Directory.CreateDirectory(s_workingDirectory);
                 }
 
-                return _workingDirectory;
+                return s_workingDirectory;
             }
         }
 
@@ -43,8 +43,8 @@ namespace Dereliction
         {
             get
             {
-                if (_args == null) CategorizeArgs();
-                return _mainScript;
+                if (s_args == null) CategorizeArgs();
+                return s_mainScript;
             }
         }
 

@@ -24,21 +24,21 @@ namespace Fp
         {
             get
             {
-                if (_defaultCurrentExecutableName != null) return _defaultCurrentExecutableName;
+                if (s_defaultCurrentExecutableName != null) return s_defaultCurrentExecutableName;
                 try
                 {
-                    _defaultCurrentExecutableName = Environment.GetCommandLineArgs()[0];
+                    s_defaultCurrentExecutableName = Environment.GetCommandLineArgs()[0];
                 }
                 catch
                 {
-                    _defaultCurrentExecutableName = "<program>";
+                    s_defaultCurrentExecutableName = "<program>";
                 }
 
-                return _defaultCurrentExecutableName;
+                return s_defaultCurrentExecutableName;
             }
         }
 
-        private static string? _defaultCurrentExecutableName;
+        private static string? s_defaultCurrentExecutableName;
 
         /// <summary>
         /// Get processor configuration from cli

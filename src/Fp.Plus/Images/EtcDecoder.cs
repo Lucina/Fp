@@ -71,9 +71,9 @@ namespace Fp.Plus.Images
             NonOpaqueOnly = 0x4
         }
 
-        private static readonly int[] Complement3BitshiftedTable = {0, 8, 16, 24, -32, -24, -16, -8};
+        private static readonly int[] s_complement3BitshiftedTable = {0, 8, 16, 24, -32, -24, -16, -8};
 
-        private static readonly int[] ModifierTable =
+        private static readonly int[] s_modifierTable =
         {
             2, 8, -2, -8, 5, 17, -5, -17, 9, 29, -9, -29, 13, 42, -13, -42, 18, 60, -18, -60, 24, 80, -24, -80, 33,
             106, -33, -106, 47, 183, -47, -183
@@ -107,7 +107,7 @@ namespace Fp.Plus.Images
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int Complement3Bitshifted(int x)
         {
-            return Complement3BitshiftedTable[x];
+            return s_complement3BitshiftedTable[x];
         }
 
 
@@ -146,7 +146,7 @@ namespace Fp.Plus.Images
         {
             int pixelIndex = (int)(((pixelIndexWord & (1 << i)) >> i)
                                    | ((pixelIndexWord & (0x10000 << i)) >> (16 + i - 1)));
-            int modifier = ModifierTable[4 * tableCodeword + pixelIndex];
+            int modifier = s_modifierTable[4 * tableCodeword + pixelIndex];
             byte r = Clamp(baseColorSubblock[0] + modifier);
             byte g = Clamp(baseColorSubblock[1] + modifier);
             byte b = Clamp(baseColorSubblock[2] + modifier);
@@ -285,7 +285,7 @@ namespace Fp.Plus.Images
                 bitString[3] |= 0x2;
         }
 
-        private static readonly int[] Etc2DistanceTable = {3, 6, 11, 16, 23, 32, 41, 64};
+        private static readonly int[] s_etc2DistanceTable = {3, 6, 11, 16, 23, 32, 41, 64};
 
         private static unsafe void ProcessBlockEtc2TOrHMode(byte* bitString, EtcMode etcMode,
             byte* pixelBuffer)
@@ -313,7 +313,7 @@ namespace Fp.Plus.Images
                 baseColor2B = bitString[3] & 0xF0;
                 baseColor2B |= baseColor2B >> 4;
                 // index = (da << 1) | db
-                distance = Etc2DistanceTable[((bitString[3] & 0x0C) >> 1) | (bitString[3] & 0x1)];
+                distance = s_etc2DistanceTable[((bitString[3] & 0x0C) >> 1) | (bitString[3] & 0x1)];
                 paintColorR[0] = baseColor1R;
                 paintColorG[0] = baseColor1G;
                 paintColorB[0] = baseColor1B;
@@ -347,7 +347,7 @@ namespace Fp.Plus.Images
                 int baseColor1Value = (baseColor1R << 16) + (baseColor1G << 8) + baseColor1B;
                 int baseColor2Value = (baseColor2R << 16) + (baseColor2G << 8) + baseColor2B;
                 int bit = baseColor1Value >= baseColor2Value ? 1 : 0;
-                distance = Etc2DistanceTable[(bitString[3] & 0x04) | ((bitString[3] & 0x01) << 1) | bit];
+                distance = s_etc2DistanceTable[(bitString[3] & 0x04) | ((bitString[3] & 0x01) << 1) | bit];
                 paintColorR[0] = Clamp(baseColor1R + distance);
                 paintColorG[0] = Clamp(baseColor1G + distance);
                 paintColorB[0] = Clamp(baseColor1B + distance);
@@ -590,13 +590,13 @@ namespace Fp.Plus.Images
             }
         }
 
-        private static readonly int[,] PunchthroughModifierTable =
+        private static readonly int[,] s_punchthroughModifierTable =
         {
             {0, 8, 0, -8}, {0, 17, 0, -17}, {0, 29, 0, -29}, {0, 42, 0, -42}, {0, 60, 0, -60}, {0, 80, 0, -80},
             {0, 106, 0, -106}, {0, 183, 0, -183}
         };
 
-        private static readonly uint[] PunchthroughMaskTable = {0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF};
+        private static readonly uint[] s_punchthroughMaskTable = {0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF};
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static unsafe void ProcessPixelEtc2Punchthrough(byte i,
@@ -606,11 +606,11 @@ namespace Fp.Plus.Images
             int pixelIndex = (int)(((pixelIndexWord & (1 << i)) >> i)
                                    | ((pixelIndexWord & (0x10000 << i)) >> (16 + i - 1)));
 
-            int modifier = PunchthroughModifierTable[tableCodeword, pixelIndex];
+            int modifier = s_punchthroughModifierTable[tableCodeword, pixelIndex];
             byte r = Clamp(baseColorSubblock[0] + modifier);
             byte g = Clamp(baseColorSubblock[1] + modifier);
             byte b = Clamp(baseColorSubblock[2] + modifier);
-            uint mask = PunchthroughMaskTable[pixelIndex];
+            uint mask = s_punchthroughMaskTable[pixelIndex];
             uint* buffer = (uint*)pixelBuffer;
             buffer[(i & 3) * 4 + ((i & 12) >> 2)] =
                 Rgba(r, g, b, 0xff) & (BitConverter.IsLittleEndian ? mask : BinaryPrimitives.ReverseEndianness(mask));
@@ -710,7 +710,7 @@ namespace Fp.Plus.Images
                 baseColor2B = bitString[3] & 0xF0;
                 baseColor2B |= baseColor2B >> 4;
                 // index = (da << 1) | db
-                distance = Etc2DistanceTable[((bitString[3] & 0x0C) >> 1) | (bitString[3] & 0x1)];
+                distance = s_etc2DistanceTable[((bitString[3] & 0x0C) >> 1) | (bitString[3] & 0x1)];
                 paintColorR[0] = baseColor1R;
                 paintColorG[0] = baseColor1G;
                 paintColorB[0] = baseColor1B;
@@ -744,7 +744,7 @@ namespace Fp.Plus.Images
                 int baseColor1Value = (baseColor1R << 16) + (baseColor1G << 8) + baseColor1B;
                 int baseColor2Value = (baseColor2R << 16) + (baseColor2G << 8) + baseColor2B;
                 int bit = baseColor1Value >= baseColor2Value ? 1 : 0;
-                distance = Etc2DistanceTable[(bitString[3] & 0x04) | ((bitString[3] & 0x01) << 1) | bit];
+                distance = s_etc2DistanceTable[(bitString[3] & 0x04) | ((bitString[3] & 0x01) << 1) | bit];
                 paintColorR[0] = Clamp(baseColor1R + distance);
                 paintColorG[0] = Clamp(baseColor1G + distance);
                 paintColorB[0] = Clamp(baseColor1B + distance);
@@ -770,7 +770,7 @@ namespace Fp.Plus.Images
                 int r = paintColorR[pixelIndex];
                 int g = paintColorG[pixelIndex];
                 int b = paintColorB[pixelIndex];
-                uint mask = PunchthroughMaskTable[pixelIndex];
+                uint mask = s_punchthroughMaskTable[pixelIndex];
                 buffer[(i & 3) * 4 + ((i & 12) >> 2)] = Rgba((byte)r, (byte)g, (byte)b, 0xff) &
                                                         (BitConverter.IsLittleEndian
                                                             ? mask
@@ -895,7 +895,7 @@ namespace Fp.Plus.Images
             SetModeEtc2Thp(bitString, etcMode, flags);
         }
 
-        private static readonly sbyte[,] EacModifierTable =
+        private static readonly sbyte[,] s_eacModifierTable =
         {
             {-3, -6, -9, -15, 2, 5, 8, 14}, {-3, -7, -10, -13, 2, 6, 9, 12}, {-2, -5, -8, -13, 1, 4, 7, 12},
             {-2, -4, -6, -13, 1, 3, 5, 12}, {-3, -6, -8, -12, 2, 5, 7, 11}, {-3, -7, -9, -11, 2, 6, 8, 10},
@@ -930,7 +930,7 @@ namespace Fp.Plus.Images
                 return false;
             // Decode the alpha part.
             int baseCodeword = bitstring[0];
-            fixed (sbyte* modifierTableB = EacModifierTable)
+            fixed (sbyte* modifierTableB = s_eacModifierTable)
             {
                 sbyte* modifierTable = modifierTableB + (bitstring[1] & 0x0F) * 8;
                 int multiplier = (bitstring[1] & 0xF0) >> 4;
@@ -1002,7 +1002,7 @@ namespace Fp.Plus.Images
         {
             int baseCodewordTimes8Plus4 = (int)(((qword & 0xFF00000000000000) >> (56 - 3)) | 0x4);
             int modifierIndex = (int)((qword & 0x000F000000000000) >> 48);
-            fixed (sbyte* modifierTableB = EacModifierTable)
+            fixed (sbyte* modifierTableB = s_eacModifierTable)
             {
                 sbyte* modifierTable = modifierTableB + modifierIndex * 8;
                 int multiplierTimes8 = (int)((qword & 0x00F0000000000000) >> (52 - 3));
@@ -1109,7 +1109,7 @@ namespace Fp.Plus.Images
                 return false;
             int baseCodewordTimes8 = baseCodeword << 3; // Arithmetic shift.
             int modifierIndex = (int)((qword & 0x000F000000000000) >> 48);
-            fixed (sbyte* modifierTableB = EacModifierTable)
+            fixed (sbyte* modifierTableB = s_eacModifierTable)
             {
                 sbyte* modifierTable = modifierTableB + modifierIndex * 8;
                 int multiplierTimes8 = (int)((qword & 0x00F0000000000000) >> (52 - 3));

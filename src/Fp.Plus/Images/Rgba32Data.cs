@@ -25,7 +25,7 @@ namespace Fp.Plus.Images
         /// </summary>
         public static readonly Guid Jpeg = Guid.Parse("7AE22A2F-CE7F-470B-BC58-674AC8B5EA9E");
 
-        private static readonly PngEncoder _pngEncoder =
+        private static readonly PngEncoder s_pngEncoder =
             new() {CompressionLevel = PngCompressionLevel.BestCompression};
 
         /// <inheritdoc />
@@ -112,7 +112,7 @@ namespace Fp.Plus.Images
                             .CopyTo(MemoryMarshal.Cast<Rgba32, uint>(image.GetPixelRowSpan(y)));
 
                 if (format == PngDeflate)
-                    image.SaveAsPng(outputStream, _pngEncoder);
+                    image.SaveAsPng(outputStream, s_pngEncoder);
                 else
                 {
                     var jpegEncoder = new JpegEncoder();

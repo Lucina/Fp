@@ -2,7 +2,7 @@ using Fp;
 using System;
 using System.Collections.Generic;
 
-public class Mariko : ProcessorChild<(int i, int j)>
+public class Mariko : ProcessorChild<(int i, int j), Memory<byte>>
 {
     public override string Flag => "c";
     public override bool Filter => Lookup.ContainsKey((0, 0)) && (PbbgChara.Contains(Name) || Name.StartsWith("c_"));

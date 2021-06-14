@@ -59,8 +59,8 @@ namespace Fp.Tests
             mbs.Position = 0;
             MemoryStream ms2 = new();
             mbs.CopyTo(ms2);
-            ms2.TryGetBuffer(out ArraySegment<byte> ms2b);
-            Assert.AreEqual(new ArraySegment<byte>(a), ms2b);
+            ms2.TryGetBuffer(out ArraySegment<byte> ms2B);
+            Assert.AreEqual(new ArraySegment<byte>(a), ms2B);
         }
 
         [Test]

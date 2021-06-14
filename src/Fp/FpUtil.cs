@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,7 +11,9 @@ namespace Fp
     /// </summary>
     public static partial class FpUtil
     {
-        private static readonly HashSet<string> _emptyStringHashSet = new();
+        #region Argument parsing
+
+        private static readonly HashSet<string> s_emptyStringHashSet = new();
 
         /// <summary>
         /// Isolate flags from argument list.
@@ -24,7 +25,7 @@ namespace Fp
         public static (HashSet<string> flags, Dictionary<string, string> opts, List<string> args) IsolateFlags(
             this IReadOnlyList<string> arguments, IReadOnlyCollection<string>? optKeys = null)
         {
-            optKeys ??= _emptyStringHashSet;
+            optKeys ??= s_emptyStringHashSet;
             HashSet<string> flags = new();
             Dictionary<string, string> opts = new();
             List<string> args = new();
@@ -89,6 +90,10 @@ namespace Fp
             return null;
         }
 
+        #endregion
+
+        #region Array slicing
+
         /// <summary>
         /// Slices an array and allocates a new array.
         /// </summary>
@@ -128,16 +133,9 @@ namespace Fp
             return span.Slice(start, length).ToArray();
         }
 
-        /// <summary>
-        /// Skip over bits matching specified value.
-        /// </summary>
-        /// <param name="array">Bit array to use.</param>
-        /// <param name="i">Index to modify.</param>
-        /// <param name="skipValue">Value to skip over.</param>
-        public static void SkipBits(this BitArray array, ref int i, bool skipValue)
-        {
-            while (i < array.Length && array[i] == skipValue) i++;
-        }
+        #endregion
+
+        #region Enumerable
 
         /// <summary>
         /// Dispose of an enumerable's elements after they have been yielded.
@@ -214,6 +212,8 @@ namespace Fp
             }
         }
 
+        #endregion
+
         #region Strings
 
         /// <summary>
@@ -235,7 +235,9 @@ namespace Fp
 
         #endregion
 
-        private static readonly bool _subNormalize = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        private static readonly bool s_subNormalize = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+
+        #region Paths
 
         /// <summary>
         /// Normalize the specified path.
@@ -245,9 +247,11 @@ namespace Fp
         public static string NormalizeAndStripWindowsDrive(this string path)
         {
             string sub = Path.GetFullPath(path);
-            if (_subNormalize && sub.Length >= 2 && char.IsLetter(sub[0]) && sub[1] == Path.VolumeSeparatorChar)
+            if (s_subNormalize && sub.Length >= 2 && char.IsLetter(sub[0]) && sub[1] == Path.VolumeSeparatorChar)
                 sub = sub.Substring(2);
             return sub;
         }
+
+        #endregion
     }
 }

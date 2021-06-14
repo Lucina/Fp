@@ -724,7 +724,8 @@ namespace Fp
         /// <param name="openDelegate">Delegate for opening file (stream will be disposed)</param>
         /// <param name="storeDelegate">Delegate for getting data</param>
         /// <returns></returns>
-        public bool EnsureFile(ref Memory<byte> target, ref bool init, Func<Stream> openDelegate, Func<Stream, Memory<byte>> storeDelegate)
+        public bool EnsureFile(ref Memory<byte> target, ref bool init, Func<Stream> openDelegate,
+            Func<Stream, Memory<byte>> storeDelegate)
         {
             if (init) return target.Length != 0;
             init = true;
