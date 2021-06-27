@@ -235,6 +235,26 @@ namespace Fp
 
         private static Encoding[]? s_gUtf16Encodings;
 
+        /// <summary>
+        /// Option keys.
+        /// </summary>
+        protected virtual string[] OptKeys => Array.Empty<string>();
+
+        /// <summary>
+        /// Input flags.
+        /// </summary>
+        public HashSet<string> Flags { get; set; } = null!;
+
+        /// <summary>
+        /// Input options.
+        /// </summary>
+        public Dictionary<string, string> Opts { get; set; } = null!;
+
+        /// <summary>
+        /// Input positional arguments.
+        /// </summary>
+        public List<string> PosArgs { get; set; } = null!;
+
         #endregion
 
         #region Constructor
@@ -368,10 +388,19 @@ namespace Fp
         }
 
         /// <summary>
+        /// Setup arguments (flags, opts, posargs).
+        /// </summary>
+        public void SetupArgs()
+        {
+            (Flags, Opts, PosArgs) = Args.IsolateFlags(OptKeys);
+        }
+
+        /// <summary>
         /// Process current file
         /// </summary>
         public void Process()
         {
+            SetupArgs();
             ShieldProcess();
             if (_overrideProcess) return;
             foreach (Data d in ShieldProcessSegmented())
@@ -391,6 +420,7 @@ namespace Fp
         /// <returns>Generated outputs</returns>
         public IEnumerable<Data> ProcessSegmented()
         {
+            SetupArgs();
             foreach (Data entry in ShieldProcessSegmented()) yield return entry;
             if (_overrideProcessSegmented) yield break;
             FileSystemSource prevFs = FileSystem ?? throw new InvalidOperationException();

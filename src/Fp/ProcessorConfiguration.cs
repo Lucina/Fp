@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fp
-{
+namespace Fp {
     /// <summary>
     /// Configuration for batch-processing fs with processors
     /// </summary>
@@ -64,8 +63,4 @@ namespace Fp
         /// </summary>
         public IReadOnlyList<string> Args { get; init; }
     }
-}
-
-namespace System.Runtime.CompilerServices
-{
 }

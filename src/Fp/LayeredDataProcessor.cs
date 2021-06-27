@@ -10,29 +10,9 @@ namespace Fp
     public class LayeredDataProcessor : DataProcessor
     {
         /// <summary>
-        /// Option keys.
-        /// </summary>
-        protected virtual string[] OptKeys => Array.Empty<string>();
-
-        /// <summary>
         /// Children to use.
         /// </summary>
         protected virtual HashSet<ProcessorChild> Children { get; set; } = new();
-
-        /// <summary>
-        /// Input flags.
-        /// </summary>
-        public HashSet<string> Flags { get; set; } = null!;
-
-        /// <summary>
-        /// Input options.
-        /// </summary>
-        public Dictionary<string, string> Opts { get; set; } = null!;
-
-        /// <summary>
-        /// Input positional arguments.
-        /// </summary>
-        public List<string> PosArgs { get; set; } = null!;
 
         /// <summary>
         /// Current output.
@@ -43,7 +23,6 @@ namespace Fp
         protected override IEnumerable<Data> ProcessData()
         {
             Content.Clear();
-            (Flags, Opts, PosArgs) = Args.IsolateFlags(OptKeys);
             ProcessLayered();
             foreach (var c in Children)
                 if (c.Filter || c.Flag == null || Flags.Contains(c.Flag))
@@ -93,29 +72,9 @@ namespace Fp
     public class LayeredDataProcessor<TKey, TValue> : DataProcessor where TKey : notnull
     {
         /// <summary>
-        /// Option keys.
-        /// </summary>
-        protected virtual string[] OptKeys => Array.Empty<string>();
-
-        /// <summary>
         /// Children to use.
         /// </summary>
         protected virtual HashSet<ProcessorChild<TKey, TValue>> Children { get; set; } = new();
-
-        /// <summary>
-        /// Input flags.
-        /// </summary>
-        public HashSet<string> Flags { get; set; } = null!;
-
-        /// <summary>
-        /// Input options.
-        /// </summary>
-        public Dictionary<string, string> Opts { get; set; } = null!;
-
-        /// <summary>
-        /// Input positional arguments.
-        /// </summary>
-        public List<string> PosArgs { get; set; } = null!;
 
         /// <summary>
         /// Current output.
@@ -132,7 +91,6 @@ namespace Fp
         {
             Content.Clear();
             Lookup.Clear();
-            (Flags, Opts, PosArgs) = Args.IsolateFlags(OptKeys);
             ProcessLayered();
             foreach (var c in Children)
                 if (c.Filter || c.Flag == null || Flags.Contains(c.Flag))

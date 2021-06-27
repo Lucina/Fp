@@ -1,6 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageVersion>0.20.0</PackageVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
@@ -24,11 +29,6 @@
     <PackageProjectUrl>https://github.com/riina/Fp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/riina/Fp</RepositoryUrl>
     <Company>riina</Company>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <PackageVersion>0.19.1</PackageVersion>
-    <AssemblyVersion>1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">

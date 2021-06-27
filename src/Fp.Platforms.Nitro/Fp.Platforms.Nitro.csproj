@@ -24,7 +24,7 @@
   <PropertyGroup>
     <Authors>riina,Lucina</Authors>
     <Owners>riina,Lucina</Owners>
-    <Description>Native utilities</Description>
+    <Description>Nitro utilities</Description>
     <Copyright>Copyright ©2020 riina</Copyright>
     <PackageProjectUrl>https://github.com/riina/Fp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/riina/Fp</RepositoryUrl>
@@ -32,20 +32,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
+    <PackageReference Include="DSDecmp" Version="0.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fp\Fp.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="NOTICE.Fp.Plus.txt">
-      <Link>NOTICE.Fp.Plus.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>contentFiles/any/any/</PackagePath>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-    </Content>
   </ItemGroup>
 
 </Project>
