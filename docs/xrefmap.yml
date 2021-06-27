@@ -1718,58 +1718,6 @@ references:
   isSpec: "True"
   fullName: Fp.LayeredDataProcessor.Content
   nameWithType: LayeredDataProcessor.Content
-- uid: Fp.LayeredDataProcessor.Flags
-  name: Flags
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_Flags
-  commentId: P:Fp.LayeredDataProcessor.Flags
-  fullName: Fp.LayeredDataProcessor.Flags
-  nameWithType: LayeredDataProcessor.Flags
-- uid: Fp.LayeredDataProcessor.Flags*
-  name: Flags
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_Flags_
-  commentId: Overload:Fp.LayeredDataProcessor.Flags
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor.Flags
-  nameWithType: LayeredDataProcessor.Flags
-- uid: Fp.LayeredDataProcessor.OptKeys
-  name: OptKeys
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_OptKeys
-  commentId: P:Fp.LayeredDataProcessor.OptKeys
-  fullName: Fp.LayeredDataProcessor.OptKeys
-  nameWithType: LayeredDataProcessor.OptKeys
-- uid: Fp.LayeredDataProcessor.OptKeys*
-  name: OptKeys
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_OptKeys_
-  commentId: Overload:Fp.LayeredDataProcessor.OptKeys
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor.OptKeys
-  nameWithType: LayeredDataProcessor.OptKeys
-- uid: Fp.LayeredDataProcessor.Opts
-  name: Opts
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_Opts
-  commentId: P:Fp.LayeredDataProcessor.Opts
-  fullName: Fp.LayeredDataProcessor.Opts
-  nameWithType: LayeredDataProcessor.Opts
-- uid: Fp.LayeredDataProcessor.Opts*
-  name: Opts
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_Opts_
-  commentId: Overload:Fp.LayeredDataProcessor.Opts
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor.Opts
-  nameWithType: LayeredDataProcessor.Opts
-- uid: Fp.LayeredDataProcessor.PosArgs
-  name: PosArgs
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_PosArgs
-  commentId: P:Fp.LayeredDataProcessor.PosArgs
-  fullName: Fp.LayeredDataProcessor.PosArgs
-  nameWithType: LayeredDataProcessor.PosArgs
-- uid: Fp.LayeredDataProcessor.PosArgs*
-  name: PosArgs
-  href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_PosArgs_
-  commentId: Overload:Fp.LayeredDataProcessor.PosArgs
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor.PosArgs
-  nameWithType: LayeredDataProcessor.PosArgs
 - uid: Fp.LayeredDataProcessor.ProcessData
   name: ProcessData()
   href: api/Fp/Fp.LayeredDataProcessor.html#Fp_LayeredDataProcessor_ProcessData
@@ -1864,23 +1812,6 @@ references:
   fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).Content
   nameWithType: LayeredDataProcessor<TKey, TValue>.Content
   nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).Content
-- uid: Fp.LayeredDataProcessor`2.Flags
-  name: Flags
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_Flags
-  commentId: P:Fp.LayeredDataProcessor`2.Flags
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.Flags
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).Flags
-  nameWithType: LayeredDataProcessor<TKey, TValue>.Flags
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).Flags
-- uid: Fp.LayeredDataProcessor`2.Flags*
-  name: Flags
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_Flags_
-  commentId: Overload:Fp.LayeredDataProcessor`2.Flags
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.Flags
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).Flags
-  nameWithType: LayeredDataProcessor<TKey, TValue>.Flags
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).Flags
 - uid: Fp.LayeredDataProcessor`2.Lookup
   name: Lookup
   href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_Lookup
@@ -1898,57 +1829,6 @@ references:
   fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).Lookup
   nameWithType: LayeredDataProcessor<TKey, TValue>.Lookup
   nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).Lookup
-- uid: Fp.LayeredDataProcessor`2.OptKeys
-  name: OptKeys
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_OptKeys
-  commentId: P:Fp.LayeredDataProcessor`2.OptKeys
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.OptKeys
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).OptKeys
-  nameWithType: LayeredDataProcessor<TKey, TValue>.OptKeys
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).OptKeys
-- uid: Fp.LayeredDataProcessor`2.OptKeys*
-  name: OptKeys
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_OptKeys_
-  commentId: Overload:Fp.LayeredDataProcessor`2.OptKeys
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.OptKeys
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).OptKeys
-  nameWithType: LayeredDataProcessor<TKey, TValue>.OptKeys
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).OptKeys
-- uid: Fp.LayeredDataProcessor`2.Opts
-  name: Opts
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_Opts
-  commentId: P:Fp.LayeredDataProcessor`2.Opts
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.Opts
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).Opts
-  nameWithType: LayeredDataProcessor<TKey, TValue>.Opts
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).Opts
-- uid: Fp.LayeredDataProcessor`2.Opts*
-  name: Opts
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_Opts_
-  commentId: Overload:Fp.LayeredDataProcessor`2.Opts
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.Opts
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).Opts
-  nameWithType: LayeredDataProcessor<TKey, TValue>.Opts
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).Opts
-- uid: Fp.LayeredDataProcessor`2.PosArgs
-  name: PosArgs
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_PosArgs
-  commentId: P:Fp.LayeredDataProcessor`2.PosArgs
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.PosArgs
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).PosArgs
-  nameWithType: LayeredDataProcessor<TKey, TValue>.PosArgs
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).PosArgs
-- uid: Fp.LayeredDataProcessor`2.PosArgs*
-  name: PosArgs
-  href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_PosArgs_
-  commentId: Overload:Fp.LayeredDataProcessor`2.PosArgs
-  isSpec: "True"
-  fullName: Fp.LayeredDataProcessor<TKey, TValue>.PosArgs
-  fullName.vb: Fp.LayeredDataProcessor(Of TKey, TValue).PosArgs
-  nameWithType: LayeredDataProcessor<TKey, TValue>.PosArgs
-  nameWithType.vb: LayeredDataProcessor(Of TKey, TValue).PosArgs
 - uid: Fp.LayeredDataProcessor`2.ProcessData
   name: ProcessData()
   href: api/Fp/Fp.LayeredDataProcessor-2.html#Fp_LayeredDataProcessor_2_ProcessData
@@ -2540,6 +2420,32 @@ references:
   isSpec: "True"
   fullName: Fp.NullLog.LogWarning
   nameWithType: NullLog.LogWarning
+- uid: Fp.One`1
+  name: One<T>
+  href: api/Fp/Fp.One-1.html
+  commentId: T:Fp.One`1
+  name.vb: One(Of T)
+  fullName: Fp.One<T>
+  fullName.vb: Fp.One(Of T)
+  nameWithType: One<T>
+  nameWithType.vb: One(Of T)
+- uid: Fp.One`1.Value
+  name: Value
+  href: api/Fp/Fp.One-1.html#Fp_One_1_Value
+  commentId: P:Fp.One`1.Value
+  fullName: Fp.One<T>.Value
+  fullName.vb: Fp.One(Of T).Value
+  nameWithType: One<T>.Value
+  nameWithType.vb: One(Of T).Value
+- uid: Fp.One`1.Value*
+  name: Value
+  href: api/Fp/Fp.One-1.html#Fp_One_1_Value_
+  commentId: Overload:Fp.One`1.Value
+  isSpec: "True"
+  fullName: Fp.One<T>.Value
+  fullName.vb: Fp.One(Of T).Value
+  nameWithType: One<T>.Value
+  nameWithType.vb: One(Of T).Value
 - uid: Fp.Plus.Audio
   name: Fp.Plus.Audio
   href: api/Fp.Plus/Fp.Plus.Audio.html
@@ -12448,6 +12354,92 @@ references:
   commentId: F:Fp.StringBuilderLog.StringBuilder
   fullName: Fp.StringBuilderLog.StringBuilder
   nameWithType: StringBuilderLog.StringBuilder
+- uid: Fp.Unknown`1
+  name: Unknown<T>
+  href: api/Fp/Fp.Unknown-1.html
+  commentId: T:Fp.Unknown`1
+  name.vb: Unknown(Of T)
+  fullName: Fp.Unknown<T>
+  fullName.vb: Fp.Unknown(Of T)
+  nameWithType: Unknown<T>
+  nameWithType.vb: Unknown(Of T)
+- uid: Fp.Unknown`1.FromKey(System.Object)
+  name: FromKey(Object)
+  href: api/Fp/Fp.Unknown-1.html#Fp_Unknown_1_FromKey_System_Object_
+  commentId: M:Fp.Unknown`1.FromKey(System.Object)
+  fullName: Fp.Unknown<T>.FromKey(System.Object)
+  fullName.vb: Fp.Unknown(Of T).FromKey(System.Object)
+  nameWithType: Unknown<T>.FromKey(Object)
+  nameWithType.vb: Unknown(Of T).FromKey(Object)
+- uid: Fp.Unknown`1.FromKey*
+  name: FromKey
+  href: api/Fp/Fp.Unknown-1.html#Fp_Unknown_1_FromKey_
+  commentId: Overload:Fp.Unknown`1.FromKey
+  isSpec: "True"
+  fullName: Fp.Unknown<T>.FromKey
+  fullName.vb: Fp.Unknown(Of T).FromKey
+  nameWithType: Unknown<T>.FromKey
+  nameWithType.vb: Unknown(Of T).FromKey
+- uid: Fp.Unknown`1.Value
+  name: Value
+  href: api/Fp/Fp.Unknown-1.html#Fp_Unknown_1_Value
+  commentId: P:Fp.Unknown`1.Value
+  fullName: Fp.Unknown<T>.Value
+  fullName.vb: Fp.Unknown(Of T).Value
+  nameWithType: Unknown<T>.Value
+  nameWithType.vb: Unknown(Of T).Value
+- uid: Fp.Unknown`1.Value*
+  name: Value
+  href: api/Fp/Fp.Unknown-1.html#Fp_Unknown_1_Value_
+  commentId: Overload:Fp.Unknown`1.Value
+  isSpec: "True"
+  fullName: Fp.Unknown<T>.Value
+  fullName.vb: Fp.Unknown(Of T).Value
+  nameWithType: Unknown<T>.Value
+  nameWithType.vb: Unknown(Of T).Value
+- uid: Fp.Unknown`2
+  name: Unknown<T, TOut>
+  href: api/Fp/Fp.Unknown-2.html
+  commentId: T:Fp.Unknown`2
+  name.vb: Unknown(Of T, TOut)
+  fullName: Fp.Unknown<T, TOut>
+  fullName.vb: Fp.Unknown(Of T, TOut)
+  nameWithType: Unknown<T, TOut>
+  nameWithType.vb: Unknown(Of T, TOut)
+- uid: Fp.Unknown`2.FromKey(System.Object)
+  name: FromKey(Object)
+  href: api/Fp/Fp.Unknown-2.html#Fp_Unknown_2_FromKey_System_Object_
+  commentId: M:Fp.Unknown`2.FromKey(System.Object)
+  fullName: Fp.Unknown<T, TOut>.FromKey(System.Object)
+  fullName.vb: Fp.Unknown(Of T, TOut).FromKey(System.Object)
+  nameWithType: Unknown<T, TOut>.FromKey(Object)
+  nameWithType.vb: Unknown(Of T, TOut).FromKey(Object)
+- uid: Fp.Unknown`2.FromKey*
+  name: FromKey
+  href: api/Fp/Fp.Unknown-2.html#Fp_Unknown_2_FromKey_
+  commentId: Overload:Fp.Unknown`2.FromKey
+  isSpec: "True"
+  fullName: Fp.Unknown<T, TOut>.FromKey
+  fullName.vb: Fp.Unknown(Of T, TOut).FromKey
+  nameWithType: Unknown<T, TOut>.FromKey
+  nameWithType.vb: Unknown(Of T, TOut).FromKey
+- uid: Fp.Unknown`2.Value
+  name: Value
+  href: api/Fp/Fp.Unknown-2.html#Fp_Unknown_2_Value
+  commentId: P:Fp.Unknown`2.Value
+  fullName: Fp.Unknown<T, TOut>.Value
+  fullName.vb: Fp.Unknown(Of T, TOut).Value
+  nameWithType: Unknown<T, TOut>.Value
+  nameWithType.vb: Unknown(Of T, TOut).Value
+- uid: Fp.Unknown`2.Value*
+  name: Value
+  href: api/Fp/Fp.Unknown-2.html#Fp_Unknown_2_Value_
+  commentId: Overload:Fp.Unknown`2.Value
+  isSpec: "True"
+  fullName: Fp.Unknown<T, TOut>.Value
+  fullName.vb: Fp.Unknown(Of T, TOut).Value
+  nameWithType: Unknown<T, TOut>.Value
+  nameWithType.vb: Unknown(Of T, TOut).Value
 - uid: Fp.WriteContext`1
   name: WriteContext<T>
   href: api/Fp/Fp.WriteContext-1.html
