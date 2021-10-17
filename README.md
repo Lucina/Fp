@@ -11,7 +11,17 @@
 
 [Documentation](https://riina.github.io/Fp) | [Samples](samples)
 
-Fp/Fp.Plus are rudimentary libraries for conveniently manipulating files/buffers on the level of primitives (numbers/strings) without excessive managed allocations. It can be used for designing extractors / converters for basic archive or content formats.
+Fp is designed as a framework for implementing concise data format extractors, primarily for archive containers and 2D rasters.
+
+Many utilities for working with primitive data (including endianness-dependent I/O) are provided. See the [Samples](samples) for more.
+
+Processors are a unit worker derived from `Fp.Processor` or one of its descendants that are called to operate on each applicable (by default, based on extension) file path, optionally opening a stream and generating console output or file artifacts. If written to only use compatible APIs (e.g. working with the `FileSystemSource` APIs and not directly using `System.IO.File` etc.), processors can be used to work with synthetic filesystems (e.g. directly working on files in a zip file) and more generally be used to efficiently interact with any binary data regardless of source.
+
+A scripting API also exists that mirrors much of the `Processor` functionality in static, single-context form (multithreading not supported, unlike standard `Processor`s).
+
+Programs intended to extract from a set of files / folders (recursively) to a destination can utilize the default `Fp.Processor.Run<T>` function where `T` is a user-created processor class. All file I/O is managed by the library, the processor will be automatically fed input file paths and can opt to open these files / create new files (automatically placed in the output directory) via the `Processor` class APIs.
+
+In the case of the `Fp.DataProcessor` class, processors are designed to generate a `System.Collections.Generic.IEnumerable<Fp.Data>` where `Fp.Data` represents an arbitrary content result with an associated filename, such as `Fp.Plus.Images.Rgba32Data` for an RGBA 32-bit image, or `Fp.BufferData<byte>` for an arbitrary byte buffer. This can be a useful pattern for designing an arbitrary import scheme for software that needs to be able to work with new file types without unnecessary pipeline changes.
 
 ### Libraries
 * [Fp](src/Fp): Base file processing library
