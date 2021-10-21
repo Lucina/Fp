@@ -95,7 +95,7 @@ namespace Fp.Tests
         [Test]
         public void TestHexPrint()
         {
-            byte[] data = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+            byte[] data = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
             var sbl = new StringBuilderLog();
             HexPrint.Print(data, sbl, annotations: null, space: true, pow2Modulus: false, displayWidth: 20);
             Assert.AreEqual(@"

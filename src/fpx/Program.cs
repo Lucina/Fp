@@ -62,7 +62,7 @@ namespace fpx
                 : null) ?? Directory.GetCurrentDirectory();
             log ??= (_, _) => { };
             var options = new ExecuteCodeCommandOptions(text, directory,
-                args?.ToArray() ?? new[] {Processor.NO_EXECUTE_CLI},
+                args?.ToArray() ?? new[] { Processor.NO_EXECUTE_CLI },
                 OptimizationLevel.Debug, false, null);
             LogDebug(log, "Executing script...");
             var logWriter = new LogWriter(log);

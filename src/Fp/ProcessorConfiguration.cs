@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
-namespace Fp {
+namespace Fp
+{
     /// <summary>
     /// Configuration for batch-processing fs with processors
     /// </summary>

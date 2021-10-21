@@ -77,7 +77,7 @@ namespace Dereliction.ViewModels
             });
 
         public async Task AddFiles(Window window) =>
-            await new OpenFileDialog {AllowMultiple = false}.ShowAsync(window).ContinueWith(t =>
+            await new OpenFileDialog { AllowMultiple = false }.ShowAsync(window).ContinueWith(t =>
             {
                 if (!t.IsCanceled)
                 {
@@ -162,7 +162,7 @@ namespace Dereliction.ViewModels
                         foreach ((string fakeRoot, string fake) input in inputModel.Inputs)
                         {
                             var src = new Coordinator.ExecutionSource(
-                                configuration with {OutputRootDirectory = input.fakeRoot},
+                                configuration with { OutputRootDirectory = input.fakeRoot },
                                 inputFilesystem);
                             foreach (var processor in processors)
                             {

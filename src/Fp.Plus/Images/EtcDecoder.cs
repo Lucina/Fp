@@ -71,7 +71,7 @@ namespace Fp.Plus.Images
             NonOpaqueOnly = 0x4
         }
 
-        private static readonly int[] s_complement3BitshiftedTable = {0, 8, 16, 24, -32, -24, -16, -8};
+        private static readonly int[] s_complement3BitshiftedTable = { 0, 8, 16, 24, -32, -24, -16, -8 };
 
         private static readonly int[] s_modifierTable =
         {
@@ -285,7 +285,7 @@ namespace Fp.Plus.Images
                 bitString[3] |= 0x2;
         }
 
-        private static readonly int[] s_etc2DistanceTable = {3, 6, 11, 16, 23, 32, 41, 64};
+        private static readonly int[] s_etc2DistanceTable = { 3, 6, 11, 16, 23, 32, 41, 64 };
 
         private static unsafe void ProcessBlockEtc2TOrHMode(byte* bitString, EtcMode etcMode,
             byte* pixelBuffer)
@@ -592,11 +592,11 @@ namespace Fp.Plus.Images
 
         private static readonly int[,] s_punchthroughModifierTable =
         {
-            {0, 8, 0, -8}, {0, 17, 0, -17}, {0, 29, 0, -29}, {0, 42, 0, -42}, {0, 60, 0, -60}, {0, 80, 0, -80},
-            {0, 106, 0, -106}, {0, 183, 0, -183}
+            { 0, 8, 0, -8 }, { 0, 17, 0, -17 }, { 0, 29, 0, -29 }, { 0, 42, 0, -42 }, { 0, 60, 0, -60 },
+            { 0, 80, 0, -80 }, { 0, 106, 0, -106 }, { 0, 183, 0, -183 }
         };
 
-        private static readonly uint[] s_punchthroughMaskTable = {0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF};
+        private static readonly uint[] s_punchthroughMaskTable = { 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF };
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static unsafe void ProcessPixelEtc2Punchthrough(byte i,
@@ -897,12 +897,12 @@ namespace Fp.Plus.Images
 
         private static readonly sbyte[,] s_eacModifierTable =
         {
-            {-3, -6, -9, -15, 2, 5, 8, 14}, {-3, -7, -10, -13, 2, 6, 9, 12}, {-2, -5, -8, -13, 1, 4, 7, 12},
-            {-2, -4, -6, -13, 1, 3, 5, 12}, {-3, -6, -8, -12, 2, 5, 7, 11}, {-3, -7, -9, -11, 2, 6, 8, 10},
-            {-4, -7, -8, -11, 3, 6, 7, 10}, {-3, -5, -8, -11, 2, 4, 7, 10}, {-2, -6, -8, -10, 1, 5, 7, 9},
-            {-2, -5, -8, -10, 1, 4, 7, 9}, {-2, -4, -8, -10, 1, 3, 7, 9}, {-2, -5, -7, -10, 1, 4, 6, 9},
-            {-3, -4, -7, -10, 2, 3, 6, 9}, {-1, -2, -3, -10, 0, 1, 2, 9}, {-4, -6, -8, -9, 3, 5, 7, 8},
-            {-3, -5, -7, -9, 2, 4, 6, 8}
+            { -3, -6, -9, -15, 2, 5, 8, 14 }, { -3, -7, -10, -13, 2, 6, 9, 12 }, { -2, -5, -8, -13, 1, 4, 7, 12 },
+            { -2, -4, -6, -13, 1, 3, 5, 12 }, { -3, -6, -8, -12, 2, 5, 7, 11 }, { -3, -7, -9, -11, 2, 6, 8, 10 },
+            { -4, -7, -8, -11, 3, 6, 7, 10 }, { -3, -5, -8, -11, 2, 4, 7, 10 }, { -2, -6, -8, -10, 1, 5, 7, 9 },
+            { -2, -5, -8, -10, 1, 4, 7, 9 }, { -2, -4, -8, -10, 1, 3, 7, 9 }, { -2, -5, -7, -10, 1, 4, 6, 9 },
+            { -3, -4, -7, -10, 2, 3, 6, 9 }, { -1, -2, -3, -10, 0, 1, 2, 9 }, { -4, -6, -8, -9, 3, 5, 7, 8 },
+            { -3, -5, -7, -9, 2, 4, 6, 8 }
         };
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

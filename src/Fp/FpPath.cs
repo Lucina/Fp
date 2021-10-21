@@ -19,7 +19,7 @@ namespace Fp
             if (name == null) throw new ArgumentNullException(nameof(name));
             if (name == "") return this;
             if (Path.GetDirectoryName(name) == null) return new FpPath(name, this);
-            return GetFromString(name)! with {Previous = this};
+            return GetFromString(name)! with { Previous = this };
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Fp
         /// <param name="extension">New extension.</param>
         /// <returns>Path with replaced extension.</returns>
         public FpPath ChangeExtension(string extension) =>
-            this with {Name = Path.ChangeExtension(Name, extension)};
+            this with { Name = Path.ChangeExtension(Name, extension) };
 
         /*public string AsJoined() => Join(PlatformSupportBackSlash, AsArray());
             public string AsJoined(bool supportBackSlash) => Join(supportBackSlash, AsArray());*/

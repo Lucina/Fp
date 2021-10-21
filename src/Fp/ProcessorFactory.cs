@@ -40,7 +40,7 @@ namespace Fp
         }
 
         /// <inheritdoc />
-        public override Processor CreateProcessor() => new T {Source = this};
+        public override Processor CreateProcessor() => new T { Source = this };
     }
 
     /// <summary>

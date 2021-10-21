@@ -36,10 +36,10 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new[] {(byte)'B', (byte)'M'}) &&
+                    p.HasMagic((ReadOnlySpan<byte>)new[] { (byte)'B', (byte)'M' }) &&
                     p.i4l[2] == p.InputLength => ".bmp",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] {(byte)'B', (byte)'M'}) &&
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] { (byte)'B', (byte)'M' }) &&
                     Instance.i4l[m, 2] == m.Length => ".bmp",
                 _ => null
             });
@@ -71,9 +71,9 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {137, 80, 78, 71, 13, 10, 26, 10}) => ".png",
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 137, 80, 78, 71, 13, 10, 26, 10 }) => ".png",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {137, 80, 78, 71, 13, 10, 26, 10}) => ".png",
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 137, 80, 78, 71, 13, 10, 26, 10 }) => ".png",
                 _ => null
             });
 
@@ -105,9 +105,9 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0xff, 0xd8, 0xff}) => ".jpg",
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0xff, 0xd8, 0xff }) => ".jpg",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0xff, 0xd8, 0xff}) => ".jpg",
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0xff, 0xd8, 0xff }) => ".jpg",
                 _ => null
             });
 
@@ -142,7 +142,7 @@ namespace Fp
         /// <summary>
         /// Creates image write context.
         /// </summary>
-        /// <param name="path">Bae path (without extension).</param>
+        /// <param name="path">Base path (without extension).</param>
         /// <param name="width">Image width.</param>
         /// <param name="height">Image height.</param>
         /// <param name="image">Data object.</param>

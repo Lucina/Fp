@@ -26,7 +26,7 @@ namespace Fp.Plus.Images
         public static readonly Guid Jpeg = Guid.Parse("7AE22A2F-CE7F-470B-BC58-674AC8B5EA9E");
 
         private static readonly PngEncoder s_pngEncoder =
-            new() {CompressionLevel = PngCompressionLevel.BestCompression};
+            new() { CompressionLevel = PngCompressionLevel.BestCompression };
 
         /// <inheritdoc />
         public override Guid DefaultFormat => PngDeflate;

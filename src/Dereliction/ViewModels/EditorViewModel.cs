@@ -131,7 +131,7 @@ namespace Dereliction.ViewModels
                 Directory = Program.WorkingDirectory,
                 Filters = new List<FileDialogFilter>
                 {
-                    new() {Name = "dotnet-script csx file", Extensions = new List<string> {"csx"}}
+                    new() { Name = "dotnet-script csx file", Extensions = new List<string> { "csx" } }
                 }
             }.ShowAsync(window);
             if (res == null || res.Length == 0) return null;
@@ -150,7 +150,7 @@ namespace Dereliction.ViewModels
                 InitialFileName = "untitled.csx",
                 Filters = new List<FileDialogFilter>
                 {
-                    new() {Name = "dotnet-script csx file", Extensions = new List<string> {"csx"}}
+                    new() { Name = "dotnet-script csx file", Extensions = new List<string> { "csx" } }
                 }
             }.ShowAsync(window);
         }

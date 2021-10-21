@@ -34,11 +34,11 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new[] {(byte)'R', (byte)'I', (byte)'F', (byte)'F'}) &&
-                    p.HasMagic((ReadOnlySpan<byte>)new[] {(byte)'A', (byte)'V', (byte)'I', (byte)' '}, 8) => ".avi",
+                    p.HasMagic((ReadOnlySpan<byte>)new[] { (byte)'R', (byte)'I', (byte)'F', (byte)'F' }) &&
+                    p.HasMagic((ReadOnlySpan<byte>)new[] { (byte)'A', (byte)'V', (byte)'I', (byte)' ' }, 8) => ".avi",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] {(byte)'R', (byte)'I', (byte)'F', (byte)'F'}) &&
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] {(byte)'A', (byte)'V', (byte)'I', (byte)' '},
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] { (byte)'R', (byte)'I', (byte)'F', (byte)'F' }) &&
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] { (byte)'A', (byte)'V', (byte)'I', (byte)' ' },
                         8) => ".avi",
                 _ => null
             });
@@ -70,9 +70,9 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0x4f, 0x67, 0x67, 0x53}) => ".ogv",
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0x4f, 0x67, 0x67, 0x53 }) => ".ogv",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0x4f, 0x67, 0x67, 0x53}) => ".ogv",
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0x4f, 0x67, 0x67, 0x53 }) => ".ogv",
                 _ => null
             });
 

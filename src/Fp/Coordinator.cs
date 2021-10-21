@@ -299,19 +299,19 @@ Flags:
 
         private static List<string> GuessExeCore(IList<string>? args)
         {
-            if (args == null) return new List<string> {DefaultCurrentExecutableName};
+            if (args == null) return new List<string> { DefaultCurrentExecutableName };
             string[] oargs = Environment.GetCommandLineArgs();
             int i = 0;
             while (i < args.Count && i < oargs.Length)
             {
                 if (args[args.Count - i - 1] != oargs[oargs.Length - i - 1])
-                    return new List<string> {DefaultCurrentExecutableName};
+                    return new List<string> { DefaultCurrentExecutableName };
                 i++;
             }
 
             i = oargs.Length - i;
             if (i > 0) return new List<string>(new ArraySegment<string>(oargs, 0, i));
-            return new List<string> {DefaultCurrentExecutableName};
+            return new List<string> { DefaultCurrentExecutableName };
         }
 
         private static string? GetArgValue(IReadOnlyList<string> args, int cPos) =>

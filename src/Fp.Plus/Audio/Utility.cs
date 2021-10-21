@@ -34,11 +34,11 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new[] {(byte)'R', (byte)'I', (byte)'F', (byte)'F'}) &&
-                    p.HasMagic((ReadOnlySpan<byte>)new[] {(byte)'W', (byte)'A', (byte)'V', (byte)'E'}, 8) => ".wav",
+                    p.HasMagic((ReadOnlySpan<byte>)new[] { (byte)'R', (byte)'I', (byte)'F', (byte)'F' }) &&
+                    p.HasMagic((ReadOnlySpan<byte>)new[] { (byte)'W', (byte)'A', (byte)'V', (byte)'E' }, 8) => ".wav",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] {(byte)'R', (byte)'I', (byte)'F', (byte)'F'}) &&
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] {(byte)'W', (byte)'A', (byte)'V', (byte)'E'},
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] { (byte)'R', (byte)'I', (byte)'F', (byte)'F' }) &&
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new[] { (byte)'W', (byte)'A', (byte)'V', (byte)'E' },
                         8) => ".wav",
                 _ => null
             });
@@ -70,15 +70,15 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0xff, 0xf2}) ||
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0xff, 0xf3}) ||
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0xff, 0xfb}) ||
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0x49, 0x44, 0x33}) => ".mp3",
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0xff, 0xf2 }) ||
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0xff, 0xf3 }) ||
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0xff, 0xfb }) ||
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0x49, 0x44, 0x33 }) => ".mp3",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0xff, 0xf2}) ||
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0xff, 0xf3}) ||
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0xff, 0xfb}) ||
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0x49, 0x44, 0x33}) => ".mp3",
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0xff, 0xf2 }) ||
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0xff, 0xf3 }) ||
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0xff, 0xfb }) ||
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0x49, 0x44, 0x33 }) => ".mp3",
                 _ => null
             });
 
@@ -109,9 +109,9 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0x4f, 0x67, 0x67, 0x53}) => ".ogg",
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0x4f, 0x67, 0x67, 0x53 }) => ".ogg",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0x4f, 0x67, 0x67, 0x53}) => ".ogg",
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0x4f, 0x67, 0x67, 0x53 }) => ".ogg",
                 _ => null
             });
 
@@ -138,9 +138,9 @@ namespace Fp
             new(detector, ResolveSource(detector, source), o => o switch
             {
                 Processor p when
-                    p.HasMagic((ReadOnlySpan<byte>)new byte[] {0x4f, 0x67, 0x67, 0x53}) => ".oga",
+                    p.HasMagic((ReadOnlySpan<byte>)new byte[] { 0x4f, 0x67, 0x67, 0x53 }) => ".oga",
                 ReadOnlyMemory<byte> m when
-                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] {0x4f, 0x67, 0x67, 0x53}) => ".oga",
+                    HasMagic(m.Span, (ReadOnlySpan<byte>)new byte[] { 0x4f, 0x67, 0x67, 0x53 }) => ".oga",
                 _ => null
             });
 

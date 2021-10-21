@@ -34,7 +34,8 @@ namespace Dereliction.Views
                 csScriptDarkHighlighting = HighlightingLoader.Load(reader, HighlightingManager.Instance);
             }
 
-            HighlightingManager.Instance.RegisterHighlighting("C#ScriptDark", new[] {".csx"}, csScriptDarkHighlighting);
+            HighlightingManager.Instance.RegisterHighlighting("C#ScriptDark", new[] { ".csx" },
+                csScriptDarkHighlighting);
 
             InitializeComponent();
             _textEditor = this.FindControl<TextEditor>("Editor");

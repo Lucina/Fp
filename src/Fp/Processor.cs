@@ -36,7 +36,7 @@ namespace Fp
         /// <summary>
         /// Per-thread instance.
         /// </summary>
-        public static Processor Instance => s_instance ??= new Processor {LogReceiver = ConsoleLog.Default};
+        public static Processor Instance => s_instance ??= new Processor { LogReceiver = ConsoleLog.Default };
 
         [ThreadStatic] private static Processor? s_instance;
 
@@ -93,7 +93,7 @@ namespace Fp
         /// <summary>
         /// Input stream stack
         /// </summary>
-        private readonly Stack<Stream?> _inputStack = new(new[] {(Stream?)null});
+        private readonly Stack<Stream?> _inputStack = new(new[] { (Stream?)null });
 
         /// <summary>
         /// Length of input stream for current file if opened
@@ -322,7 +322,7 @@ namespace Fp
             extension = null;
             if (Source?.Info.Extensions is not { } exts) return true;
             if (exts.Length == 0) return true;
-            foreach (string? ext in exts)
+            foreach (string? ext in exts.OrderByDescending(e => e?.Length ?? int.MaxValue))
                 if (ext == null)
                 {
                     if (!path.Contains('.')) return true;
@@ -347,7 +347,7 @@ namespace Fp
             IEnumerable<BufferData<byte>>? additionalFiles = null)
             where T : Processor, new()
         {
-            IEnumerable<BufferData<byte>> seq = new[] {main};
+            IEnumerable<BufferData<byte>> seq = new[] { main };
             if (additionalFiles != null) seq = seq.Concat(additionalFiles);
             using var child = new T();
             var layer1 = new FileSystemSource.SegmentedFileSystemSource(FileSystem, true, seq);
@@ -627,7 +627,7 @@ namespace Fp
 
             var ins = _inputStream;
             // Go through sub-streams if possible to reduce chaining
-            while (ins is SStream {CanSeek: true} sStr)
+            while (ins is SStream { CanSeek: true } sStr)
             {
                 offset += sStr.Offset;
                 ins = sStr.BaseStream;
