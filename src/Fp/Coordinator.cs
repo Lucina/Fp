@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,16 @@ namespace Fp
     /// </summary>
     public static class Coordinator
     {
+        #region Constants
+
         /// <summary>
         /// Default output folder name
         /// </summary>
         public const string DefaultOutputFolderName = "fp_output";
+
+        #endregion
+
+        #region Effective read-only
 
         /// <summary>
         /// Default name for current executable (argv[0] or generic name)
@@ -40,6 +47,10 @@ namespace Fp
 
         private static string? s_defaultCurrentExecutableName;
 
+        #endregion
+
+        #region CLI tools
+
         /// <summary>
         /// Get processor configuration from cli
         /// </summary>
@@ -52,11 +63,11 @@ namespace Fp
         /// <returns>True if parsing succeeded</returns>
         public static bool CliGetConfiguration(IList<string> exeName, IReadOnlyList<string> args,
             ILogReceiver? logReceiver, bool enableParallel, out ProcessorConfiguration? configuration,
-            out List<(bool, string, string)> inputs)
+            out List<FpInput> inputs)
         {
             logReceiver ??= NullLog.Instance;
             configuration = null;
-            inputs = new List<(bool, string, string)>();
+            inputs = new List<FpInput>();
             List<string> exArgs = new();
             string? outputRootDirectory = null;
             int parallel = 1;
@@ -77,7 +88,8 @@ namespace Fp
                 if (str[0] != '-')
                 {
                     string full = Path.GetFullPath(str);
-                    inputs.Add((File.Exists(str), Path.GetDirectoryName(full) ?? Path.GetFullPath("/"), full));
+                    inputs.Add(
+                        new FpInput(File.Exists(str), Path.GetDirectoryName(full) ?? Path.GetFullPath("/"), full));
                     continue;
                 }
 
@@ -181,10 +193,10 @@ Flags:
 
             if (outputRootDirectory == null)
             {
-                string commonInput = inputs[0].Item2;
+                string commonInput = inputs[0].DirectoryPath;
                 outputRootDirectory =
                     Path.Combine(
-                        inputs.Any(input => commonInput != input.Item2 || commonInput == input.Item3)
+                        inputs.Any(input => commonInput != input.DirectoryPath || commonInput == input.Path)
                             ? Path.GetFullPath(".")
                             : commonInput,
                         DefaultOutputFolderName);
@@ -280,6 +292,7 @@ Flags:
             }
         }
 
+
         /// <summary>
         /// Guess executable string (might be multiple components) based on args
         /// </summary>
@@ -292,82 +305,14 @@ Flags:
         public static IList<string> GuessExe(IList<string>? args, bool prependDotNetIfDll = true)
         {
             var list = GuessExeCore(args);
-            if (list[0].EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase))
+            if (list[0].EndsWith(".dll", StringComparison.InvariantCultureIgnoreCase) && prependDotNetIfDll)
                 list.Insert(0, "dotnet");
             return list;
         }
 
-        private static List<string> GuessExeCore(IList<string>? args)
-        {
-            if (args == null) return new List<string> { DefaultCurrentExecutableName };
-            string[] oargs = Environment.GetCommandLineArgs();
-            int i = 0;
-            while (i < args.Count && i < oargs.Length)
-            {
-                if (args[args.Count - i - 1] != oargs[oargs.Length - i - 1])
-                    return new List<string> { DefaultCurrentExecutableName };
-                i++;
-            }
+        #endregion
 
-            i = oargs.Length - i;
-            if (i > 0) return new List<string>(new ArraySegment<string>(oargs, 0, i));
-            return new List<string> { DefaultCurrentExecutableName };
-        }
-
-        private static string? GetArgValue(IReadOnlyList<string> args, int cPos) =>
-            cPos + 1 >= args.Count ? null : args[cPos + 1];
-
-        private static (Processor[] processors, int baseCount, int parallelCount) InitializeProcessors(
-            ProcessorConfiguration configuration, ProcessorFactory[] processorFactories)
-        {
-            if (processorFactories.Length == 0)
-                throw new ArgumentException("Cannot start operation with 0 provided processors");
-            if (configuration.Parallel < 1)
-                throw new ArgumentException(
-                    $"Illegal {nameof(configuration.Parallel)} value of {configuration.Parallel}");
-            int parallelCount = Math.Min(TaskScheduler.Current.MaximumConcurrencyLevel,
-                Math.Max(1, configuration.Parallel));
-            int baseCount = processorFactories.Length;
-            Processor[] processors = new Processor[parallelCount * baseCount];
-            for (int iParallel = 0; iParallel < parallelCount; iParallel++)
-            for (int iBase = 0; iBase < baseCount; iBase++)
-                processors[iParallel * baseCount + iBase] = processorFactories[iBase].CreateProcessor();
-            return (processors, baseCount, parallelCount);
-        }
-
-        private static (Queue<(string inputRoot, string curDir)> dQueue, Queue<(string inputRoot, string file)> fQueue)
-            SeedInputs(
-                IEnumerable<(bool isFile, string dir, string item)> inputs)
-        {
-            Queue<(string, string)> dQueue = new();
-            Queue<(string, string)> fQueue = new();
-            foreach ((bool isFile, string dir, string item) in inputs)
-                (isFile ? fQueue : dQueue).Enqueue((dir, item));
-            return (dQueue, fQueue);
-        }
-
-        private static void GetMoreInputs(FileSystemSource fileSystem, Queue<(string inputRoot, string curDir)> dQueue,
-            Queue<(string inputRoot, string file)> fQueue)
-        {
-            (string inputRoot, string curDir) = dQueue.Dequeue();
-            if (!fileSystem.DirectoryExists(curDir)) return;
-            foreach (string file in fileSystem.EnumerateFiles(curDir))
-                fQueue.Enqueue((inputRoot, file));
-            foreach (string folder in fileSystem.EnumerateDirectories(curDir))
-                dQueue.Enqueue((inputRoot, folder));
-        }
-
-        private static bool _TryDequeue<T>(this Queue<T> queue, out T? result)
-        {
-            if (queue.Count != 0)
-            {
-                result = queue.Dequeue();
-                return true;
-            }
-
-            result = default;
-            return false;
-        }
+        #region General execution
 
         /// <summary>
         /// Process filesystem tree asynchronously
@@ -377,11 +322,12 @@ Flags:
         /// <param name="processorFactories">Functions that create new processor instances</param>
         /// <returns>Task that will execute recursively</returns>
         /// <exception cref="ArgumentException">If <paramref name="processorFactories"/> is empty or passed a <see cref="ProcessorConfiguration.Parallel"/> value less than 1</exception>
-        public static async Task RecurseAsync(IReadOnlyList<(bool, string, string)> inputs,
-            ExecutionSource src, params ProcessorFactory[] processorFactories)
+        public static async Task RecurseAsync(IReadOnlyList<FpInput> inputs, ExecutionSource src,
+            params ProcessorFactory[] processorFactories)
         {
-            var (processors, baseCount, parallelCount) = InitializeProcessors(src.Config, processorFactories);
-            var (dQueue, fQueue) = SeedInputs(inputs);
+            InitializeProcessors(src.Config, processorFactories, out var processors, out int baseCount,
+                out int parallelCount);
+            SeedInputs(inputs, out var dQueue, out var fQueue);
             Dictionary<Task, int> tasks = new();
             src.FileSystem.ParallelAccess = true;
             while (fQueue.Count != 0 || dQueue.Count != 0)
@@ -391,7 +337,7 @@ Flags:
                         while (tasks.Count >= parallelCount) tasks.Remove(await Task.WhenAny(tasks.Keys));
                         int workerId = Enumerable.Range(0, parallelCount).Except(tasks.Values).First();
                         Processor processor = processors[workerId * parallelCount + iBase];
-                        if (!processor.AcceptFile(deq.file)) continue;
+                        if (!processor.AcceptFile(deq.TargetPath)) continue;
                         tasks.Add(Task.Run(() => Run(processor, deq, src, workerId)), workerId);
                     }
                 else
@@ -401,31 +347,26 @@ Flags:
         }
 
         /// <summary>
-        /// Represents execution config
-        /// </summary>
-        public record ExecutionSource(ProcessorConfiguration Config, FileSystemSource FileSystem);
-
-        /// <summary>
         /// Process filesystem tree
         /// </summary>
         /// <param name="inputs">Input sources</param>
         /// <param name="src">Execution source</param>
         /// <param name="processorFactories">Functions that create new processor instances</param>
         /// <exception cref="ArgumentException">If <paramref name="processorFactories"/> is empty or passed a <see cref="ProcessorConfiguration.Parallel"/> value less than 1</exception>
-        public static void Recurse(IReadOnlyList<(bool, string, string)> inputs, ExecutionSource src,
+        public static void Recurse(IReadOnlyList<FpInput> inputs, ExecutionSource src,
             params ProcessorFactory[] processorFactories)
         {
             if (src.Config.Parallel != 1)
                 throw new ArgumentException(
                     $"Cannot start synchronous operation with {nameof(src.Config.Parallel)} value of {src.Config.Parallel}, use {nameof(Coordinator)}.{nameof(RecurseAsync)} instead");
-            var (processors, baseCount, _) = InitializeProcessors(src.Config, processorFactories);
-            var (dQueue, fQueue) = SeedInputs(inputs);
+            InitializeProcessors(src.Config, processorFactories, out var processors, out int baseCount, out _);
+            SeedInputs(inputs, out var dQueue, out var fQueue);
             while (fQueue.Count != 0 || dQueue.Count != 0)
                 if (fQueue._TryDequeue(out var deq))
                     for (int iBase = 0; iBase < baseCount; iBase++)
                     {
                         var processor = processors[iBase];
-                        if (!processor.AcceptFile(deq.file)) continue;
+                        if (!processor.AcceptFile(deq.TargetPath)) continue;
                         var res = Run(processor, deq, src, iBase);
                         if (res.Locked) break;
                     }
@@ -441,13 +382,14 @@ Flags:
         /// <param name="src">Execution source</param>
         /// <param name="workerId">Worker ID</param>
         /// <returns>Processing result</returns>
-        public static ProcessResult Run(Processor processor, (string inputRoot, string file) source,
+        public static ProcessResult Run(Processor processor, FpTarget source,
             ExecutionSource src, int workerId)
         {
             try
             {
                 processor.Cleanup();
-                processor.Prepare(src.FileSystem, source.inputRoot, src.Config.OutputRootDirectory, source.file,
+                processor.Prepare(src.FileSystem, source.InputRootPath, src.Config.OutputRootDirectory,
+                    source.TargetPath,
                     src.Config, workerId);
                 bool success;
                 if (processor.Debug)
@@ -516,31 +458,104 @@ Flags:
             }
         }
 
-        /// <summary>
-        /// Result of processing
-        /// </summary>
-        public struct ProcessResult
+        #endregion
+
+        #region Internals
+
+        private static List<string> GuessExeCore(IList<string>? args)
         {
-            /// <summary>
-            /// Successful operation
-            /// </summary>
-            public bool Success;
-
-            /// <summary>
-            /// Request no more runs
-            /// </summary>
-            public bool Locked;
-
-            /// <summary>
-            /// Create new instance of <see cref="ProcessResult"/>
-            /// </summary>
-            /// <param name="success">Successful operation</param>
-            /// <param name="locked">Request no more runs</param>
-            public ProcessResult(bool success, bool locked)
+            if (args == null) return new List<string> { DefaultCurrentExecutableName };
+            string[] oargs = Environment.GetCommandLineArgs();
+            int i = 0;
+            while (i < args.Count && i < oargs.Length)
             {
-                Success = success;
-                Locked = locked;
+                if (args[args.Count - i - 1] != oargs[oargs.Length - i - 1])
+                    return new List<string> { DefaultCurrentExecutableName };
+                i++;
             }
+
+            i = oargs.Length - i;
+            return i > 0
+                ? new List<string>(new ArraySegment<string>(oargs, 0, i))
+                : new List<string> { DefaultCurrentExecutableName };
         }
+
+        private static string? GetArgValue(IReadOnlyList<string> args, int cPos) =>
+            cPos + 1 >= args.Count ? null : args[cPos + 1];
+
+        private static void InitializeProcessors(ProcessorConfiguration configuration,
+            ProcessorFactory[] processorFactories,
+            out Processor[] processors, out int baseCount, out int parallelCount)
+        {
+            if (processorFactories.Length == 0)
+                throw new ArgumentException("Cannot start operation with 0 provided processors");
+            if (configuration.Parallel < 1)
+                throw new ArgumentException(
+                    $"Illegal {nameof(configuration.Parallel)} value of {configuration.Parallel}");
+            parallelCount = Math.Min(TaskScheduler.Current.MaximumConcurrencyLevel,
+                Math.Max(1, configuration.Parallel));
+            baseCount = processorFactories.Length;
+            processors = new Processor[parallelCount * baseCount];
+            for (int iParallel = 0; iParallel < parallelCount; iParallel++)
+            for (int iBase = 0; iBase < baseCount; iBase++)
+                processors[iParallel * baseCount + iBase] = processorFactories[iBase].CreateProcessor();
+        }
+
+        private static void SeedInputs(IEnumerable<FpInput> inputs, out Queue<FpTarget> dQueue,
+            out Queue<FpTarget> fQueue)
+        {
+            dQueue = new Queue<FpTarget>();
+            fQueue = new Queue<FpTarget>();
+            foreach ((bool isFile, string dir, string item) in inputs)
+                (isFile ? fQueue : dQueue).Enqueue(new FpTarget(dir, item));
+        }
+
+        private static void GetMoreInputs(FileSystemSource fileSystem, Queue<FpTarget> dQueue, Queue<FpTarget> fQueue)
+        {
+            (string inputRoot, string curDir) = dQueue.Dequeue();
+            if (!fileSystem.DirectoryExists(curDir)) return;
+            foreach (string file in fileSystem.EnumerateFiles(curDir))
+                fQueue.Enqueue(new FpTarget(inputRoot, file));
+            foreach (string folder in fileSystem.EnumerateDirectories(curDir))
+                dQueue.Enqueue(new FpTarget(inputRoot, folder));
+        }
+
+        private static bool _TryDequeue<T>(this Queue<T> queue, [NotNullWhen(true)] out T? result)
+        {
+            if (queue.Count != 0)
+            {
+                result = queue.Dequeue()!;
+                return true;
+            }
+
+            result = default;
+            return false;
+        }
+
+        #endregion
+
+        #region Types
+
+        /// <summary>
+        /// FP input.
+        /// </summary>
+        /// <param name="IsFile">True if this is a file.</param>
+        /// <param name="DirectoryPath">Path to parent (or root path if <see cref="Path"/> is itself root).</param>
+        /// <param name="Path">Path to target.</param>
+        public record FpInput(bool IsFile, string DirectoryPath, string Path); // TODO record struct (C# 10)
+
+        /// <summary>
+        /// FP target.
+        /// </summary>
+        /// <param name="InputRootPath">Input root path.</param>
+        /// <param name="TargetPath">Target path.</param>
+        public record FpTarget(string InputRootPath, string TargetPath); // TODO record struct (C# 10)
+
+        /// <summary>
+        /// Represents execution config
+        /// </summary>
+        public record ExecutionSource(ProcessorConfiguration Config, FileSystemSource FileSystem);
+
+        #endregion
     }
 }
