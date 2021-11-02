@@ -32,7 +32,11 @@ namespace Fp
             bool argTime = false;
             for (int i = 0; i < arguments.Count; i++)
             {
+#if NET5_0_OR_GREATER
+                string str = arguments[i];
+#else
                 string? str = arguments[i];
+#endif
                 if (argTime)
                 {
                     args.Add(str);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Fp
@@ -71,7 +72,8 @@ namespace Fp
                     annotationOffset++;
                 }
 
-                target.LogChunk(string.Format($"0x{{0:X{PosWidth}}} ", cur), false, ConsoleColor.White);
+                target.LogChunk(string.Format(CultureInfo.InvariantCulture, $"0x{{0:X{PosWidth}}} ", cur), false,
+                    ConsoleColor.White);
                 for (; curLine < w && cur < data.Length; curLine++)
                 {
                     bool consumed = false;
@@ -96,7 +98,9 @@ namespace Fp
                 }
 
                 if (curLine != w)
-                    target.LogChunk(string.Format($"{{0,{(w - curLine) * (space ? 3 : 2) - 1}}}", ' '), false);
+                    target.LogChunk(
+                        string.Format(CultureInfo.InvariantCulture, $"{{0,{(w - curLine) * (space ? 3 : 2) - 1}}}",
+                            ' '), false);
 
                 if (annotationPrintQueue.Count > 0)
                 {
@@ -115,7 +119,8 @@ namespace Fp
             while (annotationPrintQueue.Count > 0)
             {
                 (_, _, string label, ConsoleColor color) = annotationPrintQueue.Dequeue();
-                target.LogChunk(string.Format($"{{0,{2 + PosWidth + 1 + w * (space ? 3 : 2) + (space ? 0 : 1)}}}",
+                target.LogChunk(string.Format(CultureInfo.InvariantCulture,
+                    $"{{0,{2 + PosWidth + 1 + w * (space ? 3 : 2) + (space ? 0 : 1)}}}",
                     ' '), false, color);
                 target.LogChunk(label.Length > TextWidth
                     ? label.Substring(0, TextWidth)

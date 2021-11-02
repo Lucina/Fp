@@ -63,7 +63,13 @@ namespace Fp
         public static FpPath? GetFromString(string? value) =>
             string.IsNullOrEmpty(value)
                 ? null
-                : new FpPath(value!, GetFromString(Path.GetDirectoryName(value)));
+                : new FpPath(
+#if NET5_0_OR_GREATER
+                    value,
+#else
+                    value!,
+#endif
+                    GetFromString(Path.GetDirectoryName(value)));
 
         /// <summary>
         /// Gets path from a string.

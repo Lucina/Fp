@@ -488,7 +488,13 @@ namespace Fp
                         ShieldDown();
                     }
 
-                    if (has) yield return enumerator.Current!;
+                    if (has)
+                        yield return
+#if NET5_0_OR_GREATER
+                            enumerator.Current;
+#else
+                            enumerator.Current!;
+#endif
                 } while (has);
             }
             finally

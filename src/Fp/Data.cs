@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 
 namespace Fp
@@ -98,10 +99,10 @@ namespace Fp
             if (value?.GetType() == typeof(string))
             {
                 if (typeof(TOut) == typeof(float) || typeof(TOut) == typeof(double))
-                    return CastNumber<double, TOut>(double.Parse(value.ToString()!));
+                    return CastNumber<double, TOut>(double.Parse(value.ToString()!, CultureInfo.InvariantCulture));
                 if (typeof(TOut) == typeof(ulong))
-                    return CastNumber<ulong, TOut>(ulong.Parse(value.ToString()!));
-                return CastNumber<long, TOut>(long.Parse(value.ToString()!));
+                    return CastNumber<ulong, TOut>(ulong.Parse(value.ToString()!, CultureInfo.InvariantCulture));
+                return CastNumber<long, TOut>(long.Parse(value.ToString()!, CultureInfo.InvariantCulture));
             }
 
             TOut target;
