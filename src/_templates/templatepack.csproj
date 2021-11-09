@@ -2,13 +2,13 @@
 
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>0.18.0</PackageVersion>
+        <PackageVersion>0.21.0</PackageVersion>
         <PackageId>Fp.Templates</PackageId>
         <Title>Fp Templates</Title>
         <Authors>riina</Authors>
         <Description>Templates for Fp-based projects.</Description>
         <PackageTags>dotnet-new;templates;fp</PackageTags>
-        <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
         <IncludeContentInPack>true</IncludeContentInPack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>

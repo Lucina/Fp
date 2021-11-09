@@ -46,7 +46,7 @@ namespace fpx
 
         private static async Task<string> ReadAllTextAsync(string file)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             return await File.ReadAllTextAsync(file);
 #else
             await Task.Yield();

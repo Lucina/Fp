@@ -498,7 +498,7 @@ namespace Fp
 
         internal static void WriteBaseSpan(Stream stream, ReadOnlySpan<byte> span)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             stream.Write(span);
 #else
             byte[] buf = span.Length <= sizeof(long) ? TempBuffer : Shared.Rent(4096);

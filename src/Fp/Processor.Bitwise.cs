@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-#if NET5_0
+#if NET5_0_OR_GREATER
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
 using System.Runtime.Intrinsics.Arm;
@@ -23,7 +23,7 @@ namespace Fp
         /// <param name="value">AND value</param>
         public static void ApplyAnd(Span<byte> span, byte value)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             if (Avx2.IsSupported)
                 ApplyAndAvx2(span, value);
             else if (Sse2.IsSupported)
@@ -45,7 +45,7 @@ namespace Fp
         /// <param name="behaviour">Key behaviour</param>
         public static void ApplyAnd(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             // TODO intrinsics
             ApplyAndFallback(span, value, behaviour);
 #else
@@ -60,7 +60,7 @@ namespace Fp
         /// <param name="value">AND value</param>
         public static void ApplyOr(Span<byte> span, byte value)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             if (Avx2.IsSupported)
                 ApplyOrAvx2(span, value);
             else if (Sse2.IsSupported)
@@ -82,7 +82,7 @@ namespace Fp
         /// <param name="behaviour">Key behaviour</param>
         public static void ApplyOr(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             // TODO intrinsics
             ApplyOrFallback(span, value, behaviour);
 #else
@@ -97,7 +97,7 @@ namespace Fp
         /// <param name="value">XOR value</param>
         public static void ApplyXor(Span<byte> span, byte value)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             if (Avx2.IsSupported)
                 ApplyXorAvx2(span, value);
             else if (Sse2.IsSupported)
@@ -119,7 +119,7 @@ namespace Fp
         /// <param name="behaviour">Key behaviour</param>
         public static void ApplyXor(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             // TODO intrinsics
             ApplyXorFallback(span, value, behaviour);
 #else
@@ -127,7 +127,7 @@ namespace Fp
 #endif
         }
 
-#if NET5_0
+#if NET5_0_OR_GREATER
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static unsafe Vector128<byte> FillVector128Sse2(byte value)
         {

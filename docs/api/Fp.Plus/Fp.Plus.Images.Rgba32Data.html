@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Rgba32Data
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -86,8 +86,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">System.IDisposable</span></div>
-    <div><span class="xref">System.ICloneable</span></div>
+    <div><span class="xref">ICloneable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -116,29 +115,17 @@
       <a class="xref" href="../Fp/Fp.Data.html#Fp_Data_BasePath">Data.BasePath</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <a class="xref" href="../Fp/Fp.Data.html#Fp_Data_Dry">Data.Dry</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <a class="xref" href="../Fp/Fp.Data.html#Fp_Data_CastNumber__2___0_">Data.CastNumber&lt;TIn, TOut&gt;(TIn)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Fp.Plus.Images.html">Fp.Plus.Images</a></h6>
   <h6><strong>Assembly</strong>: Fp.Plus.dll</h6>
   <h5 id="Fp_Plus_Images_Rgba32Data_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Rgba32Data : BufferData&lt;uint&gt;, IDisposable, ICloneable</code></pre>
+    <pre><code class="lang-csharp hljs">public class Rgba32Data : BufferData&lt;uint&gt;, ICloneable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -190,19 +177,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_System_Buffers_IMemoryOwner_System_UInt32__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.%23ctor(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Buffers.IMemoryOwner%7BSystem.UInt32%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_IMemoryOwner_System_UInt32__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.%23ctor(System.String%2CSystem.Int32%2CSystem.Int32%2CIMemoryOwner%7BSystem.UInt32%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp.Plus/Images/Rgba32Data.cs/#L78">View Source</a>
   </span>
   <a id="Fp_Plus_Images_Rgba32Data__ctor_" data-uid="Fp.Plus.Images.Rgba32Data.#ctor*"></a>
-  <h4 id="Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_System_Buffers_IMemoryOwner_System_UInt32__System_Nullable_System_Int32__" data-uid="Fp.Plus.Images.Rgba32Data.#ctor(System.String,System.Int32,System.Int32,System.Buffers.IMemoryOwner{System.UInt32},System.Nullable{System.Int32})">Rgba32Data(String, Int32, Int32, IMemoryOwner&lt;UInt32&gt;, Nullable&lt;Int32&gt;)</h4>
+  <h4 id="Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_IMemoryOwner_System_UInt32__System_Nullable_System_Int32__" data-uid="Fp.Plus.Images.Rgba32Data.#ctor(System.String,System.Int32,System.Int32,IMemoryOwner{System.UInt32},System.Nullable{System.Int32})">Rgba32Data(String, Int32, Int32, IMemoryOwner&lt;UInt32&gt;, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"><p>Create new instance of <a class="xref" href="Fp.Plus.Images.Rgba32Data.html">Rgba32Data</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Rgba32Data(string basePath, int width, int height, IMemoryOwner&lt;uint&gt; memoryOwner, int? count = default(int? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public Rgba32Data(string basePath, int width, int height, IMemoryOwner&lt;uint&gt; memoryOwner, int? count = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -233,7 +220,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Buffers.IMemoryOwner</span>&lt;<span class="xref">System.UInt32</span>&gt;</td>
+        <td><span class="xref">IMemoryOwner</span>&lt;<span class="xref">System.UInt32</span>&gt;</td>
         <td><span class="parametername">memoryOwner</span></td>
         <td><p>Owner of PCM data buffer</p>
 </td>
@@ -248,13 +235,13 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_System_ReadOnlyMemory_System_UInt32__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.%23ctor(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.ReadOnlyMemory%7BSystem.UInt32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_ReadOnlyMemory_System_UInt32__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.%23ctor(System.String%2CSystem.Int32%2CSystem.Int32%2CReadOnlyMemory%7BSystem.UInt32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp.Plus/Images/Rgba32Data.cs/#L92">View Source</a>
   </span>
   <a id="Fp_Plus_Images_Rgba32Data__ctor_" data-uid="Fp.Plus.Images.Rgba32Data.#ctor*"></a>
-  <h4 id="Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_System_ReadOnlyMemory_System_UInt32__" data-uid="Fp.Plus.Images.Rgba32Data.#ctor(System.String,System.Int32,System.Int32,System.ReadOnlyMemory{System.UInt32})">Rgba32Data(String, Int32, Int32, ReadOnlyMemory&lt;UInt32&gt;)</h4>
+  <h4 id="Fp_Plus_Images_Rgba32Data__ctor_System_String_System_Int32_System_Int32_ReadOnlyMemory_System_UInt32__" data-uid="Fp.Plus.Images.Rgba32Data.#ctor(System.String,System.Int32,System.Int32,ReadOnlyMemory{System.UInt32})">Rgba32Data(String, Int32, Int32, ReadOnlyMemory&lt;UInt32&gt;)</h4>
   <div class="markdown level1 summary"><p>Create new instance of <a class="xref" href="Fp.Plus.Images.Rgba32Data.html">Rgba32Data</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -291,7 +278,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.ReadOnlyMemory</span>&lt;<span class="xref">System.UInt32</span>&gt;</td>
+        <td><span class="xref">ReadOnlyMemory</span>&lt;<span class="xref">System.UInt32</span>&gt;</td>
         <td><span class="parametername">buffer</span></td>
         <td><p>PCM data</p>
 </td>
@@ -355,7 +342,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
+        <td><span class="xref">Guid</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -385,7 +372,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
+        <td><span class="xref">Guid</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -447,7 +434,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
+        <td><span class="xref">Guid</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -520,22 +507,20 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">Fp.BufferData&lt;System.UInt32&gt;.Dispose(System.Boolean)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data_GetExtension_System_Nullable_System_Guid__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.GetExtension(System.Nullable%7BSystem.Guid%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data_GetExtension_System_Nullable_Guid__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.GetExtension(System.Nullable%7BGuid%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp.Plus/Images/Rgba32Data.cs/#L150">View Source</a>
   </span>
   <a id="Fp_Plus_Images_Rgba32Data_GetExtension_" data-uid="Fp.Plus.Images.Rgba32Data.GetExtension*"></a>
-  <h4 id="Fp_Plus_Images_Rgba32Data_GetExtension_System_Nullable_System_Guid__" data-uid="Fp.Plus.Images.Rgba32Data.GetExtension(System.Nullable{System.Guid})">GetExtension(Nullable&lt;Guid&gt;)</h4>
+  <h4 id="Fp_Plus_Images_Rgba32Data_GetExtension_System_Nullable_Guid__" data-uid="Fp.Plus.Images.Rgba32Data.GetExtension(System.Nullable{Guid})">GetExtension(Nullable&lt;Guid&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string GetExtension(Guid? format = default(Guid? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public override string? GetExtension(Guid? format = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -548,7 +533,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Guid</span>&gt;</td>
         <td><span class="parametername">format</span></td>
         <td></td>
       </tr>
@@ -564,7 +549,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -603,18 +588,18 @@
   <div><span class="xref">Fp.BufferData&lt;System.UInt32&gt;.ToString()</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data_WriteConvertedData_System_IO_Stream_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.WriteConvertedData(System.IO.Stream%2CSystem.Guid%2CSystem.Collections.Generic.Dictionary%7BSystem.Object%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Plus_Images_Rgba32Data_WriteConvertedData_Stream_Guid_System_Nullable_Dictionary_System_Object_System_Object___.md&amp;value=---%0Auid%3A%20Fp.Plus.Images.Rgba32Data.WriteConvertedData(Stream%2CGuid%2CSystem.Nullable%7BDictionary%7BSystem.Object%2CSystem.Object%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp.Plus/Images/Rgba32Data.cs/#L99">View Source</a>
   </span>
   <a id="Fp_Plus_Images_Rgba32Data_WriteConvertedData_" data-uid="Fp.Plus.Images.Rgba32Data.WriteConvertedData*"></a>
-  <h4 id="Fp_Plus_Images_Rgba32Data_WriteConvertedData_System_IO_Stream_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__" data-uid="Fp.Plus.Images.Rgba32Data.WriteConvertedData(System.IO.Stream,System.Guid,System.Collections.Generic.Dictionary{System.Object,System.Object})">WriteConvertedData(Stream, Guid, Dictionary&lt;Object, Object&gt;)</h4>
+  <h4 id="Fp_Plus_Images_Rgba32Data_WriteConvertedData_Stream_Guid_System_Nullable_Dictionary_System_Object_System_Object___" data-uid="Fp.Plus.Images.Rgba32Data.WriteConvertedData(Stream,Guid,System.Nullable{Dictionary{System.Object,System.Object}})">WriteConvertedData(Stream, Guid, Nullable&lt;Dictionary&lt;Object, Object&gt;&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary&lt;object, object&gt; formatOptions = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary&lt;object, object&gt;? formatOptions = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -627,17 +612,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="xref">Stream</span></td>
         <td><span class="parametername">outputStream</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Guid</span></td>
+        <td><span class="xref">Guid</span></td>
         <td><span class="parametername">format</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">formatOptions</span></td>
         <td></td>
       </tr>
@@ -658,24 +643,37 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">Fp.BufferData&lt;System.UInt32&gt;.WriteConvertedData(System.IO.Stream, System.Guid, System.Collections.Generic.Dictionary&lt;System.Object, System.Object&gt;)</span></div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">System.IDisposable</span>
-  </div>
-  <div>
-      <span class="xref">System.ICloneable</span>
+      <span class="xref">ICloneable</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__WAV_System_Object_">PlusUtil._WAV(Object)</a>
   </div>
   <div>
+      <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__MP3_System_Object_">PlusUtil._MP3(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__OGG_System_Object_">PlusUtil._OGG(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__OGA_System_Object_">PlusUtil._OGA(Object)</a>
+  </div>
+  <div>
       <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__BMP_System_Object_">PlusUtil._BMP(Object)</a>
   </div>
   <div>
+      <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__PNG_System_Object_">PlusUtil._PNG(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__JPEG_System_Object_">PlusUtil._JPEG(Object)</a>
+  </div>
+  <div>
       <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__AVI_System_Object_">PlusUtil._AVI(Object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Fp.PlusUtil.html#Fp_PlusUtil__OGV_System_Object_">PlusUtil._OGV(Object)</a>
   </div>
 </article>
           </div>

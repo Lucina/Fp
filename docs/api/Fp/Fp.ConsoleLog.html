@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ConsoleLog
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -85,35 +85,11 @@
     <h5>Implements</h5>
     <div><a class="xref" href="Fp.ILogReceiver.html">ILogReceiver</a></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
   <h6><strong>Assembly</strong>: Fp.dll</h6>
   <h5 id="Fp_ConsoleLog_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConsoleLog : ILogReceiver</code></pre>
+    <pre><code class="lang-csharp hljs">public class ConsoleLog : object, ILogReceiver</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -178,7 +154,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.ConsoleColor</span>&gt;</td>
+        <td><span class="xref">IReadOnlyList</span>&lt;<span class="xref">ConsoleColor</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -238,7 +214,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.ConsoleColor</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">Dictionary</span>&lt;<span class="xref">ConsoleColor</span>, <span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -247,19 +223,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogChunk(System.String%2CSystem.Boolean%2CSystem.Nullable%7BSystem.ConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogChunk_System_String_System_Boolean_System_Nullable_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogChunk(System.String%2CSystem.Boolean%2CSystem.Nullable%7BConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/ConsoleLog.cs/#L153">View Source</a>
   </span>
   <a id="Fp_ConsoleLog_LogChunk_" data-uid="Fp.ConsoleLog.LogChunk*"></a>
-  <h4 id="Fp_ConsoleLog_LogChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__" data-uid="Fp.ConsoleLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})">LogChunk(String, Boolean, Nullable&lt;ConsoleColor&gt;)</h4>
+  <h4 id="Fp_ConsoleLog_LogChunk_System_String_System_Boolean_System_Nullable_ConsoleColor__" data-uid="Fp.ConsoleLog.LogChunk(System.String,System.Boolean,System.Nullable{ConsoleColor})">LogChunk(String, Boolean, Nullable&lt;ConsoleColor&gt;)</h4>
   <div class="markdown level1 summary"><p>Logs raw chunk</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LogChunk(string log, bool tail, ConsoleColor? color = default(ConsoleColor? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public void LogChunk(string log, bool tail, ConsoleColor? color = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -284,7 +260,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ConsoleColor</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">ConsoleColor</span>&gt;</td>
         <td><span class="parametername">color</span></td>
         <td><p>Text color</p>
 </td>
@@ -293,19 +269,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogError_System_String_System_Nullable_System_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogError(System.String%2CSystem.Nullable%7BSystem.ConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogError_System_String_System_Nullable_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogError(System.String%2CSystem.Nullable%7BConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/ConsoleLog.cs/#L171">View Source</a>
   </span>
   <a id="Fp_ConsoleLog_LogError_" data-uid="Fp.ConsoleLog.LogError*"></a>
-  <h4 id="Fp_ConsoleLog_LogError_System_String_System_Nullable_System_ConsoleColor__" data-uid="Fp.ConsoleLog.LogError(System.String,System.Nullable{System.ConsoleColor})">LogError(String, Nullable&lt;ConsoleColor&gt;)</h4>
+  <h4 id="Fp_ConsoleLog_LogError_System_String_System_Nullable_ConsoleColor__" data-uid="Fp.ConsoleLog.LogError(System.String,System.Nullable{ConsoleColor})">LogError(String, Nullable&lt;ConsoleColor&gt;)</h4>
   <div class="markdown level1 summary"><p>Logs error</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LogError(string log, ConsoleColor? color = default(ConsoleColor? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public void LogError(string log, ConsoleColor? color = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -324,7 +300,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ConsoleColor</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">ConsoleColor</span>&gt;</td>
         <td><span class="parametername">color</span></td>
         <td><p>Text color</p>
 </td>
@@ -333,19 +309,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogInformation_System_String_System_Nullable_System_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogInformation(System.String%2CSystem.Nullable%7BSystem.ConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogInformation_System_String_System_Nullable_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogInformation(System.String%2CSystem.Nullable%7BConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/ConsoleLog.cs/#L157">View Source</a>
   </span>
   <a id="Fp_ConsoleLog_LogInformation_" data-uid="Fp.ConsoleLog.LogInformation*"></a>
-  <h4 id="Fp_ConsoleLog_LogInformation_System_String_System_Nullable_System_ConsoleColor__" data-uid="Fp.ConsoleLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})">LogInformation(String, Nullable&lt;ConsoleColor&gt;)</h4>
+  <h4 id="Fp_ConsoleLog_LogInformation_System_String_System_Nullable_ConsoleColor__" data-uid="Fp.ConsoleLog.LogInformation(System.String,System.Nullable{ConsoleColor})">LogInformation(String, Nullable&lt;ConsoleColor&gt;)</h4>
   <div class="markdown level1 summary"><p>Logs information</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LogInformation(string log, ConsoleColor? color = default(ConsoleColor? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public void LogInformation(string log, ConsoleColor? color = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -364,7 +340,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ConsoleColor</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">ConsoleColor</span>&gt;</td>
         <td><span class="parametername">color</span></td>
         <td><p>Text color</p>
 </td>
@@ -373,19 +349,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogWarning_System_String_System_Nullable_System_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogWarning(System.String%2CSystem.Nullable%7BSystem.ConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ConsoleLog_LogWarning_System_String_System_Nullable_ConsoleColor__.md&amp;value=---%0Auid%3A%20Fp.ConsoleLog.LogWarning(System.String%2CSystem.Nullable%7BConsoleColor%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/ConsoleLog.cs/#L164">View Source</a>
   </span>
   <a id="Fp_ConsoleLog_LogWarning_" data-uid="Fp.ConsoleLog.LogWarning*"></a>
-  <h4 id="Fp_ConsoleLog_LogWarning_System_String_System_Nullable_System_ConsoleColor__" data-uid="Fp.ConsoleLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})">LogWarning(String, Nullable&lt;ConsoleColor&gt;)</h4>
+  <h4 id="Fp_ConsoleLog_LogWarning_System_String_System_Nullable_ConsoleColor__" data-uid="Fp.ConsoleLog.LogWarning(System.String,System.Nullable{ConsoleColor})">LogWarning(String, Nullable&lt;ConsoleColor&gt;)</h4>
   <div class="markdown level1 summary"><p>Logs warning</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LogWarning(string log, ConsoleColor? color = default(ConsoleColor? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public void LogWarning(string log, ConsoleColor? color = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -404,7 +380,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.ConsoleColor</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">ConsoleColor</span>&gt;</td>
         <td><span class="parametername">color</span></td>
         <td><p>Text color</p>
 </td>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class FpUtil
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -81,53 +81,29 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">FpUtil</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
   <h6><strong>Assembly</strong>: Fp.dll</h6>
   <h5 id="Fp_FpUtil_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class FpUtil</code></pre>
+    <pre><code class="lang-csharp hljs">public static class FpUtil : object</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil____System_Nullable_Detector__System_String_System_String_System_Int32_System_Object_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.__(System.Nullable%7BDetector%7D%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil____Fp_Detector_System_String_System_String_System_Int32_System_Nullable_System_Object__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.__(Fp.Detector%2CSystem.String%2CSystem.String%2CSystem.Int32%2CSystem.Nullable%7BSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Detectors.cs/#L122">View Source</a>
   </span>
   <a id="Fp_FpUtil____" data-uid="Fp.FpUtil.__*"></a>
-  <h4 id="Fp_FpUtil____System_Nullable_Detector__System_String_System_String_System_Int32_System_Object_" data-uid="Fp.FpUtil.__(System.Nullable{Detector},System.String,System.String,System.Int32,System.Object)">__(Nullable&lt;Detector&gt;, String, String, Int32, Object)</h4>
+  <h4 id="Fp_FpUtil____Fp_Detector_System_String_System_String_System_Int32_System_Nullable_System_Object__" data-uid="Fp.FpUtil.__(Fp.Detector,System.String,System.String,System.Int32,System.Nullable{System.Object})">__(Detector, String, String, Int32, Nullable&lt;Object&gt;)</h4>
   <div class="markdown level1 summary"><p>Detect based on magic value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Detector __(this Detector? detector, string magicValue, string value, int offset = 0, object source = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Detector __(this Detector detector, string magicValue, string value, int offset = 0, object? source = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,7 +116,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Detector</span>&gt;</td>
+        <td><a class="xref" href="Fp.Detector.html">Detector</a></td>
         <td><span class="parametername">detector</span></td>
         <td><p>Existing detector.</p>
 </td>
@@ -164,7 +140,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Object</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">source</span></td>
         <td><p>Data source.</p>
 </td>
@@ -181,7 +157,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Detector</span></td>
+        <td><a class="xref" href="Fp.Detector.html">Detector</a></td>
         <td><p>Detector.</p>
 </td>
       </tr>
@@ -249,7 +225,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Detector</span></td>
+        <td><a class="xref" href="Fp.Detector.html">Detector</a></td>
         <td><p>Detector.</p>
 </td>
       </tr>
@@ -311,7 +287,63 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Detector</span></td>
+        <td><a class="xref" href="Fp.Detector.html">Detector</a></td>
+        <td><p>Detector.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_____Fp_Detector_System_String_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.___(Fp.Detector%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Detectors.cs/#L141">View Source</a>
+  </span>
+  <a id="Fp_FpUtil_____" data-uid="Fp.FpUtil.___*"></a>
+  <h4 id="Fp_FpUtil_____Fp_Detector_System_String_" data-uid="Fp.FpUtil.___(Fp.Detector,System.String)">___(Detector, String)</h4>
+  <div class="markdown level1 summary"><p>Fallback to value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Fallback ___(this Detector detector, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Fp.Detector.html">Detector</a></td>
+        <td><span class="parametername">detector</span></td>
+        <td><p>Existing detector.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Fallback value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Fp.Fallback.html">Fallback</a></td>
         <td><p>Detector.</p>
 </td>
       </tr>
@@ -322,7 +354,7 @@
     <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Ascii_System_String_System_Byte___.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Ascii(System.String%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L225">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L229">View Source</a>
   </span>
   <a id="Fp_FpUtil_Ascii_" data-uid="Fp.FpUtil.Ascii*"></a>
   <h4 id="Fp_FpUtil_Ascii_System_String_System_Byte___" data-uid="Fp.FpUtil.Ascii(System.String,System.Byte[])">Ascii(String, Byte[])</h4>
@@ -375,19 +407,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Dump_System_IO_Stream_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Dump(System.IO.Stream%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Dump_Stream_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Dump(Stream%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Input.cs/#L757">View Source</a>
   </span>
   <a id="Fp_FpUtil_Dump_" data-uid="Fp.FpUtil.Dump*"></a>
-  <h4 id="Fp_FpUtil_Dump_System_IO_Stream_System_Int32_" data-uid="Fp.FpUtil.Dump(System.IO.Stream,System.Int32)">Dump(Stream, Int32)</h4>
+  <h4 id="Fp_FpUtil_Dump_Stream_System_Int32_" data-uid="Fp.FpUtil.Dump(Stream,System.Int32)">Dump(Stream, Int32)</h4>
   <div class="markdown level1 summary"><p>Dumps byte array from a stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static byte[] Dump(this Stream stream, int maxLength = 2147483647)</code></pre>
+    <pre><code class="lang-csharp hljs">public static byte[] Dump(this Stream stream, int maxLength = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -400,7 +432,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="xref">Stream</span></td>
         <td><span class="parametername">stream</span></td>
         <td><p>Stream to dump.</p>
 </td>
@@ -431,19 +463,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_IsolateFlags_System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyCollection_System_String__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.IsolateFlags(System.Collections.Generic.IReadOnlyList%7BSystem.String%7D%2CSystem.Collections.Generic.IReadOnlyCollection%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_IsolateFlags_IReadOnlyList_System_String__System_Nullable_IReadOnlyCollection_System_String___.md&amp;value=---%0Auid%3A%20Fp.FpUtil.IsolateFlags(IReadOnlyList%7BSystem.String%7D%2CSystem.Nullable%7BIReadOnlyCollection%7BSystem.String%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L25">View Source</a>
   </span>
   <a id="Fp_FpUtil_IsolateFlags_" data-uid="Fp.FpUtil.IsolateFlags*"></a>
-  <h4 id="Fp_FpUtil_IsolateFlags_System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyCollection_System_String__" data-uid="Fp.FpUtil.IsolateFlags(System.Collections.Generic.IReadOnlyList{System.String},System.Collections.Generic.IReadOnlyCollection{System.String})">IsolateFlags(IReadOnlyList&lt;String&gt;, IReadOnlyCollection&lt;String&gt;)</h4>
+  <h4 id="Fp_FpUtil_IsolateFlags_IReadOnlyList_System_String__System_Nullable_IReadOnlyCollection_System_String___" data-uid="Fp.FpUtil.IsolateFlags(IReadOnlyList{System.String},System.Nullable{IReadOnlyCollection{System.String}})">IsolateFlags(IReadOnlyList&lt;String&gt;, Nullable&lt;IReadOnlyCollection&lt;String&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Isolate flags from argument list.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static (HashSet&lt;string&gt; flags, Dictionary&lt;string, string&gt; opts, List&lt;string&gt; args) IsolateFlags(this IReadOnlyList&lt;string&gt; arguments, IReadOnlyCollection&lt;string&gt; optKeys = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static (HashSet&lt;string&gt; flags, Dictionary&lt;string, string&gt; opts, List&lt;string&gt; args) IsolateFlags(this IReadOnlyList&lt;string&gt; arguments, IReadOnlyCollection&lt;string&gt;? optKeys = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -456,13 +488,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">arguments</span></td>
         <td><p>Argument lines to sort.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">IReadOnlyCollection</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
         <td><span class="parametername">optKeys</span></td>
         <td><p>Option keys.</p>
 </td>
@@ -479,13 +511,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Collections.Generic.HashSet</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;, <span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
+        <td><span class="xref">System.ValueTuple</span>&lt;<span class="xref">HashSet</span>&lt;<span class="xref">System.String</span>&gt;, <span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;, <span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;&gt;</td>
         <td><p>Flags, options, and arguments.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Fp_FpUtil_IsolateFlags_System_Collections_Generic_IReadOnlyList_System_String__System_Collections_Generic_IReadOnlyCollection_System_String___remarks">Remarks</h5>
+  <h5 id="Fp_FpUtil_IsolateFlags_IReadOnlyList_System_String__System_Nullable_IReadOnlyCollection_System_String____remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p><a href="https://github.com/The-Council-of-Wills/HacknetSharp/blob/58d5ccdf09203a38092b01aba3fea5df3e06d483/src/HacknetSharp.Server/ServerUtil.cs#L436">https://github.com/The-Council-of-Wills/HacknetSharp/blob/58d5ccdf09203a38092b01aba3fea5df3e06d483/src/HacknetSharp.Server/ServerUtil.cs#L436</a></p>
 </div>
   <span class="small pull-right mobile-hide">
@@ -493,7 +525,7 @@
     <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_NormalizeAndStripWindowsDrive_System_String_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.NormalizeAndStripWindowsDrive(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L247">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L251">View Source</a>
   </span>
   <a id="Fp_FpUtil_NormalizeAndStripWindowsDrive_" data-uid="Fp.FpUtil.NormalizeAndStripWindowsDrive*"></a>
   <h4 id="Fp_FpUtil_NormalizeAndStripWindowsDrive_System_String_" data-uid="Fp.FpUtil.NormalizeAndStripWindowsDrive(System.String)">NormalizeAndStripWindowsDrive(String)</h4>
@@ -540,13 +572,13 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_PostDispose__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.PostDispose%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_PostDispose__1_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.PostDispose%60%601(IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L146">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L150">View Source</a>
   </span>
   <a id="Fp_FpUtil_PostDispose_" data-uid="Fp.FpUtil.PostDispose*"></a>
-  <h4 id="Fp_FpUtil_PostDispose__1_System_Collections_Generic_IEnumerable___0__" data-uid="Fp.FpUtil.PostDispose``1(System.Collections.Generic.IEnumerable{``0})">PostDispose&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <h4 id="Fp_FpUtil_PostDispose__1_IEnumerable___0__" data-uid="Fp.FpUtil.PostDispose``1(IEnumerable{``0})">PostDispose&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
   <div class="markdown level1 summary"><p>Dispose of an enumerable's elements after they have been yielded.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -566,7 +598,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td><span class="parametername">enumerable</span></td>
         <td><p>Enumerable.</p>
 </td>
@@ -583,7 +615,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td><p>Input elements.</p>
 </td>
       </tr>
@@ -607,13 +639,13 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Seekable_System_IO_Stream_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Seekable(System.IO.Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Seekable_Stream_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Seekable(Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Input.cs/#L791">View Source</a>
   </span>
   <a id="Fp_FpUtil_Seekable_" data-uid="Fp.FpUtil.Seekable*"></a>
-  <h4 id="Fp_FpUtil_Seekable_System_IO_Stream_" data-uid="Fp.FpUtil.Seekable(System.IO.Stream)">Seekable(Stream)</h4>
+  <h4 id="Fp_FpUtil_Seekable_Stream_" data-uid="Fp.FpUtil.Seekable(Stream)">Seekable(Stream)</h4>
   <div class="markdown level1 summary"><p>Get seekable stream (closes base stream if replaced)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -632,7 +664,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="xref">Stream</span></td>
         <td><span class="parametername">stream</span></td>
         <td><p>Base stream</p>
 </td>
@@ -649,15 +681,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="xref">Stream</span></td>
         <td><p>Seekable stream</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Fp_FpUtil_Seekable_System_IO_Stream__remarks">Remarks</h5>
+  <h5 id="Fp_FpUtil_Seekable_Stream__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method conditionally creates a seekable stream from a non-seekable stream by copying the
-stream's contents to a new <span class="xref">System.IO.MemoryStream</span> instance. The returned object is either
+stream's contents to a new <see cref="!:MemoryStream"></see> instance. The returned object is either
 this newly created stream or the passed argument <code data-dev-comment-type="paramref" class="paramref">stream</code> if it was already seekable</p>
 </div>
   <span class="small pull-right mobile-hide">
@@ -665,7 +697,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_SliceAlloc__1___0___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.SliceAlloc%60%601(%60%600%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L105">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L109">View Source</a>
   </span>
   <a id="Fp_FpUtil_SliceAlloc_" data-uid="Fp.FpUtil.SliceAlloc*"></a>
   <h4 id="Fp_FpUtil_SliceAlloc__1___0___System_Int32_System_Int32_" data-uid="Fp.FpUtil.SliceAlloc``1(``0[],System.Int32,System.Int32)">SliceAlloc&lt;T&gt;(T[], Int32, Int32)</h4>
@@ -740,13 +772,13 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_SliceAlloc__1_System_ReadOnlySpan___0__System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.SliceAlloc%60%601(System.ReadOnlySpan%7B%60%600%7D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_SliceAlloc__1_ReadOnlySpan___0__System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.SliceAlloc%60%601(ReadOnlySpan%7B%60%600%7D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L131">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L135">View Source</a>
   </span>
   <a id="Fp_FpUtil_SliceAlloc_" data-uid="Fp.FpUtil.SliceAlloc*"></a>
-  <h4 id="Fp_FpUtil_SliceAlloc__1_System_ReadOnlySpan___0__System_Int32_System_Int32_" data-uid="Fp.FpUtil.SliceAlloc``1(System.ReadOnlySpan{``0},System.Int32,System.Int32)">SliceAlloc&lt;T&gt;(ReadOnlySpan&lt;T&gt;, Int32, Int32)</h4>
+  <h4 id="Fp_FpUtil_SliceAlloc__1_ReadOnlySpan___0__System_Int32_System_Int32_" data-uid="Fp.FpUtil.SliceAlloc``1(ReadOnlySpan{``0},System.Int32,System.Int32)">SliceAlloc&lt;T&gt;(ReadOnlySpan&lt;T&gt;, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Slices a span and allocates a new array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -765,7 +797,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ReadOnlySpan</span>&lt;T&gt;</td>
+        <td><span class="xref">ReadOnlySpan</span>&lt;T&gt;</td>
         <td><span class="parametername">span</span></td>
         <td><p>Source.</p>
 </td>
@@ -818,13 +850,13 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_SliceAlloc__1_System_Span___0__System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.SliceAlloc%60%601(System.Span%7B%60%600%7D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_SliceAlloc__1_Span___0__System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.FpUtil.SliceAlloc%60%601(Span%7B%60%600%7D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L118">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L122">View Source</a>
   </span>
   <a id="Fp_FpUtil_SliceAlloc_" data-uid="Fp.FpUtil.SliceAlloc*"></a>
-  <h4 id="Fp_FpUtil_SliceAlloc__1_System_Span___0__System_Int32_System_Int32_" data-uid="Fp.FpUtil.SliceAlloc``1(System.Span{``0},System.Int32,System.Int32)">SliceAlloc&lt;T&gt;(Span&lt;T&gt;, Int32, Int32)</h4>
+  <h4 id="Fp_FpUtil_SliceAlloc__1_Span___0__System_Int32_System_Int32_" data-uid="Fp.FpUtil.SliceAlloc``1(Span{``0},System.Int32,System.Int32)">SliceAlloc&lt;T&gt;(Span&lt;T&gt;, Int32, Int32)</h4>
   <div class="markdown level1 summary"><p>Slices a span and allocates a new array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -843,7 +875,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Span</span>&lt;T&gt;</td>
+        <td><span class="xref">Span</span>&lt;T&gt;</td>
         <td><span class="parametername">span</span></td>
         <td><p>Source.</p>
 </td>
@@ -890,6 +922,106 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
       <tr>
         <td><span class="parametername">T</span></td>
         <td><p>Element type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Stream_Memory_System_Byte__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Stream(Memory%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Input.cs/#L772">View Source</a>
+  </span>
+  <a id="Fp_FpUtil_Stream_" data-uid="Fp.FpUtil.Stream*"></a>
+  <h4 id="Fp_FpUtil_Stream_Memory_System_Byte__" data-uid="Fp.FpUtil.Stream(Memory{System.Byte})">Stream(Memory&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates stream from memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Stream Stream(this Memory&lt;byte&gt; source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Memory</span>&lt;<span class="xref">System.Byte</span>&gt;</td>
+        <td><span class="parametername">source</span></td>
+        <td><p>Source memory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><p>Stream.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Stream_ReadOnlyMemory_System_Byte__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Stream(ReadOnlyMemory%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Input.cs/#L779">View Source</a>
+  </span>
+  <a id="Fp_FpUtil_Stream_" data-uid="Fp.FpUtil.Stream*"></a>
+  <h4 id="Fp_FpUtil_Stream_ReadOnlyMemory_System_Byte__" data-uid="Fp.FpUtil.Stream(ReadOnlyMemory{System.Byte})">Stream(ReadOnlyMemory&lt;Byte&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates stream from memory.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Stream Stream(this ReadOnlyMemory&lt;byte&gt; source)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ReadOnlyMemory</span>&lt;<span class="xref">System.Byte</span>&gt;</td>
+        <td><span class="parametername">source</span></td>
+        <td><p>Source memory.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><p>Stream.</p>
 </td>
       </tr>
     </tbody>
@@ -938,7 +1070,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
+        <td><span class="xref">Stream</span></td>
         <td><p>Stream.</p>
 </td>
       </tr>
@@ -946,119 +1078,19 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Stream_System_Memory_System_Byte__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Stream(System.Memory%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Tuplify2__1_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Tuplify2%60%601(IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Input.cs/#L772">View Source</a>
-  </span>
-  <a id="Fp_FpUtil_Stream_" data-uid="Fp.FpUtil.Stream*"></a>
-  <h4 id="Fp_FpUtil_Stream_System_Memory_System_Byte__" data-uid="Fp.FpUtil.Stream(System.Memory{System.Byte})">Stream(Memory&lt;Byte&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates stream from memory.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Stream Stream(this Memory&lt;byte&gt; source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Memory</span>&lt;<span class="xref">System.Byte</span>&gt;</td>
-        <td><span class="parametername">source</span></td>
-        <td><p>Source memory.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
-        <td><p>Stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Stream_System_ReadOnlyMemory_System_Byte__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Stream(System.ReadOnlyMemory%7BSystem.Byte%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Processor.Input.cs/#L779">View Source</a>
-  </span>
-  <a id="Fp_FpUtil_Stream_" data-uid="Fp.FpUtil.Stream*"></a>
-  <h4 id="Fp_FpUtil_Stream_System_ReadOnlyMemory_System_Byte__" data-uid="Fp.FpUtil.Stream(System.ReadOnlyMemory{System.Byte})">Stream(ReadOnlyMemory&lt;Byte&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates stream from memory.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Stream Stream(this ReadOnlyMemory&lt;byte&gt; source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ReadOnlyMemory</span>&lt;<span class="xref">System.Byte</span>&gt;</td>
-        <td><span class="parametername">source</span></td>
-        <td><p>Source memory.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
-        <td><p>Stream.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Tuplify2__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Tuplify2%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L161">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L165">View Source</a>
   </span>
   <a id="Fp_FpUtil_Tuplify2_" data-uid="Fp.FpUtil.Tuplify2*"></a>
-  <h4 id="Fp_FpUtil_Tuplify2__1_System_Collections_Generic_IEnumerable___0__" data-uid="Fp.FpUtil.Tuplify2``1(System.Collections.Generic.IEnumerable{``0})">Tuplify2&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <h4 id="Fp_FpUtil_Tuplify2__1_IEnumerable___0__" data-uid="Fp.FpUtil.Tuplify2``1(IEnumerable{``0})">Tuplify2&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
   <div class="markdown level1 summary"><p>Create tuple sequence from enumerable.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;(T, T)&gt; Tuplify2&lt;T&gt;(this IEnumerable&lt;T&gt; enumerable)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;ValueTuple&lt;T, T&gt;&gt; Tuplify2&lt;T&gt;(this IEnumerable&lt;T&gt; enumerable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1071,7 +1103,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td><span class="parametername">enumerable</span></td>
         <td><p>Enumerable.</p>
 </td>
@@ -1088,7 +1120,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;T, T&gt;&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">ValueTuple</span>&lt;T, T&gt;&gt;</td>
         <td><p>Tuples joining contiguous elements (packed, mutually exclusive).</p>
 </td>
       </tr>
@@ -1112,19 +1144,19 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Tuplify3__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Tuplify3%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Tuplify3__1_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Tuplify3%60%601(IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L179">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L183">View Source</a>
   </span>
   <a id="Fp_FpUtil_Tuplify3_" data-uid="Fp.FpUtil.Tuplify3*"></a>
-  <h4 id="Fp_FpUtil_Tuplify3__1_System_Collections_Generic_IEnumerable___0__" data-uid="Fp.FpUtil.Tuplify3``1(System.Collections.Generic.IEnumerable{``0})">Tuplify3&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <h4 id="Fp_FpUtil_Tuplify3__1_IEnumerable___0__" data-uid="Fp.FpUtil.Tuplify3``1(IEnumerable{``0})">Tuplify3&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
   <div class="markdown level1 summary"><p>Create tuple sequence from enumerable.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;(T, T, T)&gt; Tuplify3&lt;T&gt;(this IEnumerable&lt;T&gt; enumerable)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;ValueTuple&lt;T, T, T&gt;&gt; Tuplify3&lt;T&gt;(this IEnumerable&lt;T&gt; enumerable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1137,7 +1169,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td><span class="parametername">enumerable</span></td>
         <td><p>Enumerable.</p>
 </td>
@@ -1154,7 +1186,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;T, T, T&gt;&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">ValueTuple</span>&lt;T, T, T&gt;&gt;</td>
         <td><p>Tuples joining contiguous elements (packed, mutually exclusive).</p>
 </td>
       </tr>
@@ -1178,19 +1210,19 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Tuplify4__1_System_Collections_Generic_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Tuplify4%60%601(System.Collections.Generic.IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FpUtil_Tuplify4__1_IEnumerable___0__.md&amp;value=---%0Auid%3A%20Fp.FpUtil.Tuplify4%60%601(IEnumerable%7B%60%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L199">View Source</a>
+    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FpUtil.cs/#L203">View Source</a>
   </span>
   <a id="Fp_FpUtil_Tuplify4_" data-uid="Fp.FpUtil.Tuplify4*"></a>
-  <h4 id="Fp_FpUtil_Tuplify4__1_System_Collections_Generic_IEnumerable___0__" data-uid="Fp.FpUtil.Tuplify4``1(System.Collections.Generic.IEnumerable{``0})">Tuplify4&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
+  <h4 id="Fp_FpUtil_Tuplify4__1_IEnumerable___0__" data-uid="Fp.FpUtil.Tuplify4``1(IEnumerable{``0})">Tuplify4&lt;T&gt;(IEnumerable&lt;T&gt;)</h4>
   <div class="markdown level1 summary"><p>Create tuple sequence from enumerable.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;(T, T, T, T)&gt; Tuplify4&lt;T&gt;(this IEnumerable&lt;T&gt; enumerable)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;ValueTuple&lt;T, T, T, T&gt;&gt; Tuplify4&lt;T&gt;(this IEnumerable&lt;T&gt; enumerable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1203,7 +1235,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;T&gt;</td>
         <td><span class="parametername">enumerable</span></td>
         <td><p>Enumerable.</p>
 </td>
@@ -1220,7 +1252,7 @@ this newly created stream or the passed argument <code data-dev-comment-type="pa
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;T, T, T, T&gt;&gt;</td>
+        <td><span class="xref">IEnumerable</span>&lt;<span class="xref">ValueTuple</span>&lt;T, T, T, T&gt;&gt;</td>
         <td><p>Tuples joining contiguous elements (packed, mutually exclusive).</p>
 </td>
       </tr>

@@ -22,15 +22,15 @@ namespace Fp.Helpers
         /// <param name="source">Data source.</param>
         public override sbyte this[Span<byte> source]
         {
-            get => Parent.GetS8(source);
-            set => Parent.SetS8(source, value);
+            get => (sbyte)source[0];
+            set => source[0] = (byte)value;
         }
 
         /// <summary>
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override sbyte this[ReadOnlySpan<byte> source] => Parent.GetS8(source);
+        public override sbyte this[ReadOnlySpan<byte> source] => (sbyte)source[0];
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ namespace Fp.Helpers
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override short this[ReadOnlySpan<byte> source] => Parent.GetS16(source);
+        public override short this[ReadOnlySpan<byte> source] => GetS16(source, LittleEndian);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ namespace Fp.Helpers
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override int this[ReadOnlySpan<byte> source] => Parent.GetS32(source);
+        public override int this[ReadOnlySpan<byte> source] => GetS32(source, LittleEndian);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ namespace Fp.Helpers
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override long this[ReadOnlySpan<byte> source] => Parent.GetS64(source);
+        public override long this[ReadOnlySpan<byte> source] => GetS64(source, LittleEndian);
     }
 
     /// <summary>
@@ -222,15 +222,15 @@ namespace Fp.Helpers
         /// <param name="source">Data source.</param>
         public override byte this[Span<byte> source]
         {
-            get => Parent.GetU8(source);
-            set => Parent.SetU8(source, value);
+            get => source[0];
+            set => source[0] = value;
         }
 
         /// <summary>
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override byte this[ReadOnlySpan<byte> source] => Parent.GetU8(source);
+        public override byte this[ReadOnlySpan<byte> source] => source[0];
     }
 
     /// <summary>
@@ -280,7 +280,7 @@ namespace Fp.Helpers
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override ushort this[ReadOnlySpan<byte> source] => Parent.GetU16(source);
+        public override ushort this[ReadOnlySpan<byte> source] => GetU16(source, LittleEndian);
     }
 
     /// <summary>
@@ -330,7 +330,7 @@ namespace Fp.Helpers
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override uint this[ReadOnlySpan<byte> source] => Parent.GetU32(source);
+        public override uint this[ReadOnlySpan<byte> source] => GetU32(source, LittleEndian);
     }
 
     /// <summary>
@@ -380,7 +380,7 @@ namespace Fp.Helpers
         /// Read value.
         /// </summary>
         /// <param name="source">Data source.</param>
-        public override ulong this[ReadOnlySpan<byte> source] => Parent.GetU64(source);
+        public override ulong this[ReadOnlySpan<byte> source] => GetU64(source, LittleEndian);
     }
 
     /// <summary>

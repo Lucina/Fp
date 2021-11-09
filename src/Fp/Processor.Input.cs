@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-#if !NET5_0
+#if !NET5_0_OR_GREATER
 using static System.Buffers.ArrayPool<byte>;
 
 #endif
@@ -88,7 +88,7 @@ namespace Fp
 
         internal static int ReadBaseSpan(Stream stream, Span<byte> span, bool lenient)
         {
-#if NET5_0
+#if NET5_0_OR_GREATER
             int left = span.Length, read, tot = 0;
             do
             {
