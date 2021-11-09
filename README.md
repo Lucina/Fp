@@ -22,9 +22,9 @@ Many utilities for working with primitive data (including endianness-dependent I
     - Minimum API: .NET Standard 2.0
 ### Scripting
 * [fpx](src/fpx): Script execution program (thin wrapper of [dotnet-script](https://github.com/filipw/dotnet-script))
-    - Requires [.NET 5 SDK](https://get.dot.net/) for execution
+    - Requires [.NET 6 SDK](https://get.dot.net/) for execution
 * [Dereliction](src/Dereliction): Basic Avalonia GUI script editor / testing program
-    - Requires [.NET 5 SDK](https://get.dot.net/) for execution
+    - Requires [.NET 6 SDK](https://get.dot.net/) for execution
 
 ### Details
 
