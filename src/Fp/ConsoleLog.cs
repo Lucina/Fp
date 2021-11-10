@@ -55,9 +55,14 @@ namespace Fp
 
         static ConsoleLog()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) WindowsAnsi.TryInit();
+            // ReSharper disable once AssignmentInConditionalExpression
+            if (CR = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) WindowsAnsi.TryInit();
         }
 
+        /// <summary>
+        /// Carriage return used in console logging.
+        /// </summary>
+        public static bool CR;
 
         /// <summary>
         /// Supported color sequences
@@ -151,27 +156,27 @@ namespace Fp
 
         /// <inheritdoc />
         public void LogChunk(string log, bool tail, ConsoleColor? color = null) =>
-            Log(LogLevel.Information, log, tail, color);
+            Log(LogLevel.Information, log == "\n" && CR ? "\r\n" : log, tail, color);
 
         /// <inheritdoc />
         public void LogInformation(string log, ConsoleColor? color = null)
         {
             Log(LogLevel.Information, log, false, color);
-            Log(LogLevel.Information, "\n", false, color);
+            Console.WriteLine(CR ? "\r\n" : "\n");
         }
 
         /// <inheritdoc />
         public void LogWarning(string log, ConsoleColor? color = null)
         {
             Log(LogLevel.Warning, log, false, color);
-            Log(LogLevel.Warning, "\n", false, color);
+            Console.WriteLine(CR ? "\r\n" : "\n");
         }
 
         /// <inheritdoc />
         public void LogError(string log, ConsoleColor? color = null)
         {
             Log(LogLevel.Error, log, false, color);
-            Log(LogLevel.Error, "\n", false, color);
+            Console.WriteLine(CR ? "\r\n" : "\n");
         }
     }
 }
