@@ -162,21 +162,21 @@ namespace Fp
         public void LogInformation(string log, ConsoleColor? color = null)
         {
             Log(LogLevel.Information, log, false, color);
-            Console.WriteLine(CR ? "\r\n" : "\n");
+            Console.WriteLine();
         }
 
         /// <inheritdoc />
         public void LogWarning(string log, ConsoleColor? color = null)
         {
             Log(LogLevel.Warning, log, false, color);
-            Console.WriteLine(CR ? "\r\n" : "\n");
+            Console.WriteLine();
         }
 
         /// <inheritdoc />
         public void LogError(string log, ConsoleColor? color = null)
         {
             Log(LogLevel.Error, log, false, color);
-            Console.WriteLine(CR ? "\r\n" : "\n");
+            Console.WriteLine();
         }
     }
 }
