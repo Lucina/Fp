@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Changed
 - Fixed extraneous newlines on print
+- Fixed incorrect documentation on AlignUp/AlignDown
 
 ## [0.21.1] 2021-11-9
 ### Changed

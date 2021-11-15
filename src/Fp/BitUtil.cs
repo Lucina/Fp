@@ -8,7 +8,7 @@ namespace Fp
     public static class BitUtil
     {
         /// <summary>
-        /// Aligns value up.
+        /// Aligns value down.
         /// </summary>
         /// <param name="value">Input value.</param>
         /// <param name="align">Alignment.</param>
@@ -16,7 +16,7 @@ namespace Fp
         public static int AlignDown(this int value, int align) => align == 0 ? value : value / align * align;
 
         /// <summary>
-        /// Aligns value down.
+        /// Aligns value up.
         /// </summary>
         /// <param name="value">Input value.</param>
         /// <param name="align">Alignment.</param>
