@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
 using Fp;
 
-Processor.Run<FewssProcessor>(args,
+FsProcessor.Run<FewssProcessor>(args,
     "FireEmblemWarriorsSwitchSound",
     "Fire Emblem Warriors Switch Sound Archives",
     ".bin.gz", ".bin", ".g1l");

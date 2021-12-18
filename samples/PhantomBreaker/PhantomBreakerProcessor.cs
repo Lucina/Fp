@@ -1,18 +1,17 @@
 using Fp;
-using System;
 using System.Collections;
 
-Processor.Run<PhantomBreakerProcessor>(args,
+FsProcessor.Run<PhantomBreakerProcessor>(args,
     "PhantomBreaker",
     "Decode / extract assets from Phantom Breaker series",
     (string?)null);
 
-public class PhantomBreakerProcessor : LayeredDataProcessor<(int i, int j), Memory<byte>>
+public partial class PhantomBreakerProcessor : DataProcessor
 {
-    protected override void ProcessLayered()
+    protected override IEnumerable<Data> ProcessData()
     {
-        UseChild(typeof(Mariko), typeof(Yunomi));
-
+        Dictionary<(int i, int j), Memory<byte>> dict = new();
+        List<Data> content = new();
         byte[] a = Load();
 
         int pos = i4l[a] ^= -1, numT1 = i4l[a, 4] ^= 0x12876623, posT2 = 8 + numT1 * 4;
@@ -34,9 +33,12 @@ public class PhantomBreakerProcessor : LayeredDataProcessor<(int i, int j), Memo
                 byte s = (byte)(((sp.Length >> 3) & 0x5e) + (i & 0x7a) * 3 + (j & 0x5f) * 7);
                 for (int x = 0; x < sp.Length; x++) sp[x] ^= (byte)((0xe6 & x) ^ s);
 
-                Lookup[(i, j)] = memory;
-                Content.Add(Buffer(NamePathNoExt / $"{i:D4}_{j:D4}" + memory._WAV().___(""), memory));
+                dict[(i, j)] = memory;
+                content.Add(Buffer(NamePathNoExt / $"{i:D4}_{j:D4}" + memory._WAV().___(""), memory));
             }
         }
+        RunMariko(dict, content);
+        RunYunomi(dict, content);
+        return content;
     }
 }

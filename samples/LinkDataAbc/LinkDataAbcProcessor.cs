@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Fp;
 
-Processor.Run<LinkDataAbcProcessor>(args,
+FsProcessor.Run<LinkDataAbcProcessor>(args,
     "LinkDataAbcProcessor",
     "Dynasty Warriors Gundam linkdata files",
     ".ans", ".bns", ".cns");

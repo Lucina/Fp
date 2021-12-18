@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Fp;
 
-Processor.Run<BrewBarProcessor>(args,
+FsProcessor.Run<BrewBarProcessor>(args,
     "BrewBar",
     "BREW MP .bar containers with gzip-compressed files",
     ".bar");

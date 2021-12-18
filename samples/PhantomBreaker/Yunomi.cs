@@ -1,18 +1,15 @@
 using Fp;
-using System;
 
-public class Yunomi : ProcessorChild<(int i, int j), Memory<byte>>
+public partial class PhantomBreakerProcessor
 {
-    public override string Flag => "t";
-    public override bool Filter => Name is "21560002" or "Graphic";
-
-    public override void Run()
+    public void RunYunomi(Dictionary<(int i, int j), Memory<byte>> dict, List<Data> content)
     {
+        if (!Flags.Contains("t") && Name is not ("21560002" or "Graphic")) return;
         // Try to process all files as yunomi
-        foreach (var kvp in Lookup)
+        foreach (var kvp in dict)
             if (YunomiConvert(NamePathNoExt / "yunomi" / $"{kvp.Key.i:D4}_{kvp.Key.j:D4}", kvp.Value.Span) is
                 { } data)
-                Content.Add(data);
+                content.Add(data);
     }
 
     /// Process run-length graphics file

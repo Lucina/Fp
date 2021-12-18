@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using System.IO.Compression;
-using System.Linq;
 using Esper.Zstandard;
 using Fp;
 
-Processor.Run<EdelweissTgpProcessor>(args,
+FsProcessor.Run<EdelweissTgpProcessor>(args,
     "EdelweissTgp",
     "Edelweiss TGP container",
     ".tgp");

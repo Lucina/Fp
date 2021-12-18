@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using Fp;
 using Fp.Platforms.Nitro;
 
-Processor.Run<RnRProcessor>(args,
+FsProcessor.Run<RnRProcessor>(args,
     "RnR",
     "Ryuusei no Rockman 1/2/3 .bin containers",
     ".bin");
