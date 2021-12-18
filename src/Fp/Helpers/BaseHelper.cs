@@ -10,7 +10,7 @@ namespace Fp.Helpers
     public abstract record BaseHelper<T> : Helper
     {
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -21,7 +21,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual T this[byte[] source]
@@ -31,7 +31,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -42,7 +42,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual T this[Memory<byte> source]
@@ -52,7 +52,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -63,46 +63,46 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="source">Data source.</param>
         public abstract T this[Span<byte> source] { get; set; }
 
         /// <summary>
-        /// Read value.
+        /// Reads value.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
         public virtual T this[ReadOnlyMemory<byte> source, int offset] => this[source.Span, offset];
 
         /// <summary>
-        /// Read value.
+        /// Reads value.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual T this[ReadOnlyMemory<byte> source] => this[source.Span, 0];
 
         /// <summary>
-        /// Read value.
+        /// Reads value.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
         public virtual T this[ReadOnlySpan<byte> source, int offset] => this[source.Slice(offset)];
 
         /// <summary>
-        /// Read value.
+        /// Reads value.
         /// </summary>
         /// <param name="source">Data source.</param>
         public abstract T this[ReadOnlySpan<byte> source] { get; }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="stream">Data source.</param>
         /// <param name="offset">Offset (no seeking if -1).</param>
         public abstract T this[long offset, Stream stream] { get; set; }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="stream">Data source.</param>
         /// <param name="offset">Offset (no seeking if -1).</param>
@@ -113,7 +113,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         public virtual T this[long offset]
@@ -123,7 +123,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         public virtual T this[int offset]

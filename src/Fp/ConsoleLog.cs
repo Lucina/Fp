@@ -65,7 +65,7 @@ namespace Fp
         public static bool CR;
 
         /// <summary>
-        /// Supported color sequences
+        /// Supported color sequences.
         /// </summary>
         public static readonly Dictionary<ConsoleColor, string> Sequences = new()
         {
@@ -80,7 +80,7 @@ namespace Fp
         };
 
         /// <summary>
-        /// Supported colors
+        /// Supported colors.
         /// </summary>
         public static readonly IReadOnlyList<ConsoleColor> Colors = new List<ConsoleColor>
         {
@@ -95,7 +95,7 @@ namespace Fp
         };
 
         /// <summary>
-        /// Default instance with all logs enabled
+        /// Default instance with all logs enabled.
         /// </summary>
         public static readonly ConsoleLog Default = new(new Config());
 
@@ -131,7 +131,7 @@ namespace Fp
         private readonly Config _config;
 
         /// <summary>
-        /// Creates an instance of <see cref="ConsoleLog"/> with the specified configuration.
+        /// Creates a new instance of <see cref="ConsoleLog"/> with the specified configuration.
         /// </summary>
         /// <param name="config">Log configuration.</param>
         public ConsoleLog(Config config)
@@ -145,7 +145,7 @@ namespace Fp
             if (reset) Console.Write("\u001b[0m");
             if (color != null)
             {
-                if (!Sequences.TryGetValue(color.Value, out var c)) c = Sequences[ConsoleColor.White];
+                if (!Sequences.TryGetValue(color.Value, out string? c)) c = Sequences[ConsoleColor.White];
                 Console.Write(c);
             }
 

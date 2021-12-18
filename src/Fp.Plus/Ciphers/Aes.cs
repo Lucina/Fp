@@ -8,10 +8,10 @@ namespace Fp
     public partial class PlusUtil
     {
         /// <summary>
-        /// Decrypt with Aes using ECB mode and key
+        /// Decrypts with Aes using ECB mode and key.
         /// </summary>
-        /// <param name="src">Source span</param>
-        /// <param name="key">Cipher key</param>
+        /// <param name="src">Source span.</param>
+        /// <param name="key">Cipher key.</param>
         public static unsafe void DecryptAesEcb(Span<byte> src, ReadOnlySpan<byte> key)
         {
             using Aes aes = Aes.Create() ?? throw new ApplicationException();
@@ -29,11 +29,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Decrypt with Aes using CBC mode and key/IV
+        /// Decrypts with Aes using CBC mode and key/IV.
         /// </summary>
-        /// <param name="src">Source span</param>
-        /// <param name="key">Cipher key</param>
-        /// <param name="iv">IV (CBC/CTR)</param>
+        /// <param name="src">Source span.</param>
+        /// <param name="key">Cipher key.</param>
+        /// <param name="iv">IV (CBC/CTR).</param>
         public static unsafe void DecryptAesCbc(Span<byte> src, ReadOnlySpan<byte> key, ReadOnlySpan<byte> iv = default)
         {
             using Aes aes = Aes.Create() ?? throw new ApplicationException();

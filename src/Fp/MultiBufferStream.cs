@@ -5,7 +5,7 @@ using System.IO;
 namespace Fp
 {
     /// <summary>
-    /// Adds multiple buffers for reducing reads to underlying stream
+    /// Adds multiple buffers for reducing reads to underlying stream.
     /// </summary>
     public class MultiBufferStream : Stream
     {
@@ -19,17 +19,17 @@ namespace Fp
         private bool _disposed;
 
         /// <summary>
-        /// Override large reads, don't proxy through buffers
+        /// Override large reads, don't proxy through buffers.
         /// </summary>
         public bool LargeReadOverride = true;
 
         /// <summary>
-        /// Create new instance of <see cref="MultiBufferStream"/>
+        /// Creates a new instance of <see cref="MultiBufferStream"/>.
         /// </summary>
-        /// <param name="sourceStream">Stream to wrap</param>
-        /// <param name="longRunning">If true, allocate arrays independent of pool</param>
-        /// <param name="bufferCount">Number of buffers to use</param>
-        /// <param name="bufferLength">Individual buffer length</param>
+        /// <param name="sourceStream">Stream to wrap.</param>
+        /// <param name="longRunning">If true, allocate arrays independent of pool.</param>
+        /// <param name="bufferCount">Number of buffers to use.</param>
+        /// <param name="bufferLength">Individual buffer length.</param>
         public MultiBufferStream(Stream sourceStream, bool longRunning = false, int bufferCount = 32,
             int bufferLength = 4096)
         {

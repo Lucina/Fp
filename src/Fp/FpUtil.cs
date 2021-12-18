@@ -16,7 +16,7 @@ namespace Fp
         private static readonly HashSet<string> s_emptyStringHashSet = new();
 
         /// <summary>
-        /// Isolate flags from argument list.
+        /// Isolates flags from argument list.
         /// </summary>
         /// <param name="arguments">Argument lines to sort.</param>
         /// <param name="optKeys">Option keys.</param>
@@ -32,7 +32,7 @@ namespace Fp
             bool argTime = false;
             for (int i = 0; i < arguments.Count; i++)
             {
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
                 string str = arguments[i];
 #else
                 string? str = arguments[i];
@@ -142,7 +142,7 @@ namespace Fp
         #region Enumerable
 
         /// <summary>
-        /// Dispose of an enumerable's elements after they have been yielded.
+        /// Disposes of an enumerable's elements after they have been yielded.
         /// </summary>
         /// <param name="enumerable">Enumerable.</param>
         /// <typeparam name="T">Element type.</typeparam>
@@ -157,7 +157,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create tuple sequence from enumerable.
+        /// Creates tuple sequence from an enumerable.
         /// </summary>
         /// <param name="enumerable">Enumerable.</param>
         /// <typeparam name="T">Element type.</typeparam>
@@ -175,7 +175,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create tuple sequence from enumerable.
+        /// Creates tuple sequence from an enumerable.
         /// </summary>
         /// <param name="enumerable">Enumerable.</param>
         /// <typeparam name="T">Element type.</typeparam>
@@ -195,7 +195,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create tuple sequence from enumerable.
+        /// Creates tuple sequence from an enumerable.
         /// </summary>
         /// <param name="enumerable">Enumerable.</param>
         /// <typeparam name="T">Element type.</typeparam>
@@ -221,7 +221,7 @@ namespace Fp
         #region Strings
 
         /// <summary>
-        /// Get byte array from string assuming 8-bit characters.
+        /// Gets a byte array from a string assuming 8-bit characters.
         /// </summary>
         /// <param name="text">String to process.</param>
         /// <param name="result">Result buffer.</param>
@@ -244,7 +244,7 @@ namespace Fp
         #region Paths
 
         /// <summary>
-        /// Normalize the specified path.
+        /// Normalizes the specified path.
         /// </summary>
         /// <param name="path">Path to normalize.</param>
         /// <returns>Normalized path.</returns>

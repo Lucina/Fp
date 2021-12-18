@@ -1,17 +1,17 @@
 namespace Fp
 {
     /// <summary>
-    /// Behaviour of sequence
+    /// Behaviour of sequence.
     /// </summary>
     public enum SequenceBehaviour
     {
         /// <summary>
-        /// Truncate sequence
+        /// Truncate sequence.
         /// </summary>
         Truncate,
 
         /// <summary>
-        /// Repeat sequence
+        /// Repeat sequence.
         /// </summary>
         Repeat
     }

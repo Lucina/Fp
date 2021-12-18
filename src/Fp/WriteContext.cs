@@ -20,7 +20,7 @@ namespace Fp
         public int Offset;
 
         /// <summary>
-        /// Creates new instance of <see cref="WriteContext{T}"/>.
+        /// Creates a new instance of <see cref="WriteContext{T}"/>.
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <param name="offset">Initial offset.</param>
@@ -48,7 +48,7 @@ namespace Fp
             offset == Source.Length && endIsOk || offset < Source.Length && offset >= 0;
 
         /// <summary>
-        /// Advance context.
+        /// Advances context.
         /// </summary>
         /// <param name="value">Relative offset to advance by.</param>
         /// <param name="endIsOk">Allow end position to return true.</param>
@@ -69,14 +69,14 @@ namespace Fp
         public Span<T> GetSpan() => Source.Slice(Offset);
 
         /// <summary>
-        /// Get backing span from current offset with specified length.
+        /// Gets backing span from current offset with specified length.
         /// </summary>
         /// <param name="length">Target length.</param>
         /// <returns>Backing span starting at current offset with specified length.</returns>
         public Span<T> GetSpan(int length) => Source.Slice(Offset, length);
 
         /// <summary>
-        /// Read and advance.
+        /// Reads and advance.
         /// </summary>
         /// <returns>Read value.</returns>
         /// <exception cref="EndOfStreamException">End has been reached.</exception>
@@ -87,7 +87,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read and advance.
+        /// Reads and advances.
         /// </summary>
         /// <param name="count">Number of elements.</param>
         /// <returns>Read value.</returns>
@@ -101,7 +101,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write and advance.
+        /// Writes and advances.
         /// </summary>
         /// <param name="value">Value to write.</param>
         /// <exception cref="IOException">End has been reached.</exception>
@@ -112,7 +112,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write and advance.
+        /// Writes and advances.
         /// </summary>
         /// <param name="value">Values to write.</param>
         /// <exception cref="IOException">End has been reached.</exception>
@@ -125,7 +125,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write and advance.
+        /// Writes and advances.
         /// </summary>
         /// <param name="value">Value to write.</param>
         /// <param name="count">Number of times to write value.</param>
@@ -140,7 +140,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read/write value.
+        /// Reads/writes value.
         /// </summary>
         /// <param name="index">Offset.</param>
         public T this[int index]
@@ -150,7 +150,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Represent context as span offset from backing span.
+        /// Represents context as span offset from backing span.
         /// </summary>
         /// <param name="value">Context.</param>
         /// <returns>Offset span.</returns>

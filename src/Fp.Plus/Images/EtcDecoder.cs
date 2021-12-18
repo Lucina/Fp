@@ -73,11 +73,7 @@ namespace Fp.Plus.Images
 
         private static readonly int[] s_complement3BitshiftedTable = { 0, 8, 16, 24, -32, -24, -16, -8 };
 
-        private static readonly int[] s_modifierTable =
-        {
-            2, 8, -2, -8, 5, 17, -5, -17, 9, 29, -9, -29, 13, 42, -13, -42, 18, 60, -18, -60, 24, 80, -24, -80, 33,
-            106, -33, -106, 47, 183, -47, -183
-        };
+        private static readonly int[] s_modifierTable = { 2, 8, -2, -8, 5, 17, -5, -17, 9, 29, -9, -29, 13, 42, -13, -42, 18, 60, -18, -60, 24, 80, -24, -80, 33, 106, -33, -106, 47, 183, -47, -183 };
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int Clamp2047(int x)
@@ -102,8 +98,8 @@ namespace Fp.Plus.Images
         /// <summary>
         /// This function calculates the 3-bit complement value in the range -4 to 3 of a three bit representation. The result is arithmetically shifted 3 places to the left before returning.
         /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
+        /// <param name="x">Three bit value.</param>
+        /// <returns>3-bit complement value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int Complement3Bitshifted(int x)
         {
@@ -157,11 +153,11 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompress a 64-bit 4x4 pixel texture block compressed using the ETC1 format.
         /// </summary>
-        /// <param name="bitString"></param>
-        /// <param name="etc"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>True if succeeded.</returns>
         public static unsafe bool DecompressBlockEtc1(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
@@ -266,8 +262,8 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Return the internal mode of a ETC1 block.
         /// </summary>
-        /// <param name="bitString"></param>
-        /// <returns></returns>
+        /// <param name="bitString">Block.</param>
+        /// <returns>ETC mode.</returns>
         public static unsafe EtcMode GetModeEtc1(byte* bitString)
         {
             // Figure out the mode.
@@ -417,11 +413,11 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompress a 64-bit 4x4 pixel texture block compressed using the ETC2 format.
         /// </summary>
-        /// <param name="bitString"></param>
-        /// <param name="etc"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>true if succeeded.</returns>
         public static unsafe bool DecompressBlockEtc2(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
@@ -481,8 +477,8 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Return the internal mode of a ETC2 block.
         /// </summary>
-        /// <param name="bitString"></param>
-        /// <returns></returns>
+        /// <param name="bitString">Block.</param>
+        /// <returns>ETC mode.</returns>
         public static unsafe EtcMode GetModeEtc2(byte* bitString)
         {
             if ((bitString[3] & 2) == 0)
@@ -590,11 +586,7 @@ namespace Fp.Plus.Images
             }
         }
 
-        private static readonly int[,] s_punchthroughModifierTable =
-        {
-            { 0, 8, 0, -8 }, { 0, 17, 0, -17 }, { 0, 29, 0, -29 }, { 0, 42, 0, -42 }, { 0, 60, 0, -60 },
-            { 0, 80, 0, -80 }, { 0, 106, 0, -106 }, { 0, 183, 0, -183 }
-        };
+        private static readonly int[,] s_punchthroughModifierTable = { { 0, 8, 0, -8 }, { 0, 17, 0, -17 }, { 0, 29, 0, -29 }, { 0, 42, 0, -42 }, { 0, 60, 0, -60 }, { 0, 80, 0, -80 }, { 0, 106, 0, -106 }, { 0, 183, 0, -183 } };
 
         private static readonly uint[] s_punchthroughMaskTable = { 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000, 0xFFFFFFFF };
 
@@ -781,11 +773,11 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompress a 64-bit 4x4 pixel texture block compressed using the ETC2_PUNCHTROUGH format.
         /// </summary>
-        /// <param name="bitString"></param>
-        /// <param name="etc"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>true if succeeded.</returns>
         public static unsafe bool DecompressBlockEtc2Punchthrough(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
@@ -864,8 +856,8 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Return the internal mode of a ETC2_PUNCHTROUGH block.
         /// </summary>
-        /// <param name="bitString"></param>
-        /// <returns></returns>
+        /// <param name="bitString">Block.</param>
+        /// <returns>ETC mode.</returns>
         public static unsafe EtcMode GetModeEtc2Punchthrough(byte* bitString)
         {
             // Figure out the mode.
@@ -895,15 +887,7 @@ namespace Fp.Plus.Images
             SetModeEtc2Thp(bitString, etcMode, flags);
         }
 
-        private static readonly sbyte[,] s_eacModifierTable =
-        {
-            { -3, -6, -9, -15, 2, 5, 8, 14 }, { -3, -7, -10, -13, 2, 6, 9, 12 }, { -2, -5, -8, -13, 1, 4, 7, 12 },
-            { -2, -4, -6, -13, 1, 3, 5, 12 }, { -3, -6, -8, -12, 2, 5, 7, 11 }, { -3, -7, -9, -11, 2, 6, 8, 10 },
-            { -4, -7, -8, -11, 3, 6, 7, 10 }, { -3, -5, -8, -11, 2, 4, 7, 10 }, { -2, -6, -8, -10, 1, 5, 7, 9 },
-            { -2, -5, -8, -10, 1, 4, 7, 9 }, { -2, -4, -8, -10, 1, 3, 7, 9 }, { -2, -5, -7, -10, 1, 4, 6, 9 },
-            { -3, -4, -7, -10, 2, 3, 6, 9 }, { -1, -2, -3, -10, 0, 1, 2, 9 }, { -4, -6, -8, -9, 3, 5, 7, 8 },
-            { -3, -5, -7, -9, 2, 4, 6, 8 }
-        };
+        private static readonly sbyte[,] s_eacModifierTable = { { -3, -6, -9, -15, 2, 5, 8, 14 }, { -3, -7, -10, -13, 2, 6, 9, 12 }, { -2, -5, -8, -13, 1, 4, 7, 12 }, { -2, -4, -6, -13, 1, 3, 5, 12 }, { -3, -6, -8, -12, 2, 5, 7, 11 }, { -3, -7, -9, -11, 2, 6, 8, 10 }, { -4, -7, -8, -11, 3, 6, 7, 10 }, { -3, -5, -8, -11, 2, 4, 7, 10 }, { -2, -6, -8, -10, 1, 5, 7, 9 }, { -2, -5, -8, -10, 1, 4, 7, 9 }, { -2, -4, -8, -10, 1, 3, 7, 9 }, { -2, -5, -7, -10, 1, 4, 6, 9 }, { -3, -4, -7, -10, 2, 3, 6, 9 }, { -1, -2, -3, -10, 0, 1, 2, 9 }, { -4, -6, -8, -9, 3, 5, 7, 8 }, { -3, -5, -7, -9, 2, 4, 6, 8 } };
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static unsafe void ProcessPixelEac(byte i, ulong pixels, sbyte* modifierTable, int baseCodeword,
@@ -917,29 +901,28 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompress a 128-bit 4x4 pixel texture block compressed using the ETC2_EAC format.
         /// </summary>
-        /// <param name="bitstring"></param>
-        /// <param name="modeMask"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
-        public static unsafe bool DecompressBlockEtc2Eac(byte* bitstring, EtcMode modeMask,
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>true if succeeded.</returns>
+        public static unsafe bool DecompressBlockEtc2Eac(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
-            bool r = DecompressBlockEtc2(&bitstring[8], modeMask, flags, pixelBuffer);
+            bool r = DecompressBlockEtc2(&bitString[8], etc, flags, pixelBuffer);
             if (!r)
                 return false;
             // Decode the alpha part.
-            int baseCodeword = bitstring[0];
+            int baseCodeword = bitString[0];
             fixed (sbyte* modifierTableB = s_eacModifierTable)
             {
-                sbyte* modifierTable = modifierTableB + (bitstring[1] & 0x0F) * 8;
-                int multiplier = (bitstring[1] & 0xF0) >> 4;
+                sbyte* modifierTable = modifierTableB + (bitString[1] & 0x0F) * 8;
+                int multiplier = (bitString[1] & 0xF0) >> 4;
                 if (multiplier == 0 && (flags & DecompressionFunctionFlags.Encode) != DecompressionFunctionFlags.Encode)
                     // Not allowed in encoding. Decoder should handle it.
                     return false;
-                ulong pixels = ((ulong)bitstring[2] << 40) | ((ulong)bitstring[3] << 32) |
-                               ((ulong)bitstring[4] << 24)
-                               | ((ulong)bitstring[5] << 16) | ((ulong)bitstring[6] << 8) | bitstring[7];
+                ulong pixels = ((ulong)bitString[2] << 40) | ((ulong)bitString[3] << 32) | ((ulong)bitString[4] << 24)
+                               | ((ulong)bitString[5] << 16) | ((ulong)bitString[6] << 8) | bitString[7];
                 ProcessPixelEac(0, pixels, modifierTable, baseCodeword, multiplier, pixelBuffer);
                 ProcessPixelEac(1, pixels, modifierTable, baseCodeword, multiplier, pixelBuffer);
                 ProcessPixelEac(2, pixels, modifierTable, baseCodeword, multiplier, pixelBuffer);
@@ -964,7 +947,7 @@ namespace Fp.Plus.Images
         /// Return the internal mode of a ETC2_EAC block.
         /// </summary>
         /// <param name="bitstring"></param>
-        /// <returns></returns>
+        /// <returns>ETC mode.</returns>
         public static unsafe EtcMode GetModeEtc2Eac(byte* bitstring)
         {
             return GetModeEtc2(&bitstring[8]);
@@ -993,10 +976,10 @@ namespace Fp.Plus.Images
         /// is zero, store it in the first 16 bits, if offset is one store it in the last 16 bits of each
         /// 32-bit word.
         /// </summary>
-        /// <param name="qword"></param>
-        /// <param name="shift"></param>
-        /// <param name="offset"></param>
-        /// <param name="pixelBuffer"></param>
+        /// <param name="qword">Pixel.</param>
+        /// <param name="shift">Shift value.</param>
+        /// <param name="offset">Offset value.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static unsafe void DecodeBlockEac11Bit(ulong qword, int shift, int offset, byte* pixelBuffer)
         {
@@ -1025,18 +1008,16 @@ namespace Fp.Plus.Images
         /// Decompress a 64-bit 4x4 pixel texture block compressed using the
         /// EAC_R11 format.
         /// </summary>
-        /// <param name="bitstring"></param>
-        /// <param name="modeMask"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
-        public static unsafe bool DecompressBlockEacR11(byte* bitstring, EtcMode modeMask,
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>True if succeeded.</returns>
+        public static unsafe bool DecompressBlockEacR11(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
-            ulong qword = ((ulong)bitstring[0] << 56) | ((ulong)bitstring[1] << 48) |
-                          ((ulong)bitstring[2] << 40) |
-                          ((ulong)bitstring[3] << 32) | ((ulong)bitstring[4] << 24) |
-                          ((ulong)bitstring[5] << 16) | ((ulong)bitstring[6] << 8) | bitstring[7];
+            ulong qword = ((ulong)bitString[0] << 56) | ((ulong)bitString[1] << 48) | ((ulong)bitString[2] << 40) | ((ulong)bitString[3] << 32) |
+                          ((ulong)bitString[4] << 24) | ((ulong)bitString[5] << 16) | ((ulong)bitString[6] << 8) | bitString[7];
             DecodeBlockEac11Bit(qword, 0, 0, pixelBuffer);
             return true;
         }
@@ -1045,23 +1026,19 @@ namespace Fp.Plus.Images
         /// Decompress a 128-bit 4x4 pixel texture block compressed using the
         /// EAC_RG11 format.
         /// </summary>
-        /// <param name="bitstring"></param>
-        /// <param name="modeMask"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
-        public static unsafe bool DecompressBlockEacRg11(byte* bitstring, EtcMode modeMask,
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>True if succeeded.</returns>
+        public static unsafe bool DecompressBlockEacRg11(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
-            ulong redQword = ((ulong)bitstring[0] << 56) | ((ulong)bitstring[1] << 48) |
-                             ((ulong)bitstring[2] << 40) |
-                             ((ulong)bitstring[3] << 32) | ((ulong)bitstring[4] << 24) |
-                             ((ulong)bitstring[5] << 16) | ((ulong)bitstring[6] << 8) | bitstring[7];
+            ulong redQword = ((ulong)bitString[0] << 56) | ((ulong)bitString[1] << 48) | ((ulong)bitString[2] << 40) | ((ulong)bitString[3] << 32) |
+                             ((ulong)bitString[4] << 24) | ((ulong)bitString[5] << 16) | ((ulong)bitString[6] << 8) | bitString[7];
             DecodeBlockEac11Bit(redQword, 1, 0, pixelBuffer);
-            ulong greenQword = ((ulong)bitstring[8] << 56) | ((ulong)bitstring[9] << 48) |
-                               ((ulong)bitstring[10] << 40) |
-                               ((ulong)bitstring[11] << 32) | ((ulong)bitstring[12] << 24) |
-                               ((ulong)bitstring[13] << 16) | ((ulong)bitstring[14] << 8) | bitstring[15];
+            ulong greenQword = ((ulong)bitString[8] << 56) | ((ulong)bitString[9] << 48) | ((ulong)bitString[10] << 40) | ((ulong)bitString[11] << 32) |
+                               ((ulong)bitString[12] << 24) | ((ulong)bitString[13] << 16) | ((ulong)bitString[14] << 8) | bitString[15];
             DecodeBlockEac11Bit(greenQword, 1, 1, pixelBuffer);
             return true;
         }
@@ -1095,11 +1072,11 @@ namespace Fp.Plus.Images
         /// is zero, store it in the first 16 bits, if offset is one store it in the last 16 bits of each
         /// 32-bit word.
         /// </summary>
-        /// <param name="qword"></param>
-        /// <param name="shift"></param>
-        /// <param name="offset"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
+        /// <param name="qword">Pixel.</param>
+        /// <param name="shift">Shift value.</param>
+        /// <param name="offset">Offset value.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>True if succeeded.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe bool DecodeBlockEacSigned11Bit(ulong qword, int shift, int offset, byte* pixelBuffer)
         {
@@ -1132,43 +1109,41 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompress a 64-bit 4x4 pixel texture block compressed using the EAC_SIGNED_R11 format.
         /// </summary>
-        /// <param name="bitstring"></param>
-        /// <param name="modeMask"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
-        public static unsafe bool DecompressBlockEacSignedR11(byte* bitstring, EtcMode modeMask,
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>True if succeeded.</returns>
+        public static unsafe bool DecompressBlockEacSignedR11(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
-            ulong qword = ((ulong)bitstring[0] << 56) | ((ulong)bitstring[1] << 48) |
-                          ((ulong)bitstring[2] << 40) |
-                          ((ulong)bitstring[3] << 32) | ((ulong)bitstring[4] << 24) |
-                          ((ulong)bitstring[5] << 16) | ((ulong)bitstring[6] << 8) | bitstring[7];
+            ulong qword = ((ulong)bitString[0] << 56) | ((ulong)bitString[1] << 48) | ((ulong)bitString[2] << 40) | ((ulong)bitString[3] << 32) |
+                          ((ulong)bitString[4] << 24) | ((ulong)bitString[5] << 16) | ((ulong)bitString[6] << 8) | bitString[7];
             return DecodeBlockEacSigned11Bit(qword, 0, 0, pixelBuffer);
         }
 
         /// <summary>
         /// Decompress a 128-bit 4x4 pixel texture block compressed using the EAC_SIGNED_RG11 format.
         /// </summary>
-        /// <param name="bitstring"></param>
-        /// <param name="modeMask"></param>
-        /// <param name="flags"></param>
-        /// <param name="pixelBuffer"></param>
-        /// <returns></returns>
-        public static unsafe bool DecompressBlockEacSignedRg11(byte* bitstring, EtcMode modeMask,
+        /// <param name="bitString">Block.</param>
+        /// <param name="etc">ETC mode.</param>
+        /// <param name="flags">Flags.</param>
+        /// <param name="pixelBuffer">Output buffer.</param>
+        /// <returns>True if succeeded.</returns>
+        public static unsafe bool DecompressBlockEacSignedRg11(byte* bitString, EtcMode etc,
             DecompressionFunctionFlags flags, byte* pixelBuffer)
         {
-            ulong redQword = ((ulong)bitstring[0] << 56) | ((ulong)bitstring[1] << 48) |
-                             ((ulong)bitstring[2] << 40) |
-                             ((ulong)bitstring[3] << 32) | ((ulong)bitstring[4] << 24) |
-                             ((ulong)bitstring[5] << 16) | ((ulong)bitstring[6] << 8) | bitstring[7];
+            ulong redQword = ((ulong)bitString[0] << 56) | ((ulong)bitString[1] << 48) |
+                             ((ulong)bitString[2] << 40) |
+                             ((ulong)bitString[3] << 32) | ((ulong)bitString[4] << 24) |
+                             ((ulong)bitString[5] << 16) | ((ulong)bitString[6] << 8) | bitString[7];
             bool r = DecodeBlockEacSigned11Bit(redQword, 1, 0, pixelBuffer);
             if (!r)
                 return false;
-            ulong greenQword = ((ulong)bitstring[8] << 56) | ((ulong)bitstring[9] << 48) |
-                               ((ulong)bitstring[10] << 40) |
-                               ((ulong)bitstring[11] << 32) | ((ulong)bitstring[12] << 24) |
-                               ((ulong)bitstring[13] << 16) | ((ulong)bitstring[14] << 8) | bitstring[15];
+            ulong greenQword = ((ulong)bitString[8] << 56) | ((ulong)bitString[9] << 48) |
+                               ((ulong)bitString[10] << 40) |
+                               ((ulong)bitString[11] << 32) | ((ulong)bitString[12] << 24) |
+                               ((ulong)bitString[13] << 16) | ((ulong)bitString[14] << 8) | bitString[15];
             return DecodeBlockEacSigned11Bit(greenQword, 1, 1, pixelBuffer);
         }
     }
@@ -1180,14 +1155,14 @@ namespace Fp
     public partial class PlusUtil
     {
         /// <summary>
-        /// Decode ETC2-compressed image
+        /// Decodes ETC2-compressed image.
         /// </summary>
-        /// <param name="src">Source buffer</param>
-        /// <param name="img">Target buffer</param>
-        /// <param name="width">Output width</param>
-        /// <param name="height">Output height</param>
-        /// <param name="hasAlpha">Image has alpha channel</param>
-        /// <returns>True if succeeded</returns>
+        /// <param name="src">Source buffer.</param>
+        /// <param name="img">Target buffer.</param>
+        /// <param name="width">Output width.</param>
+        /// <param name="height">Output height.</param>
+        /// <param name="hasAlpha">Image has alpha channel.</param>
+        /// <returns>True if succeeded.</returns>
         public static unsafe bool DecodeEtc2(ReadOnlySpan<byte> src, Span<uint> img, int width, int height,
             bool hasAlpha)
         {

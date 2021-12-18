@@ -6,7 +6,7 @@ namespace Fp
     /// <summary>
     /// Represents a processor designed for scripting.
     /// </summary>
-    internal sealed class ScriptingSegmentedProcessor : Processor
+    internal sealed class ScriptingSegmentedProcessor : FsProcessor
     {
         private readonly Func<IEnumerable<Data>> _func;
 

@@ -81,7 +81,7 @@ namespace Dereliction.ViewModels
             {
                 if (!t.IsCanceled)
                 {
-                    foreach (var f in t.Result)
+                    foreach (string? f in t.Result)
                         AddInput(f);
                 }
             });
@@ -128,14 +128,14 @@ namespace Dereliction.ViewModels
 
                         ClearLog();
                         Outputs.Clear();
-                        Processor.Registered.Factories.Clear();
+                        FsProcessor.Registered.Factories.Clear();
 
                         await fpx.Program.LoadAsync(text, directory, Log);
 
                         p.Report(0.2f);
 
                         Log("Registered processors:");
-                        foreach (var x in Processor.Registered.Factories)
+                        foreach (var x in FsProcessor.Registered.Factories)
                         {
                             var i = x.Info;
                             string exts = i.Extensions.Length == 0
@@ -145,10 +145,10 @@ namespace Dereliction.ViewModels
                         }
 
                         Log("Creating processors...");
-                        var processors = Processor.Registered.Factories
+                        var processors = FsProcessor.Registered.Factories
                             .Select(f => (name: f.Info.Name, processor: f.CreateProcessor())).ToArray();
                         var configuration =
-                            new ProcessorConfiguration("", 1, false, true, false, _msLogger, Array.Empty<string>());
+                            new ProcessorConfiguration(false, true, false, _msLogger, Array.Empty<string>());
 
                         Log("Loading input tree...");
                         var inputModel = InputModel.Create(Inputs);
@@ -161,9 +161,7 @@ namespace Dereliction.ViewModels
                         float idx = 0, count = inputModel.Inputs.Count * processors.Length;
                         foreach ((string fakeRoot, string fake) input in inputModel.Inputs)
                         {
-                            var src = new Coordinator.ExecutionSource(
-                                configuration with { OutputRootDirectory = input.fakeRoot },
-                                inputFilesystem);
+                            var src = new Coordinator.ExecutionSource(configuration, new Coordinator.ExecutionSettings(input.fakeRoot, 1), inputFilesystem);
                             foreach (var processor in processors)
                             {
                                 if (!processor.processor.AcceptFile(input.fake)) continue;
@@ -321,7 +319,7 @@ namespace Dereliction.ViewModels
                     Leaves.Add(fake, (real, true));
                     List<(string fakePath, bool isDirectory)> files = new();
                     Directories.Add(fake, files);
-                    foreach (var fse in Directory.GetFileSystemEntries(fake))
+                    foreach (string? fse in Directory.GetFileSystemEntries(fake))
                     {
                         string fakeSub = Path.GetFileName(fse);
                         if (Add(fakeRoot, fse, Path.Combine(fake, fakeSub), out bool isSubDirectory))

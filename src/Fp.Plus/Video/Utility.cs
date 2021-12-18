@@ -12,20 +12,20 @@ namespace Fp
         #region AVI
 
         /// <summary>
-        /// Detect WAV audio files.
+        /// Detects WAV audio files.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _AVI() => _AVI(null);
 
         /// <summary>
-        /// Detect WAV audio files.
+        /// Detects WAV audio files.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _AVI(this object source) => _AVI(null, source);
 
         /// <summary>
-        /// Detect WAV audio files.
+        /// Detects WAV audio files.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -48,20 +48,20 @@ namespace Fp
         #region Ogv
 
         /// <summary>
-        /// Detect Ogg video containers.
+        /// Detects Ogg video containers.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _OGV() => _OGV(null);
 
         /// <summary>
-        /// Detect Ogg video containers.
+        /// Detects Ogg video containers.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _OGV(this object source) => _OGV(null, source);
 
         /// <summary>
-        /// Detect Ogg video containers.
+        /// Detects Ogg video containers.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>

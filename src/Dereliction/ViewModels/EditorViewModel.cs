@@ -179,7 +179,7 @@ namespace Dereliction.ViewModels
         {
             ScriptList.Clear();
             if (!Directory.Exists(Program.WorkingDirectory)) return;
-            foreach (var script in Directory.EnumerateFiles(Program.WorkingDirectory))
+            foreach (string? script in Directory.EnumerateFiles(Program.WorkingDirectory))
                 ScriptList.Add(new RealFsElement(Path.GetFileName(script), script));
         }
 

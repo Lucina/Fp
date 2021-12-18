@@ -6,7 +6,7 @@ using Fp.Plus.Images;
 namespace Fp.Plus.Images
 {
     /// <summary>
-    /// DXT1/DXT5 texture decoder
+    /// DXT1/DXT5 texture decoder.
     /// </summary>
     /// <remarks>
     /// Implementation was adapted from C++ code found at<br/>
@@ -17,33 +17,33 @@ namespace Fp.Plus.Images
     public static class DxtDecoder
     {
         /// <summary>
-        /// Helper method that packs RGBA channels into a single 4 byte pixel
+        /// Helper method that packs RGBA channels into a single 4 byte pixel.
         /// </summary>
-        /// <param name="r">red channel</param>
-        /// <param name="g">green channel</param>
-        /// <param name="b">blue channel</param>
-        /// <param name="a">alpha channel</param>
-        /// <returns>packed rgba</returns>
+        /// <param name="r">red channel.</param>
+        /// <param name="g">green channel.</param>
+        /// <param name="b">blue channel.</param>
+        /// <param name="a">alpha channel.</param>
+        /// <returns>packed rgba.</returns>
         public static uint Le_PackRgba(byte r, byte g, byte b, byte a) => (uint)((a << 24) | (b << 16) | (g << 8) | r);
 
         /// <summary>
-        /// Helper method that packs RGBA channels into a single 4 byte pixel
+        /// Helper method that packs RGBA channels into a single 4 byte pixel.
         /// </summary>
-        /// <param name="r">red channel</param>
-        /// <param name="g">green channel</param>
-        /// <param name="b">blue channel</param>
-        /// <param name="a">alpha channel</param>
-        /// <returns>packed rgba</returns>
+        /// <param name="r">red channel.</param>
+        /// <param name="g">green channel.</param>
+        /// <param name="b">blue channel.</param>
+        /// <param name="a">alpha channel.</param>
+        /// <returns>packed rgba.</returns>
         public static uint Be_PackRgba(byte r, byte g, byte b, byte a) => (uint)((r << 24) | (g << 16) | (b << 8) | a);
 
         /// <summary>
         /// Decompresses one block of a DXT1 texture and stores the resulting pixels at the appropriate offset in <paramref name="image"/>.
         /// </summary>
-        /// <param name="x">x-coordinate of the first pixel in the block</param>
-        /// <param name="y">y-coordinate of the first pixel in the block</param>
-        /// <param name="width">width of the texture being decompressed</param>
-        /// <param name="blockStorage">pointer to the block to decompress</param>
-        /// <param name="image">pointer to image where the decompressed pixel data should be stored</param>
+        /// <param name="x">x-coordinate of the first pixel in the block.</param>
+        /// <param name="y">y-coordinate of the first pixel in the block.</param>
+        /// <param name="width">width of the texture being decompressed.</param>
+        /// <param name="blockStorage">pointer to the block to decompress.</param>
+        /// <param name="image">pointer to image where the decompressed pixel data should be stored.</param>
         public static unsafe void Le_DecompressBlockDxt1(uint x, uint y, uint width, byte* blockStorage, uint* image)
         {
             ushort color0 = *(ushort*)blockStorage;
@@ -123,11 +123,11 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompresses one block of a DXT1 texture and stores the resulting pixels at the appropriate offset in <paramref name="image"/>.
         /// </summary>
-        /// <param name="x">x-coordinate of the first pixel in the block</param>
-        /// <param name="y">y-coordinate of the first pixel in the block</param>
-        /// <param name="width">width of the texture being decompressed</param>
-        /// <param name="blockStorage">pointer to the block to decompress</param>
-        /// <param name="image">pointer to image where the decompressed pixel data should be stored</param>
+        /// <param name="x">x-coordinate of the first pixel in the block.</param>
+        /// <param name="y">y-coordinate of the first pixel in the block.</param>
+        /// <param name="width">width of the texture being decompressed.</param>
+        /// <param name="blockStorage">pointer to the block to decompress.</param>
+        /// <param name="image">pointer to image where the decompressed pixel data should be stored.</param>
         public static unsafe void Be_DecompressBlockDxt1(uint x, uint y, uint width, byte* blockStorage, uint* image)
         {
             ushort color0 = BinaryPrimitives.ReverseEndianness(*(ushort*)blockStorage);
@@ -207,10 +207,10 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompresses all the blocks of a DXT1 compressed texture and stores the resulting pixels in <paramref name="image"/>.
         /// </summary>
-        /// <param name="width">Texture width</param>
-        /// <param name="height">Texture height</param>
-        /// <param name="blockStorage">pointer to compressed DXT1 blocks</param>
-        /// <param name="image">pointer to the image where the decompressed pixels will be stored</param>
+        /// <param name="width">Texture width.</param>
+        /// <param name="height">Texture height.</param>
+        /// <param name="blockStorage">pointer to compressed DXT1 blocks.</param>
+        /// <param name="image">pointer to the image where the decompressed pixels will be stored.</param>
         public static unsafe void BlockDecompressImageDxt1(uint width, uint height, ReadOnlySpan<byte> blockStorage,
             Span<uint> image)
         {
@@ -243,11 +243,11 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompresses one block of a DXT5 texture and stores the resulting pixels at the appropriate offset in <paramref name="image"/>.
         /// </summary>
-        /// <param name="x">x-coordinate of the first pixel in the block</param>
-        /// <param name="y">y-coordinate of the first pixel in the block</param>
-        /// <param name="width">width of the texture being decompressed</param>
-        /// <param name="blockStorage">pointer to the block to decompress</param>
-        /// <param name="image">pointer to image where the decompressed pixel data should be stored</param>
+        /// <param name="x">x-coordinate of the first pixel in the block.</param>
+        /// <param name="y">y-coordinate of the first pixel in the block.</param>
+        /// <param name="width">width of the texture being decompressed.</param>
+        /// <param name="blockStorage">pointer to the block to decompress.</param>
+        /// <param name="image">pointer to image where the decompressed pixel data should be stored.</param>
         public static unsafe void Le_DecompressBlockDxt5(uint x, uint y, uint width, byte* blockStorage, uint* image)
         {
             byte alpha0 = *blockStorage;
@@ -354,11 +354,11 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompresses one block of a DXT5 texture and stores the resulting pixels at the appropriate offset in <paramref name="image"/>.
         /// </summary>
-        /// <param name="x">x-coordinate of the first pixel in the block</param>
-        /// <param name="y">y-coordinate of the first pixel in the block</param>
-        /// <param name="width">width of the texture being decompressed</param>
-        /// <param name="blockStorage">pointer to the block to decompress</param>
-        /// <param name="image">pointer to image where the decompressed pixel data should be stored</param>
+        /// <param name="x">x-coordinate of the first pixel in the block.</param>
+        /// <param name="y">y-coordinate of the first pixel in the block.</param>
+        /// <param name="width">width of the texture being decompressed.</param>
+        /// <param name="blockStorage">pointer to the block to decompress.</param>
+        /// <param name="image">pointer to image where the decompressed pixel data should be stored.</param>
         public static unsafe void Be_DecompressBlockDxt5(uint x, uint y, uint width, byte* blockStorage, uint* image)
         {
             byte alpha0 = *blockStorage;
@@ -465,10 +465,10 @@ namespace Fp.Plus.Images
         /// <summary>
         /// Decompresses all the blocks of a DXT5 compressed texture and stores the resulting pixels in <paramref name="image"/>.
         /// </summary>
-        /// <param name="width">Texture width</param>
-        /// <param name="height">Texture height</param>
-        /// <param name="blockStorage">pointer to compressed DXT5 blocks</param>
-        /// <param name="image">pointer to the image where the decompressed pixels will be stored</param>
+        /// <param name="width">Texture width.</param>
+        /// <param name="height">Texture height.</param>
+        /// <param name="blockStorage">pointer to compressed DXT5 blocks.</param>
+        /// <param name="image">pointer to the image where the decompressed pixels will be stored.</param>
         public static unsafe void BlockDecompressImageDxt5(uint width, uint height, ReadOnlySpan<byte> blockStorage,
             Span<uint> image)
         {
@@ -506,22 +506,22 @@ namespace Fp
     public partial class PlusUtil
     {
         /// <summary>
-        /// Decompress DXT1-compressed image
+        /// Decompresses DXT1-compressed image.
         /// </summary>
-        /// <param name="src">Source buffer</param>
-        /// <param name="img">Target buffer</param>
-        /// <param name="width">Width</param>
-        /// <param name="height">Height</param>
+        /// <param name="src">Source buffer.</param>
+        /// <param name="img">Target buffer.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
         public static void DecodeDxt1(ReadOnlySpan<byte> src, Span<uint> img, int width, int height) =>
             DxtDecoder.BlockDecompressImageDxt1((uint)width, (uint)height, src, img);
 
         /// <summary>
-        /// Decompress DXT5-compressed image
+        /// Decompresses DXT5-compressed image.
         /// </summary>
-        /// <param name="src">Source buffer</param>
-        /// <param name="img">Target buffer</param>
-        /// <param name="width">Width</param>
-        /// <param name="height">Height</param>
+        /// <param name="src">Source buffer.</param>
+        /// <param name="img">Target buffer.</param>
+        /// <param name="width">Width.</param>
+        /// <param name="height">Height.</param>
         public static void DecodeDxt5(ReadOnlySpan<byte> src, Span<uint> img, int width, int height) =>
             DxtDecoder.BlockDecompressImageDxt5((uint)width, (uint)height, src, img);
     }

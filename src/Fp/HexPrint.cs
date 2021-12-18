@@ -6,30 +6,29 @@ using System.Linq;
 namespace Fp
 {
     /// <summary>
-    /// Prints hex text with color codes for labelled sections
+    /// Prints hex text with color codes for labelled sections.
     /// </summary>
     public static class HexPrint
     {
         /// <summary>
-        /// Maximum width of offset label
+        /// Maximum width of offset label.
         /// </summary>
         public const int PosWidth = 10;
 
         /// <summary>
-        /// Maximum width of annotation label
+        /// Maximum width of annotation label.
         /// </summary>
         public const int TextWidth = 16;
 
         /// <summary>
-        /// Print hex text
+        /// Prints hex text.
         /// </summary>
-        /// <param name="data">Data to print</param>
-        /// <param name="annotations">Data annotations</param>
-        /// <param name="target">Log target</param>
-        /// <param name="space">Space between bytes</param>
-        /// <param name="pow2Modulus">Only display power of 2 per line</param>
-        /// <param name="displayWidth">Available display width</param>
-        /// <exception cref="ApplicationException"></exception>
+        /// <param name="data">Data to print.</param>
+        /// <param name="annotations">Data annotations.</param>
+        /// <param name="target">Log target.</param>
+        /// <param name="space">Space between bytes.</param>
+        /// <param name="pow2Modulus">Only display power of 2 per line.</param>
+        /// <param name="displayWidth">Available display width.</param>
         public static void Print(ReadOnlySpan<byte> data, ILogReceiver target,
             IEnumerable<(int offset, int length, string? label, ConsoleColor color)>? annotations = null,
             bool space = true, bool pow2Modulus = false, int? displayWidth = null)
@@ -41,7 +40,6 @@ namespace Fp
             int width = displayWidth ?? Console.WindowWidth;
             int availableSpace = width - TextWidth - PosWidth - 2 - 1;
             int charWidth = space ? 3 : 2;
-            //if (availableSpace < charWidth) throw new ApplicationException("Console width too small for output");
             availableSpace = Math.Max(availableSpace, charWidth * 4);
             int w = availableSpace / charWidth;
             if (pow2Modulus)

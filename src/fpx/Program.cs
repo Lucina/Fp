@@ -46,7 +46,7 @@ namespace fpx
 
         private static async Task<string> ReadAllTextAsync(string file)
         {
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
             return await File.ReadAllTextAsync(file);
 #else
             await Task.Yield();
@@ -62,7 +62,7 @@ namespace fpx
                 : null) ?? Directory.GetCurrentDirectory();
             log ??= (_, _) => { };
             var options = new ExecuteCodeCommandOptions(text, directory,
-                args?.ToArray() ?? new[] { Processor.NO_EXECUTE_CLI },
+                args?.ToArray() ?? new[] { FsProcessor.NO_EXECUTE_CLI },
                 OptimizationLevel.Debug, false, null);
             LogDebug(log, "Executing script...");
             var logWriter = new LogWriter(log);

@@ -73,13 +73,14 @@
   
   <h1 id="Fp_FileSystemSource" data-uid="Fp.FileSystemSource" class="text-break">Class FileSystemSource
   </h1>
-  <div class="markdown level0 summary"><p>Object for I/O to some filesystem provider</p>
+  <div class="markdown level0 summary"><p>Object for I/O to some filesystem provider.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">FileSystemSource</span></div>
+      <div class="level2"><a class="xref" href="Fp.RealFileSystemSource.html">RealFileSystemSource</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
   <h6><strong>Assembly</strong>: Fp.dll</h6>
@@ -91,13 +92,13 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_Default.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.Default%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_Default.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.Default%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L22">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L27">View Source</a>
   </span>
   <h4 id="Fp_FileSystemSource_Default" data-uid="Fp.FileSystemSource.Default">Default</h4>
-  <div class="markdown level1 summary"><p>Default filesystem provider for platform</p>
+  <div class="markdown level1 summary"><p>Default filesystem provider for platform.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -121,14 +122,13 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_ParallelAccess.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.ParallelAccess%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_ParallelAccess.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.ParallelAccess%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L17">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L22">View Source</a>
   </span>
   <h4 id="Fp_FileSystemSource_ParallelAccess" data-uid="Fp.FileSystemSource.ParallelAccess">ParallelAccess</h4>
-  <div class="markdown level1 summary"><p>Set when filesystem is being accessed in parallel
-(copies input streams)</p>
+  <div class="markdown level1 summary"><p>Set when filesystem is being accessed in parallel.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -150,18 +150,21 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="Fp_FileSystemSource_ParallelAccess_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This options determines whether the provider will copy its input streams to allow unhindered seeking.</p>
+</div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_CreateDirectory_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.CreateDirectory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_CreateDirectory_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.CreateDirectory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L88">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L93">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_CreateDirectory_" data-uid="Fp.FileSystemSource.CreateDirectory*"></a>
   <h4 id="Fp_FileSystemSource_CreateDirectory_System_String_" data-uid="Fp.FileSystemSource.CreateDirectory(System.String)">CreateDirectory(String)</h4>
-  <div class="markdown level1 summary"><p>Create directory (including parents)</p>
+  <div class="markdown level1 summary"><p>Creates a directory (including parents).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -181,7 +184,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Directory to create</p>
+        <td><p>Directory to create.</p>
 </td>
       </tr>
     </tbody>
@@ -197,21 +200,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if succeeded</p>
+        <td><p>True if succeeded.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_DirectoryExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.DirectoryExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_DirectoryExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.DirectoryExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L103">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L108">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_DirectoryExists_" data-uid="Fp.FileSystemSource.DirectoryExists*"></a>
   <h4 id="Fp_FileSystemSource_DirectoryExists_System_String_" data-uid="Fp.FileSystemSource.DirectoryExists(System.String)">DirectoryExists(String)</h4>
-  <div class="markdown level1 summary"><p>Check if directory exists</p>
+  <div class="markdown level1 summary"><p>Checks if a directory exists.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -231,7 +234,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Directory path to check</p>
+        <td><p>Directory path to check.</p>
 </td>
       </tr>
     </tbody>
@@ -247,21 +250,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if exists</p>
+        <td><p>True if exists.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_EnumerateDirectories_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.EnumerateDirectories(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_EnumerateDirectories_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.EnumerateDirectories(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L81">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L86">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_EnumerateDirectories_" data-uid="Fp.FileSystemSource.EnumerateDirectories*"></a>
   <h4 id="Fp_FileSystemSource_EnumerateDirectories_System_String_" data-uid="Fp.FileSystemSource.EnumerateDirectories(System.String)">EnumerateDirectories(String)</h4>
-  <div class="markdown level1 summary"><p>Enumerate directories in a directory</p>
+  <div class="markdown level1 summary"><p>Enumerates directories in a directory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -281,7 +284,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Directory to enumerate</p>
+        <td><p>Directory to enumerate.</p>
 </td>
       </tr>
     </tbody>
@@ -297,21 +300,21 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><p>Directories in directory</p>
+        <td><p>Directories in directory.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_EnumerateFiles_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.EnumerateFiles(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_EnumerateFiles_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.EnumerateFiles(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L74">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L79">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_EnumerateFiles_" data-uid="Fp.FileSystemSource.EnumerateFiles*"></a>
   <h4 id="Fp_FileSystemSource_EnumerateFiles_System_String_" data-uid="Fp.FileSystemSource.EnumerateFiles(System.String)">EnumerateFiles(String)</h4>
-  <div class="markdown level1 summary"><p>Enumerate files in a directory</p>
+  <div class="markdown level1 summary"><p>Enumerates files in a directory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -331,7 +334,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Directory to enumerate</p>
+        <td><p>Directory to enumerate.</p>
 </td>
       </tr>
     </tbody>
@@ -347,21 +350,21 @@
     <tbody>
       <tr>
         <td><span class="xref">IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><p>Files in directory</p>
+        <td><p>Files in directory.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_FileExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.FileExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_FileExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.FileExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L95">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L100">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_FileExists_" data-uid="Fp.FileSystemSource.FileExists*"></a>
   <h4 id="Fp_FileSystemSource_FileExists_System_String_" data-uid="Fp.FileSystemSource.FileExists(System.String)">FileExists(String)</h4>
-  <div class="markdown level1 summary"><p>Check if file exists</p>
+  <div class="markdown level1 summary"><p>Checks if a file exists.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -381,7 +384,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>File path to check</p>
+        <td><p>File path to check.</p>
 </td>
       </tr>
     </tbody>
@@ -397,21 +400,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if exists</p>
+        <td><p>True if exists.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_NormalizePath_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.NormalizePath(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_NormalizePath_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.NormalizePath(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L29">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L34">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_NormalizePath_" data-uid="Fp.FileSystemSource.NormalizePath*"></a>
   <h4 id="Fp_FileSystemSource_NormalizePath_System_String_" data-uid="Fp.FileSystemSource.NormalizePath(System.String)">NormalizePath(String)</h4>
-  <div class="markdown level1 summary"><p>Normalize a path to the underlying filesystem</p>
+  <div class="markdown level1 summary"><p>Normalizes a path to the underlying filesystem.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -431,7 +434,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Path to normalize</p>
+        <td><p>Path to normalize.</p>
 </td>
       </tr>
     </tbody>
@@ -447,21 +450,21 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>Normalized path</p>
+        <td><p>Normalized path.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_OpenRead_System_String_FileMode_FileShare_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.OpenRead(System.String%2CFileMode%2CFileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_OpenRead_System_String_FileMode_FileShare_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.OpenRead(System.String%2CFileMode%2CFileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L38">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L43">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_OpenRead_" data-uid="Fp.FileSystemSource.OpenRead*"></a>
   <h4 id="Fp_FileSystemSource_OpenRead_System_String_FileMode_FileShare_" data-uid="Fp.FileSystemSource.OpenRead(System.String,FileMode,FileShare)">OpenRead(String, FileMode, FileShare)</h4>
-  <div class="markdown level1 summary"><p>Get seekable read-only stream</p>
+  <div class="markdown level1 summary"><p>Gets a seekable read-only stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -481,19 +484,19 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Path to open</p>
+        <td><p>Path to open.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">FileMode</span></td>
         <td><span class="parametername">fileMode</span></td>
-        <td><p>File open mode</p>
+        <td><p>File open mode.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">FileShare</span></td>
         <td><span class="parametername">fileShare</span></td>
-        <td><p>File sharing mode</p>
+        <td><p>File sharing mode.</p>
 </td>
       </tr>
     </tbody>
@@ -509,21 +512,21 @@
     <tbody>
       <tr>
         <td><span class="xref">Stream</span></td>
-        <td><p>Stream</p>
+        <td><p>Stream.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_OpenReadImpl_System_String_FileMode_FileShare_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.OpenReadImpl(System.String%2CFileMode%2CFileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_OpenReadImpl_System_String_FileMode_FileShare_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.OpenReadImpl(System.String%2CFileMode%2CFileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L56">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L61">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_OpenReadImpl_" data-uid="Fp.FileSystemSource.OpenReadImpl*"></a>
   <h4 id="Fp_FileSystemSource_OpenReadImpl_System_String_FileMode_FileShare_" data-uid="Fp.FileSystemSource.OpenReadImpl(System.String,FileMode,FileShare)">OpenReadImpl(String, FileMode, FileShare)</h4>
-  <div class="markdown level1 summary"><p>Get read-only stream</p>
+  <div class="markdown level1 summary"><p>Gets a read-only stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -543,19 +546,19 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Path to open</p>
+        <td><p>Path to open.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">FileMode</span></td>
         <td><span class="parametername">fileMode</span></td>
-        <td><p>File open mode</p>
+        <td><p>File open mode.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">FileShare</span></td>
         <td><span class="parametername">fileShare</span></td>
-        <td><p>File sharing mode</p>
+        <td><p>File sharing mode.</p>
 </td>
       </tr>
     </tbody>
@@ -571,21 +574,21 @@
     <tbody>
       <tr>
         <td><span class="xref">Stream</span></td>
-        <td><p>Stream</p>
+        <td><p>Stream.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_OpenWrite_System_String_FileMode_FileShare_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.OpenWrite(System.String%2CFileMode%2CFileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource_OpenWrite_System_String_FileMode_FileShare_.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource.OpenWrite(System.String%2CFileMode%2CFileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L66">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L71">View Source</a>
   </span>
   <a id="Fp_FileSystemSource_OpenWrite_" data-uid="Fp.FileSystemSource.OpenWrite*"></a>
   <h4 id="Fp_FileSystemSource_OpenWrite_System_String_FileMode_FileShare_" data-uid="Fp.FileSystemSource.OpenWrite(System.String,FileMode,FileShare)">OpenWrite(String, FileMode, FileShare)</h4>
-  <div class="markdown level1 summary"><p>Get write-only stream</p>
+  <div class="markdown level1 summary"><p>Get a write-only stream.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -605,19 +608,19 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Path to open</p>
+        <td><p>Path to open.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">FileMode</span></td>
         <td><span class="parametername">fileMode</span></td>
-        <td><p>File open mode</p>
+        <td><p>File open mode.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">FileShare</span></td>
         <td><span class="parametername">fileShare</span></td>
-        <td><p>File sharing mode</p>
+        <td><p>File sharing mode.</p>
 </td>
       </tr>
     </tbody>
@@ -633,7 +636,7 @@
     <tbody>
       <tr>
         <td><span class="xref">Stream</span></td>
-        <td><p>Stream</p>
+        <td><p>Stream.</p>
 </td>
       </tr>
     </tbody>
@@ -650,10 +653,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_FileSystemSource.md&amp;value=---%0Auid%3A%20Fp.FileSystemSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/riina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/FileSystemSource.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

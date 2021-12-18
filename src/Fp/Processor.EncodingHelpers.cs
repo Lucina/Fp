@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Fp.Helpers;
-using static Fp.Processor;
+using static Fp.FsProcessor;
 
 namespace Fp
 {
@@ -240,7 +240,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array.
+        /// Writes array.
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
@@ -250,7 +250,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array.
+        /// Writes array.
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
@@ -262,10 +262,10 @@ namespace Fp
         #region Static endianness
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         /// <returns>Converted array.</returns>
         public static short[] GetS16Array(ReadOnlySpan<byte> span, bool littleEndian)
         {
@@ -275,11 +275,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         public static void SetS16Array(Span<byte> span, ReadOnlySpan<short> array, bool littleEndian)
         {
             MemoryMarshal.Cast<short, byte>(array).CopyTo(span);
@@ -287,10 +287,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         /// <returns>Converted array.</returns>
         public static int[] GetS32Array(ReadOnlySpan<byte> span, bool littleEndian)
         {
@@ -300,11 +300,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         public static void SetS32Array(Span<byte> span, ReadOnlySpan<int> array, bool littleEndian)
         {
             MemoryMarshal.Cast<int, byte>(array).CopyTo(span);
@@ -312,10 +312,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         /// <returns>Converted array.</returns>
         public static long[] GetS64Array(ReadOnlySpan<byte> span, bool littleEndian)
         {
@@ -325,11 +325,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         public static void SetS64Array(Span<byte> span, ReadOnlySpan<long> array, bool littleEndian)
         {
             MemoryMarshal.Cast<long, byte>(array).CopyTo(span);
@@ -337,10 +337,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         /// <returns>Converted array.</returns>
         public static ushort[] GetU16Array(ReadOnlySpan<byte> span, bool littleEndian)
         {
@@ -350,11 +350,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         public static void SetU16Array(Span<byte> span, ReadOnlySpan<ushort> array, bool littleEndian)
         {
             MemoryMarshal.Cast<ushort, byte>(array).CopyTo(span);
@@ -362,10 +362,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         /// <returns>Converted array.</returns>
         public static uint[] GetU32Array(ReadOnlySpan<byte> span, bool littleEndian)
         {
@@ -375,11 +375,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         public static void SetU32Array(Span<byte> span, ReadOnlySpan<uint> array, bool littleEndian)
         {
             MemoryMarshal.Cast<uint, byte>(array).CopyTo(span);
@@ -387,10 +387,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         /// <returns>Converted array.</returns>
         public static ulong[] GetU64Array(ReadOnlySpan<byte> span, bool littleEndian)
         {
@@ -400,11 +400,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
-        /// <param name="littleEndian">If true, use little-endian encoding</param>
+        /// <param name="littleEndian">If true, use little-endian encoding.</param>
         public static void SetU64Array(Span<byte> span, ReadOnlySpan<ulong> array, bool littleEndian)
         {
             MemoryMarshal.Cast<ulong, byte>(array).CopyTo(span);
@@ -416,84 +416,84 @@ namespace Fp
         #region Instance endianness
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <returns>Converted array.</returns>
         public short[] GetS16Array(ReadOnlySpan<byte> span) => GetS16Array(span, LittleEndian);
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
         public void SetS16Array(Span<byte> span, short[] array) => SetS16Array(span, array, LittleEndian);
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <returns>Converted array.</returns>
         public int[] GetS32Array(ReadOnlySpan<byte> span) => GetS32Array(span, LittleEndian);
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
         public void SetS32Array(Span<byte> span, int[] array) => SetS32Array(span, array, LittleEndian);
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <returns>Converted array.</returns>
         public long[] GetS64Array(ReadOnlySpan<byte> span) => GetS64Array(span, LittleEndian);
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
         public void SetS64Array(Span<byte> span, long[] array) => SetS64Array(span, array, LittleEndian);
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <returns>Converted array.</returns>
         public ushort[] GetU16Array(ReadOnlySpan<byte> span) => GetU16Array(span, LittleEndian);
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
         public void SetU16Array(Span<byte> span, ushort[] array) => SetU16Array(span, array, LittleEndian);
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <returns>Converted array.</returns>
         public uint[] GetU32Array(ReadOnlySpan<byte> span) => GetU32Array(span, LittleEndian);
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
         public void SetU32Array(Span<byte> span, uint[] array) => SetU32Array(span, array, LittleEndian);
 
         /// <summary>
-        /// Read converted array (with endianness switch).
+        /// Reads converted array (with endianness switch).
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <returns>Converted array.</returns>
         public ulong[] GetU64Array(ReadOnlySpan<byte> span) => GetU64Array(span, LittleEndian);
 
         /// <summary>
-        /// Write array (with endianness switch).
+        /// Writes array (with endianness switch).
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>
@@ -502,7 +502,7 @@ namespace Fp
         #endregion
 
         /// <summary>
-        /// Get generic array.
+        /// Gets generic array.
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <typeparam name="T">Element type.</typeparam>
@@ -513,7 +513,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get generic array.
+        /// Gets generic array.
         /// </summary>
         /// <param name="span">Source span.</param>
         /// <typeparam name="T">Element type.</typeparam>
@@ -524,7 +524,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Set generic array.
+        /// Sets generic array.
         /// </summary>
         /// <param name="span">Target span.</param>
         /// <param name="array">Source array.</param>

@@ -6,59 +6,59 @@ using System.IO;
 namespace Fp
 {
     /// <summary>
-    /// Intermediate-format data container
+    /// Intermediate-format data container.
     /// </summary>
     public abstract class Data : IDisposable, ICloneable
     {
         /// <summary>
-        /// Generic format
+        /// Generic format.
         /// </summary>
         public static readonly Guid Generic = Guid.Parse("2FE8E773-EE1F-42BB-95B2-F8E4B92B46C2");
 
         /// <summary>
-        /// Export unsupported
+        /// Export unsupported.
         /// </summary>
         public static readonly Guid ExportUnsupported = Guid.Parse("DF6E479A-F417-4D32-BD38-E85815F3D07A");
 
         /// <summary>
-        /// Base path of resource
+        /// Base path of resource.
         /// </summary>
         public string BasePath { get; protected init; }
 
         /// <summary>
-        /// If true, object does not contain complete data, e.g. for <see cref="WriteConvertedData"/>
+        /// If true, object does not contain complete data, e.g. for <see cref="WriteConvertedData"/>.
         /// </summary>
         public bool Dry { get; protected init; }
 
         /// <summary>
-        /// Default format for container
+        /// Default format for container.
         /// </summary>
-        public abstract Guid DefaultFormat { get; }
+        public virtual Guid DefaultFormat => Generic;
 
         /// <summary>
-        /// Create instance of <see cref="Data"/>
+        /// Creates instance of <see cref="Data"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
+        /// <param name="basePath">Base path of resource.</param>
         protected Data(string basePath)
         {
             BasePath = basePath;
         }
 
         /// <summary>
-        /// Get stream of data converted to common file format
+        /// Writes stream of data converted to common file format.
         /// </summary>
-        /// <param name="outputStream">Target stream</param>
-        /// <param name="format">Requested file format</param>
-        /// <param name="formatOptions">Format-specific options</param>
-        /// <returns>False if requested format is not supported</returns>
+        /// <param name="outputStream">Target stream.</param>
+        /// <param name="format">Requested file format.</param>
+        /// <param name="formatOptions">Format-specific options.</param>
+        /// <returns>False if requested format is not supported.</returns>
         public abstract bool WriteConvertedData(Stream outputStream, Guid format,
             Dictionary<object, object>? formatOptions = null);
 
         /// <summary>
-        /// Get file extension for format
+        /// Gets file extension for format.
         /// </summary>
-        /// <param name="format">Format to get extension of</param>
-        /// <returns>File extension or null if unrecognized guid</returns>
+        /// <param name="format">Format to get extension of.</param>
+        /// <returns>File extension or null if unrecognized guid.</returns>
         public virtual string? GetExtension(Guid? format = null)
         {
             format ??= DefaultFormat;
@@ -86,13 +86,14 @@ namespace Fp
          */
 
         /// <summary>
-        /// Cast number
+        /// Casts number.
         /// </summary>
-        /// <param name="value">Input value</param>
-        /// <typeparam name="TIn">Input type</typeparam>
-        /// <typeparam name="TOut">Output type</typeparam>
-        /// <returns>Converted value</returns>
-        /// <exception cref="ApplicationException"></exception>
+        /// <param name="value">Input value.</param>
+        /// <typeparam name="TIn">Input type.</typeparam>
+        /// <typeparam name="TOut">Output type.</typeparam>
+        /// <returns>Converted value.</returns>
+        /// <exception cref="ArgumentException">Thrown for invalid output type.</exception>
+        /// <exception cref="InvalidCastException">Thrown for invalid cast.</exception>
         public static unsafe TOut CastNumber<TIn, TOut>(TIn value)
             where TOut : unmanaged
         {
@@ -166,7 +167,7 @@ namespace Fp
                 return target;
             }
 
-            throw new ApplicationException($"Unsupported output type {typeof(TOut)}");
+            throw new ArgumentException($"Unsupported output type {typeof(TOut)}");
         }
 
         private static byte CastByte<TValue>(TValue number)

@@ -11,7 +11,7 @@ namespace Dereliction
 
         public IControl Build(object data)
         {
-            var name = data.GetType().FullName!.Replace("ViewModel", "View");
+            string? name = data.GetType().FullName!.Replace("ViewModel", "View");
             var type = Type.GetType(name);
 
             if (type != null)

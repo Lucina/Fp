@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace Fp
 {
     /// <summary>
-    /// Execution manager
+    /// Execution manager.
     /// </summary>
     public static class Coordinator
     {
         #region Constants
 
         /// <summary>
-        /// Default output folder name
+        /// Default output folder name.
         /// </summary>
         public const string DefaultOutputFolderName = "fp_output";
 
@@ -25,7 +25,7 @@ namespace Fp
         #region Effective read-only
 
         /// <summary>
-        /// Default name for current executable (argv[0] or generic name)
+        /// Default name for current executable (argv[0] or generic name).
         /// </summary>
         public static string DefaultCurrentExecutableName
         {
@@ -52,21 +52,23 @@ namespace Fp
         #region CLI tools
 
         /// <summary>
-        /// Get processor configuration from cli
+        /// Gets processor configuration from cli.
         /// </summary>
-        /// <param name="exeName">Executable name</param>
-        /// <param name="args">Command-line arguments</param>
-        /// <param name="logReceiver">Log receiver for errors</param>
-        /// <param name="enableParallel">If true, enable async options</param>
-        /// <param name="configuration">Generated configuration</param>
-        /// <param name="inputs">Generated input sources</param>
-        /// <returns>True if parsing succeeded</returns>
+        /// <param name="exeName">Executable name.</param>
+        /// <param name="args">Command-line arguments.</param>
+        /// <param name="logReceiver">Log receiver for errors.</param>
+        /// <param name="enableParallel">If true, enable async options.</param>
+        /// <param name="configuration">Generated configuration.</param>
+        /// <param name="executionSettings">Generated execution settings.</param>
+        /// <param name="inputs">Generated input sources.</param>
+        /// <returns>True if parsing succeeded.</returns>
         public static bool CliGetConfiguration(IList<string> exeName, IReadOnlyList<string> args,
-            ILogReceiver? logReceiver, bool enableParallel, out ProcessorConfiguration? configuration,
-            out List<FpInput> inputs)
+            ILogReceiver? logReceiver, bool enableParallel, [NotNullWhen(true)] out ProcessorConfiguration? configuration,
+            [NotNullWhen(true)] out ExecutionSettings? executionSettings, out List<FpInput> inputs)
         {
             logReceiver ??= NullLog.Instance;
             configuration = null;
+            executionSettings = null;
             inputs = new List<FpInput>();
             List<string> exArgs = new();
             string? outputRootDirectory = null;
@@ -158,7 +160,7 @@ namespace Fp
                     sb.Append(' ').Append(str);
 
                 var sb2 = new StringBuilder();
-                foreach (var x in Processor.Registered.Factories)
+                foreach (var x in FsProcessor.Registered.Factories)
                 {
                     var i = x.Info;
                     sb2.Append(i.Name).AppendLine()
@@ -202,105 +204,105 @@ Flags:
                         DefaultOutputFolderName);
             }
 
-            configuration =
-                new ProcessorConfiguration(outputRootDirectory, parallel, preload, debug, nop, logReceiver, exArgs);
+            configuration = new ProcessorConfiguration(preload, debug, nop, logReceiver, exArgs);
+            executionSettings = new ExecutionSettings(outputRootDirectory, parallel);
             return true;
         }
 
         /// <summary>
-        /// Process filesystem tree using command-line argument inputs
+        /// Processes filesystem tree using command-line argument inputs.
         /// </summary>
-        /// <param name="args">Command-line arguments</param>
-        /// <param name="exeName">Executable name</param>
-        /// <param name="fileSystem">Filesystem to read from</param>
-        /// <param name="logReceiver">Log output target</param>
-        /// <returns>A task that will execute recursively</returns>
-        /// <exception cref="ArgumentException">If invalid argument count is provided</exception>
+        /// <param name="args">Command-line argument.s.</param>
+        /// <param name="exeName">Executable name.</param>
+        /// <param name="fileSystem">Filesystem to read from.</param>
+        /// <param name="logReceiver">Log output target.</param>
+        /// <returns>A task that will execute recursively.</returns>
+        /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
         public static void CliRunFilesystem<T>(string[] args, IList<string>? exeName = null,
-            ILogReceiver? logReceiver = null, FileSystemSource? fileSystem = null) where T : Processor, new() =>
-            CliRunFilesystem(args, exeName, logReceiver, fileSystem, Processor.GetFactory<T>());
+            ILogReceiver? logReceiver = null, FileSystemSource? fileSystem = null) where T : FsProcessor, new() =>
+            CliRunFilesystem(args, exeName, logReceiver, fileSystem, FsProcessor.GetFsFactory<T>());
 
         /// <summary>
-        /// Process filesystem tree using command-line argument inputs
+        /// Processes filesystem tree using command-line argument inputs.
         /// </summary>
-        /// <param name="exeName">Executable name</param>
-        /// <param name="args">Command-line arguments</param>
-        /// <param name="fileSystem">Filesystem to read from</param>
-        /// <param name="processorFactories">Functions that create new processor instances</param>
-        /// <param name="logReceiver">Log output target</param>
-        /// <returns>A task that will execute recursively</returns>
-        /// <exception cref="ArgumentException">If invalid argument count is provided</exception>
+        /// <param name="exeName">Executable name.</param>
+        /// <param name="args">Command-line arguments.</param>
+        /// <param name="fileSystem">Filesystem to read from.</param>
+        /// <param name="processorFactories">Functions that create new processor instances.</param>
+        /// <param name="logReceiver">Log output target.</param>
+        /// <returns>A task that will execute recursively.</returns>
+        /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
         public static void CliRunFilesystem(string[] args, IList<string>? exeName, ILogReceiver? logReceiver,
-            FileSystemSource? fileSystem, params ProcessorFactory[] processorFactories)
+            FileSystemSource? fileSystem, params FsProcessorFactory[] processorFactories)
         {
             exeName ??= GuessExe(args);
             logReceiver ??= ConsoleLog.Default;
             fileSystem ??= FileSystemSource.Default;
             if (!CliGetConfiguration(exeName, args, logReceiver, false, out ProcessorConfiguration? conf,
-                out var inputs)) return;
-            switch (conf!.Parallel)
+                    out ExecutionSettings? exec, out var inputs)) return;
+            switch (exec.Parallel)
             {
                 case 0:
-                    Recurse(inputs, new ExecutionSource(conf, fileSystem), processorFactories);
+                    Recurse(inputs, new ExecutionSource(conf, exec, fileSystem), processorFactories);
                     break;
                 default:
-                    RecurseAsync(inputs, new ExecutionSource(conf, fileSystem), processorFactories).Wait();
+                    RecurseAsync(inputs, new ExecutionSource(conf, exec, fileSystem), processorFactories).Wait();
                     break;
             }
         }
 
         /// <summary>
-        /// Process filesystem tree using command-line argument inputs
+        /// Processes filesystem tree using command-line argument inputs.
         /// </summary>
-        /// <param name="args">Command-line arguments</param>
-        /// <param name="exeName">Executable name</param>
-        /// <param name="fileSystem">Filesystem to read from</param>
-        /// <param name="logReceiver">Log output target</param>
-        /// <returns>A task that will execute recursively</returns>
-        /// <exception cref="ArgumentException">If invalid argument count is provided</exception>
+        /// <param name="args">Command-line arguments.</param>
+        /// <param name="exeName">Executable name.</param>
+        /// <param name="fileSystem">Filesystem to read from.</param>
+        /// <param name="logReceiver">Log output target.</param>
+        /// <returns>A task that will execute recursively.</returns>
+        /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
         public static async Task CliRunFilesystemAsync<T>(string[] args, IList<string>? exeName = null,
-            ILogReceiver? logReceiver = null, FileSystemSource? fileSystem = null) where T : Processor, new() =>
-            await CliRunFilesystemAsync(args, exeName, logReceiver, fileSystem, Processor.GetFactory<T>());
+            ILogReceiver? logReceiver = null, FileSystemSource? fileSystem = null) where T : FsProcessor, new() =>
+            await CliRunFilesystemAsync(args, exeName, logReceiver, fileSystem, FsProcessor.GetFsFactory<T>());
 
         /// <summary>
-        /// Process filesystem tree using command-line argument inputs
+        /// Processes filesystem tree using command-line argument inputs.
         /// </summary>
-        /// <param name="args">Command-line arguments</param>
-        /// <param name="exeName">Executable name</param>
-        /// <param name="fileSystem">Filesystem to read from</param>
-        /// <param name="processorFactories">Functions that create new processor instances</param>
-        /// <param name="logReceiver">Log output target</param>
-        /// <returns>A task that will execute recursively</returns>
-        /// <exception cref="ArgumentException">If invalid argument count is provided</exception>
+        /// <param name="args">Command-line arguments.</param>
+        /// <param name="exeName">Executable name.</param>
+        /// <param name="fileSystem">Filesystem to read from.</param>
+        /// <param name="processorFactories">Functions that create new processor instances.</param>
+        /// <param name="logReceiver">Log output target.</param>
+        /// <returns>A task that will execute recursively.</returns>
+        /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
         public static async Task CliRunFilesystemAsync(string[] args, IList<string>? exeName,
-            ILogReceiver? logReceiver, FileSystemSource? fileSystem, params ProcessorFactory[] processorFactories)
+            ILogReceiver? logReceiver, FileSystemSource? fileSystem, params FsProcessorFactory[] processorFactories)
         {
             exeName ??= GuessExe(args);
             logReceiver ??= ConsoleLog.Default;
             fileSystem ??= FileSystemSource.Default;
             if (!CliGetConfiguration(exeName, args, logReceiver, true, out ProcessorConfiguration? conf,
-                out var inputs)) return;
-            switch (conf!.Parallel)
+                    out ExecutionSettings? exec, out var inputs)) return;
+            switch (exec.Parallel)
             {
                 case 0:
                     // ReSharper disable once MethodHasAsyncOverload
-                    Recurse(inputs, new ExecutionSource(conf, fileSystem), processorFactories);
+                    Recurse(inputs, new ExecutionSource(conf, exec, fileSystem), processorFactories);
                     break;
                 default:
-                    await RecurseAsync(inputs, new ExecutionSource(conf, fileSystem), processorFactories);
+                    await RecurseAsync(inputs, new ExecutionSource(conf, exec, fileSystem), processorFactories);
                     break;
             }
         }
 
 
         /// <summary>
-        /// Guess executable string (might be multiple components) based on args
+        /// Guesses executable string (might be multiple components) based on args.
         /// </summary>
-        /// <param name="args">Arguments to check</param>
-        /// <param name="prependDotNetIfDll">If the first element ends in .dll, prepend dotnet as an element</param>
-        /// <returns></returns>
+        /// <param name="args">Arguments to check.</param>
+        /// <param name="prependDotNetIfDll">If the first element ends in .dll, prepend dotnet as an element.</param>
+        /// <returns>Executable command sequence.</returns>
         /// <remarks>
-        /// Just matches up the tail and sends the rest, fallback on argv[0]
+        /// Just matches up the tail and sends the rest, fallback on argv[0].
         /// </remarks>
         public static IList<string> GuessExe(IList<string>? args, bool prependDotNetIfDll = true)
         {
@@ -315,18 +317,16 @@ Flags:
         #region General execution
 
         /// <summary>
-        /// Process filesystem tree asynchronously
+        /// Processes filesystem tree asynchronously.
         /// </summary>
-        /// <param name="inputs">Input sources</param>
-        /// <param name="src">Execution source</param>
-        /// <param name="processorFactories">Functions that create new processor instances</param>
-        /// <returns>Task that will execute recursively</returns>
-        /// <exception cref="ArgumentException">If <paramref name="processorFactories"/> is empty or passed a <see cref="ProcessorConfiguration.Parallel"/> value less than 1</exception>
-        public static async Task RecurseAsync(IReadOnlyList<FpInput> inputs, ExecutionSource src,
-            params ProcessorFactory[] processorFactories)
+        /// <param name="inputs">Input sources.</param>
+        /// <param name="src">Execution source.</param>
+        /// <param name="processorFactories">Functions that create new processor instances.</param>
+        /// <returns>Task that will execute recursively.</returns>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="processorFactories"/> is empty or <paramref name="src"/>.<see cref="ExecutionSource.Exec"/>.<see cref="ExecutionSettings.Parallel"/> is less than 1.</exception>
+        public static async Task RecurseAsync(IReadOnlyList<FpInput> inputs, ExecutionSource src, params FsProcessorFactory[] processorFactories)
         {
-            InitializeProcessors(src.Config, processorFactories, out var processors, out int baseCount,
-                out int parallelCount);
+            InitializeProcessors(src.Exec, processorFactories, out var processors, out int baseCount, out int parallelCount);
             SeedInputs(inputs, out var dQueue, out var fQueue);
             Dictionary<Task, int> tasks = new();
             src.FileSystem.ParallelAccess = true;
@@ -336,7 +336,7 @@ Flags:
                     {
                         while (tasks.Count >= parallelCount) tasks.Remove(await Task.WhenAny(tasks.Keys));
                         int workerId = Enumerable.Range(0, parallelCount).Except(tasks.Values).First();
-                        Processor processor = processors[workerId * parallelCount + iBase];
+                        FsProcessor processor = processors[workerId * parallelCount + iBase];
                         if (!processor.AcceptFile(deq.TargetPath)) continue;
                         tasks.Add(Task.Run(() => Run(processor, deq, src, workerId)), workerId);
                     }
@@ -347,19 +347,18 @@ Flags:
         }
 
         /// <summary>
-        /// Process filesystem tree
+        /// Processes filesystem tree.
         /// </summary>
-        /// <param name="inputs">Input sources</param>
-        /// <param name="src">Execution source</param>
-        /// <param name="processorFactories">Functions that create new processor instances</param>
-        /// <exception cref="ArgumentException">If <paramref name="processorFactories"/> is empty or passed a <see cref="ProcessorConfiguration.Parallel"/> value less than 1</exception>
+        /// <param name="inputs">Input sources.</param>
+        /// <param name="src">Execution source.</param>
+        /// <param name="processorFactories">Functions that create new processor instances.</param>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="processorFactories"/> is empty or <paramref name="src"/>.<see cref="ExecutionSource.Exec"/>.<see cref="ExecutionSettings.Parallel"/> is less than 1.</exception>
         public static void Recurse(IReadOnlyList<FpInput> inputs, ExecutionSource src,
-            params ProcessorFactory[] processorFactories)
+            params FsProcessorFactory[] processorFactories)
         {
-            if (src.Config.Parallel != 1)
-                throw new ArgumentException(
-                    $"Cannot start synchronous operation with {nameof(src.Config.Parallel)} value of {src.Config.Parallel}, use {nameof(Coordinator)}.{nameof(RecurseAsync)} instead");
-            InitializeProcessors(src.Config, processorFactories, out var processors, out int baseCount, out _);
+            if (src.Exec.Parallel != 1)
+                throw new ArgumentException($"Cannot start synchronous operation with {nameof(src.Exec.Parallel)} value of {src.Exec.Parallel}, use {nameof(Coordinator)}.{nameof(RecurseAsync)} instead");
+            InitializeProcessors(src.Exec, processorFactories, out var processors, out int baseCount, out _);
             SeedInputs(inputs, out var dQueue, out var fQueue);
             while (fQueue.Count != 0 || dQueue.Count != 0)
                 if (fQueue._TryDequeue(out var deq))
@@ -375,20 +374,19 @@ Flags:
         }
 
         /// <summary>
-        /// Operate on a file
+        /// Operates on a file.
         /// </summary>
-        /// <param name="processor">Processor to operate with</param>
-        /// <param name="source">Source info</param>
-        /// <param name="src">Execution source</param>
-        /// <param name="workerId">Worker ID</param>
-        /// <returns>Processing result</returns>
-        public static ProcessResult Run(Processor processor, FpTarget source,
-            ExecutionSource src, int workerId)
+        /// <param name="processor">Processor to operate with.</param>
+        /// <param name="source">Source info.</param>
+        /// <param name="src">Execution source.</param>
+        /// <param name="workerId">Worker ID.</param>
+        /// <returns>Processing result.</returns>
+        public static ProcessResult Run(FsProcessor processor, FpTarget source, ExecutionSource src, int workerId)
         {
             try
             {
                 processor.Cleanup();
-                processor.Prepare(src.FileSystem, source.InputRootPath, src.Config.OutputRootDirectory,
+                processor.Prepare(src.FileSystem, source.InputRootPath, src.Exec.OutputRootDirectory,
                     source.TargetPath,
                     src.Config, workerId);
                 bool success;
@@ -420,20 +418,19 @@ Flags:
         }
 
         /// <summary>
-        /// Operate on a file using segmented operation
+        /// Operate on a file using segmented operation.
         /// </summary>
-        /// <param name="processor">Processor to operate with</param>
-        /// <param name="input">Source info</param>
-        /// <param name="src">Execution source</param>
-        /// <param name="workerId">Worker ID</param>
-        /// <returns>Processing results</returns>
-        public static IEnumerable<Data> RunSegmented(Processor processor, (string inputRoot, string file) input,
-            ExecutionSource src, int workerId)
+        /// <param name="processor">Processor to operate with.</param>
+        /// <param name="input">Source info.</param>
+        /// <param name="src">Execution source.</param>
+        /// <param name="workerId">Worker ID.</param>
+        /// <returns>Processing results.</returns>
+        public static IEnumerable<Data> RunSegmented(FsProcessor processor, (string inputRoot, string file) input, ExecutionSource src, int workerId)
         {
             try
             {
                 processor.Cleanup();
-                processor.Prepare(src.FileSystem, input.inputRoot, src.Config.OutputRootDirectory, input.file,
+                processor.Prepare(src.FileSystem, input.inputRoot, src.Exec.OutputRootDirectory, input.file,
                     src.Config, workerId);
                 if (processor.Debug)
                 {
@@ -483,19 +480,17 @@ Flags:
         private static string? GetArgValue(IReadOnlyList<string> args, int cPos) =>
             cPos + 1 >= args.Count ? null : args[cPos + 1];
 
-        private static void InitializeProcessors(ProcessorConfiguration configuration,
-            ProcessorFactory[] processorFactories,
-            out Processor[] processors, out int baseCount, out int parallelCount)
+        private static void InitializeProcessors(ExecutionSettings exec, FsProcessorFactory[] processorFactories, out FsProcessor[] processors, out int baseCount, out int parallelCount)
         {
             if (processorFactories.Length == 0)
                 throw new ArgumentException("Cannot start operation with 0 provided processors");
-            if (configuration.Parallel < 1)
+            if (exec.Parallel < 1)
                 throw new ArgumentException(
-                    $"Illegal {nameof(configuration.Parallel)} value of {configuration.Parallel}");
+                    $"Illegal {nameof(exec.Parallel)} value of {exec.Parallel}");
             parallelCount = Math.Min(TaskScheduler.Current.MaximumConcurrencyLevel,
-                Math.Max(1, configuration.Parallel));
+                Math.Max(1, exec.Parallel));
             baseCount = processorFactories.Length;
-            processors = new Processor[parallelCount * baseCount];
+            processors = new FsProcessor[parallelCount * baseCount];
             for (int iParallel = 0; iParallel < parallelCount; iParallel++)
             for (int iBase = 0; iBase < baseCount; iBase++)
                 processors[iParallel * baseCount + iBase] = processorFactories[iBase].CreateProcessor();
@@ -537,6 +532,13 @@ Flags:
         #region Types
 
         /// <summary>
+        /// Settings for execution.
+        /// </summary>
+        /// <param name="OutputRootDirectory">Output source.</param>
+        /// <param name="Parallel">Thread count.</param>
+        public record ExecutionSettings(string OutputRootDirectory, int Parallel);
+
+        /// <summary>
         /// FP input.
         /// </summary>
         /// <param name="IsFile">True if this is a file.</param>
@@ -549,12 +551,12 @@ Flags:
         /// </summary>
         /// <param name="InputRootPath">Input root path.</param>
         /// <param name="TargetPath">Target path.</param>
-        public record FpTarget(string InputRootPath, string TargetPath); // TODO record struct (C# 10)
+        public readonly record struct FpTarget(string InputRootPath, string TargetPath);
 
         /// <summary>
-        /// Represents execution config
+        /// Represents execution config.
         /// </summary>
-        public record ExecutionSource(ProcessorConfiguration Config, FileSystemSource FileSystem);
+        public record ExecutionSource(ProcessorConfiguration Config, ExecutionSettings Exec, FileSystemSource FileSystem);
 
         #endregion
     }

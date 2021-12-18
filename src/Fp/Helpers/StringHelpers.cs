@@ -7,25 +7,25 @@ using static Fp.Processor;
 namespace Fp.Helpers
 {
     /// <summary>
-    /// Represents converted string
+    /// Represents converted string.
     /// </summary>
     public readonly struct StringData
     {
         /// <summary>
-        /// String value
+        /// String value.
         /// </summary>
         public readonly string String;
 
         /// <summary>
-        /// Byte length
+        /// Byte length.
         /// </summary>
         public readonly int ByteLength;
 
         /// <summary>
-        /// Creates new instance of <see cref="StringData"/>
+        /// Creates a new instance of <see cref="StringData"/>.
         /// </summary>
-        /// <param name="s">String value</param>
-        /// <param name="byteLength">Byte length</param>
+        /// <param name="s">String value.</param>
+        /// <param name="byteLength">Byte length.</param>
         public StringData(string s, int byteLength)
         {
             String = s;
@@ -33,17 +33,17 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Convert string to <see cref="StringData"/> with 0 byte length
+        /// Converts string to <see cref="StringData"/> with 0 byte length.
         /// </summary>
-        /// <param name="str">String value</param>
-        /// <returns><see cref="StringData"/></returns>
+        /// <param name="str">String value.</param>
+        /// <returns><see cref="StringData"/><see cref="StringData"/> instance.</returns>
         public static implicit operator StringData(string str) => new StringData(str, 0);
 
         /// <summary>
-        /// Deconstruct this instance.
+        /// Deconstructs this instance.
         /// </summary>
-        /// <param name="s">String value</param>
-        /// <param name="byteLength">Byte length</param>
+        /// <param name="s">String value.</param>
+        /// <param name="byteLength">Byte length.</param>
         public void Deconstruct(out string s, out int byteLength)
         {
             s = String;
@@ -57,7 +57,7 @@ namespace Fp.Helpers
     public abstract record BaseStringHelper : Helper
     {
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -66,7 +66,7 @@ namespace Fp.Helpers
             this[source.AsSpan(), offset, maxBytes];
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -77,7 +77,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual StringData this[byte[] source]
@@ -87,7 +87,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -96,7 +96,7 @@ namespace Fp.Helpers
             this[source.Span, offset, maxBytes];
 
         /// <summary>
-        /// Read/write data.
+        /// Reads/writes data.
         /// </summary>
         /// <param name="offset">Offset.</param>
         /// <param name="source">Data source.</param>
@@ -107,7 +107,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write data.
+        /// Reads/writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual StringData this[Memory<byte> source]
@@ -117,7 +117,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -126,7 +126,7 @@ namespace Fp.Helpers
             this[(ReadOnlySpan<byte>)source, offset, maxBytes];
 
         /// <summary>
-        /// Read/write data.
+        /// Reads/writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -137,13 +137,13 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read/write data.
+        /// Reads/writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public abstract StringData this[Span<byte> source] { get; set; }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -152,14 +152,14 @@ namespace Fp.Helpers
             this[source.Span, offset, maxBytes];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="offset">Offset.</param>
         /// <param name="source">Data source.</param>
         public virtual StringData this[ReadOnlyMemory<byte> source, int offset] => this[source.Span, offset];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -168,7 +168,7 @@ namespace Fp.Helpers
             int maxBytes] { get; }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -176,13 +176,13 @@ namespace Fp.Helpers
             this[source, offset, int.MaxValue];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual StringData this[ReadOnlySpan<byte> source] => this[source, 0, int.MaxValue];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>v
         /// <param name="stream">Data source.</param>
@@ -190,7 +190,7 @@ namespace Fp.Helpers
         public abstract StringData this[long offset, Stream stream, int maxBytes] { get; }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         /// <param name="maxBytes">Maximum bytes to read.</param>
@@ -198,14 +198,14 @@ namespace Fp.Helpers
             this[offset, InputStream, maxBytes];
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         /// <param name="stream">Data source.</param>
         public abstract StringData this[long offset, Stream stream] { get; set; }
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         public virtual StringData this[long offset]
@@ -221,10 +221,10 @@ namespace Fp.Helpers
     public record AsciiStringHelper(Processor Parent) : BaseStringHelper
     {
         /// <inheritdoc />
-        public override Stream InputStream => Parent._inputStream ?? throw new InvalidOperationException();
+        public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
 
         /// <inheritdoc />
-        public override Stream OutputStream => Parent._inputStream ?? throw new InvalidOperationException();
+        public override Stream OutputStream => Parent.InputStream ?? throw new InvalidOperationException();
 
         /// <inheritdoc />
         public override StringData this[Span<byte> source]
@@ -276,10 +276,10 @@ namespace Fp.Helpers
     public record Utf8StringHelper(Processor Parent) : BaseStringHelper
     {
         /// <inheritdoc />
-        public override Stream InputStream => Parent._inputStream ?? throw new InvalidOperationException();
+        public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
 
         /// <inheritdoc />
-        public override Stream OutputStream => Parent._inputStream ?? throw new InvalidOperationException();
+        public override Stream OutputStream => Parent.InputStream ?? throw new InvalidOperationException();
 
         /// <inheritdoc />
         public override StringData this[Span<byte> source]
@@ -318,10 +318,10 @@ namespace Fp.Helpers
     public record Utf16StringHelper(Processor Parent) : BaseStringHelper
     {
         /// <inheritdoc />
-        public override Stream InputStream => Parent._inputStream ?? throw new InvalidOperationException();
+        public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
 
         /// <inheritdoc />
-        public override Stream OutputStream => Parent._inputStream ?? throw new InvalidOperationException();
+        public override Stream OutputStream => Parent.InputStream ?? throw new InvalidOperationException();
 
         /// <inheritdoc />
         public override StringData this[Span<byte> source]

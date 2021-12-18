@@ -6,20 +6,20 @@ using System.Text;
 namespace Fp
 {
     /// <summary>
-    /// Represents general metadata
+    /// Represents general metadata.
     /// </summary>
     public class MetaData : Data
     {
         /// <summary>
-        /// Metadata value
+        /// Metadata value.
         /// </summary>
         public object Value { get; }
 
         /// <summary>
-        /// Create instance of <see cref="MetaData"/>
+        /// Creates a new instance of <see cref="MetaData"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="value">Metadata value</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="value">Metadata value.</param>
         public MetaData(string basePath, object value) : base(basePath)
         {
             Value = value;

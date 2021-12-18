@@ -10,12 +10,12 @@ namespace Fp
         #region External tool / library utilities
 
         /// <summary>
-        /// Execute external program
+        /// Executes external program.
         /// </summary>
-        /// <param name="shellExecute">See <see cref="ProcessStartInfo.UseShellExecute"/></param>
-        /// <param name="program">Program to run</param>
-        /// <param name="args">Arguments</param>
-        /// <returns>Exit code</returns>
+        /// <param name="shellExecute">See <see cref="ProcessStartInfo.UseShellExecute"/>.</param>
+        /// <param name="program">Program to run.</param>
+        /// <param name="args">Arguments.</param>
+        /// <returns>Exit code.</returns>
         public int Execute(bool shellExecute, string program, string args)
         {
             Process process = new()

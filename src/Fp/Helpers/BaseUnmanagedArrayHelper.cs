@@ -11,12 +11,12 @@ namespace Fp.Helpers
     public abstract unsafe record BaseUnmanagedArrayHelper<T> : Helper where T : unmanaged
     {
         /// <summary>
-        /// Element size in memory (contiguous read)
+        /// Element size in memory (contiguous read).
         /// </summary>
         public virtual int ElementSize => sizeof(T);
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -25,7 +25,7 @@ namespace Fp.Helpers
             this[source.AsSpan(), offset, count];
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -35,7 +35,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -44,7 +44,7 @@ namespace Fp.Helpers
             this[source.Span, offset, count];
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="offset">Offset.</param>
         /// <param name="source">Data source.</param>
@@ -54,7 +54,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -63,7 +63,7 @@ namespace Fp.Helpers
             this[source.Slice(offset, count * ElementSize)];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -72,20 +72,20 @@ namespace Fp.Helpers
             this[source.Span, offset, count];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public abstract ReadOnlySpan<T> this[ReadOnlySpan<byte> source] { get; }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         /// <param name="count">Element count.</param>
         public virtual T[] this[long offset, int count] => this[offset, count, InputStream];
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         public virtual ReadOnlySpan<T> this[long offset]
@@ -94,7 +94,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read / write data.
+        /// Reads / writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual ReadOnlySpan<T> this[byte[] source]
@@ -104,7 +104,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read / write data.
+        /// Reads / writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public virtual ReadOnlySpan<T> this[Memory<byte> source]
@@ -114,7 +114,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -124,13 +124,13 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Read / write data.
+        /// Reads / writes data.
         /// </summary>
         /// <param name="source">Data source.</param>
         public abstract ReadOnlySpan<T> this[Span<byte> source] { get; set; }
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="offset">Offset.</param>
@@ -139,7 +139,7 @@ namespace Fp.Helpers
             this[source.Slice(offset, count * ElementSize)];
 
         /// <summary>
-        /// Read data.
+        /// Reads data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         /// <param name="count">Element count.</param>
@@ -164,7 +164,7 @@ namespace Fp.Helpers
         }
 
         /// <summary>
-        /// Write data.
+        /// Writes data.
         /// </summary>
         /// <param name="offset">Offset (no seeking if -1).</param>
         /// <param name="stream">Data source.</param>

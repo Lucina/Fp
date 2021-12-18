@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using static Fp.Detector;
+using static Fp.FsProcessor;
 using static Fp.Processor;
 
 namespace Fp
@@ -90,7 +91,7 @@ namespace Fp
         #region Magic
 
         /// <summary>
-        /// Detect based on magic value.
+        /// Detects based on magic value.
         /// </summary>
         /// <param name="magicValue">Magic value.</param>
         /// <param name="value">Target value.</param>
@@ -100,7 +101,7 @@ namespace Fp
             __(null, magicValue, value, offset);
 
         /// <summary>
-        /// Detect based on magic value.
+        /// Detects based on magic value.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <param name="magicValue">Magic value.</param>
@@ -111,7 +112,7 @@ namespace Fp
             __(null, magicValue, value, offset, source);
 
         /// <summary>
-        /// Detect based on magic value.
+        /// Detects based on magic value.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="magicValue">Magic value.</param>
@@ -154,7 +155,7 @@ namespace Fp
     public record Detector(Detector? Prev, object Source, Func<object?, string?> DetectionFunction)
     {
         /// <summary>
-        /// Detect from this detector or any that preceded it.
+        /// Detects from this detector or any that preceded it.
         /// </summary>
         /// <returns>Detected value.</returns>
         public static implicit operator string?(Detector detector)
@@ -165,7 +166,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Detect from this detector or any that preceded it using late-bound source.
+        /// Detects from this detector or any that preceded it using late-bound source.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detected value.</returns>
@@ -177,21 +178,21 @@ namespace Fp
         }
 
         /// <summary>
-        /// Resolve source
+        /// Resolves source.
         /// </summary>
-        /// <param name="detector">Previous detector if available</param>
-        /// <param name="source">Source if available</param>
-        /// <returns>Resolved source</returns>
+        /// <param name="detector">Previous detector if available.</param>
+        /// <param name="source">Source if available.</param>
+        /// <returns>Resolved source.</returns>
         public static object ResolveSource(Detector? detector, object? source) =>
             source ?? detector?.Source ?? (object?)NullableCurrent ?? Nothing;
 
         /// <summary>
-        /// Resolve source
+        /// Resolves source.
         /// </summary>
-        /// <param name="detector">Previous detector if available</param>
-        /// <param name="source">Source if available</param>
-        /// <param name="originalSource">Original source</param>
-        /// <returns>Resolved source</returns>
+        /// <param name="detector">Previous detector if available.</param>
+        /// <param name="source">Source if available.</param>
+        /// <param name="originalSource">Original source.</param>
+        /// <returns>Resolved source.</returns>
         public static object ResolveSource(Detector? detector, object? source, object? originalSource) =>
             source ?? originalSource ?? detector?.Source ?? (object?)NullableCurrent ?? Nothing;
 
@@ -211,7 +212,7 @@ namespace Fp
     public record Fallback(Detector Prev, string Value)
     {
         /// <summary>
-        /// Detect from previous detectors or fallback to value.
+        /// Detects from previous detectors or fallback to value.
         /// </summary>
         /// <returns>Detected value.</returns>
         public static implicit operator string(Fallback detector)
@@ -221,7 +222,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Detect from this detector or any that preceded it using late-bound source.
+        /// Detects from this detector or any that preceded it using late-bound source.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detected value.</returns>

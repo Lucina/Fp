@@ -5,7 +5,7 @@ namespace Fp
     /// <summary>
     /// Represents a processor designed for scripting.
     /// </summary>
-    internal sealed class ScriptingDirectProcessor : Processor
+    internal sealed class ScriptingDirectProcessor : FsProcessor
     {
         private readonly Action _func;
 

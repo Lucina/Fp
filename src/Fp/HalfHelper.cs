@@ -20,7 +20,7 @@
         private static readonly ushort[] s_baseTable = GenerateBaseTable();
         private static readonly sbyte[] s_shiftTable = GenerateShiftTable();
 
-        // Transforms the subnormal representation to a normalized one. 
+        // Transforms the subnormal representation to a normalized one.
         private static uint ConvertMantissa(int i)
         {
             uint m = (uint)(i << 13); // Zero pad mantissa bits
@@ -30,7 +30,7 @@
             while ((m & 0x00800000) == 0)
             {
                 e -= 0x00800000; // Decrement exponent (1<<23)
-                m <<= 1; // Shift mantissa                
+                m <<= 1; // Shift mantissa
             }
 
             m &= unchecked((uint)~0x00800000); // Clear leading 1 bit
@@ -177,10 +177,10 @@
         }
 
         /// <summary>
-        /// Convert half to single
+        /// Convert half to single.
         /// </summary>
-        /// <param name="half">Half as ushort</param>
-        /// <returns>Single float</returns>
+        /// <param name="half">Half as ushort.</param>
+        /// <returns>Single float.</returns>
         public static unsafe float HalfToSingle(ushort half)
         {
             uint result = s_mantissaTable[s_offsetTable[half >> 10] + (half & 0x3ff)] + s_exponentTable[half >> 10];
@@ -188,10 +188,10 @@
         }
 
         /// <summary>
-        /// Convert single to half
+        /// Convert single to half.
         /// </summary>
-        /// <param name="single">Single float</param>
-        /// <returns>Half as ushort</returns>
+        /// <param name="single">Single float.</param>
+        /// <returns>Half as ushort.</returns>
         public static unsafe ushort SingleToHalf(float single)
         {
             uint value = *(uint*)&single;

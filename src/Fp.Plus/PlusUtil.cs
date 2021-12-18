@@ -3,7 +3,7 @@
 namespace Fp
 {
     /// <summary>
-    /// Utilities
+    /// Utilities.
     /// </summary>
     public static partial class PlusUtil
     {

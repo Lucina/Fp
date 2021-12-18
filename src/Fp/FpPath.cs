@@ -9,11 +9,11 @@ namespace Fp
     public record FpPath(string Name, FpPath? Previous = null)
     {
         /// <summary>
-        /// Get a child path with the specified name or sub-path.
+        /// Gets a child path with the specified name or sub-path.
         /// </summary>
         /// <param name="name">Child path.</param>
         /// <returns>Combined path.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when is null.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="name"/> is null.</exception>
         public FpPath Add(string name)
         {
             if (name == null) throw new ArgumentNullException(nameof(name));
@@ -23,7 +23,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get instance with changed extension.
+        /// Gets this instance with a changed extension.
         /// </summary>
         /// <param name="extension">New extension.</param>
         /// <returns>Path with replaced extension.</returns>
@@ -34,13 +34,13 @@ namespace Fp
             public string AsJoined(bool supportBackSlash) => Join(supportBackSlash, AsArray());*/
 
         /// <summary>
-        /// Get path as a string using <see cref="Path.Combine(string[])"/>.
+        /// Gets this path as a string using <see cref="Path.Combine(string[])"/>.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>This path as as string.</returns>
         public string AsCombined() => Path.Combine(AsArray());
 
         /// <summary>
-        /// Get path elements as an array.
+        /// Gets this path's elements as an array.
         /// </summary>
         /// <returns>Path element array.</returns>
         public string[] AsArray()
@@ -56,7 +56,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Gets path from a string.
+        /// Gets a path from a string.
         /// </summary>
         /// <param name="value">Value to convert.</param>
         /// <returns>Path.</returns>
@@ -64,7 +64,7 @@ namespace Fp
             string.IsNullOrEmpty(value)
                 ? null
                 : new FpPath(
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
                     value,
 #else
                     value!,
@@ -72,18 +72,18 @@ namespace Fp
                     GetFromString(Path.GetDirectoryName(value)));
 
         /// <summary>
-        /// Gets path from a string.
+        /// Gets a path from a string.
         /// </summary>
         /// <param name="value">Value to convert.</param>
         /// <returns>Path.</returns>
         public static implicit operator FpPath?(string? value) => GetFromString(value);
 
         /// <summary>
-        /// Concatenate path elements.
+        /// Concatenates path elements.
         /// </summary>
         /// <param name="left">Parent element.</param>
         /// <param name="right">Child element.</param>
-        /// <returns></returns>
+        /// <returns>Concatenated path.</returns>
         public static FpPath operator /(FpPath left, string right) => left.Add(right);
 
         /// <summary>

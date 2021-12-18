@@ -3,7 +3,7 @@ using System;
 namespace Fp
 {
     /// <summary>
-    /// Mark unknown mapping with <see cref="NotSupportedException"/>.
+    /// Marks unknown mapping with <see cref="NotSupportedException"/>.
     /// </summary>
     /// <typeparam name="T">Type.</typeparam>
     public static class Unknown<T>
@@ -25,7 +25,7 @@ namespace Fp
     }
 
     /// <summary>
-    /// Mark unknown mapping with <see cref="NotSupportedException"/>.
+    /// Marks unknown mapping with <see cref="NotSupportedException"/>.
     /// </summary>
     /// <typeparam name="T">Type.</typeparam>
     /// <typeparam name="TOut">Result type.</typeparam>

@@ -12,20 +12,20 @@ namespace Fp
         #region WAV
 
         /// <summary>
-        /// Detect WAV audio files.
+        /// Detects WAV audio files.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _WAV() => _WAV(null);
 
         /// <summary>
-        /// Detect WAV audio files.
+        /// Detects WAV audio files.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _WAV(this object source) => _WAV(null, source);
 
         /// <summary>
-        /// Detect WAV audio files.
+        /// Detects WAV audio files.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -48,20 +48,20 @@ namespace Fp
         #region MP3
 
         /// <summary>
-        /// Detect MP3 audio files.
+        /// Detects MP3 audio files.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _MP3() => _MP3(null);
 
         /// <summary>
-        /// Detect MP3 audio files.
+        /// Detects MP3 audio files.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _MP3(this object source) => _MP3(null, source);
 
         /// <summary>
-        /// Detect MP3 audio files.
+        /// Detects MP3 audio files.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -87,20 +87,20 @@ namespace Fp
         #region Ogg/Oga
 
         /// <summary>
-        /// Detect Ogg containers.
+        /// Detects Ogg containers.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _OGG() => _OGG(null);
 
         /// <summary>
-        /// Detect Ogg containers.
+        /// Detects Ogg containers.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _OGG(this object source) => _OGG(null, source);
 
         /// <summary>
-        /// Detect Ogg containers.
+        /// Detects Ogg containers.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -116,20 +116,20 @@ namespace Fp
             });
 
         /// <summary>
-        /// Detect Ogg audio containers.
+        /// Detects Ogg audio containers.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _OGA() => _OGA(null);
 
         /// <summary>
-        /// Detect Ogg audio containers.
+        /// Detects Ogg audio containers.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _OGA(this object source) => _OGA(null, source);
 
         /// <summary>
-        /// Detect Ogg audio containers.
+        /// Detects Ogg audio containers.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>

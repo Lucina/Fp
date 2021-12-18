@@ -13,28 +13,28 @@ namespace Fp
         #region Encoding utilities
 
         /// <summary>
-        /// Write signed 8-bit value to span at specified offset
+        /// Writes signed 8-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public void GetBytes(sbyte value, Span<byte> span, int offset = 0) => span[offset] = (byte)value;
 
         /// <summary>
-        /// Write unsigned 8-bit value to span at specified offset
+        /// Writes unsigned 8-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public void GetBytes(byte value, Span<byte> span, int offset = 0) => span[offset] = value;
 
         /// <summary>
-        /// Write signed 8-bit value to array at specified offset
+        /// Writes signed 8-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(sbyte value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[1];
@@ -43,12 +43,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 8-bit value to array at specified offset
+        /// Writes unsigned 8-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(byte value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[1];
@@ -57,11 +57,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 8-bit value to stream
+        /// Writes signed 8-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteS8(sbyte value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -86,11 +86,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 8-bit value to stream
+        /// Writes unsigned 8-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteU8(byte value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -115,11 +115,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 16-bit value to span at specified offset
+        /// Writes signed 16-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public unsafe void GetBytes(short value, Span<byte> span, int offset = 0)
         {
             if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -127,11 +127,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 16-bit value to span at specified offset
+        /// Writes unsigned 16-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public unsafe void GetBytes(ushort value, Span<byte> span, int offset = 0)
         {
             if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -139,12 +139,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 16-bit value to array at specified offset
+        /// Writes signed 16-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(short value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[2];
@@ -153,12 +153,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 16-bit value to array at specified offset
+        /// Writes unsigned 16-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(ushort value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[2];
@@ -167,11 +167,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 16-bit value to stream
+        /// Writes signed 16-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteS16(short value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -196,11 +196,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 16-bit value to stream
+        /// Writes unsigned 16-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteU16(ushort value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -225,11 +225,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 32-bit value to span at specified offset
+        /// Writes signed 32-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public unsafe void GetBytes(int value, Span<byte> span, int offset = 0)
         {
             if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -237,11 +237,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 32-bit value to span at specified offset
+        /// Writes unsigned 32-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public unsafe void GetBytes(uint value, Span<byte> span, int offset = 0)
         {
             if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -249,12 +249,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 32-bit value to array at specified offset
+        /// Writes signed 32-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(int value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[4];
@@ -263,12 +263,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 32-bit value to array at specified offset
+        /// Writes unsigned 32-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(uint value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[4];
@@ -277,11 +277,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 32-bit value to stream
+        /// Writes signed 32-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteS32(int value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -306,11 +306,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 32-bit value to stream
+        /// Writes unsigned 32-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteU32(uint value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -335,11 +335,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 64-bit value to span at specified offset
+        /// Writes signed 64-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public unsafe void GetBytes(long value, Span<byte> span, int offset = 0)
         {
             if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -347,11 +347,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 64-bit value to span at specified offset
+        /// Writes unsigned 64-bit value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public unsafe void GetBytes(ulong value, Span<byte> span, int offset = 0)
         {
             if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -359,12 +359,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 64-bit value to array at specified offset
+        /// Writes signed 64-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(long value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[8];
@@ -373,12 +373,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 64-bit value to array at specified offset
+        /// Writes unsigned 64-bit value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(ulong value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[8];
@@ -387,11 +387,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 64-bit value to stream
+        /// Writes signed 64-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteS64(long value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -416,11 +416,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write unsigned 64-bit value to stream
+        /// Writes unsigned 64-bit value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteU64(ulong value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -445,20 +445,20 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write 16-bit float value to span at specified offset
+        /// Writes 16-bit float value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public static unsafe void GetBytesHalf(ushort value, Span<byte> span, int offset = 0) =>
             new ReadOnlySpan<byte>(&value, 2).CopyTo(span.Slice(offset, 2));
 
         /// <summary>
-        /// Write 32-bit float value as 16-bit to span at specified offset
+        /// Writes 32-bit float value as 16-bit to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public static unsafe void GetBytesHalf(float value, Span<byte> span, int offset = 0)
         {
             ushort v = HalfHelper.SingleToHalf(value);
@@ -466,12 +466,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write 32-bit float value to array at specified offset
+        /// Writes 32-bit float value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public static byte[] GetBytesHalf(ushort value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[2];
@@ -480,12 +480,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write 32-bit float value to array at specified offset
+        /// Writes 32-bit float value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public static byte[] GetBytesHalf(float value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[2];
@@ -494,11 +494,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 32-bit float value to stream
+        /// Writes signed 32-bit float value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteHalf(ushort value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -523,11 +523,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 32-bit float value to stream
+        /// Writes signed 32-bit float value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteHalf(float value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -552,21 +552,21 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write 32-bit float value to span at specified offset
+        /// Writes 32-bit float value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public static unsafe void GetBytes(float value, Span<byte> span, int offset = 0) =>
             new ReadOnlySpan<byte>(&value, 4).CopyTo(span.Slice(offset, 4));
 
         /// <summary>
-        /// Write 32-bit float value to array at specified offset
+        /// Writes 32-bit float value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(float value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[4];
@@ -575,11 +575,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 32-bit float value to stream
+        /// Writes signed 32-bit float value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteSingle(float value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -604,21 +604,21 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write 64-bit float value to span at specified offset
+        /// Writes 64-bit float value to span at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="span">Span to write to</param>
-        /// <param name="offset">Offset to write to</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="span">Span to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
         public static unsafe void GetBytes(double value, Span<byte> span, int offset = 0) =>
             new ReadOnlySpan<byte>(&value, 8).CopyTo(span.Slice(offset, 8));
 
         /// <summary>
-        /// Write 64-bit float value to array at specified offset
+        /// Writes 64-bit float value to array at specified offset.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="array">Array to write to</param>
-        /// <param name="offset">Offset to write to</param>
-        /// <returns>Resultant array (newly allocated if none provided)</returns>
+        /// <param name="value">Value to write.</param>
+        /// <param name="array">Array to write to.</param>
+        /// <param name="offset">Offset to write to.</param>
+        /// <returns>Resultant array (newly allocated if none provided).</returns>
         public byte[] GetBytes(double value, byte[]? array = null, int offset = 0)
         {
             array ??= new byte[8];
@@ -627,11 +627,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write signed 64-bit float value to stream
+        /// Writes signed 64-bit float value to stream.
         /// </summary>
-        /// <param name="value">Value to write</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">Value to write.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public void WriteDouble(double value, Stream? stream = null, long? offset = null)
         {
             stream ??= OutputStream ?? throw new InvalidOperationException();

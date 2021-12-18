@@ -11,17 +11,17 @@ using SixLabors.ImageSharp.PixelFormats;
 namespace Fp.Plus.Images
 {
     /// <summary>
-    /// 32-bit RGBA data
+    /// 32-bit RGBA data.
     /// </summary>
     public class Rgba32Data : BufferData<uint>
     {
         /// <summary>
-        /// PNG DEFLATE format
+        /// PNG DEFLATE format.
         /// </summary>
         public static readonly Guid PngDeflate = Guid.Parse("3022E430-0364-4628-A5EE-56B0344EDCB2");
 
         /// <summary>
-        /// JPEG format
+        /// JPEG format.
         /// </summary>
         public static readonly Guid Jpeg = Guid.Parse("7AE22A2F-CE7F-470B-BC58-674AC8B5EA9E");
 
@@ -32,34 +32,34 @@ namespace Fp.Plus.Images
         public override Guid DefaultFormat => PngDeflate;
 
         /// <summary>
-        /// Provides option keys for <see cref="Rgba32Data"/>
+        /// Provides option keys for <see cref="Rgba32Data"/>.
         /// </summary>
         public static class Options
         {
             /// <summary>
-            /// Jpeg quality level (int 0-100)
+            /// Jpeg quality level (int 0-100).
             /// </summary>
             public const string JpegQuality = "JpegQuality";
         }
 
         /// <summary>
-        /// Image width
+        /// Image width.
         /// </summary>
         public readonly int Width;
 
         /// <summary>
-        /// Image height
+        /// Image height.
         /// </summary>
         public readonly int Height;
 
         private bool _disposed;
 
         /// <summary>
-        /// Create new instance of <see cref="Rgba32Data"/>
+        /// Creates a new instance of <see cref="Rgba32Data"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="width">Image width</param>
-        /// <param name="height">Image height</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="width">Image width.</param>
+        /// <param name="height">Image height.</param>
         public Rgba32Data(string basePath, int width, int height) : base(basePath, width * height)
         {
             Dry = true;
@@ -68,13 +68,13 @@ namespace Fp.Plus.Images
         }
 
         /// <summary>
-        /// Create new instance of <see cref="Rgba32Data"/>
+        /// Creates a new instance of <see cref="Rgba32Data"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="width">Image width</param>
-        /// <param name="height">Image height</param>
-        /// <param name="memoryOwner">Owner of PCM data buffer</param>
-        /// <param name="count">Length of content</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="width">Image width.</param>
+        /// <param name="height">Image height.</param>
+        /// <param name="memoryOwner">Owner of PCM data buffer.</param>
+        /// <param name="count">Length of content.</param>
         public Rgba32Data(string basePath, int width, int height, IMemoryOwner<uint> memoryOwner,
             int? count = default) : base(basePath, memoryOwner, count)
         {
@@ -83,12 +83,12 @@ namespace Fp.Plus.Images
         }
 
         /// <summary>
-        /// Create new instance of <see cref="Rgba32Data"/>
+        /// Creates a new instance of <see cref="Rgba32Data"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="width">Image width</param>
-        /// <param name="height">Image height</param>
-        /// <param name="buffer">PCM data</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="width">Image width.</param>
+        /// <param name="height">Image height.</param>
+        /// <param name="buffer">PCM data.</param>
         public Rgba32Data(string basePath, int width, int height, ReadOnlyMemory<uint> buffer) : base(basePath, buffer)
         {
             Width = width;

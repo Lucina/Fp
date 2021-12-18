@@ -5,7 +5,7 @@ namespace Fp
     /// <summary>
     /// Represents a segmented processor that automatically opens <see cref="Processor.InputStream"/>.
     /// </summary>
-    public class DataProcessor : Processor
+    public class DataProcessor : FsProcessor
     {
         /// <inheritdoc />
         protected sealed override void ProcessImpl()
@@ -21,9 +21,9 @@ namespace Fp
         }
 
         /// <summary>
-        /// Process current file in parts
+        /// Processes current file in parts.
         /// </summary>
-        /// <returns>Generated outputs</returns>
+        /// <returns>Generated outputs.</returns>
         protected virtual IEnumerable<Data> ProcessData() => Nothing;
     }
 }

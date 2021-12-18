@@ -10,28 +10,28 @@ namespace Fp
         #region 8
 
         /// <summary>
-        /// Check if 8-bit value is available.
+        /// Checks if 8-bit value is available.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>True if available.</returns>
         public static bool CanRead8(this ref ReadContext<byte> context) => context.IsAvailable(1);
 
         /// <summary>
-        /// Read 8-bit value.
+        /// Reads 8-bit value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
         public static ReadOnlySpan<byte> Read8(this ref ReadContext<byte> context) => context.ReadAdvance(1);
 
         /// <summary>
-        /// Read 8-bit unsigned value.
+        /// Reads 8-bit unsigned value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
         public static byte ReadU8(this ref ReadContext<byte> context) => context.ReadAdvance();
 
         /// <summary>
-        /// Read 8-bit signed value.
+        /// Reads 8-bit signed value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -42,21 +42,21 @@ namespace Fp
         #region 16
 
         /// <summary>
-        /// Check if 16-bit value is available.
+        /// Checks if 16-bit value is available.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>True if available.</returns>
         public static bool CanRead16(this ref ReadContext<byte> context) => context.IsAvailable(2);
 
         /// <summary>
-        /// Read 16-bit value.
+        /// Reads 16-bit value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
         public static ReadOnlySpan<byte> Read16(this ref ReadContext<byte> context) => context.ReadAdvance(2);
 
         /// <summary>
-        /// Read 16-bit unsigned little-endian value.
+        /// Reads 16-bit unsigned little-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -64,7 +64,7 @@ namespace Fp
             Processor.GetU16(context.ReadAdvance(2), true);
 
         /// <summary>
-        /// Read 16-bit signed little-endian value.
+        /// Reads 16-bit signed little-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -72,7 +72,7 @@ namespace Fp
             Processor.GetS16(context.ReadAdvance(2), true);
 
         /// <summary>
-        /// Read 16-bit unsigned big-endian value.
+        /// Reads 16-bit unsigned big-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -80,7 +80,7 @@ namespace Fp
             Processor.GetU16(context.ReadAdvance(2), false);
 
         /// <summary>
-        /// Read 16-bit signed big-endian value.
+        /// Reads 16-bit signed big-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -92,21 +92,21 @@ namespace Fp
         #region 32
 
         /// <summary>
-        /// Check if 32-bit value is available.
+        /// Checks if 32-bit value is available.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>True if available.</returns>
         public static bool CanRead32(this ref ReadContext<byte> context) => context.IsAvailable(4);
 
         /// <summary>
-        /// Read 32-bit value.
+        /// Reads 32-bit value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
         public static ReadOnlySpan<byte> Read32(this ref ReadContext<byte> context) => context.ReadAdvance(4);
 
         /// <summary>
-        /// Read 32-bit unsigned little-endian value.
+        /// Reads 32-bit unsigned little-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -114,7 +114,7 @@ namespace Fp
             Processor.GetU32(context.ReadAdvance(4), true);
 
         /// <summary>
-        /// Read 32-bit signed little-endian value.
+        /// Reads 32-bit signed little-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -122,7 +122,7 @@ namespace Fp
             Processor.GetS32(context.ReadAdvance(4), true);
 
         /// <summary>
-        /// Read 32-bit unsigned big-endian value.
+        /// Reads 32-bit unsigned big-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -130,7 +130,7 @@ namespace Fp
             Processor.GetU32(context.ReadAdvance(4), false);
 
         /// <summary>
-        /// Read 32-bit signed big-endian value.
+        /// Reads 32-bit signed big-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -139,25 +139,24 @@ namespace Fp
 
         #endregion
 
-
         #region 64
 
         /// <summary>
-        /// Check if 64-bit value is available.
+        /// Checks if 64-bit value is available.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>True if available.</returns>
         public static bool CanRead64(this ref ReadContext<byte> context) => context.IsAvailable(4);
 
         /// <summary>
-        /// Read 64-bit value.
+        /// Reads 64-bit value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
         public static ReadOnlySpan<byte> Read64(this ref ReadContext<byte> context) => context.ReadAdvance(8);
 
         /// <summary>
-        /// Read 64-bit unsigned little-endian value.
+        /// Reads 64-bit unsigned little-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -165,7 +164,7 @@ namespace Fp
             Processor.GetU64(context.ReadAdvance(8), true);
 
         /// <summary>
-        /// Read 64-bit signed little-endian value.
+        /// Reads 64-bit signed little-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -173,7 +172,7 @@ namespace Fp
             Processor.GetS64(context.ReadAdvance(8), true);
 
         /// <summary>
-        /// Read 64-bit unsigned big-endian value.
+        /// Reads 64-bit unsigned big-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>
@@ -181,7 +180,7 @@ namespace Fp
             Processor.GetU64(context.ReadAdvance(8), false);
 
         /// <summary>
-        /// Read 64-bit signed big-endian value.
+        /// Reads 64-bit signed big-endian value.
         /// </summary>
         /// <param name="context">Context.</param>
         /// <returns>Read value.</returns>

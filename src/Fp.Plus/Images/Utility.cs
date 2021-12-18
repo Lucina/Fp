@@ -14,20 +14,20 @@ namespace Fp
         #region BMP
 
         /// <summary>
-        /// Detect BMP bitmap files.
+        /// Detects BMP bitmap files.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _BMP() => _BMP(null);
 
         /// <summary>
-        /// Detect BMP bitmap files.
+        /// Detects BMP bitmap files.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _BMP(this object source) => _BMP(null, source);
 
         /// <summary>
-        /// Detect BMP bitmap files.
+        /// Detects BMP bitmap files.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -49,20 +49,20 @@ namespace Fp
         #region PNG
 
         /// <summary>
-        /// Detect PNG image files.
+        /// Detects PNG image files.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _PNG() => _PNG(null);
 
         /// <summary>
-        /// Detect PNG image files.
+        /// Detects PNG image files.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _PNG(this object source) => _PNG(null, source);
 
         /// <summary>
-        /// Detect PNG image files.
+        /// Detects PNG image files.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -83,20 +83,20 @@ namespace Fp
         #region JPEG
 
         /// <summary>
-        /// Detect JPEG image files.
+        /// Detects JPEG image files.
         /// </summary>
         /// <returns>Detector.</returns>
         public static Detector _JPEG() => _JPEG(null);
 
         /// <summary>
-        /// Detect JPEG image files.
+        /// Detects JPEG image files.
         /// </summary>
         /// <param name="source">Data source.</param>
         /// <returns>Detector.</returns>
         public static Detector _JPEG(this object source) => _JPEG(null, source);
 
         /// <summary>
-        /// Detect JPEG image files.
+        /// Detects JPEG image files.
         /// </summary>
         /// <param name="detector">Existing detector.</param>
         /// <param name="source">Data source.</param>
@@ -159,7 +159,7 @@ namespace Fp
         #region Validation
 
         /// <summary>
-        /// Ensure value is within pixel range between 0 and max.
+        /// Ensures value is within pixel range between 0 and max.
         /// </summary>
         /// <param name="x">Input.</param>
         /// <param name="max">Maximum size.</param>
@@ -172,7 +172,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Ensure value is within pixel range between 0 and max.
+        /// Ensures value is within pixel range between 0 and max.
         /// </summary>
         /// <param name="x">Input.</param>
         /// <param name="max">Maximum size.</param>
@@ -185,7 +185,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Ensure value is within pixel range between 0 and max.
+        /// Ensures value is within pixel range between 0 and max.
         /// </summary>
         /// <param name="x">Input.</param>
         /// <param name="max">Maximum size.</param>
@@ -198,7 +198,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Ensure value is within pixel range between 0 and max.
+        /// Ensures value is within pixel range between 0 and max.
         /// </summary>
         /// <param name="x">Input.</param>
         /// <param name="max">Maximum size.</param>
@@ -211,7 +211,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Ensure value is within pixel range between 0 and max.
+        /// Ensures value is within pixel range between 0 and max.
         /// </summary>
         /// <param name="x">Input.</param>
         /// <param name="max">Maximum size.</param>
@@ -224,7 +224,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Ensure value is within pixel range between 0 and max.
+        /// Ensures value is within pixel range between 0 and max.
         /// </summary>
         /// <param name="x">Input.</param>
         /// <param name="max">Maximum size.</param>
@@ -241,7 +241,7 @@ namespace Fp
         #region Pixel conversion
 
         /// <summary>
-        /// Convert 24bpp RGB data to 32bpp RGBA.
+        /// Converts 24bpp RGB data to 32bpp RGBA.
         /// </summary>
         /// <param name="data">Source.</param>
         /// <param name="target">Target.</param>
@@ -254,7 +254,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Convert 24bpp RGB data to 32bpp RGBA.
+        /// Converts 24bpp RGB data to 32bpp RGBA.
         /// </summary>
         /// <param name="data">Source.</param>
         /// <param name="a">Alpha value.</param>
@@ -272,7 +272,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Convert 32bpp BGRA data to 32bpp RGBA.
+        /// Converts 32bpp BGRA data to 32bpp RGBA.
         /// </summary>
         /// <param name="data">Source.</param>
         /// <param name="target">Target.</param>
@@ -286,7 +286,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Convert 32bpp BGRA data to 32bpp RGBA.
+        /// Converts 32bpp BGRA data to 32bpp RGBA.
         /// </summary>
         /// <param name="data">Source.</param>
         /// <returns>32-bit value with color.</returns>

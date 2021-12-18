@@ -3,7 +3,7 @@ using System;
 namespace Fp.Plus.Audio
 {
     /// <summary>
-    /// PCM metadata
+    /// PCM metadata.
     /// </summary>
     public record PcmInfo
     {
@@ -36,7 +36,7 @@ namespace Fp.Plus.Audio
         public int SampleRate { get; init; }
 
         /// <summary>
-        /// == SampleRate * NumChannels * BitsPerSample/8
+        /// == SampleRate * NumChannels * BitsPerSample/8.
         /// </summary>
         public int ByteRate { get; init; }
 
@@ -53,12 +53,12 @@ namespace Fp.Plus.Audio
         public short BitsPerSample { get; init; }
 
         /// <summary>
-        /// if PCM, then doesn't exist
+        /// if PCM, then doesn't exist.
         /// </summary>
         public short ExtraParamSize { get; init; }
 
         /// <summary>
-        /// space for extra parameters
+        /// space for extra parameters.
         /// </summary>
         public ReadOnlyMemory<byte>? ExtraParams { get; init; }
 
@@ -72,7 +72,7 @@ namespace Fp.Plus.Audio
         public int SubChunk2Size { get; init; }
 
         /// <summary>
-        /// Create new instance of <see cref="PcmInfo"/>
+        /// Creates a new instance of <see cref="PcmInfo"/>.
         /// </summary>
         /// <param name="subChunk1Size">16 for PCM.  This is the size of the
         /// rest of the Subchunk which follows this number.</param>
@@ -81,13 +81,13 @@ namespace Fp.Plus.Audio
         /// form of compression.</param>
         /// <param name="numChannels">Mono = 1, Stereo = 2, etc.</param>
         /// <param name="sampleRate">8000, 44100, etc.</param>
-        /// <param name="byteRate">== SampleRate * NumChannels * BitsPerSample/8</param>
+        /// <param name="byteRate">== SampleRate * NumChannels * BitsPerSample/8.</param>
         /// <param name="blockAlign">== NumChannels * BitsPerSample/8
         /// The number of bytes for one sample including
         /// all channels.</param>
         /// <param name="bitsPerSample">8 bits = 8, 16 bits = 16, etc.</param>
-        /// <param name="extraParamSize">if PCM, then doesn't exist</param>
-        /// <param name="extraParams">space for extra parameters</param>
+        /// <param name="extraParamSize">if PCM, then doesn't exist.</param>
+        /// <param name="extraParams">space for extra parameters.</param>
         /// <param name="subChunk2Size">== NumSamples * NumChannels * BitsPerSample/8
         /// This is the number of bytes in the data.
         /// You can also think of this as the size
@@ -111,7 +111,7 @@ namespace Fp.Plus.Audio
         }
 
         /// <summary>
-        /// Create new instance of <see cref="PcmInfo"/>
+        /// Creates a new instance of <see cref="PcmInfo"/>.
         /// </summary>
         /// <param name="subChunk1Size">16 for PCM.  This is the size of the
         /// rest of the Subchunk which follows this number.</param>
@@ -120,13 +120,13 @@ namespace Fp.Plus.Audio
         /// form of compression.</param>
         /// <param name="numChannels">Mono = 1, Stereo = 2, etc.</param>
         /// <param name="sampleRate">8000, 44100, etc.</param>
-        /// <param name="byteRate">== SampleRate * NumChannels * BitsPerSample/8</param>
+        /// <param name="byteRate">== SampleRate * NumChannels * BitsPerSample/8.</param>
         /// <param name="blockAlign">== NumChannels * BitsPerSample/8
         /// The number of bytes for one sample including
         /// all channels.</param>
         /// <param name="bitsPerSample">8 bits = 8, 16 bits = 16, etc.</param>
-        /// <param name="extraParamSize">if PCM, then doesn't exist</param>
-        /// <param name="extraParams">space for extra parameters</param>
+        /// <param name="extraParamSize">if PCM, then doesn't exist.</param>
+        /// <param name="extraParams">space for extra parameters.</param>
         /// <param name="subChunk2Size">== NumSamples * NumChannels * BitsPerSample/8
         /// This is the number of bytes in the data.
         /// You can also think of this as the size
@@ -150,12 +150,12 @@ namespace Fp.Plus.Audio
         }
 
         /// <summary>
-        /// Create new instance of <see cref="PcmInfo"/> for PCM data
+        /// Creates a new instance of <see cref="PcmInfo"/> for PCM data.
         /// </summary>
         /// <param name="numChannels">Mono = 1, Stereo = 2, etc.</param>
         /// <param name="sampleRate">8000, 44100, etc.</param>
         /// <param name="bitsPerSample">8 bits = 8, 16 bits = 16, etc.</param>
-        /// <param name="numSamples">Number of samples (shared count between channels)</param>
+        /// <param name="numSamples">Number of samples (shared count between channels).</param>
         public PcmInfo(short numChannels, int sampleRate, short bitsPerSample, int numSamples)
         {
             SubChunk1Size = 0x10;

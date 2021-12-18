@@ -4,7 +4,7 @@ using System.IO;
 namespace Fp
 {
     /// <summary>
-    /// Stream from pointer
+    /// Stream from pointer.
     /// </summary>
     public class PStream : Stream
     {
@@ -64,15 +64,8 @@ namespace Fp
             return _mPosition;
         }
 
-        /// <summary>
-        /// Not supported
-        /// </summary>
-        /// <param name="value"></param>
-        /// <exception cref="NotSupportedException"></exception>
-        public override void SetLength(long value)
-        {
-            throw new NotSupportedException();
-        }
+        /// <inheritdoc />
+        public override void SetLength(long value) => throw new NotSupportedException();
 
         /// <inheritdoc />
         public override unsafe void Write(byte[] buffer, int offset, int count)
@@ -86,10 +79,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create new instance
+        /// Creates a new instance.
         /// </summary>
-        /// <param name="ptr">Pointer</param>
-        /// <param name="length">Length</param>
+        /// <param name="ptr">Pointer.</param>
+        /// <param name="length">Length.</param>
         public PStream(IntPtr ptr, int length)
         {
             _mPtr = ptr;

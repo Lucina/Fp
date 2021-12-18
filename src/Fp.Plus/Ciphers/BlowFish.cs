@@ -16,7 +16,7 @@ using Fp.Plus.Ciphers;
 namespace Fp.Plus.Ciphers
 {
     /// <summary>
-    /// Blowfish cipher state
+    /// Blowfish cipher.
     /// </summary>
     public struct Blowfish
     {
@@ -55,9 +55,9 @@ namespace Fp.Plus.Ciphers
         #region Constructor
 
         /// <summary>
-        /// Create a new instance of <see cref="Blowfish"/> with specified key and blank CBC IV
+        /// Creates a new instance of <see cref="Blowfish"/> with specified key and blank CBC IV.
         /// </summary>
-        /// <param name="key">Cipher key</param>
+        /// <param name="key">Cipher key.</param>
         public Blowfish(ReadOnlySpan<byte> key)
         {
             _ivSet = false;
@@ -67,10 +67,10 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Create a new instance of <see cref="Blowfish"/> with specified key and specified CBC IV
+        /// Creates a new instance of <see cref="Blowfish"/> with specified key and specified CBC IV.
         /// </summary>
-        /// <param name="key">Cipher key</param>
-        /// <param name="iv">CBC IV</param>
+        /// <param name="key">Cipher key.</param>
+        /// <param name="iv">CBC IV.</param>
         public Blowfish(ReadOnlySpan<byte> key, ReadOnlySpan<byte> iv)
         {
             _ivSet = false;
@@ -84,9 +84,9 @@ namespace Fp.Plus.Ciphers
         #region Encryption/decryption
 
         /// <summary>
-        /// Decrypts in CBC mode
+        /// Decrypts in CBC mode.
         /// </summary>
-        /// <param name="cipherText">Ciphertext to decrypt</param>
+        /// <param name="cipherText">Ciphertext to decrypt.</param>
         /// <exception cref="Exception">If key or IV are not set.</exception>
         public unsafe void DecryptCbc(Span<byte> cipherText)
         {
@@ -125,9 +125,9 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Decrypts in ECB mode
+        /// Decrypts in ECB mode.
         /// </summary>
-        /// <param name="cipherText">Ciphertext to decrypt</param>
+        /// <param name="cipherText">Ciphertext to decrypt.</param>
         /// <exception cref="Exception">If key is not set.</exception>
         public unsafe void DecryptEcb(Span<byte> cipherText)
         {
@@ -151,9 +151,9 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Encrypts in CBC mode
+        /// Encrypts in CBC mode.
         /// </summary>
-        /// <param name="plainText">Plaintext to encrypt</param>
+        /// <param name="plainText">Plaintext to encrypt.</param>
         /// <exception cref="Exception">If key or IV are not set.</exception>
         public unsafe void EncryptCbc(Span<byte> plainText)
         {
@@ -190,9 +190,9 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Encrypts in ECB mode
+        /// Encrypts in ECB mode.
         /// </summary>
-        /// <param name="plainText">Plaintext to encrypt</param>
+        /// <param name="plainText">Plaintext to encrypt.</param>
         /// <exception cref="Exception">If key is not set.</exception>
         public unsafe void EncryptEcb(Span<byte> plainText)
         {
@@ -216,7 +216,7 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Set empty IV for CBC mode
+        /// Sets empty IV for CBC mode.
         /// </summary>
         public unsafe void SetBlankIv()
         {
@@ -226,10 +226,10 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Set IV for CBC mode
+        /// Sets IV for CBC mode.
         /// </summary>
-        /// <param name="iv"></param>
-        /// <exception cref="Exception">If IV size is not 8</exception>
+        /// <param name="iv">IV.</param>
+        /// <exception cref="Exception">If IV size is not 8.</exception>
         public unsafe void SetIv(ReadOnlySpan<byte> iv)
         {
             if (iv.Length == 8)
@@ -243,9 +243,9 @@ namespace Fp.Plus.Ciphers
         }
 
         /// <summary>
-        /// Sets up the S-blocks and the key
+        /// Sets up the S-blocks and the key.
         /// </summary>
-        /// <param name="cipherKey">Block cipher key (1-448 bits)</param>
+        /// <param name="cipherKey">Block cipher key (1-448 bits).</param>
         public unsafe void SetKey(ReadOnlySpan<byte> cipherKey)
         {
             if (cipherKey.Length > 56)
@@ -365,8 +365,8 @@ namespace Fp.Plus.Ciphers
 
         private static unsafe void BlockEncryptLe(byte* block, uint* p, uint* s0, uint* s1, uint* s2, uint* s3)
         {
-            var blL = (uint*)block;
-            var blR = (uint*)(block + 4);
+            uint* blL = (uint*)block;
+            uint* blR = (uint*)(block + 4);
             byte nTmp = *block;
             *block = block[3];
             block[3] = nTmp;
@@ -411,8 +411,8 @@ namespace Fp.Plus.Ciphers
 
         private static unsafe void BlockEncryptBe(byte* block, uint* p, uint* s0, uint* s1, uint* s2, uint* s3)
         {
-            var blL = (uint*)block;
-            var blR = (uint*)(block + 4);
+            uint* blL = (uint*)block;
+            uint* blR = (uint*)(block + 4);
 
             *blL ^= p[0];
             for (byte i = 0; i < 16; i += 2)
@@ -735,10 +735,10 @@ namespace Fp
     public partial class PlusUtil
     {
         /// <summary>
-        /// Decrypt with Blowfish using ECB mode and key
+        /// Decrypt with Blowfish using ECB mode and key.
         /// </summary>
-        /// <param name="src">Source span</param>
-        /// <param name="key">Cipher key</param>
+        /// <param name="src">Source span.</param>
+        /// <param name="key">Cipher key.</param>
         public static void DecryptBlowfishEcb(Span<byte> src, ReadOnlySpan<byte> key)
         {
             Blowfish bf = new(key);
@@ -746,11 +746,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Decrypt with Blowfish using CBC mode and key/IV
+        /// Decrypt with Blowfish using CBC mode and key/IV.
         /// </summary>
-        /// <param name="src">Source span</param>
-        /// <param name="key">Cipher key</param>
-        /// <param name="iv">IV (CBC/CTR)</param>
+        /// <param name="src">Source span.</param>
+        /// <param name="key">Cipher key.</param>
+        /// <param name="iv">IV (CBC/CTR).</param>
         public static void DecryptBlowfishCbc(Span<byte> src, ReadOnlySpan<byte> key, ReadOnlySpan<byte> iv = default)
         {
             Blowfish bf = iv.Length == 0 ? new Blowfish(key) : new Blowfish(key, iv);
@@ -758,10 +758,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Encrypt with Blowfish using ECB mode and key
+        /// Encrypt with Blowfish using ECB mode and key.
         /// </summary>
-        /// <param name="src">Source span</param>
-        /// <param name="key">Cipher key</param>
+        /// <param name="src">Source span.</param>
+        /// <param name="key">Cipher key.</param>
         public static void EncryptBlowfishEcb(Span<byte> src, ReadOnlySpan<byte> key)
         {
             Blowfish bf = new(key);
@@ -769,11 +769,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Encrypt with Blowfish using CBC mode and key/IV
+        /// Encrypt with Blowfish using CBC mode and key/IV.
         /// </summary>
-        /// <param name="src">Source span</param>
-        /// <param name="key">Cipher key</param>
-        /// <param name="iv">IV (CBC/CTR)</param>
+        /// <param name="src">Source span.</param>
+        /// <param name="key">Cipher key.</param>
+        /// <param name="iv">IV (CBC/CTR).</param>
         public static void EncryptBlowfishCbc(Span<byte> src, ReadOnlySpan<byte> key, ReadOnlySpan<byte> iv = default)
         {
             Blowfish bf = iv.Length == 0 ? new Blowfish(key) : new Blowfish(key, iv);

@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-#if !NET5_0_OR_GREATER
+#if !NET6_0_OR_GREATER
 using static System.Buffers.ArrayPool<byte>;
 
 #endif
@@ -16,14 +16,34 @@ namespace Fp
         #region Stream read utilities
 
         /// <summary>
-        /// Get seekable stream (closes base stream if replaced)
+        /// Gets a read-optimized stream from an existing stream, disposing the passed stream if it is replaced.
         /// </summary>
-        /// <param name="stream">Base stream</param>
-        /// <returns>Seekable stream</returns>
+        /// <param name="stream">Stream to read.</param>
+        /// <returns>Equivalent stream optimized for reading.</returns>
+        public Stream GetReadingStream(Stream stream)
+        {
+            if (Preload && (stream is not MemoryStream alreadyMs || !alreadyMs.TryGetBuffer(out _)))
+            {
+                MemoryStream ms = new(new byte[stream.Length]);
+                stream.CopyTo(ms);
+                stream.Dispose();
+                stream = ms;
+            }
+
+            if (stream is FileStream)
+                stream = new MultiBufferStream(stream, true);
+            return stream;
+        }
+
+        /// <summary>
+        /// Gets a seekable stream (closes base stream if replaced).
+        /// </summary>
+        /// <param name="stream">Base stream.</param>
+        /// <returns>Seekable stream.</returns>
         /// <remarks>
         /// This method conditionally creates a seekable stream from a non-seekable stream by copying the
         /// stream's contents to a new <see cref="MemoryStream"/> instance. The returned object is either
-        /// this newly created stream or the passed argument <paramref name="stream"/> if it was already seekable
+        /// this newly created stream or the passed argument <paramref name="stream"/> if it was already seekable.
         /// </remarks>
         public static Stream GetSeekableStream(Stream stream)
         {
@@ -51,19 +71,19 @@ namespace Fp
         }
 
         /// <summary>
-        /// Skip data in stream
+        /// Skips data in stream.
         /// </summary>
-        /// <param name="bytes">Number of bytes to skip</param>
-        /// <param name="stream">Stream to operate on</param>
-        /// <returns>New position in stream</returns>
+        /// <param name="bytes">Number of bytes to skip.</param>
+        /// <param name="stream">Stream to operate on.</param>
+        /// <returns>New position in stream.</returns>
         public static long Skip(long bytes, Stream stream)
             => stream.Seek(bytes, SeekOrigin.Current);
 
         /// <summary>
-        /// Skip data in current file's input stream
+        /// Skips data in current file's input stream.
         /// </summary>
-        /// <param name="bytes">Number of bytes to skip</param>
-        /// <returns>New position in stream</returns>
+        /// <param name="bytes">Number of bytes to skip.</param>
+        /// <returns>New position in stream.</returns>
         public long Skip(long bytes)
             => (_inputStream ?? throw new InvalidOperationException()).Seek(bytes, SeekOrigin.Current);
 
@@ -79,7 +99,7 @@ namespace Fp
 
             if (left > 0 && read == 0 && !lenient)
             {
-                throw new ProcessorException(
+                throw new IOException(
                     $"Failed to read required number of bytes! 0x{read:X} read, 0x{left:X} left, 0x{stream.Position:X} end position");
             }
 
@@ -88,7 +108,7 @@ namespace Fp
 
         internal static int ReadBaseSpan(Stream stream, Span<byte> span, bool lenient)
         {
-#if NET5_0_OR_GREATER
+#if NET6_0_OR_GREATER
             int left = span.Length, read, tot = 0;
             do
             {
@@ -99,7 +119,7 @@ namespace Fp
 
             if (left > 0 && !lenient)
             {
-                throw new ProcessorException(
+                throw new IOException(
                     $"Failed to read required number of bytes! 0x{read:X} read, 0x{left:X} left, 0x{stream.Position:X} end position");
             }
 
@@ -121,7 +141,7 @@ namespace Fp
 
                 if (left > 0 && !lenient)
                 {
-                    throw new ProcessorException(
+                    throw new IOException(
                         $"Failed to read required number of bytes! 0x{read:X} read, 0x{left:X} left, 0x{stream.Position:X} end position");
                 }
 
@@ -135,18 +155,18 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read data from stream, optionally replacing reference to provided span to prevent copy when reading from <see cref="MemoryStream"/>
+        /// Reads data from stream, optionally replacing reference to provided span to prevent copy when reading from <see cref="MemoryStream"/>.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use provided span</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use provided span.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, ref Span<byte> span, bool lenient = true, bool forceNew = false)
         {
-            if (forceNew || !(stream is MemoryStream ms) || !ms.TryGetBuffer(out ArraySegment<byte> buf))
+            if (forceNew || stream is not MemoryStream ms || !ms.TryGetBuffer(out ArraySegment<byte> buf))
             {
                 return ReadBaseSpan(stream, span, lenient);
             }
@@ -157,21 +177,21 @@ namespace Fp
             }
             catch (ArgumentOutOfRangeException exception)
             {
-                throw new ProcessorException("Failed to convert span from memory stream", exception);
+                throw new IOException("Failed to convert span from memory stream", exception);
             }
         }
 
         /// <summary>
-        /// Read data from stream
+        /// Reads data from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="length">Number of bytes to try to read</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, int length, out Span<byte> span, bool lenient = true,
             bool forceNew = false)
         {
@@ -183,7 +203,7 @@ namespace Fp
                 }
                 catch (ArgumentOutOfRangeException exception)
                 {
-                    throw new ProcessorException("Failed to convert span from memory stream", exception);
+                    throw new IOException("Failed to convert span from memory stream", exception);
                 }
             }
 
@@ -192,17 +212,17 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read data from stream
+        /// Reads data from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, Span<byte> span, bool lenient = true)
         {
-            if (!(stream is MemoryStream ms) || !ms.TryGetBuffer(out ArraySegment<byte> buf))
+            if (stream is not MemoryStream ms || !ms.TryGetBuffer(out ArraySegment<byte> buf))
             {
                 return ReadBaseSpan(stream, span, lenient);
             }
@@ -214,56 +234,56 @@ namespace Fp
             }
             catch (ArgumentOutOfRangeException exception)
             {
-                throw new ProcessorException("Failed to convert span from memory stream", exception);
+                throw new IOException("Failed to convert span from memory stream", exception);
             }
         }
 
         /// <summary>
-        /// Read data from current file's input stream, optionally replacing reference to provided span to prevent copy when reading from <see cref="MemoryStream"/>
+        /// Reads data from current file's input stream, optionally replacing reference to provided span to prevent copy when reading from <see cref="MemoryStream"/>.
         /// </summary>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use provided span</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use provided span.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(ref Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), ref span, lenient, forceNew);
 
         /// <summary>
-        /// Read data from current file's input stream
+        /// Reads data from current file's input stream.
         /// </summary>
-        /// <param name="length">Number of bytes to try to read</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), length, out span, lenient, forceNew);
 
         /// <summary>
-        /// Read data from current file's input stream
+        /// Reads data from current file's input stream.
         /// </summary>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(Span<byte> span, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), span, lenient);
 
         /// <summary>
-        /// Read data from stream at the specified offset
+        /// Reads data from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, long offset, Span<byte> span, bool lenient = true)
         {
             long position = stream.Position;
@@ -280,28 +300,28 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read data from current file's input stream at the specified offset
+        /// Reads data from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(long offset, Span<byte> span, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, span, lenient);
 
         /// <summary>
-        /// Read data from stream at the specified offset
+        /// Reads data from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use provided span</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use provided span.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, long offset, ref Span<byte> span, bool lenient = true,
             bool forceNew = false)
         {
@@ -319,31 +339,31 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read data from current file's input stream at the specified offset
+        /// Reads data from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use provided span</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use provided span.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(long offset, ref Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, ref span, lenient, forceNew);
 
         /// <summary>
-        /// Read data from stream at the specified offset
+        /// Reads data from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="length">Number of bytes to try to read</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
-        public int Read(Stream stream, long offset, int length, out Span<byte> span, bool lenient = true,
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
+        public static int Read(Stream stream, long offset, int length, out Span<byte> span, bool lenient = true,
             bool forceNew = false)
         {
             long position = stream.Position;
@@ -360,58 +380,58 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read data from current file's input stream at the specified offset
+        /// Reads data from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="length">Number of bytes to try to read</param>
-        /// <param name="span">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(long offset, int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, length, out span, lenient, forceNew);
 
         /// <summary>
-        /// Read data from stream
+        /// Reads data from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="arrayOffset">Offset in array to write to</param>
-        /// <param name="arrayLength">Length to write</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="arrayOffset">Offset in array to write to.</param>
+        /// <param name="arrayLength">Length to write.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, byte[] array, int arrayOffset, int arrayLength, bool lenient = true) =>
             ReadBaseArray(stream, array, arrayOffset, arrayLength, lenient);
 
         /// <summary>
-        /// Read data from current file's input stream
+        /// Reads data from current file's input stream.
         /// </summary>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="arrayOffset">Offset in array to write to</param>
-        /// <param name="arrayLength">Length to write</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="arrayOffset">Offset in array to write to.</param>
+        /// <param name="arrayLength">Length to write.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), array, arrayOffset, arrayLength, lenient);
 
         /// <summary>
-        /// Read data from stream at the specified offset
+        /// Reads data from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="arrayOffset">Offset in array to write to</param>
-        /// <param name="arrayLength">Length to write</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="arrayOffset">Offset in array to write to.</param>
+        /// <param name="arrayLength">Length to write.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, long offset, byte[] array, int arrayOffset, int arrayLength,
             bool lenient = true)
         {
@@ -429,74 +449,74 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read data from current file's input stream at the specified offset
+        /// Reads data from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="arrayOffset">Offset in array to write to</param>
-        /// <param name="arrayLength">Length to write</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="arrayOffset">Offset in array to write to.</param>
+        /// <param name="arrayLength">Length to write.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(long offset, byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, array, arrayOffset, arrayLength,
                 lenient);
 
         /// <summary>
-        /// Read data from stream
+        /// Reads data from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public static int Read(Stream stream, byte[] array, bool lenient = true)
             => Read(stream, array, 0, array.Length, lenient);
 
         /// <summary>
-        /// Read data from current file's input stream
+        /// Reads data from current file's input stream.
         /// </summary>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(byte[] array, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), array, 0, array.Length, lenient);
 
         /// <summary>
-        /// Read data from stream at the specified offset
+        /// Reads data from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(Stream stream, long offset, byte[] array, bool lenient = true)
             => Read(stream, offset, array, 0, array.Length, lenient);
 
         /// <summary>
-        /// Read data from current file's input stream at the specified offset
+        /// Reads data from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="array">Target to copy to</param>
-        /// <param name="lenient">If false, throws when failed to fill target</param>
-        /// <returns>Number of bytes read</returns>
-        /// <exception cref="ProcessorException"> when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target</exception>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="array">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
         public int Read(long offset, byte[] array, bool lenient = true)
             => Read(offset, array, 0, array.Length, lenient);
 
         /// <summary>
-        /// Get byte array from stream
+        /// Gets byte array from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Array with file contents</returns>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Array with file contents.</returns>
         public static byte[] GetArray(Stream stream, bool forceNew = false)
         {
             if (!stream.CanSeek)
@@ -527,39 +547,28 @@ namespace Fp
         }
 
         /// <summary>
-        /// Loads newly allocated byte array from input stream
+        /// Loads newly allocated byte array from input stream.
         /// </summary>
-        /// <returns>Array with file contents</returns>
+        /// <returns>Array with file contents.</returns>
         public byte[] Load()
             => GetArray(_inputStream ?? throw new InvalidOperationException(), true);
 
         /// <summary>
-        /// Loads newly allocated byte array from file relative to <see cref="InputDirectory"/>
+        /// Gets byte array from input stream.
         /// </summary>
-        /// <param name="path">Input file path</param>
-        /// <returns>Array with file contents</returns>
-        public byte[] Load(string path)
-        {
-            using var fs = OpenFile(path);
-            return GetArray(fs, true);
-        }
-
-        /// <summary>
-        /// Get byte array from input stream
-        /// </summary>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Array with file contents</returns>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Array with file contents.</returns>
         public byte[] GetArray(bool forceNew = false)
             => GetArray(_inputStream ?? throw new InvalidOperationException(), forceNew);
 
         /// <summary>
-        /// Get byte array from stream
+        /// Gets byte array from stream.
         /// </summary>
-        /// <param name="offset">Offset in stream</param>
-        /// <param name="length">Length of segment</param>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Array with file contents</returns>
+        /// <param name="offset">Offset in stream.</param>
+        /// <param name="length">Length of segment.</param>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Array with file contents.</returns>
         public static byte[] GetArray(int offset, int length, Stream stream, bool forceNew = false)
         {
             if (!stream.CanSeek)
@@ -594,21 +603,21 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get byte array from input stream
+        /// Gets byte array from input stream.
         /// </summary>
-        /// <param name="offset">Offset in stream</param>
-        /// <param name="length">Length of segment</param>
-        /// <param name="forceNew">Force use newly allocated buffer</param>
-        /// <returns>Array with file contents</returns>
+        /// <param name="offset">Offset in stream.</param>
+        /// <param name="length">Length of segment.</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>Array with file contents.</returns>
         public byte[] GetArray(int offset, int length, bool forceNew = false)
             => GetArray(offset, length, _inputStream ?? throw new InvalidOperationException(), forceNew);
 
         /// <summary>
-        /// Dump remaining content from stream to byte array
+        /// Dumps remaining content from stream to byte array.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
+        /// <param name="stream">Stream to read from.</param>
         /// <param name="maxLength">Maximum length.</param>
-        /// <returns>Array with file contents</returns>
+        /// <returns>Array with file contents.</returns>
         public static byte[] Dump(Stream stream, int maxLength = int.MaxValue)
         {
             MemoryStream ms2 = new();
@@ -617,19 +626,19 @@ namespace Fp
         }
 
         /// <summary>
-        /// Dump remaining content from input stream to byte array
+        /// Dumps remaining content from input stream to byte array.
         /// </summary>
         /// <param name="maxLength">Maximum length.</param>
-        /// <returns>Array with file contents</returns>
+        /// <returns>Array with file contents.</returns>
         public byte[] Dump(int maxLength = int.MaxValue)
             => Dump(_inputStream ?? throw new InvalidOperationException(), maxLength);
 
         /// <summary>
-        /// Get read-only memory from stream
+        /// Gets read-only memory from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <returns>Array with file contents</returns>
-        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported</remarks>
+        /// <param name="stream">Stream to read from.</param>
+        /// <returns>Array with file contents.</returns>
+        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public static ReadOnlyMemory<byte> GetMemory(Stream stream)
         {
             if (!stream.CanSeek)
@@ -660,21 +669,21 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get read-only memory from input stream
+        /// Gets read-only memory from input stream.
         /// </summary>
-        /// <returns>Array with file contents</returns>
-        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported</remarks>
+        /// <returns>Array with file contents.</returns>
+        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public ReadOnlyMemory<byte> GetMemory()
             => GetMemory(_inputStream ?? throw new InvalidOperationException());
 
         /// <summary>
-        /// Get read-only memory from stream
+        /// Gets read-only memory from stream.
         /// </summary>
-        /// <param name="offset">Offset in stream</param>
-        /// <param name="length">Length of segment</param>
-        /// <param name="stream">Stream to read from</param>
-        /// <returns>Array with file contents</returns>
-        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported</remarks>
+        /// <param name="offset">Offset in stream.</param>
+        /// <param name="length">Length of segment.</param>
+        /// <param name="stream">Stream to read from.</param>
+        /// <returns>Array with file contents.</returns>
+        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public static ReadOnlyMemory<byte> GetMemory(long offset, int length, Stream stream)
         {
             if (!stream.CanSeek)
@@ -707,23 +716,23 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get read-only memory from input stream
+        /// Gets read-only memory from input stream.
         /// </summary>
-        /// <param name="offset">Offset in stream</param>
-        /// <param name="length">Length of segment</param>
-        /// <returns>Array with file contents</returns>
-        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported</remarks>
+        /// <param name="offset">Offset in stream.</param>
+        /// <param name="length">Length of segment.</param>
+        /// <returns>Array with file contents.</returns>
+        /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public ReadOnlyMemory<byte> GetMemory(long offset, int length)
             => GetMemory(offset, length, _inputStream ?? throw new InvalidOperationException());
 
         /// <summary>
-        /// Ensures a file is loaded / initialized with nonzero length
+        /// Ensures a file is loaded / initialized with nonzero length.
         /// </summary>
-        /// <param name="target">Target memory variable</param>
-        /// <param name="init">Initialization flag</param>
-        /// <param name="openDelegate">Delegate for opening file (stream will be disposed)</param>
-        /// <param name="storeDelegate">Delegate for getting data</param>
-        /// <returns></returns>
+        /// <param name="target">Target memory variable.</param>
+        /// <param name="init">Initialization flag.</param>
+        /// <param name="openDelegate">Delegate for opening file (stream will be disposed).</param>
+        /// <param name="storeDelegate">Delegate for getting data.</param>
+        /// <returns>true if file is loaded.</returns>
         public bool EnsureFile(ref Memory<byte> target, ref bool init, Func<Stream> openDelegate,
             Func<Stream, Memory<byte>> storeDelegate)
         {
@@ -779,32 +788,15 @@ namespace Fp
         public static Stream Stream(this ReadOnlyMemory<byte> source) => new MStream(source);
 
         /// <summary>
-        /// Get seekable stream (closes base stream if replaced)
+        /// Gets seekable stream (closes base stream if replaced).
         /// </summary>
-        /// <param name="stream">Base stream</param>
-        /// <returns>Seekable stream</returns>
+        /// <param name="stream">Base stream.</param>
+        /// <returns>Seekable stream.</returns>
         /// <remarks>
         /// This method conditionally creates a seekable stream from a non-seekable stream by copying the
         /// stream's contents to a new <see cref="MemoryStream"/> instance. The returned object is either
-        /// this newly created stream or the passed argument <paramref name="stream"/> if it was already seekable
+        /// this newly created stream or the passed argument <paramref name="stream"/> if it was already seekable.
         /// </remarks>
         public static Stream Seekable(this Stream stream) => Processor.GetSeekableStream(stream);
-    }
-
-
-    public partial class Scripting
-    {
-        /// <summary>
-        /// Loads byte array from input.
-        /// </summary>
-        /// <returns>Byte array.</returns>
-        public static byte[] load() => Processor.Current.Load();
-
-        /// <summary>
-        /// Dumps byte array from input.
-        /// </summary>
-        /// <param name="maxLength">Maximum input length.</param>
-        /// <returns>Byte array.</returns>
-        public static byte[] dump(int maxLength = int.MaxValue) => Processor.Current.Dump(maxLength);
     }
 }

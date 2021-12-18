@@ -28,13 +28,13 @@ namespace Fp
         public int Y;
 
         /// <summary>
-        /// Creates new instance of <see cref="RasterIndexContext"/>.
+        /// Creates a new instance of <see cref="RasterIndexContext"/>.
         /// </summary>
         /// <param name="w">Width.</param>
         /// <param name="h">Height.</param>
         /// <param name="x">Initial x position.</param>
         /// <param name="y">Initial y position.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when w &lt; 0 or h &lt; 0</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when w &lt; 0 or h &lt; 0.</exception>
         public RasterIndexContext(int w, int h, int x = 0, int y = 0)
         {
             if (w < 0) throw new ArgumentOutOfRangeException(nameof(w));
@@ -63,7 +63,7 @@ namespace Fp
             x >= 0 && y >= 0 && (x == 0 && y == H && endIsOk || x < W && y < H);
 
         /// <summary>
-        /// Advance context.
+        /// Advances context.
         /// </summary>
         /// <param name="amount">Amount to advance by.</param>
         /// <param name="endIsOk">Allow end position to return true.</param>
@@ -102,7 +102,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Implicit cast to liner position in raster (row-major).
+        /// Casts to liner position in raster (row-major).
         /// </summary>
         /// <param name="value">Context.</param>
         /// <returns>Linear position.</returns>

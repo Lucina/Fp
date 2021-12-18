@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using Fp;
 
-Processor.Run<FptProcessor>(args,
+FsProcessor.Run<FptProcessor>(args,
     "Fpt",
     "yourDescription",
     ".yourExtension1");
-public class FptProcessor : Processor
+public class FptProcessor : FsProcessor
 {
     protected override void ProcessImpl()
     {

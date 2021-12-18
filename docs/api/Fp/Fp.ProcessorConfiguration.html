@@ -73,7 +73,7 @@
   
   <h1 id="Fp_ProcessorConfiguration" data-uid="Fp.ProcessorConfiguration" class="text-break">Class ProcessorConfiguration
   </h1>
-  <div class="markdown level0 summary"><p>Configuration for batch-processing fs with processors</p>
+  <div class="markdown level0 summary"><p>Configuration for batch-processing fs with processors.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -95,19 +95,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration__ctor_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_Fp_ILogReceiver_IReadOnlyList_System_String__.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.%23ctor(System.String%2CSystem.Int32%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CFp.ILogReceiver%2CIReadOnlyList%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration__ctor_System_Boolean_System_Boolean_System_Boolean_Fp_ILogReceiver_IReadOnlyList_System_String__.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.%23ctor(System.Boolean%2CSystem.Boolean%2CSystem.Boolean%2CFp.ILogReceiver%2CIReadOnlyList%7BSystem.String%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L20">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L18">View Source</a>
   </span>
   <a id="Fp_ProcessorConfiguration__ctor_" data-uid="Fp.ProcessorConfiguration.#ctor*"></a>
-  <h4 id="Fp_ProcessorConfiguration__ctor_System_String_System_Int32_System_Boolean_System_Boolean_System_Boolean_Fp_ILogReceiver_IReadOnlyList_System_String__" data-uid="Fp.ProcessorConfiguration.#ctor(System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean,Fp.ILogReceiver,IReadOnlyList{System.String})">ProcessorConfiguration(String, Int32, Boolean, Boolean, Boolean, ILogReceiver, IReadOnlyList&lt;String&gt;)</h4>
-  <div class="markdown level1 summary"><p>Create configuration</p>
+  <h4 id="Fp_ProcessorConfiguration__ctor_System_Boolean_System_Boolean_System_Boolean_Fp_ILogReceiver_IReadOnlyList_System_String__" data-uid="Fp.ProcessorConfiguration.#ctor(System.Boolean,System.Boolean,System.Boolean,Fp.ILogReceiver,IReadOnlyList{System.String})">ProcessorConfiguration(Boolean, Boolean, Boolean, ILogReceiver, IReadOnlyList&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ProcessorConfiguration(string outputRootDirectory, int parallel, bool preload, bool debug, bool nop, ILogReceiver logReceiver, IReadOnlyList&lt;string&gt; args)</code></pre>
+    <pre><code class="lang-csharp hljs">public ProcessorConfiguration(bool preload, bool debug, bool nop, ILogReceiver logReceiver, IReadOnlyList&lt;string&gt; args)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -120,21 +120,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">outputRootDirectory</span></td>
-        <td><p>Output source</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">parallel</span></td>
-        <td><p>Thread count</p>
-</td>
-      </tr>
-      <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">preload</span></td>
-        <td><p>Whether to read all streams to memory</p>
+        <td><p>Whether to read all streams to memory.</p>
 </td>
       </tr>
       <tr>
@@ -146,19 +134,19 @@
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">nop</span></td>
-        <td><p>Whether to disable outputs</p>
+        <td><p>Whether to disable outputs.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Fp.ILogReceiver.html">ILogReceiver</a></td>
         <td><span class="parametername">logReceiver</span></td>
-        <td><p>Log writer</p>
+        <td><p>Log writer.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">IReadOnlyList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">args</span></td>
-        <td><p>Arguments</p>
+        <td><p>Arguments.</p>
 </td>
       </tr>
     </tbody>
@@ -167,14 +155,14 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Args.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Args%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Args.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Args%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L65">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L50">View Source</a>
   </span>
   <a id="Fp_ProcessorConfiguration_Args_" data-uid="Fp.ProcessorConfiguration.Args*"></a>
   <h4 id="Fp_ProcessorConfiguration_Args" data-uid="Fp.ProcessorConfiguration.Args">Args</h4>
-  <div class="markdown level1 summary"><p>Arguments</p>
+  <div class="markdown level1 summary"><p>Arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -198,14 +186,14 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Debug.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Debug%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Debug.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Debug%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L50">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L35">View Source</a>
   </span>
   <a id="Fp_ProcessorConfiguration_Debug_" data-uid="Fp.ProcessorConfiguration.Debug*"></a>
   <h4 id="Fp_ProcessorConfiguration_Debug" data-uid="Fp.ProcessorConfiguration.Debug">Debug</h4>
-  <div class="markdown level1 summary"><p>Whether to enable <a class="xref" href="Fp.Processor.html#Fp_Processor_Debug">Debug</a></p>
+  <div class="markdown level1 summary"><p>Whether to enable <a class="xref" href="Fp.Processor.html#Fp_Processor_Debug">Debug</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -229,14 +217,14 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_LogReceiver.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.LogReceiver%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_LogReceiver.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.LogReceiver%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L60">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L45">View Source</a>
   </span>
   <a id="Fp_ProcessorConfiguration_LogReceiver_" data-uid="Fp.ProcessorConfiguration.LogReceiver*"></a>
   <h4 id="Fp_ProcessorConfiguration_LogReceiver" data-uid="Fp.ProcessorConfiguration.LogReceiver">LogReceiver</h4>
-  <div class="markdown level1 summary"><p>Log writer</p>
+  <div class="markdown level1 summary"><p>Log writer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -260,14 +248,14 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Nop.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Nop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Nop.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Nop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L55">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L40">View Source</a>
   </span>
   <a id="Fp_ProcessorConfiguration_Nop_" data-uid="Fp.ProcessorConfiguration.Nop*"></a>
   <h4 id="Fp_ProcessorConfiguration_Nop" data-uid="Fp.ProcessorConfiguration.Nop">Nop</h4>
-  <div class="markdown level1 summary"><p>Whether to disable outputs</p>
+  <div class="markdown level1 summary"><p>Whether to disable outputs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -291,76 +279,14 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_OutputRootDirectory.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.OutputRootDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Preload.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Preload%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L35">View Source</a>
-  </span>
-  <a id="Fp_ProcessorConfiguration_OutputRootDirectory_" data-uid="Fp.ProcessorConfiguration.OutputRootDirectory*"></a>
-  <h4 id="Fp_ProcessorConfiguration_OutputRootDirectory" data-uid="Fp.ProcessorConfiguration.OutputRootDirectory">OutputRootDirectory</h4>
-  <div class="markdown level1 summary"><p>Output source</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string OutputRootDirectory { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Parallel.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Parallel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L40">View Source</a>
-  </span>
-  <a id="Fp_ProcessorConfiguration_Parallel_" data-uid="Fp.ProcessorConfiguration.Parallel*"></a>
-  <h4 id="Fp_ProcessorConfiguration_Parallel" data-uid="Fp.ProcessorConfiguration.Parallel">Parallel</h4>
-  <div class="markdown level1 summary"><p>Thread count</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Parallel { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration_Preload.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration.Preload%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L45">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L30">View Source</a>
   </span>
   <a id="Fp_ProcessorConfiguration_Preload_" data-uid="Fp.ProcessorConfiguration.Preload*"></a>
   <h4 id="Fp_ProcessorConfiguration_Preload" data-uid="Fp.ProcessorConfiguration.Preload">Preload</h4>
-  <div class="markdown level1 summary"><p>Whether to read all streams to memory</p>
+  <div class="markdown level1 summary"><p>Whether to read all streams to memory.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -398,10 +324,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_ProcessorConfiguration.md&amp;value=---%0Auid%3A%20Fp.ProcessorConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/riina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/ProcessorConfiguration.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

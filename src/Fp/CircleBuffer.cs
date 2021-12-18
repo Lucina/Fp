@@ -6,13 +6,13 @@ using System.Runtime.CompilerServices;
 namespace Fp
 {
     /// <summary>
-    /// Stores circular buffer of elements
+    /// Stores circular buffer of elements.
     /// </summary>
-    /// <typeparam name="T">Element type</typeparam>
+    /// <typeparam name="T">Element type.</typeparam>
     public class CircleBuffer<T> : IList<T>
     {
         /// <summary>
-        /// Maximum capacity
+        /// Maximum capacity.
         /// </summary>
         public int Capacity => _capacity;
 
@@ -22,9 +22,9 @@ namespace Fp
         private int _count;
 
         /// <summary>
-        /// Create new instance of <see cref="CircleBuffer{T}"/>
+        /// Creates a new instance of <see cref="CircleBuffer{T}"/>.
         /// </summary>
-        /// <param name="capacity"></param>
+        /// <param name="capacity">Buffer capacity.</param>
         public CircleBuffer(int capacity)
         {
             _capacity = capacity;

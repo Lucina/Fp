@@ -7,21 +7,24 @@ using System.Runtime.InteropServices;
 namespace Fp
 {
     /// <summary>
-    /// Buffer containing unstructured data
+    /// Buffer containing unstructured data.
     /// </summary>
     public abstract class BufferData : Data
     {
-        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new instance of <see cref="BufferData{T}"/>.
+        /// </summary>
+        /// <param name="basePath">Base path of resource.</param>
         protected BufferData(string basePath) : base(basePath)
         {
         }
 
         /// <summary>
-        /// Get span of specified type from buffer
+        /// Gets span of specified type from buffer.
         /// </summary>
-        /// <typeparam name="TWant">Target type</typeparam>
-        /// <returns>Span</returns>
-        /// <exception cref="ObjectDisposedException">If object was disposed</exception>
+        /// <typeparam name="TWant">Target type.</typeparam>
+        /// <returns>Span.</returns>
+        /// <exception cref="ObjectDisposedException">Thrown if object was disposed.</exception>
         public abstract ReadOnlySpan<TWant> AsSpan<TWant>() where TWant : unmanaged;
     }
 
@@ -34,25 +37,25 @@ namespace Fp
         public override Guid DefaultFormat => Generic;
 
         /// <summary>
-        /// Memory owner
+        /// Memory owner.
         /// </summary>
         public IMemoryOwner<T>? MemoryOwner { get; }
 
         /// <summary>
-        /// Buffer
+        /// Buffer.
         /// </summary>
         public ReadOnlyMemory<T> Buffer { get; private set; }
 
         /// <summary>
-        /// Buffer content length
+        /// Buffer content length.
         /// </summary>
         public readonly int Count;
 
         /// <summary>
-        /// Create new instance of <see cref="BufferData{T}"/>
+        /// Creates a new instance of <see cref="BufferData{T}"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="count">Length of content</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="count">Length of content.</param>
         public BufferData(string basePath, int count) : base(basePath)
         {
             Dry = true;
@@ -62,11 +65,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create new instance of <see cref="BufferData{T}"/>
+        /// Creates a new instance of <see cref="BufferData{T}"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="memoryOwner">Owner of data buffer</param>
-        /// <param name="count">Length of content</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="memoryOwner">Owner of data buffer.</param>
+        /// <param name="count">Length of content.</param>
         public BufferData(string basePath, IMemoryOwner<T> memoryOwner, int? count = default) : base(basePath)
         {
             MemoryOwner = memoryOwner;
@@ -76,10 +79,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create new instance of <see cref="BufferData{T}"/>
+        /// Creates a new instance of <see cref="BufferData{T}"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="buffer">Data in container</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="buffer">Data in container.</param>
         public BufferData(string basePath, ReadOnlyMemory<T> buffer) : base(basePath)
         {
             Buffer = buffer;
@@ -120,13 +123,13 @@ namespace Fp
                 return new BufferData<T>(BasePath, Count);
             if (_disposed)
                 throw new ObjectDisposedException(nameof(BufferData<T>));
-            return new BufferData<T>(BasePath, DataUtil.CloneBuffer(Buffer));
+            return new BufferData<T>(BasePath, Buffer.CloneBuffer());
         }
 
         /// <summary>
-        /// Dispose object
+        /// Disposes object.
         /// </summary>
-        /// <param name="disposing">False if called from finalizer</param>
+        /// <param name="disposing">False if called from finalizer.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (_disposed) return;

@@ -43,7 +43,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Skip over bits matching specified value.
+        /// Skips over bits matching specified value.
         /// </summary>
         /// <param name="array">Bit array to use.</param>
         /// <param name="i">Index to modify.</param>

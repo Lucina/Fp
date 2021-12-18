@@ -63,7 +63,7 @@ namespace Fp
         public HashSet<Data> Content => Parent.Content;
 
         /// <summary>
-        /// Execute.
+        /// Executes.
         /// </summary>
         public virtual void Run()
         {
@@ -137,7 +137,7 @@ namespace Fp
         public Dictionary<TKey, TValue> Lookup => Parent.Lookup;
 
         /// <summary>
-        /// Execute.
+        /// Executes.
         /// </summary>
         public virtual void Run()
         {

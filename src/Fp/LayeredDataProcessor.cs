@@ -38,7 +38,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Register child of specified type.
+        /// Registers child of specified type.
         /// </summary>
         /// <typeparam name="TProcessorChild">Target type.</typeparam>
         public void UseChild<TProcessorChild>() where TProcessorChild : ProcessorChild, new()
@@ -48,7 +48,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Register children of specified types.
+        /// Registers children of specified types.
         /// </summary>
         /// <param name="types">Target types.</param>
         /// <exception cref="ArgumentException">Thrown if failed to use <see cref="Activator.CreateInstance(Type)"/>.</exception>
@@ -116,7 +116,7 @@ namespace Fp
         }
 
         /// <summary>
-        /// Register children of specified types.
+        /// Registers children of specified types.
         /// </summary>
         /// <param name="types">Target types.</param>
         /// <exception cref="ArgumentException">Thrown if failed to use <see cref="Activator.CreateInstance(Type)"/>.</exception>

@@ -8,12 +8,12 @@ using Fp.Plus.Audio;
 namespace Fp.Plus.Audio
 {
     /// <summary>
-    /// PCM audio data
+    /// PCM audio data.
     /// </summary>
     public class PcmData : BufferData<byte>
     {
         /// <summary>
-        /// PCM WAVE format
+        /// PCM WAVE format.
         /// </summary>
         public static readonly Guid PcmWave = Guid.Parse("3487955E-29BC-49FD-B374-C5AD6D2B145C");
 
@@ -23,17 +23,17 @@ namespace Fp.Plus.Audio
         };
 
         /// <summary>
-        /// PCM metadata
+        /// PCM metadata.
         /// </summary>
         public readonly PcmInfo PcmInfo;
 
         private bool _disposed;
 
         /// <summary>
-        /// Create new instance of <see cref="PcmData"/>
+        /// Creates a new instance of <see cref="PcmData"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="pcmInfo"></param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="pcmInfo">PCM info.</param>
         public PcmData(string basePath, PcmInfo pcmInfo) : base(basePath, pcmInfo.SubChunk2Size)
         {
             Dry = true;
@@ -41,12 +41,12 @@ namespace Fp.Plus.Audio
         }
 
         /// <summary>
-        /// Create new instance of <see cref="PcmData"/>
+        /// Creates a new instance of <see cref="PcmData"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="pcmInfo">PCM metadata</param>
-        /// <param name="memoryOwner">Owner of PCM data buffer</param>
-        /// <param name="count">Length of content</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="pcmInfo">PCM metadata.</param>
+        /// <param name="memoryOwner">Owner of PCM data buffer.</param>
+        /// <param name="count">Length of content.</param>
         public PcmData(string basePath, PcmInfo pcmInfo, IMemoryOwner<byte> memoryOwner,
             int? count = default) : base(basePath, memoryOwner, count)
         {
@@ -54,11 +54,11 @@ namespace Fp.Plus.Audio
         }
 
         /// <summary>
-        /// Create new instance of <see cref="PcmData"/>
+        /// Creates a new instance of <see cref="PcmData"/>.
         /// </summary>
-        /// <param name="basePath">Base path of resource</param>
-        /// <param name="pcmInfo">PCM metadata</param>
-        /// <param name="buffer">PCM data</param>
+        /// <param name="basePath">Base path of resource.</param>
+        /// <param name="pcmInfo">PCM metadata.</param>
+        /// <param name="buffer">PCM data.</param>
         public PcmData(string basePath, PcmInfo pcmInfo, ReadOnlyMemory<byte> buffer) : base(basePath, buffer)
         {
             PcmInfo = pcmInfo;
@@ -101,7 +101,7 @@ namespace Fp.Plus.Audio
                 return new PcmData(BasePath, PcmInfo);
             if (_disposed)
                 throw new ObjectDisposedException(nameof(PcmData));
-            return new PcmData(BasePath, PcmInfo, DataUtil.CloneBuffer(Buffer));
+            return new PcmData(BasePath, PcmInfo, Buffer.CloneBuffer());
         }
 
         // http://soundfile.sapp.org/doc/WaveFormat/

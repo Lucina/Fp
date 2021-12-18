@@ -73,7 +73,7 @@
   
   <h1 id="Fp_Coordinator_ExecutionSource" data-uid="Fp.Coordinator.ExecutionSource" class="text-break">Class Coordinator.ExecutionSource
   </h1>
-  <div class="markdown level0 summary"><p>Represents execution config</p>
+  <div class="markdown level0 summary"><p>Represents execution config.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -95,19 +95,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource__ctor_Fp_ProcessorConfiguration_Fp_FileSystemSource_.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.%23ctor(Fp.ProcessorConfiguration%2CFp.FileSystemSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource__ctor_Fp_ProcessorConfiguration_Fp_Coordinator_ExecutionSettings_Fp_FileSystemSource_.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.%23ctor(Fp.ProcessorConfiguration%2CFp.Coordinator.ExecutionSettings%2CFp.FileSystemSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Coordinator.cs/#L557">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/Coordinator.cs/#L559">View Source</a>
   </span>
   <a id="Fp_Coordinator_ExecutionSource__ctor_" data-uid="Fp.Coordinator.ExecutionSource.#ctor*"></a>
-  <h4 id="Fp_Coordinator_ExecutionSource__ctor_Fp_ProcessorConfiguration_Fp_FileSystemSource_" data-uid="Fp.Coordinator.ExecutionSource.#ctor(Fp.ProcessorConfiguration,Fp.FileSystemSource)">ExecutionSource(ProcessorConfiguration, FileSystemSource)</h4>
-  <div class="markdown level1 summary"><p>Represents execution config</p>
+  <h4 id="Fp_Coordinator_ExecutionSource__ctor_Fp_ProcessorConfiguration_Fp_Coordinator_ExecutionSettings_Fp_FileSystemSource_" data-uid="Fp.Coordinator.ExecutionSource.#ctor(Fp.ProcessorConfiguration,Fp.Coordinator.ExecutionSettings,Fp.FileSystemSource)">ExecutionSource(ProcessorConfiguration, Coordinator.ExecutionSettings, FileSystemSource)</h4>
+  <div class="markdown level1 summary"><p>Represents execution config.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ExecutionSource(ProcessorConfiguration Config, FileSystemSource FileSystem)</code></pre>
+    <pre><code class="lang-csharp hljs">public ExecutionSource(ProcessorConfiguration Config, Coordinator.ExecutionSettings Exec, FileSystemSource FileSystem)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -125,6 +125,11 @@
         <td></td>
       </tr>
       <tr>
+        <td><a class="xref" href="Fp.Coordinator.ExecutionSettings.html">Coordinator.ExecutionSettings</a></td>
+        <td><span class="parametername">Exec</span></td>
+        <td></td>
+      </tr>
+      <tr>
         <td><a class="xref" href="Fp.FileSystemSource.html">FileSystemSource</a></td>
         <td><span class="parametername">FileSystem</span></td>
         <td></td>
@@ -135,10 +140,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource_Config.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.Config%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource_Config.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.Config%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Coordinator.cs/#L557">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/Coordinator.cs/#L559">View Source</a>
   </span>
   <a id="Fp_Coordinator_ExecutionSource_Config_" data-uid="Fp.Coordinator.ExecutionSource.Config*"></a>
   <h4 id="Fp_Coordinator_ExecutionSource_Config" data-uid="Fp.Coordinator.ExecutionSource.Config">Config</h4>
@@ -165,10 +170,40 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource_FileSystem.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.FileSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource_Exec.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.Exec%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Coordinator.cs/#L557">View Source</a>
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/Coordinator.cs/#L559">View Source</a>
+  </span>
+  <a id="Fp_Coordinator_ExecutionSource_Exec_" data-uid="Fp.Coordinator.ExecutionSource.Exec*"></a>
+  <h4 id="Fp_Coordinator_ExecutionSource_Exec" data-uid="Fp.Coordinator.ExecutionSource.Exec">Exec</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Coordinator.ExecutionSettings Exec { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Fp.Coordinator.ExecutionSettings.html">Coordinator.ExecutionSettings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource_FileSystem.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource.FileSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/Coordinator.cs/#L559">View Source</a>
   </span>
   <a id="Fp_Coordinator_ExecutionSource_FileSystem_" data-uid="Fp.Coordinator.ExecutionSource.FileSystem*"></a>
   <h4 id="Fp_Coordinator_ExecutionSource_FileSystem" data-uid="Fp.Coordinator.ExecutionSource.FileSystem">FileSystem</h4>
@@ -209,10 +244,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/riina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_Coordinator_ExecutionSource.md&amp;value=---%0Auid%3A%20Fp.Coordinator.ExecutionSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/riina/Fp/blob/main/src/Fp/Coordinator.cs/#L557" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/Coordinator.cs/#L559" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

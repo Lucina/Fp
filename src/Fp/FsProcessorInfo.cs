@@ -1,27 +1,29 @@
+using System;
+
 namespace Fp
 {
     /// <summary>
-    /// Processor information
+    /// Processor information.
     /// </summary>
-    public record ProcessorInfo
+    public record FsProcessorInfo
     {
         /// <summary>
-        /// Processor name
+        /// Processor name.
         /// </summary>
         public string Name { get; init; }
 
         /// <summary>
-        /// Processor description
+        /// Processor description.
         /// </summary>
         public string Description { get; init; }
 
         /// <summary>
-        /// Processor extended description
+        /// Processor extended description.
         /// </summary>
         public string ExtendedDescription { get; init; }
 
         /// <summary>
-        /// Processor extensions
+        /// Processor extensions.
         /// </summary>
         /// <remarks>
         /// If empty, processor should not filter by extensions. Null values mean files without a period.
@@ -29,24 +31,24 @@ namespace Fp
         public string?[] Extensions { get; init; }
 
         /// <summary>
-        /// Create new instance of <see cref="ProcessorInfo"/> with generic values
+        /// Creates a new instance of <see cref="FsProcessorInfo"/> with generic values.
         /// </summary>
-        public ProcessorInfo()
+        public FsProcessorInfo()
         {
             Name = "unnamed processor";
             Description = "no description provided";
             ExtendedDescription = "no description provided";
-            Extensions = new string[0];
+            Extensions = Array.Empty<string>();
         }
 
         /// <summary>
-        /// Create new instance of <see cref="ProcessorInfo"/>
+        /// Creates a new instance of <see cref="FsProcessorInfo"/>.
         /// </summary>
-        /// <param name="name">Processor name</param>
-        /// <param name="description">Processor description</param>
-        /// <param name="extendedDescription">Processor extended description</param>
-        /// <param name="extensions">Processor extensions</param>
-        public ProcessorInfo(string name, string description, string extendedDescription,
+        /// <param name="name">Processor name.</param>
+        /// <param name="description">Processor description.</param>
+        /// <param name="extendedDescription">Processor extended description.</param>
+        /// <param name="extensions">Processor extensions.</param>
+        public FsProcessorInfo(string name, string description, string extendedDescription,
             params string?[] extensions)
         {
             Name = name;

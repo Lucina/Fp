@@ -18,7 +18,7 @@ namespace Fp
         /// <param name="text">String to process.</param>
         /// <param name="result">Result buffer.</param>
         /// <returns>Byte array containing lower byte of each code unit in the string.</returns>
-        public static byte[] Ascii(string text, byte[]? result = null) => FpUtil.Ascii(text, result);
+        public static byte[] Ascii(string text, byte[]? result = null) => text.Ascii(result);
 
         private static unsafe string DecodeSpan(ReadOnlySpan<byte> span, Encoding encoding)
         {
@@ -34,14 +34,14 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read UTF-8 encoded string from stream
+        /// Read UTF-8 encoded string from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf8String(Stream stream, out int read, out int numBytes, int maxLength = int.MaxValue,
             bool strict = false)
         {
@@ -76,15 +76,15 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read UTF-8 encoded string from stream at the specified offset
+        /// Read UTF-8 encoded string from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf8StringFromOffset(Stream stream, long offset, out int read, out int numBytes,
             int maxLength = int.MaxValue,
             bool strict = false)
@@ -103,26 +103,26 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read UTF-8 encoded string from current file's input stream
+        /// Read UTF-8 encoded string from current file's input stream.
         /// </summary>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf8String(out int read, out int numBytes, int maxLength = int.MaxValue, bool strict = false)
             => ReadUtf8String(_inputStream ?? throw new InvalidOperationException(), out read, out numBytes, maxLength,
                 strict);
 
         /// <summary>
-        /// Read UTF-8 encoded string from current file's input stream at the specified offset
+        /// Read UTF-8 encoded string from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf8StringFromOffset(long offset, out int read, out int numBytes,
             int maxLength = int.MaxValue,
             bool strict = false) =>
@@ -131,13 +131,13 @@ namespace Fp
                 strict);
 
         /// <summary>
-        /// Read UTF-8 encoded string from span
+        /// Read UTF-8 encoded string from span.
         /// </summary>
-        /// <param name="span">Span to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
-        /// <returns>Value</returns>
+        /// <param name="span">Span to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
+        /// <returns>Value.</returns>
         public static string ReadUtf8String(ReadOnlySpan<byte> span, out int read, out int numBytes,
             int maxLength = int.MaxValue)
         {
@@ -159,14 +159,14 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read UTF-16 encoded string from stream
+        /// Read UTF-16 encoded string from stream.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="maxLength">Maximum string length (in bytes)</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="maxLength">Maximum string length (in bytes).</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf16String(Stream stream, out int read, out int numBytes, int maxLength = int.MaxValue,
             bool strict = false)
         {
@@ -201,15 +201,15 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read UTF-16 encoded string from stream at the specified offset
+        /// Read UTF-16 encoded string from stream at the specified offset.
         /// </summary>
-        /// <param name="stream">Stream to read from</param>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf16StringFromOffset(Stream stream, long offset, out int read, out int numBytes,
             int maxLength = int.MaxValue,
             bool strict = false)
@@ -228,26 +228,26 @@ namespace Fp
         }
 
         /// <summary>
-        /// Read UTF-16 encoded string from current file's input stream
+        /// Read UTF-16 encoded string from current file's input stream.
         /// </summary>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf16String(out int read, out int numBytes, int maxLength = int.MaxValue, bool strict = false)
             => ReadUtf16String(_inputStream ?? throw new InvalidOperationException(), out read, out numBytes, maxLength,
                 strict);
 
         /// <summary>
-        /// Read UTF-16 encoded string from current file's input stream at the specified offset
+        /// Read UTF-16 encoded string from current file's input stream at the specified offset.
         /// </summary>
-        /// <param name="offset">Offset to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>
-        /// <param name="maxLength">Maximum string length</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>
+        /// <param name="maxLength">Maximum string length.</param>
         /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
-        /// <returns>Value</returns>
+        /// <returns>Value.</returns>
         public string ReadUtf16StringFromOffset(long offset, out int read, out int numBytes,
             int maxLength = int.MaxValue,
             bool strict = false) =>
@@ -257,13 +257,13 @@ namespace Fp
 
 
         /// <summary>
-        /// Read UTF-16 encoded string from span
+        /// Read UTF-16 encoded string from span.
         /// </summary>
-        /// <param name="span">Span to read from</param>
-        /// <param name="read">Number of bytes consumed by string (including null terminator)</param>
-        /// <param name="numBytes">Length of string in bytes (excluding null terminator)</param>>
-        /// <param name="maxLength">Maximum string length</param>
-        /// <returns>Value</returns>
+        /// <param name="span">Span to read from.</param>
+        /// <param name="read">Number of bytes consumed by string (including null terminator).</param>
+        /// <param name="numBytes">Length of string in bytes (excluding null terminator).</param>>
+        /// <param name="maxLength">Maximum string length.</param>
+        /// <returns>Value.</returns>
         public static string ReadUtf16String(ReadOnlySpan<byte> span, out int read, out int numBytes,
             int maxLength = int.MaxValue)
         {
@@ -308,11 +308,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get length of UTF-8-encoded data
+        /// Get length of UTF-8-encoded data.
         /// </summary>
-        /// <param name="value">String to test</param>
-        /// <param name="nullTerminate">If true, check length with null byte</param>
-        /// <returns>Predicted length</returns>
+        /// <param name="value">String to test.</param>
+        /// <param name="nullTerminate">If true, check length with null byte.</param>
+        /// <returns>Predicted length.</returns>
         public unsafe int GetUtf8Length(string value, bool nullTerminate = true)
         {
             fixed (char* c = value)
@@ -322,12 +322,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write UTF-8 string to stream
+        /// Write UTF-8 string to stream.
         /// </summary>
-        /// <param name="value">String to write</param>
-        /// <param name="nullTerminate">If true, null-terminate string</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">String to write.</param>
+        /// <param name="nullTerminate">If true, null-terminate string.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public unsafe void WriteUtf8String(string value, bool nullTerminate = true, Stream? stream = null,
             long? offset = null)
         {
@@ -378,12 +378,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Get length of UTF-16-encoded data
+        /// Get length of UTF-16-encoded data.
         /// </summary>
-        /// <param name="value">String to test</param>
-        /// <param name="nullTerminate">If true, check length with null byte</param>
-        /// <param name="bom">If true, check length with byte order mark</param>
-        /// <returns>Predicted length</returns>
+        /// <param name="value">String to test.</param>
+        /// <param name="nullTerminate">If true, check length with null byte.</param>
+        /// <param name="bom">If true, check length with byte order mark.</param>
+        /// <returns>Predicted length.</returns>
         public unsafe int GetUtf16Length(string value, bool nullTerminate = true, bool bom = false)
         {
             fixed (char* c = value)
@@ -394,14 +394,14 @@ namespace Fp
         }
 
         /// <summary>
-        /// Write UTF-16 string to stream
+        /// Write UTF-16 string to stream.
         /// </summary>
-        /// <param name="value">String to write</param>
-        /// <param name="nullTerminate">If true, null-terminate string</param>
-        /// <param name="bigEndian">If true, write UTF-16BE</param>
-        /// <param name="byteOrderMark">If true, write byte order mark</param>
-        /// <param name="stream">Stream to write to, uses current output file if null</param>
-        /// <param name="offset">Offset to write to, current position if null</param>
+        /// <param name="value">String to write.</param>
+        /// <param name="nullTerminate">If true, null-terminate string.</param>
+        /// <param name="bigEndian">If true, write UTF-16BE.</param>
+        /// <param name="byteOrderMark">If true, write byte order mark.</param>
+        /// <param name="stream">Stream to write to, uses current output file if null.</param>
+        /// <param name="offset">Offset to write to, current position if null.</param>
         public unsafe void WriteUtf16String(string value, bool nullTerminate = true, bool bigEndian = false,
             bool byteOrderMark = false, Stream? stream = null, long? offset = null)
         {

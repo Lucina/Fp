@@ -9,7 +9,7 @@ namespace Fp
     public sealed class StringBuilderLog : ILogReceiver
     {
         /// <summary>
-        /// Target builder
+        /// Target builder.
         /// </summary>
         public readonly StringBuilder StringBuilder = new();
 

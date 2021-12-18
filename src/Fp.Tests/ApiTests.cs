@@ -76,7 +76,7 @@ namespace Fp.Tests
         [Test]
         public void TestScriptingDetection()
         {
-            Processor.Instance.ShieldUp();
+            FsProcessor.FsInstance.ShieldUp();
             try
             {
                 byte[] data = "RIFF\0\0\0\0WAVE".Ascii();
@@ -88,7 +88,7 @@ namespace Fp.Tests
             }
             finally
             {
-                Processor.ShieldDown();
+                FsProcessor.ShieldDown();
             }
         }
 

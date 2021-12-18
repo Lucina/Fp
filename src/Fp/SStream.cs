@@ -5,23 +5,23 @@ using System.IO;
 namespace Fp
 {
     /// <summary>
-    /// Stream that acts as a limited-range proxy for another stream
+    /// Stream that acts as a limited-range proxy for another stream.
     /// </summary>
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public class SStream : Stream
     {
         /// <summary>
-        /// Base stream for this wrapper stream
+        /// Base stream for this wrapper stream.
         /// </summary>
         public Stream BaseStream => _baseStream;
 
         /// <summary>
-        /// Offset in base stream in this wrapper stream (only available if <see cref="CanSeek"/> is true)
+        /// Offset in base stream in this wrapper stream (only available if <see cref="CanSeek"/> is true).
         /// </summary>
         public long Offset => CanSeek ? _offset : throw new NotSupportedException();
 
         /// <summary>
-        /// If true, enforces stream position for object before reads
+        /// If true, enforces stream position for object before reads.
         /// </summary>
         public readonly bool Isolate;
 
@@ -31,11 +31,11 @@ namespace Fp
         private long _length;
 
         /// <summary>
-        /// Create a limited-range proxy from the current position with a specified length
+        /// Creates a limited-range proxy from the current position with a specified length.
         /// </summary>
-        /// <param name="baseStream">Stream to wrap</param>
-        /// <param name="length">Length of proxy</param>
-        /// <param name="isolate">If true, enforces stream position for object before reads</param>
+        /// <param name="baseStream">Stream to wrap.</param>
+        /// <param name="length">Length of proxy.</param>
+        /// <param name="isolate">If true, enforces stream position for object before reads.</param>
         public SStream(Stream baseStream, long length, bool isolate = true)
         {
             if (isolate && !baseStream.CanSeek)

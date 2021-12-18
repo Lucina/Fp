@@ -8,7 +8,7 @@ namespace Fp
     public sealed class NullLog : ILogReceiver
     {
         /// <summary>
-        /// Static instance
+        /// Static instance.
         /// </summary>
         public static readonly NullLog Instance = new();
 

@@ -12,49 +12,49 @@ namespace Fp
         #region Decryption utilities
 
         /// <summary>
-        /// Block cipher padding mode
+        /// Block cipher padding mode.
         /// </summary>
         [SuppressMessage("ReSharper", "InconsistentNaming")]
         public enum PaddingMode
         {
             /// <summary>
-            /// End of message is padded with null bytes
+            /// End of message is padded with null bytes.
             /// </summary>
             Zero,
 
             /// <summary>
-            /// ANSI X9.23 padding
+            /// ANSI X9.23 padding.
             /// </summary>
             AnsiX9_23,
 
             /// <summary>
-            /// ISO 10126 padding
+            /// ISO 10126 padding.
             /// </summary>
             Iso10126,
 
             /// <summary>
-            /// PKCS#7 padding
+            /// PKCS#7 padding.
             /// </summary>
             Pkcs7,
 
             /// <summary>
-            /// PKCS#5 padding
+            /// PKCS#5 padding.
             /// </summary>
             Pkcs5,
 
             /// <summary>
-            /// ISO/IEC 7816-4:2005 padding
+            /// ISO/IEC 7816-4:2005 padding.
             /// </summary>
             Iso_Iec_7816_4
         }
 
         /// <summary>
-        /// Get padded message length using specified padding mode
+        /// Gets padded message length using specified padding mode.
         /// </summary>
-        /// <param name="length">Input message length</param>
-        /// <param name="paddingMode">Padding mode to use</param>
-        /// <param name="blockSize">Cipher block size</param>
-        /// <returns>Padded length of message</returns>
+        /// <param name="length">Input message length.</param>
+        /// <param name="paddingMode">Padding mode to use.</param>
+        /// <param name="blockSize">Cipher block size.</param>
+        /// <returns>Padded length of message.</returns>
         public static int GetPaddedLength(int length, PaddingMode paddingMode, int blockSize) =>
             paddingMode switch
             {
@@ -69,22 +69,17 @@ namespace Fp
             };
 
         /// <summary>
-        /// Get depadded message length using specified padding mode
+        /// Gets depadded message length using specified padding mode.
         /// </summary>
-        /// <param name="span">Message</param>
-        /// <param name="paddingMode">Padding mode to use</param>
-        /// <returns>Depadded length of message</returns>
+        /// <param name="span">Message.</param>
+        /// <param name="paddingMode">Padding mode to use.</param>
+        /// <returns>Depadded length of message.</returns>
         public static int GetDepaddedLength(Span<byte> span, PaddingMode paddingMode) =>
             paddingMode switch
             {
                 PaddingMode.Zero => GetDepaddedLengthZero(span),
                 PaddingMode.Iso_Iec_7816_4 => GetDepaddedLengthIso_Iec_7816_4(span),
-                var p when
-                    p == PaddingMode.AnsiX9_23 ||
-                    p == PaddingMode.Iso10126 ||
-                    p == PaddingMode.Pkcs7 ||
-                    p == PaddingMode.Pkcs5
-                    => GetDepaddedLengthLastByteSubtract(span),
+                PaddingMode.AnsiX9_23 or PaddingMode.Iso10126 or PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => GetDepaddedLengthLastByteSubtract(span),
                 _ => throw new ArgumentOutOfRangeException(nameof(paddingMode), paddingMode, null)
             };
 
@@ -126,25 +121,17 @@ namespace Fp
             span.Length == 0 ? 0 : span.Length - span[span.Length - 1];
 
         /// <summary>
-        /// Create byte array from hex string
+        /// Creates a byte array from a hex string.
         /// </summary>
-        /// <param name="hex">Hex string to decode</param>
-        /// <param name="validate">Validate characters</param>
-        /// <returns>Array with decoded hex string</returns>
-        /// <exception cref="ArgumentException">If string has odd length</exception>
+        /// <param name="hex">Hex string to decode.</param>
+        /// <param name="validate">Validate characters.</param>
+        /// <returns>Array with decoded hex string.</returns>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="hex"/> has an odd length.</exception>
         public static unsafe byte[] DecodeHex(string hex, bool validate = true)
         {
             int len = hex.Length;
-            if (len == 0)
-            {
-                return new byte[0];
-            }
-
-            if (len % 2 != 0)
-            {
-                throw new ArgumentException($"Hex string has length {hex.Length}, must be even");
-            }
-
+            if (len == 0) return Array.Empty<byte>();
+            if (len % 2 != 0) throw new ArgumentException($"Hex string has length {hex.Length}, must be even");
             len /= 2;
             fixed (char* buf = &hex.AsSpan().GetPinnableReference())
             {
@@ -267,12 +254,12 @@ namespace Fp
         #region Cipher
 
         /// <summary>
-        /// Create byte array from hex string
+        /// Creates a byte array from a hex string.
         /// </summary>
-        /// <param name="hex">Hex string to decode</param>
-        /// <param name="validate">Validate characters</param>
-        /// <returns>Array with decoded hex string</returns>
-        /// <exception cref="ArgumentException">If string has odd length</exception>
+        /// <param name="hex">Hex string to decode.</param>
+        /// <param name="validate">Validate characters.</param>
+        /// <returns>Array with decoded hex string.</returns>
+        /// <exception cref="ArgumentException">Thrown if <paramref name="hex"/> has an odd length.</exception>
         public static byte[] decodeHex(string hex, bool validate = true) => DecodeHex(hex, validate);
 
         #endregion

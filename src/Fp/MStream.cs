@@ -4,7 +4,7 @@ using System.IO;
 namespace Fp
 {
     /// <summary>
-    /// Stream from <see cref="Memory{T}"/> of bytes
+    /// Stream from <see cref="Memory{T}"/> of bytes.
     /// </summary>
     public class MStream : Stream
     {
@@ -72,15 +72,8 @@ namespace Fp
             return _position;
         }
 
-        /// <summary>
-        /// Not supported
-        /// </summary>
-        /// <param name="value"></param>
-        /// <exception cref="NotSupportedException"></exception>
-        public override void SetLength(long value)
-        {
-            throw new NotSupportedException();
-        }
+        /// <inheritdoc />
+        public override void SetLength(long value) => throw new NotSupportedException();
 
         /// <inheritdoc />
         public override void Write(byte[] buffer, int offset, int count)
@@ -95,9 +88,9 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create new instance of <see cref="MStream"/>
+        /// Creates a new instance of <see cref="MStream"/>.
         /// </summary>
-        /// <param name="memory">Writeable memory instance</param>
+        /// <param name="memory">Writeable memory instance.</param>
         public MStream(Memory<byte> memory)
         {
             _writeMemory = memory;
@@ -107,9 +100,9 @@ namespace Fp
         }
 
         /// <summary>
-        /// Create new instance of <see cref="MStream"/>
+        /// Creates a new instance of <see cref="MStream"/>.
         /// </summary>
-        /// <param name="memory">Memory instance</param>
+        /// <param name="memory">Memory instance.</param>
         public MStream(ReadOnlyMemory<byte> memory)
         {
             _writeMemory = Memory<byte>.Empty;
