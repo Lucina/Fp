@@ -3,180 +3,179 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using static Fp.ILogReceiver;
 
-namespace Fp
+namespace Fp;
+
+/// <summary>
+/// Provides basic logging to console output.
+/// </summary>
+public class ConsoleLog : ILogReceiver
 {
-    /// <summary>
-    /// Provides basic logging to console output.
-    /// </summary>
-    public class ConsoleLog : ILogReceiver
+    private static class WindowsAnsi
     {
-        private static class WindowsAnsi
+        private const int STD_OUTPUT_HANDLE = -11;
+        private const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
+        private const uint DISABLE_NEWLINE_AUTO_RETURN = 0x0008;
+
+        [DllImport("kernel32")]
+        private static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
+
+        [DllImport("kernel32")]
+        private static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
+
+        [DllImport("kernel32")]
+        private static extern IntPtr GetStdHandle(int nStdHandle);
+
+        [DllImport("kernel32")]
+        private static extern uint GetLastError();
+
+        internal static void TryInit()
         {
-            private const int STD_OUTPUT_HANDLE = -11;
-            private const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
-            private const uint DISABLE_NEWLINE_AUTO_RETURN = 0x0008;
-
-            [DllImport("kernel32")]
-            private static extern bool GetConsoleMode(IntPtr hConsoleHandle, out uint lpMode);
-
-            [DllImport("kernel32")]
-            private static extern bool SetConsoleMode(IntPtr hConsoleHandle, uint dwMode);
-
-            [DllImport("kernel32")]
-            private static extern IntPtr GetStdHandle(int nStdHandle);
-
-            [DllImport("kernel32")]
-            private static extern uint GetLastError();
-
-            internal static void TryInit()
+            try
             {
-                try
+                // https://gist.github.com/tomzorz/6142d69852f831fb5393654c90a1f22e
+                var iStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+                if (!GetConsoleMode(iStdOut, out uint outConsoleMode))
                 {
-                    // https://gist.github.com/tomzorz/6142d69852f831fb5393654c90a1f22e
-                    var iStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-                    if (!GetConsoleMode(iStdOut, out uint outConsoleMode))
-                    {
-                        Console.WriteLine("failed to get output console mode");
-                        return;
-                    }
-
-                    outConsoleMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING | DISABLE_NEWLINE_AUTO_RETURN;
-                    if (!SetConsoleMode(iStdOut, outConsoleMode))
-                    {
-                        Console.WriteLine($"failed to set output console mode, error code: {GetLastError()}");
-                    }
+                    Console.WriteLine("failed to get output console mode");
+                    return;
                 }
-                catch
+
+                outConsoleMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING | DISABLE_NEWLINE_AUTO_RETURN;
+                if (!SetConsoleMode(iStdOut, outConsoleMode))
                 {
-                    // Ignored
+                    Console.WriteLine($"failed to set output console mode, error code: {GetLastError()}");
                 }
             }
-        }
-
-        static ConsoleLog()
-        {
-            // ReSharper disable once AssignmentInConditionalExpression
-            if (CR = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) WindowsAnsi.TryInit();
-        }
-
-        /// <summary>
-        /// Carriage return used in console logging.
-        /// </summary>
-        public static bool CR;
-
-        /// <summary>
-        /// Supported color sequences.
-        /// </summary>
-        public static readonly Dictionary<ConsoleColor, string> Sequences = new()
-        {
-            /*{Color.Black, "\u001b[30;1m"},*/
-            { ConsoleColor.Red, "\u001b[31;1m" },
-            { ConsoleColor.Green, "\u001b[32;1m" },
-            { ConsoleColor.Yellow, "\u001b[33;1m" },
-            { ConsoleColor.Blue, "\u001b[34;1m" },
-            { ConsoleColor.Magenta, "\u001b[35;1m" },
-            { ConsoleColor.Cyan, "\u001b[36;1m" },
-            { ConsoleColor.White, "\u001b[37;1m" },
-        };
-
-        /// <summary>
-        /// Supported colors.
-        /// </summary>
-        public static readonly IReadOnlyList<ConsoleColor> Colors = new List<ConsoleColor>
-        {
-            /*Color.Black,*/
-            ConsoleColor.Red,
-            ConsoleColor.Green,
-            ConsoleColor.Yellow,
-            ConsoleColor.Blue,
-            ConsoleColor.Magenta,
-            ConsoleColor.Cyan,
-            /*Color.White*/
-        };
-
-        /// <summary>
-        /// Default instance with all logs enabled.
-        /// </summary>
-        public static readonly ConsoleLog Default = new(new Config());
-
-        /// <summary>
-        /// Stores configuration properties for <see cref="ConsoleLog"/>.
-        /// </summary>
-        public class Config
-        {
-            /// <summary>
-            /// Enabled log levels.
-            /// </summary>
-            public LogLevel EnabledLevels { get; set; }
-
-            /// <summary>
-            /// Creates a new instance of <see cref="Config"/>.
-            /// </summary>
-            public Config()
+            catch
             {
-                EnabledLevels = LogLevel.Information | LogLevel.Warning | LogLevel.Error;
-            }
-
-            /// <summary>
-            /// Creates a new instance of <see cref="Config"/> with the specified log levels.
-            /// </summary>
-            /// <param name="enabledLevels">Enabled log levels.</param>
-            public Config(LogLevel enabledLevels)
-            {
-                EnabledLevels = enabledLevels;
+                // Ignored
             }
         }
+    }
 
+    static ConsoleLog()
+    {
+        // ReSharper disable once AssignmentInConditionalExpression
+        if (CR = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) WindowsAnsi.TryInit();
+    }
 
-        private readonly Config _config;
+    /// <summary>
+    /// Carriage return used in console logging.
+    /// </summary>
+    public static bool CR;
+
+    /// <summary>
+    /// Supported color sequences.
+    /// </summary>
+    public static readonly Dictionary<ConsoleColor, string> Sequences = new()
+    {
+        /*{Color.Black, "\u001b[30;1m"},*/
+        { ConsoleColor.Red, "\u001b[31;1m" },
+        { ConsoleColor.Green, "\u001b[32;1m" },
+        { ConsoleColor.Yellow, "\u001b[33;1m" },
+        { ConsoleColor.Blue, "\u001b[34;1m" },
+        { ConsoleColor.Magenta, "\u001b[35;1m" },
+        { ConsoleColor.Cyan, "\u001b[36;1m" },
+        { ConsoleColor.White, "\u001b[37;1m" },
+    };
+
+    /// <summary>
+    /// Supported colors.
+    /// </summary>
+    public static readonly IReadOnlyList<ConsoleColor> Colors = new List<ConsoleColor>
+    {
+        /*Color.Black,*/
+        ConsoleColor.Red,
+        ConsoleColor.Green,
+        ConsoleColor.Yellow,
+        ConsoleColor.Blue,
+        ConsoleColor.Magenta,
+        ConsoleColor.Cyan,
+        /*Color.White*/
+    };
+
+    /// <summary>
+    /// Default instance with all logs enabled.
+    /// </summary>
+    public static readonly ConsoleLog Default = new(new Config());
+
+    /// <summary>
+    /// Stores configuration properties for <see cref="ConsoleLog"/>.
+    /// </summary>
+    public class Config
+    {
+        /// <summary>
+        /// Enabled log levels.
+        /// </summary>
+        public LogLevel EnabledLevels { get; set; }
 
         /// <summary>
-        /// Creates a new instance of <see cref="ConsoleLog"/> with the specified configuration.
+        /// Creates a new instance of <see cref="Config"/>.
         /// </summary>
-        /// <param name="config">Log configuration.</param>
-        public ConsoleLog(Config config)
+        public Config()
         {
-            _config = config;
+            EnabledLevels = LogLevel.Information | LogLevel.Warning | LogLevel.Error;
         }
 
-        private void Log(LogLevel logLevel, string log, bool reset, ConsoleColor? color)
+        /// <summary>
+        /// Creates a new instance of <see cref="Config"/> with the specified log levels.
+        /// </summary>
+        /// <param name="enabledLevels">Enabled log levels.</param>
+        public Config(LogLevel enabledLevels)
         {
-            if (!IsEnabled(logLevel)) return;
-            if (reset) Console.Write("\u001b[0m");
-            if (color != null)
-            {
-                if (!Sequences.TryGetValue(color.Value, out string? c)) c = Sequences[ConsoleColor.White];
-                Console.Write(c);
-            }
+            EnabledLevels = enabledLevels;
+        }
+    }
 
-            Console.Write(log);
+
+    private readonly Config _config;
+
+    /// <summary>
+    /// Creates a new instance of <see cref="ConsoleLog"/> with the specified configuration.
+    /// </summary>
+    /// <param name="config">Log configuration.</param>
+    public ConsoleLog(Config config)
+    {
+        _config = config;
+    }
+
+    private void Log(LogLevel logLevel, string log, bool reset, ConsoleColor? color)
+    {
+        if (!IsEnabled(logLevel)) return;
+        if (reset) Console.Write("\u001b[0m");
+        if (color != null)
+        {
+            if (!Sequences.TryGetValue(color.Value, out string? c)) c = Sequences[ConsoleColor.White];
+            Console.Write(c);
         }
 
-        private bool IsEnabled(LogLevel logLevel) => (logLevel & _config.EnabledLevels) != 0;
+        Console.Write(log);
+    }
 
-        /// <inheritdoc />
-        public void LogChunk(string log, bool tail, ConsoleColor? color = null) =>
-            Log(LogLevel.Information, log == "\n" && CR ? "\r\n" : log, tail, color);
+    private bool IsEnabled(LogLevel logLevel) => (logLevel & _config.EnabledLevels) != 0;
 
-        /// <inheritdoc />
-        public void LogInformation(string log, ConsoleColor? color = null)
-        {
-            Log(LogLevel.Information, log, false, color);
-            Console.WriteLine();
-        }
+    /// <inheritdoc />
+    public void LogChunk(string log, bool tail, ConsoleColor? color = null) =>
+        Log(LogLevel.Information, log == "\n" && CR ? "\r\n" : log, tail, color);
 
-        /// <inheritdoc />
-        public void LogWarning(string log, ConsoleColor? color = null)
-        {
-            Log(LogLevel.Warning, log, false, color);
-            Console.WriteLine();
-        }
+    /// <inheritdoc />
+    public void LogInformation(string log, ConsoleColor? color = null)
+    {
+        Log(LogLevel.Information, log, false, color);
+        Console.WriteLine();
+    }
 
-        /// <inheritdoc />
-        public void LogError(string log, ConsoleColor? color = null)
-        {
-            Log(LogLevel.Error, log, false, color);
-            Console.WriteLine();
-        }
+    /// <inheritdoc />
+    public void LogWarning(string log, ConsoleColor? color = null)
+    {
+        Log(LogLevel.Warning, log, false, color);
+        Console.WriteLine();
+    }
+
+    /// <inheritdoc />
+    public void LogError(string log, ConsoleColor? color = null)
+    {
+        Log(LogLevel.Error, log, false, color);
+        Console.WriteLine();
     }
 }

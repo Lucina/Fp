@@ -1,29 +1,28 @@
 using System.Collections.Generic;
 
-namespace Fp
+namespace Fp;
+
+/// <summary>
+/// Represents a segmented processor that automatically opens <see cref="Processor.InputStream"/>.
+/// </summary>
+public class DataProcessor : FsProcessor
 {
-    /// <summary>
-    /// Represents a segmented processor that automatically opens <see cref="Processor.InputStream"/>.
-    /// </summary>
-    public class DataProcessor : FsProcessor
+    /// <inheritdoc />
+    protected sealed override void ProcessImpl()
     {
-        /// <inheritdoc />
-        protected sealed override void ProcessImpl()
-        {
-            base.ProcessImpl();
-        }
-
-        /// <inheritdoc />
-        protected sealed override IEnumerable<Data> ProcessSegmentedImpl()
-        {
-            OpenMainFile();
-            return ProcessData();
-        }
-
-        /// <summary>
-        /// Processes current file in parts.
-        /// </summary>
-        /// <returns>Generated outputs.</returns>
-        protected virtual IEnumerable<Data> ProcessData() => Nothing;
+        base.ProcessImpl();
     }
+
+    /// <inheritdoc />
+    protected sealed override IEnumerable<Data> ProcessSegmentedImpl()
+    {
+        OpenMainFile();
+        return ProcessData();
+    }
+
+    /// <summary>
+    /// Processes current file in parts.
+    /// </summary>
+    /// <returns>Generated outputs.</returns>
+    protected virtual IEnumerable<Data> ProcessData() => Nothing;
 }

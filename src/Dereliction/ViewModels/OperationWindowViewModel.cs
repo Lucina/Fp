@@ -1,7 +1,6 @@
-namespace Dereliction.ViewModels
+namespace Dereliction.ViewModels;
+
+public class OperationWindowViewModel : ViewModelBase
 {
-    public class OperationWindowViewModel : ViewModelBase
-    {
-        public OperationRunnerViewModel OperationRunner { get; } = new();
-    }
+    public OperationRunnerViewModel OperationRunner { get; } = new();
 }

@@ -1,11 +1,10 @@
 ﻿// ReSharper disable once CheckNamespace
 
-namespace Fp
+namespace Fp;
+
+/// <summary>
+/// Utilities.
+/// </summary>
+public static partial class PlusUtil
 {
-    /// <summary>
-    /// Utilities.
-    /// </summary>
-    public static partial class PlusUtil
-    {
-    }
 }

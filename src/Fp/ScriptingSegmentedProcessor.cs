@@ -1,29 +1,28 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fp
+namespace Fp;
+
+/// <summary>
+/// Represents a processor designed for scripting.
+/// </summary>
+internal sealed class ScriptingSegmentedProcessor : FsProcessor
 {
+    private readonly Func<IEnumerable<Data>> _func;
+
     /// <summary>
-    /// Represents a processor designed for scripting.
+    /// Creates a new instance of <see cref="ScriptingSegmentedProcessor"/>.
     /// </summary>
-    internal sealed class ScriptingSegmentedProcessor : FsProcessor
+    /// <param name="func">Func creating enumerable.</param>
+    public ScriptingSegmentedProcessor(Func<IEnumerable<Data>> func)
     {
-        private readonly Func<IEnumerable<Data>> _func;
+        _func = func;
+    }
 
-        /// <summary>
-        /// Creates a new instance of <see cref="ScriptingSegmentedProcessor"/>.
-        /// </summary>
-        /// <param name="func">Func creating enumerable.</param>
-        public ScriptingSegmentedProcessor(Func<IEnumerable<Data>> func)
-        {
-            _func = func;
-        }
-
-        /// <inheritdoc />
-        protected override IEnumerable<Data> ProcessSegmentedImpl()
-        {
-            OpenMainFile();
-            return _func();
-        }
+    /// <inheritdoc />
+    protected override IEnumerable<Data> ProcessSegmentedImpl()
+    {
+        OpenMainFile();
+        return _func();
     }
 }

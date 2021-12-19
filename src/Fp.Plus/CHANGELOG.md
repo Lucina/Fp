@@ -4,6 +4,16 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.22.1] 2021-12-19
+### Added
+- Fact member on `PcmInfo`
+- `Wave` class for public accessible `WriteWave` / `WritePcmWave` / `WriteFloatWave` / `WriteStereoFloatWave`
+
+### Changed
+- Renamed PcmInfo to WaveInfo (for usage with float data - it already contained WAVE-specific properties anyway)
+- Moved `PcmData.PcmWave` to `Wave.WaveFormat`
+- Renamed `PlusUtil.Audio` overloads to `PlusUtil.Pcm`
+
 ## [0.22.0] 2021-12-17
 ### Changed
 - Updated documentation

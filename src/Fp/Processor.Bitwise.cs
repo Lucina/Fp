@@ -8,911 +8,910 @@ using System.Runtime.Intrinsics.X86;
 #endif
 using static Fp.Processor;
 
-namespace Fp
-{
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
-    [SuppressMessage("ReSharper", "UnusedMember.Global")]
-    public partial class Processor
-    {
-        #region Bitwise utilities
+namespace Fp;
 
-        /// <summary>
-        /// Applies AND to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        public static void ApplyAnd(Span<byte> span, byte value)
-        {
+[SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
+public partial class Processor
+{
+    #region Bitwise utilities
+
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static void ApplyAnd(Span<byte> span, byte value)
+    {
 #if NET6_0_OR_GREATER
-            if (Avx2.IsSupported)
-                ApplyAndAvx2(span, value);
-            else if (Sse2.IsSupported)
-                ApplyAndSse2(span, value);
-            else if (AdvSimd.IsSupported)
-                ApplyAndArm(span, value);
-            else
-                ApplyAndFallback(span, value);
+        if (Avx2.IsSupported)
+            ApplyAndAvx2(span, value);
+        else if (Sse2.IsSupported)
+            ApplyAndSse2(span, value);
+        else if (AdvSimd.IsSupported)
+            ApplyAndArm(span, value);
+        else
+            ApplyAndFallback(span, value);
 #else
             ApplyAndFallback(span, value);
 #endif
-        }
+    }
 
-        /// <summary>
-        /// Applies AND to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void ApplyAnd(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-        {
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void ApplyAnd(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    {
 #if NET6_0_OR_GREATER
-            // TODO intrinsics
-            ApplyAndFallback(span, value, behaviour);
+        // TODO intrinsics
+        ApplyAndFallback(span, value, behaviour);
 #else
             ApplyAndFallback(span, value, behaviour);
 #endif
-        }
+    }
 
-        /// <summary>
-        /// Applies OR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        public static void ApplyOr(Span<byte> span, byte value)
-        {
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static void ApplyOr(Span<byte> span, byte value)
+    {
 #if NET6_0_OR_GREATER
-            if (Avx2.IsSupported)
-                ApplyOrAvx2(span, value);
-            else if (Sse2.IsSupported)
-                ApplyOrSse2(span, value);
-            else if (AdvSimd.IsSupported)
-                ApplyOrArm(span, value);
-            else
-                ApplyOrFallback(span, value);
+        if (Avx2.IsSupported)
+            ApplyOrAvx2(span, value);
+        else if (Sse2.IsSupported)
+            ApplyOrSse2(span, value);
+        else if (AdvSimd.IsSupported)
+            ApplyOrArm(span, value);
+        else
+            ApplyOrFallback(span, value);
 #else
             ApplyOrFallback(span, value);
 #endif
-        }
+    }
 
-        /// <summary>
-        /// Applies OR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void ApplyOr(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-        {
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void ApplyOr(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    {
 #if NET6_0_OR_GREATER
-            // TODO intrinsics
-            ApplyOrFallback(span, value, behaviour);
+        // TODO intrinsics
+        ApplyOrFallback(span, value, behaviour);
 #else
             ApplyOrFallback(span, value, behaviour);
 #endif
-        }
+    }
 
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        public static void ApplyXor(Span<byte> span, byte value)
-        {
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    public static void ApplyXor(Span<byte> span, byte value)
+    {
 #if NET6_0_OR_GREATER
-            if (Avx2.IsSupported)
-                ApplyXorAvx2(span, value);
-            else if (Sse2.IsSupported)
-                ApplyXorSse2(span, value);
-            else if (AdvSimd.IsSupported)
-                ApplyXorArm(span, value);
-            else
-                ApplyXorFallback(span, value);
+        if (Avx2.IsSupported)
+            ApplyXorAvx2(span, value);
+        else if (Sse2.IsSupported)
+            ApplyXorSse2(span, value);
+        else if (AdvSimd.IsSupported)
+            ApplyXorArm(span, value);
+        else
+            ApplyXorFallback(span, value);
 #else
             ApplyXorFallback(span, value);
 #endif
-        }
+    }
 
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void ApplyXor(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-        {
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void ApplyXor(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    {
 #if NET6_0_OR_GREATER
-            // TODO intrinsics
-            ApplyXorFallback(span, value, behaviour);
+        // TODO intrinsics
+        ApplyXorFallback(span, value, behaviour);
 #else
             ApplyXorFallback(span, value, behaviour);
 #endif
-        }
+    }
 
 #if NET6_0_OR_GREATER
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static unsafe Vector128<byte> FillVector128Sse2(byte value)
-        {
-            int* srcPtr = stackalloc int[128 / 8 / 4];
-            int iValue = (value << 8) | value;
-            iValue |= iValue << 16;
-            srcPtr[0] = iValue;
-            srcPtr[1] = iValue;
-            srcPtr[2] = iValue;
-            srcPtr[3] = iValue;
-            return Sse2.LoadVector128((byte*)srcPtr);
-        }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static unsafe Vector128<byte> FillVector128Sse2(byte value)
+    {
+        int* srcPtr = stackalloc int[128 / 8 / 4];
+        int iValue = (value << 8) | value;
+        iValue |= iValue << 16;
+        srcPtr[0] = iValue;
+        srcPtr[1] = iValue;
+        srcPtr[2] = iValue;
+        srcPtr[3] = iValue;
+        return Sse2.LoadVector128((byte*)srcPtr);
+    }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static unsafe Vector128<byte> FillVector128AdvSimd(byte value)
-        {
-            int* srcPtr = stackalloc int[128 / 8 / 4];
-            int iValue = (value << 8) | value;
-            iValue |= iValue << 16;
-            srcPtr[0] = iValue;
-            srcPtr[1] = iValue;
-            srcPtr[2] = iValue;
-            srcPtr[3] = iValue;
-            return AdvSimd.LoadVector128((byte*)srcPtr);
-        }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static unsafe Vector128<byte> FillVector128AdvSimd(byte value)
+    {
+        int* srcPtr = stackalloc int[128 / 8 / 4];
+        int iValue = (value << 8) | value;
+        iValue |= iValue << 16;
+        srcPtr[0] = iValue;
+        srcPtr[1] = iValue;
+        srcPtr[2] = iValue;
+        srcPtr[3] = iValue;
+        return AdvSimd.LoadVector128((byte*)srcPtr);
+    }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static unsafe Vector256<byte> FillVector256Avx(byte value)
-        {
-            int* srcPtr = stackalloc int[256 / 8 / 4];
-            int iValue = (value << 8) | value;
-            iValue |= iValue << 16;
-            srcPtr[0] = iValue;
-            srcPtr[1] = iValue;
-            srcPtr[2] = iValue;
-            srcPtr[3] = iValue;
-            srcPtr[4] = iValue;
-            srcPtr[5] = iValue;
-            srcPtr[6] = iValue;
-            srcPtr[7] = iValue;
-            return Avx.LoadVector256((byte*)srcPtr);
-        }
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static unsafe Vector256<byte> FillVector256Avx(byte value)
+    {
+        int* srcPtr = stackalloc int[256 / 8 / 4];
+        int iValue = (value << 8) | value;
+        iValue |= iValue << 16;
+        srcPtr[0] = iValue;
+        srcPtr[1] = iValue;
+        srcPtr[2] = iValue;
+        srcPtr[3] = iValue;
+        srcPtr[4] = iValue;
+        srcPtr[5] = iValue;
+        srcPtr[6] = iValue;
+        srcPtr[7] = iValue;
+        return Avx.LoadVector256((byte*)srcPtr);
+    }
 
-        /// <summary>
-        /// Applies AND to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        public static unsafe void ApplyAndArm(Span<byte> span, byte value)
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static unsafe void ApplyAndArm(Span<byte> span, byte value)
+    {
+        const int split = 128 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 128 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Arm
-
-                var src = FillVector128AdvSimd(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    AdvSimd.Store(pSource + i, AdvSimd.And(AdvSimd.LoadVector128(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] &= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies AND to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        public static unsafe void ApplyAndSse2(Span<byte> span, byte value)
-        {
-            const int split = 128 / 8;
-            fixed (byte* pSource = span)
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Arm
+
+            var src = FillVector128AdvSimd(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Sse2
-
-                var src = FillVector128Sse2(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    Sse2.StoreAligned(pSource + i, Sse2.And(Sse2.LoadAlignedVector128(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-        #endregion
+                AdvSimd.Store(pSource + i, AdvSimd.And(AdvSimd.LoadVector128(pSource + i), src));
+                i += split;
             }
-        }
 
-        /// <summary>
-        /// Applies AND to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        public static unsafe void ApplyAndAvx2(Span<byte> span, byte value)
-        {
-            const int split = 256 / 8;
-            fixed (byte* pSource = span)
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Avx
-
-                var src = FillVector256Avx(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    Avx.StoreAligned(pSource + i, Avx2.And(Avx.LoadAlignedVector256(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] &= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies OR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">OR value.</param>
-        public static unsafe void ApplyOrArm(Span<byte> span, byte value)
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static unsafe void ApplyAndSse2(Span<byte> span, byte value)
+    {
+        const int split = 128 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 128 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Arm
-
-                var src = FillVector128AdvSimd(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    AdvSimd.Store(pSource + i, AdvSimd.Or(AdvSimd.LoadVector128(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] &= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies OR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">OR value.</param>
-        public static unsafe void ApplyOrSse2(Span<byte> span, byte value)
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Sse2
+
+            var src = FillVector128Sse2(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                Sse2.StoreAligned(pSource + i, Sse2.And(Sse2.LoadAlignedVector128(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] &= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static unsafe void ApplyAndAvx2(Span<byte> span, byte value)
+    {
+        const int split = 256 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 128 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] |= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Sse2
-
-                var src = FillVector128Sse2(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    Sse2.StoreAligned(pSource + i, Sse2.Or(Sse2.LoadAlignedVector128(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] |= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] &= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies OR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">OR value.</param>
-        public static unsafe void ApplyOrAvx2(Span<byte> span, byte value)
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Avx
+
+            var src = FillVector256Avx(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                Avx.StoreAligned(pSource + i, Avx2.And(Avx.LoadAlignedVector256(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] &= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">OR value.</param>
+    public static unsafe void ApplyOrArm(Span<byte> span, byte value)
+    {
+        const int split = 128 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 256 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] |= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Avx
-
-                var src = FillVector256Avx(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    Avx.StoreAligned(pSource + i, Avx2.Or(Avx.LoadAlignedVector256(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] |= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] &= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        public static unsafe void ApplyXorArm(Span<byte> span, byte value)
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Arm
+
+            var src = FillVector128AdvSimd(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                AdvSimd.Store(pSource + i, AdvSimd.Or(AdvSimd.LoadVector128(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] &= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">OR value.</param>
+    public static unsafe void ApplyOrSse2(Span<byte> span, byte value)
+    {
+        const int split = 128 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 128 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Arm
-
-                var src = FillVector128AdvSimd(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    AdvSimd.Store(pSource + i, AdvSimd.Or(AdvSimd.LoadVector128(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] &= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] |= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        public static unsafe void ApplyXorSse2(Span<byte> span, byte value)
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Sse2
+
+            var src = FillVector128Sse2(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                Sse2.StoreAligned(pSource + i, Sse2.Or(Sse2.LoadAlignedVector128(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] |= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">OR value.</param>
+    public static unsafe void ApplyOrAvx2(Span<byte> span, byte value)
+    {
+        const int split = 256 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 128 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] ^= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Sse2
-
-                var src = FillVector128Sse2(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    Sse2.StoreAligned(pSource + i, Sse2.Xor(Sse2.LoadAlignedVector128(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] ^= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] |= value;
+                i++;
             }
-        }
 
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        public static unsafe void ApplyXorAvx2(Span<byte> span, byte value)
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Avx
+
+            var src = FillVector256Avx(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                Avx.StoreAligned(pSource + i, Avx2.Or(Avx.LoadAlignedVector256(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] |= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    public static unsafe void ApplyXorArm(Span<byte> span, byte value)
+    {
+        const int split = 128 / 8;
+        fixed (byte* pSource = span)
         {
-            const int split = 256 / 8;
-            fixed (byte* pSource = span)
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
             {
-                int i = 0;
-                int l = span.Length;
-
-        #region First part
-
-                int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
-                while (i < kill1Idx)
-                {
-                    pSource[i] ^= value;
-                    i++;
-                }
-
-                if (kill1Idx == l) return;
-
-        #endregion
-
-        #region Avx
-
-                var src = FillVector256Avx(value);
-                int kill2Idx = l - l % split;
-                while (i < kill2Idx)
-                {
-                    Avx.StoreAligned(pSource + i, Avx2.Xor(Avx.LoadAlignedVector256(pSource + i), src));
-                    i += split;
-                }
-
-        #endregion
-
-        #region Last part
-
-                while (i < span.Length)
-                {
-                    pSource[i] ^= value;
-                    i++;
-                }
-
-        #endregion
+                pSource[i] &= value;
+                i++;
             }
+
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Arm
+
+            var src = FillVector128AdvSimd(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                AdvSimd.Store(pSource + i, AdvSimd.Or(AdvSimd.LoadVector128(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] &= value;
+                i++;
+            }
+
+            #endregion
         }
+    }
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    public static unsafe void ApplyXorSse2(Span<byte> span, byte value)
+    {
+        const int split = 128 / 8;
+        fixed (byte* pSource = span)
+        {
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
+            {
+                pSource[i] ^= value;
+                i++;
+            }
+
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Sse2
+
+            var src = FillVector128Sse2(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                Sse2.StoreAligned(pSource + i, Sse2.Xor(Sse2.LoadAlignedVector128(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] ^= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    public static unsafe void ApplyXorAvx2(Span<byte> span, byte value)
+    {
+        const int split = 256 / 8;
+        fixed (byte* pSource = span)
+        {
+            int i = 0;
+            int l = span.Length;
+
+            #region First part
+
+            int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
+            while (i < kill1Idx)
+            {
+                pSource[i] ^= value;
+                i++;
+            }
+
+            if (kill1Idx == l) return;
+
+            #endregion
+
+            #region Avx
+
+            var src = FillVector256Avx(value);
+            int kill2Idx = l - l % split;
+            while (i < kill2Idx)
+            {
+                Avx.StoreAligned(pSource + i, Avx2.Xor(Avx.LoadAlignedVector256(pSource + i), src));
+                i += split;
+            }
+
+            #endregion
+
+            #region Last part
+
+            while (i < span.Length)
+            {
+                pSource[i] ^= value;
+                i++;
+            }
+
+            #endregion
+        }
+    }
 #endif
 
-        /// <summary>
-        /// Applies AND to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">AND value.</param>
-        public static void ApplyAndFallback(Span<byte> span, byte value)
-        {
-            for (int i = 0; i < span.Length; i++) span[i] &= value;
-        }
-
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void ApplyAndFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-        {
-            int i = 0, sl = span.Length, kl = value.Length;
-            for (; i < sl && i < kl; i++) span[i] &= value[i];
-            if (behaviour == SequenceBehaviour.Truncate) return;
-            for (; i < sl; i++) span[i] &= value[i % kl];
-        }
-
-        /// <summary>
-        /// Applies OR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">OR value.</param>
-        public static void ApplyOrFallback(Span<byte> span, byte value)
-        {
-            for (int i = 0; i < span.Length; i++) span[i] |= value;
-        }
-
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void ApplyOrFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-        {
-            int i = 0, sl = span.Length, kl = value.Length;
-            for (; i < sl && i < kl; i++) span[i] |= value[i];
-            if (behaviour == SequenceBehaviour.Truncate) return;
-            for (; i < sl; i++) span[i] |= value[i % kl];
-        }
-
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        public static void ApplyXorFallback(Span<byte> span, byte value)
-        {
-            for (int i = 0; i < span.Length; i++) span[i] ^= value;
-        }
-
-        /// <summary>
-        /// Applies XOR to memory.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="value">XOR value.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void ApplyXorFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-        {
-            int i = 0, sl = span.Length, kl = value.Length;
-            for (; i < sl && i < kl; i++) span[i] ^= value[i];
-            if (behaviour == SequenceBehaviour.Truncate) return;
-            for (; i < sl; i++) span[i] ^= value[i % kl];
-        }
-
-        /// <summary>
-        /// Transform delegate.
-        /// </summary>
-        /// <param name="input">Input value.</param>
-        /// <param name="index">Index.</param>
-        public delegate byte TransformDelegate(byte input, int index);
-
-        /// <summary>
-        /// Transforms memory region.
-        /// </summary>
-        /// <param name="span">Memory to modify.</param>
-        /// <param name="func">Transformation delegate.</param>
-        public static void ApplyTransform(Span<byte> span, TransformDelegate func)
-        {
-            for (int i = 0; i < span.Length; i++)
-                span[i] = func(span[i], i);
-        }
-
-        #endregion
-    }
-
-    // ReSharper disable InconsistentNaming
-    public partial class Scripting
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static void ApplyAndFallback(Span<byte> span, byte value)
     {
-        #region Bitwise
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void and(this byte[] target, byte value) => ApplyAnd(target, value);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void and(this Memory<byte> target, byte value) => ApplyAnd(target.Span, value);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void and(this ArraySegment<byte> target, byte value) => ApplyAnd(target.AsSpan(), value);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void and(this Span<byte> target, byte value) => ApplyAnd(target, value);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void and(this byte[] target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyAnd(target.AsSpan(), value, behaviour);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void and(this Memory<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyAnd(target.Span, value, behaviour);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void and(this ArraySegment<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyAnd(target.AsSpan(), value, behaviour);
-
-        /// <summary>
-        /// Applies AND on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void and(this Span<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour) =>
-            ApplyAnd(target, value, behaviour);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void or(this byte[] target, byte value) => ApplyOr(target, value);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void or(this Memory<byte> target, byte value) => ApplyOr(target.Span, value);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void or(this ArraySegment<byte> target, byte value) => ApplyOr(target.AsSpan(), value);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void or(this Span<byte> target, byte value) => ApplyOr(target, value);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void or(this byte[] target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyOr(target.AsSpan(), value, behaviour);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void or(this Memory<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyOr(target.Span, value, behaviour);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void or(this ArraySegment<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyOr(target.AsSpan(), value, behaviour);
-
-        /// <summary>
-        /// Applies OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void or(this Span<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour) =>
-            ApplyOr(target, value, behaviour);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void xor(this byte[] target, byte value) => ApplyXor(target, value);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void xor(this Memory<byte> target, byte value) => ApplyXor(target.Span, value);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void xor(this ArraySegment<byte> target, byte value) => ApplyXor(target.AsSpan(), value);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        public static void xor(this Span<byte> target, byte value) => ApplyXor(target, value);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void xor(this byte[] target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyXor(target.AsSpan(), value, behaviour);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void xor(this Memory<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyXor(target.Span, value, behaviour);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void xor(this ArraySegment<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
-            => ApplyXor(target.AsSpan(), value, behaviour);
-
-        /// <summary>
-        /// Applies exclusive OR on target.
-        /// </summary>
-        /// <param name="target">Target memory.</param>
-        /// <param name="value">Value to apply.</param>
-        /// <param name="behaviour">Key behaviour.</param>
-        public static void xor(this Span<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour) =>
-            ApplyXor(target, value, behaviour);
-
-        #endregion
+        for (int i = 0; i < span.Length; i++) span[i] &= value;
     }
-    // ReSharper restore InconsistentNaming
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void ApplyAndFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    {
+        int i = 0, sl = span.Length, kl = value.Length;
+        for (; i < sl && i < kl; i++) span[i] &= value[i];
+        if (behaviour == SequenceBehaviour.Truncate) return;
+        for (; i < sl; i++) span[i] &= value[i % kl];
+    }
+
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">OR value.</param>
+    public static void ApplyOrFallback(Span<byte> span, byte value)
+    {
+        for (int i = 0; i < span.Length; i++) span[i] |= value;
+    }
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void ApplyOrFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    {
+        int i = 0, sl = span.Length, kl = value.Length;
+        for (; i < sl && i < kl; i++) span[i] |= value[i];
+        if (behaviour == SequenceBehaviour.Truncate) return;
+        for (; i < sl; i++) span[i] |= value[i % kl];
+    }
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    public static void ApplyXorFallback(Span<byte> span, byte value)
+    {
+        for (int i = 0; i < span.Length; i++) span[i] ^= value;
+    }
+
+    /// <summary>
+    /// Applies XOR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">XOR value.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void ApplyXorFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    {
+        int i = 0, sl = span.Length, kl = value.Length;
+        for (; i < sl && i < kl; i++) span[i] ^= value[i];
+        if (behaviour == SequenceBehaviour.Truncate) return;
+        for (; i < sl; i++) span[i] ^= value[i % kl];
+    }
+
+    /// <summary>
+    /// Transform delegate.
+    /// </summary>
+    /// <param name="input">Input value.</param>
+    /// <param name="index">Index.</param>
+    public delegate byte TransformDelegate(byte input, int index);
+
+    /// <summary>
+    /// Transforms memory region.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="func">Transformation delegate.</param>
+    public static void ApplyTransform(Span<byte> span, TransformDelegate func)
+    {
+        for (int i = 0; i < span.Length; i++)
+            span[i] = func(span[i], i);
+    }
+
+    #endregion
 }
+
+// ReSharper disable InconsistentNaming
+public partial class Scripting
+{
+    #region Bitwise
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void and(this byte[] target, byte value) => ApplyAnd(target, value);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void and(this Memory<byte> target, byte value) => ApplyAnd(target.Span, value);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void and(this ArraySegment<byte> target, byte value) => ApplyAnd(target.AsSpan(), value);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void and(this Span<byte> target, byte value) => ApplyAnd(target, value);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void and(this byte[] target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyAnd(target.AsSpan(), value, behaviour);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void and(this Memory<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyAnd(target.Span, value, behaviour);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void and(this ArraySegment<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyAnd(target.AsSpan(), value, behaviour);
+
+    /// <summary>
+    /// Applies AND on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void and(this Span<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour) =>
+        ApplyAnd(target, value, behaviour);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void or(this byte[] target, byte value) => ApplyOr(target, value);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void or(this Memory<byte> target, byte value) => ApplyOr(target.Span, value);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void or(this ArraySegment<byte> target, byte value) => ApplyOr(target.AsSpan(), value);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void or(this Span<byte> target, byte value) => ApplyOr(target, value);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void or(this byte[] target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyOr(target.AsSpan(), value, behaviour);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void or(this Memory<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyOr(target.Span, value, behaviour);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void or(this ArraySegment<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyOr(target.AsSpan(), value, behaviour);
+
+    /// <summary>
+    /// Applies OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void or(this Span<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour) =>
+        ApplyOr(target, value, behaviour);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void xor(this byte[] target, byte value) => ApplyXor(target, value);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void xor(this Memory<byte> target, byte value) => ApplyXor(target.Span, value);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void xor(this ArraySegment<byte> target, byte value) => ApplyXor(target.AsSpan(), value);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    public static void xor(this Span<byte> target, byte value) => ApplyXor(target, value);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void xor(this byte[] target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyXor(target.AsSpan(), value, behaviour);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void xor(this Memory<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyXor(target.Span, value, behaviour);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void xor(this ArraySegment<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+        => ApplyXor(target.AsSpan(), value, behaviour);
+
+    /// <summary>
+    /// Applies exclusive OR on target.
+    /// </summary>
+    /// <param name="target">Target memory.</param>
+    /// <param name="value">Value to apply.</param>
+    /// <param name="behaviour">Key behaviour.</param>
+    public static void xor(this Span<byte> target, ReadOnlySpan<byte> value, SequenceBehaviour behaviour) =>
+        ApplyXor(target, value, behaviour);
+
+    #endregion
+}
+// ReSharper restore InconsistentNaming
