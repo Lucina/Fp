@@ -131,7 +131,7 @@ public class Wave
                 iBuf[i * 2] = left[i];
                 iBuf[i * 2 + 1] = right[i];
             }
-            WriteWave<T>(outputStream, waveInfo, iBuf);
+            WriteWave<T>(outputStream, waveInfo, iBuf.AsSpan(0, left.Length * 2));
         }
         finally
         {
@@ -202,6 +202,7 @@ public class Wave
         int hLen = 12 + 8 + waveInfo.SubChunk1Size + factSize + 8;
         byte[] buffer = ArrayPool<byte>.Shared.Rent(hLen);
         Span<byte> bufferSpan = buffer.AsSpan(0, hLen);
+        bufferSpan.Clear();
         try
         {
             // RIFF (main chunk)
@@ -231,7 +232,7 @@ public class Wave
                 fact.Span.CopyTo(bufferSpan.Slice(12 + 8 + waveInfo.SubChunk1Size + 8));
             }
             // data (subchunk2)
-            int dataPos = 12 + 8 + waveInfo.SubChunk1Size;
+            int dataPos = 12 + 8 + waveInfo.SubChunk1Size + factSize;
             ChunkNames.Slice(IndexChunkData, 4).CopyTo(bufferSpan.Slice(dataPos));
             BinaryPrimitives.WriteInt32LittleEndian(bufferSpan.Slice(dataPos + 4), waveInfo.SubChunk2Size);
 
