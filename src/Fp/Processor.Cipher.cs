@@ -60,11 +60,7 @@ public partial class Processor
         {
             PaddingMode.Zero => length + (blockSize - length % blockSize),
             var p when
-                p == PaddingMode.Iso_Iec_7816_4 ||
-                p == PaddingMode.AnsiX9_23 ||
-                p == PaddingMode.Iso10126 ||
-                p == PaddingMode.Pkcs7 ||
-                p == PaddingMode.Pkcs5 => length + 1 + (blockSize - (length + 1) % blockSize),
+                p is PaddingMode.Iso_Iec_7816_4 or PaddingMode.AnsiX9_23 or PaddingMode.Iso10126 or PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => length + 1 + (blockSize - (length + 1) % blockSize),
             _ => throw new ArgumentOutOfRangeException(nameof(paddingMode), paddingMode, null)
         };
 

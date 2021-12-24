@@ -54,7 +54,7 @@ public partial class Processor
             {
                 int v = stream.ReadByte();
                 read += v == -1 ? 0 : 1;
-                if (v == -1 || v == 0) break;
+                if (v is -1 or 0) break;
                 numBytes++;
                 TempMs.WriteByte((byte)v);
             } while (read < maxLength);
@@ -85,6 +85,7 @@ public partial class Processor
     /// <param name="maxLength">Maximum string length.</param>
     /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
     /// <returns>Value.</returns>
+    /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
     public string ReadUtf8StringFromOffset(Stream stream, long offset, out int read, out int numBytes,
         int maxLength = int.MaxValue,
         bool strict = false)
@@ -123,6 +124,7 @@ public partial class Processor
     /// <param name="maxLength">Maximum string length.</param>
     /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
     /// <returns>Value.</returns>
+    /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
     public string ReadUtf8StringFromOffset(long offset, out int read, out int numBytes,
         int maxLength = int.MaxValue,
         bool strict = false) =>
@@ -210,6 +212,7 @@ public partial class Processor
     /// <param name="maxLength">Maximum string length.</param>
     /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
     /// <returns>Value.</returns>
+    /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
     public string ReadUtf16StringFromOffset(Stream stream, long offset, out int read, out int numBytes,
         int maxLength = int.MaxValue,
         bool strict = false)
@@ -248,6 +251,7 @@ public partial class Processor
     /// <param name="maxLength">Maximum string length.</param>
     /// <param name="strict">If true, enforces ending stream position to original position + <paramref name="maxLength"/></param>
     /// <returns>Value.</returns>
+    /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
     public string ReadUtf16StringFromOffset(long offset, out int read, out int numBytes,
         int maxLength = int.MaxValue,
         bool strict = false) =>

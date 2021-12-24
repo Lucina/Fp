@@ -284,6 +284,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
         public static int Read(Stream stream, long offset, Span<byte> span, bool lenient = true)
         {
             long position = stream.Position;
@@ -308,6 +309,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, Span<byte> span, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, span, lenient);
 
@@ -322,6 +324,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
         public static int Read(Stream stream, long offset, ref Span<byte> span, bool lenient = true,
             bool forceNew = false)
         {
@@ -348,6 +351,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, ref Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, ref span, lenient, forceNew);
 
@@ -363,6 +367,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
         public static int Read(Stream stream, long offset, int length, out Span<byte> span, bool lenient = true,
             bool forceNew = false)
         {
@@ -390,6 +395,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, length, out span, lenient, forceNew);
 
@@ -432,6 +438,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
         public static int Read(Stream stream, long offset, byte[] array, int arrayOffset, int arrayLength,
             bool lenient = true)
         {
@@ -459,6 +466,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, array, arrayOffset, arrayLength,
                 lenient);
@@ -496,6 +504,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
         public int Read(Stream stream, long offset, byte[] array, bool lenient = true)
             => Read(stream, offset, array, 0, array.Length, lenient);
 
@@ -508,6 +517,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, byte[] array, bool lenient = true)
             => Read(offset, array, 0, array.Length, lenient);
 
@@ -569,6 +579,7 @@ namespace Fp
         /// <param name="stream">Stream to read from.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="NotSupportedException">Thrown if the stream is not seekable.</exception>
         public static byte[] GetArray(int offset, int length, Stream stream, bool forceNew = false)
         {
             if (!stream.CanSeek)
