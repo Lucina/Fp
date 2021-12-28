@@ -45,8 +45,9 @@ public abstract class FileSystemSource
     {
         Stream src = Processor.GetSeekableStream(OpenReadImpl(path, fileMode, fileShare));
         if (!ParallelAccess || src is MemoryStream) return src;
+        using Stream ssrc = src;
         MemoryStream ms = new(new byte[src.Length]);
-        src.CopyTo(ms);
+        ssrc.CopyTo(ms);
         ms.Position = 0;
         return ms;
     }

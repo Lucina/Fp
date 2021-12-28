@@ -72,7 +72,7 @@ public static class Coordinator
         inputs = new List<FpInput>();
         List<string> exArgs = new();
         string? outputRootDirectory = null;
-        int parallel = 1;
+        int parallel = 0;
         bool preload = false;
         bool debug = false;
         bool nop = false;
@@ -356,7 +356,7 @@ Flags:
     public static void Recurse(IReadOnlyList<FpInput> inputs, ExecutionSource src,
         params FsProcessorFactory[] processorFactories)
     {
-        if (src.Exec.Parallel != 1)
+        if (src.Exec.Parallel != 0)
             throw new ArgumentException($"Cannot start synchronous operation with {nameof(src.Exec.Parallel)} value of {src.Exec.Parallel}, use {nameof(Coordinator)}.{nameof(RecurseAsync)} instead");
         InitializeProcessors(src.Exec, processorFactories, out var processors, out int baseCount, out _);
         SeedInputs(inputs, out var dQueue, out var fQueue);

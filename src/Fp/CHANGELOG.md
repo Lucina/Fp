@@ -4,7 +4,11 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.23.0] 2021-12-27
+### Changed
+- Update xmldoc
+- Parallel value 0 (default) corresponds to synchronous execution, otherwise interpret as async of n workers
+- Always dispose stream for parallel-mode FSS read
 
 ## [0.22.0] 2021-12-17
 ### Changed
