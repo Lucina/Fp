@@ -484,7 +484,7 @@ Flags:
     {
         if (processorFactories.Length == 0)
             throw new ArgumentException("Cannot start operation with 0 provided processors");
-        if (exec.Parallel < 1)
+        if (exec.Parallel < 0)
             throw new ArgumentException(
                 $"Illegal {nameof(exec.Parallel)} value of {exec.Parallel}");
         parallelCount = Math.Min(TaskScheduler.Current.MaximumConcurrencyLevel,
