@@ -489,7 +489,7 @@ public partial class Processor
             int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
             while (i < kill1Idx)
             {
-                pSource[i] &= value;
+                pSource[i] ^= value;
                 i++;
             }
 
@@ -503,7 +503,7 @@ public partial class Processor
             int kill2Idx = l - l % split;
             while (i < kill2Idx)
             {
-                AdvSimd.Store(pSource + i, AdvSimd.Or(AdvSimd.LoadVector128(pSource + i), src));
+                AdvSimd.Store(pSource + i, AdvSimd.Xor(AdvSimd.LoadVector128(pSource + i), src));
                 i += split;
             }
 
@@ -513,7 +513,7 @@ public partial class Processor
 
             while (i < span.Length)
             {
-                pSource[i] &= value;
+                pSource[i] ^= value;
                 i++;
             }
 

@@ -212,8 +212,6 @@ public class ProcessorTests
 
         Span<byte> arr = new byte[1097];
         Span<byte> arr2 = new byte[arr.Length];
-        Processor p = new();
-        p.GetU8(arr);
         arr.CopyTo(arr2);
 
         const byte xor = 48;
