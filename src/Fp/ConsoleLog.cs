@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using static Fp.ILogReceiver;
 
@@ -56,13 +57,8 @@ public class ConsoleLog : ILogReceiver
     static ConsoleLog()
     {
         // ReSharper disable once AssignmentInConditionalExpression
-        if (CR = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) WindowsAnsi.TryInit();
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) WindowsAnsi.TryInit();
     }
-
-    /// <summary>
-    /// Carriage return used in console logging.
-    /// </summary>
-    public static bool CR;
 
     /// <summary>
     /// Supported color sequences.
@@ -149,14 +145,25 @@ public class ConsoleLog : ILogReceiver
             Console.Write(c);
         }
 
-        Console.Write(log);
+        if (log.Contains('\n'))
+        {
+            string[] arr = log.Split('\n');
+            if (arr.FirstOrDefault() is { } v0) Console.Write(v0);
+            foreach (string v in arr.Skip(1))
+            {
+                Console.WriteLine();
+                Console.Write(v);
+            }
+        }
+        else
+            Console.Write(log);
     }
 
     private bool IsEnabled(LogLevel logLevel) => (logLevel & _config.EnabledLevels) != 0;
 
     /// <inheritdoc />
     public void LogChunk(string log, bool tail, ConsoleColor? color = null) =>
-        Log(LogLevel.Information, log == "\n" && CR ? "\r\n" : log, tail, color);
+        Log(LogLevel.Information, log, tail, color);
 
     /// <inheritdoc />
     public void LogInformation(string log, ConsoleColor? color = null)

@@ -3,11 +3,11 @@ using System.Text;
 using Fp;
 using Fp.Plus.Images;
 
-FsProcessor.Run<RnRProcessor>(args,
+FsProcessor.Run<SnOProcessor>(args,
     "SnO",
     "Sousei no Onmyouji containers");
 
-public class RnRProcessor : DataProcessor
+public class SnOProcessor : DataProcessor
 {
     protected override IEnumerable<Data> ProcessData()
     {
