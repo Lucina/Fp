@@ -67,10 +67,10 @@ public class ApiTests
     public void TestNumberCast()
     {
         object number1 = 1;
-        Assert.AreEqual(1, Data.CastNumber<object, byte>(number1));
-        Assert.AreEqual(3841, Data.CastNumber<uint, short>(3841));
-        Assert.AreEqual(17, Data.CastNumber<object, uint>("17"));
-        Assert.AreEqual(1.0f, Data.CastNumber<object, float>("1.0"), 0.001f);
+        Assert.AreEqual(1, FpUtil.CastNumber<object, byte>(number1));
+        Assert.AreEqual(3841, FpUtil.CastNumber<uint, short>(3841));
+        Assert.AreEqual(17, FpUtil.CastNumber<object, uint>("17"));
+        Assert.AreEqual(1.0f, FpUtil.CastNumber<object, float>("1.0"), 0.001f);
     }
 
     [Test]

@@ -1625,10 +1625,7 @@ public partial class Processor
     public static void ConvertHalfArrayToFloat(ReadOnlySpan<byte> source, Span<float> target)
     {
         ReadOnlySpan<ushort> span = MemoryMarshal.Cast<byte, ushort>(source);
-        for (int i = 0; i < span.Length; i++)
-        {
-            target[i] = HalfHelper.HalfToSingle(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) target[i] = HalfHelper.HalfToSingle(span[i]);
     }
 
     /// <summary>
@@ -1639,10 +1636,7 @@ public partial class Processor
     public static void ConvertFloatArrayToHalf(ReadOnlySpan<float> source, Span<byte> target)
     {
         Span<ushort> span = MemoryMarshal.Cast<byte, ushort>(target);
-        for (int i = 0; i < source.Length; i++)
-        {
-            span[i] = HalfHelper.SingleToHalf(source[i]);
-        }
+        for (int i = 0; i < source.Length; i++) span[i] = HalfHelper.SingleToHalf(source[i]);
     }
 
     /// <summary>

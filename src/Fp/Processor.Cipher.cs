@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using static Fp.Processor;
 
 namespace Fp;
@@ -59,8 +60,7 @@ public partial class Processor
         paddingMode switch
         {
             PaddingMode.Zero => length + (blockSize - length % blockSize),
-            var p when
-                p is PaddingMode.Iso_Iec_7816_4 or PaddingMode.AnsiX9_23 or PaddingMode.Iso10126 or PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => length + 1 + (blockSize - (length + 1) % blockSize),
+            PaddingMode.Iso_Iec_7816_4 or PaddingMode.AnsiX9_23 or PaddingMode.Iso10126 or PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => length + 1 + (blockSize - (length + 1) % blockSize),
             _ => throw new ArgumentOutOfRangeException(nameof(paddingMode), paddingMode, null)
         };
 
@@ -69,26 +69,24 @@ public partial class Processor
     /// </summary>
     /// <param name="span">Message.</param>
     /// <param name="paddingMode">Padding mode to use.</param>
+    /// <param name="validate">Apply validation, throwing an error on invalid input.</param>
     /// <returns>Depadded length of message.</returns>
-    public static int GetDepaddedLength(Span<byte> span, PaddingMode paddingMode) =>
+    public static int GetDepaddedLength(Span<byte> span, PaddingMode paddingMode, bool validate = true) =>
         paddingMode switch
         {
             PaddingMode.Zero => GetDepaddedLengthZero(span),
             PaddingMode.Iso_Iec_7816_4 => GetDepaddedLengthIso_Iec_7816_4(span),
-            PaddingMode.AnsiX9_23 or PaddingMode.Iso10126 or PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => GetDepaddedLengthLastByteSubtract(span),
+            PaddingMode.AnsiX9_23 => GetDepaddedLengthAnsiX9_23(span, validate),
+            PaddingMode.Iso10126 => GetDepaddedLengthLastByteSubtract(span),
+            PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => GetDepaddedLengthPkcs5Pkcs7(span, validate),
             _ => throw new ArgumentOutOfRangeException(nameof(paddingMode), paddingMode, null)
         };
 
     private static int GetDepaddedLengthZero(Span<byte> span)
     {
         for (int i = span.Length; i > 0; i--)
-        {
             if (span[i - 1] != 0)
-            {
                 return i;
-            }
-        }
-
         return 0;
     }
 
@@ -96,7 +94,6 @@ public partial class Processor
     private static int GetDepaddedLengthIso_Iec_7816_4(Span<byte> span)
     {
         for (int i = span.Length - 1; i >= 0; i--)
-        {
             switch (span[i])
             {
                 case 0x00:
@@ -104,13 +101,31 @@ public partial class Processor
                 case 0x80:
                     return i;
                 default:
-                    throw new ArgumentException(
-                        $"Invalid padding byte for {nameof(PaddingMode.Iso_Iec_7816_4)}, need 0x80 or 0x00 but got 0x{span[i]:X2}");
+                    throw new ArgumentException($"Invalid padding byte for {nameof(PaddingMode.Iso_Iec_7816_4)}, need 0x80 or 0x00 but got 0x{span[i]:X2}");
             }
-        }
+        throw new ArgumentException($"Message is all null bytes and {nameof(PaddingMode.Iso_Iec_7816_4)} requires 0x80 to mark beginning of padding");
+    }
 
-        throw new ArgumentException(
-            $"Message is all null bytes and {nameof(PaddingMode.Iso_Iec_7816_4)} requires 0x80 to mark beginning of padding");
+    private static int GetDepaddedLengthPkcs5Pkcs7(ReadOnlySpan<byte> span, bool validate)
+    {
+        if (span.Length == 0) return 0;
+        byte l = span[span.Length - 1];
+        if (!validate) return span.Length - l;
+        for (int i = span.Length - l; i < span.Length - 1; i++)
+            if (span[i] != l)
+                throw new InvalidDataException($"Invalid ANSI X9.23 padding byte at 0x{i:X8} (expected {l})");
+        return span.Length - l;
+    }
+
+    private static int GetDepaddedLengthAnsiX9_23(ReadOnlySpan<byte> span, bool validate)
+    {
+        if (span.Length == 0) return 0;
+        byte l = span[span.Length - 1];
+        if (!validate) return span.Length - l;
+        for (int i = span.Length - l; i < span.Length - 1; i++)
+            if (span[i] != 0)
+                throw new InvalidDataException($"Invalid ANSI X9.23 padding byte at 0x{i:X8} (expected 0)");
+        return span.Length - l;
     }
 
     private static int GetDepaddedLengthLastByteSubtract(ReadOnlySpan<byte> span) =>
@@ -129,7 +144,7 @@ public partial class Processor
         if (len == 0) return Array.Empty<byte>();
         if (len % 2 != 0) throw new ArgumentException($"Hex string has length {hex.Length}, must be even");
         len /= 2;
-        fixed (char* buf = &hex.AsSpan().GetPinnableReference())
+        fixed (char* buf = hex)
         {
             char* rBuf = buf;
             if (len != 0 && rBuf[0] == '0' && (rBuf[1] == 'x' || rBuf[1] == 'X'))
@@ -147,68 +162,41 @@ public partial class Processor
                     c = *rBuf++;
                     if (c > 0x60)
                     {
-                        if (c > 0x66)
-                        {
-                            throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                        }
-
+                        if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                         res[i] = (byte)((c + 9) << 4);
                     }
                     else if (c > 0x40)
                     {
-                        if (c > 0x46)
-                        {
-                            throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                        }
-
+                        if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                         res[i] = (byte)((c + 9) << 4);
                     }
                     else if (c > 0x2F)
                     {
-                        if (c > 0x39)
-                        {
-                            throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                        }
-
+                        if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                         res[i] = (byte)(c << 4);
                     }
                     else
                     {
-                        throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
+                        throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                     }
 
                     c = *rBuf++;
                     if (c > 0x60)
                     {
-                        if (c > 0x66)
-                        {
-                            throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                        }
-
+                        if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                         res[i] += (byte)((c + 9) & 0xf);
                     }
                     else if (c > 0x40)
                     {
-                        if (c > 0x46)
-                        {
-                            throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                        }
-
+                        if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                         res[i] += (byte)((c + 9) & 0xf);
                     }
                     else if (c > 0x2F)
                     {
-                        if (c > 0x39)
-                        {
-                            throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                        }
-
+                        if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                         res[i] += (byte)(c & 0xf);
                     }
-                    else
-                    {
-                        throw new ArgumentException($"Illegal character {c} at position {rBuf - buf}");
-                    }
+                    else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                 }
             }
             else
@@ -216,24 +204,9 @@ public partial class Processor
                 for (int i = 0; i < len; i++)
                 {
                     c = *rBuf++;
-                    if (c < 0x3A)
-                    {
-                        res[i] = (byte)(c << 4);
-                    }
-                    else
-                    {
-                        res[i] = (byte)((c + 9) << 4);
-                    }
-
+                    res[i] = c < 0x3A ? (byte)(c << 4) : (byte)((c + 9) << 4);
                     c = *rBuf++;
-                    if (c < 0x3A)
-                    {
-                        res[i] += (byte)(c & 0xf);
-                    }
-                    else
-                    {
-                        res[i] += (byte)((c + 9) & 0xf);
-                    }
+                    res[i] += c < 0x3A ? (byte)(c & 0xf) : (byte)((c + 9) & 0xf);
                 }
             }
 
