@@ -202,20 +202,6 @@ public partial class FsProcessor : Processor
     }
 
     /// <summary>
-    /// Initializes a new processor.
-    /// </summary>
-    /// <param name="args">Arguments.</param>
-    /// <typeparam name="T">Processor type.</typeparam>
-    /// <returns>Created processor.</returns>
-    public T Initialize<T>(string[]? args = null)
-        where T : Processor, new()
-    {
-        T child = new();
-        child.Prepare(new ProcessorConfiguration(Preload, Debug, Nop, LogReceiver, args ?? Array.Empty<string>()));
-        return child;
-    }
-
-    /// <summary>
     /// Initializes a new file processor with an isolated filesystem containing the specified binary files.
     /// </summary>
     /// <param name="main">Main file.</param>
@@ -223,9 +209,7 @@ public partial class FsProcessor : Processor
     /// <param name="additionalFiles">Additional files to pass to processor.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     /// <returns>Created processor.</returns>
-    public T Initialize<T>(BufferData<byte> main, string[]? args = null,
-        IEnumerable<BufferData<byte>>? additionalFiles = null)
-        where T : FsProcessor, new()
+    public T Initialize<T>(BufferData<byte> main, string[]? args = null, IEnumerable<BufferData<byte>>? additionalFiles = null) where T : FsProcessor, new()
     {
         T child = new();
         IEnumerable<BufferData<byte>> seq = new[] { main };
@@ -262,9 +246,7 @@ public partial class FsProcessor : Processor
         {
             if (Nop || d is MetaData && !Debug) continue;
             using Data data = d;
-            using Stream stream =
-                (FileSystem ?? throw new InvalidOperationException()).OpenWrite(
-                    GenPath(data.GetExtension(), data.BasePath));
+            using Stream stream = (FileSystem ?? throw new InvalidOperationException()).OpenWrite(GenPath(data.GetExtension(), data.BasePath));
             data.WriteConvertedData(stream, data.DefaultFormat);
         }
     }

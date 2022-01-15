@@ -386,9 +386,7 @@ Flags:
         try
         {
             processor.Cleanup();
-            processor.Prepare(src.FileSystem, source.InputRootPath, src.Exec.OutputRootDirectory,
-                source.TargetPath,
-                src.Config, workerId);
+            processor.Prepare(src.FileSystem, source.InputRootPath, src.Exec.OutputRootDirectory, source.TargetPath, src.Config, workerId);
             bool success;
             if (processor.Debug)
             {
@@ -430,8 +428,7 @@ Flags:
         try
         {
             processor.Cleanup();
-            processor.Prepare(src.FileSystem, input.inputRoot, src.Exec.OutputRootDirectory, input.file,
-                src.Config, workerId);
+            processor.Prepare(src.FileSystem, input.inputRoot, src.Exec.OutputRootDirectory, input.file, src.Config, workerId);
             if (processor.Debug)
             {
                 return processor.ProcessSegmented();
@@ -544,7 +541,7 @@ Flags:
     /// <param name="IsFile">True if this is a file.</param>
     /// <param name="DirectoryPath">Path to parent (or root path if <see cref="Path"/> is itself root).</param>
     /// <param name="Path">Path to target.</param>
-    public record FpInput(bool IsFile, string DirectoryPath, string Path); // TODO record struct (C# 10)
+    public readonly record struct FpInput(bool IsFile, string DirectoryPath, string Path);
 
     /// <summary>
     /// FP target.

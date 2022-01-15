@@ -156,6 +156,23 @@ public partial class Processor : IDisposable
 
     #endregion
 
+    #region Children
+
+    /// <summary>
+    /// Initializes a new processor.
+    /// </summary>
+    /// <param name="args">Arguments.</param>
+    /// <typeparam name="T">Processor type.</typeparam>
+    /// <returns>Created processor.</returns>
+    public T Initialize<T>(string[]? args = null) where T : Processor, new()
+    {
+        T child = new();
+        child.Prepare(new ProcessorConfiguration(Preload, Debug, Nop, LogReceiver, args ?? Array.Empty<string>()));
+        return child;
+    }
+
+    #endregion
+
     #region Main operation functions
 
     /// <summary>

@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Moved Processor.PaddingMode to CipherPaddingMode
 - Moved ReadContextByteExtensions to ReadWriteContextByteExtensions
 - Use ReadOnlySpan param on WriteContext.WriteAdvance
+- Moved `T FsProcessor.Initialize<T>(string[]? args)` to Processor
 
 ## [0.23.2] 2022-1-11
 ### Changed
