@@ -150,6 +150,7 @@ public partial class Processor : IDisposable
     /// </summary>
     public Processor()
     {
+        LittleEndian = true;
         InitEncodingDecodingHelpers();
     }
 

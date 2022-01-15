@@ -65,6 +65,35 @@ public class SnOProcessor : DataProcessor
                     }
                     break;
                 }
+            case "RYHP":
+                {
+                    // BEN_BT_C1_s.png.phyre
+                    // offset 494015
+                    // 113992 bytes
+                    // assume start at 3183
+                    // 604824 data bytes?
+                    // 151206 (0x0x24EA6) pixels?
+                    // looks like width 1440 bytes, 360 pixels
+                    // looks like 360*420 starting at 3207
+                    /*for (int i = 3143; i < 3183; i += 4)
+                    {
+                        LogInfo(i4l[i].ToString());
+                    }*/
+                    // width @ 3068,
+                    //int post3 = 4319; // btlch.pyre
+                    //int dpos = 4560;
+                    int post3 = 3056; // BEN_BT_C1_s.png.phyre
+                    int dpos = 3207;
+                    //int post3 = 3048; // BEN_BT_C1.png.phyre
+                    //int dpos = 3199;
+
+                    // pregroups 358
+                    int w = i4l[post3 + 12], h = i4l[post3 + 16];
+                    WriteContext<uint> wc = NamePathNoExt.CreateImage(w, h, out Data image);
+                    Read(dpos, MemoryMarshal.Cast<uint, byte>(wc.Source), false);
+                    yield return image;
+                    break;
+                }
             default:
                 yield break;
         }
