@@ -57,6 +57,9 @@ namespace Fp.Plus.Audio
         public override Guid DefaultFormat => Wave.WaveFormat;
 
         /// <inheritdoc />
+        public override  IReadOnlyCollection<Guid> SupportedFormats { get; } = new[] { Wave.WaveFormat };
+
+        /// <inheritdoc />
         public override string? GetExtension(Guid? format = null)
         {
             format ??= DefaultFormat;
@@ -65,6 +68,12 @@ namespace Fp.Plus.Audio
                 _ when format == Wave.WaveFormat => ".wav",
                 _ => base.GetExtension(format)
             };
+        }
+
+        /// <inheritdoc />
+        public override bool SupportsFormat(Guid format, Dictionary<object, object>? formatOptions = null)
+        {
+            return format == Wave.WaveFormat;
         }
 
         /// <inheritdoc />

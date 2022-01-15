@@ -36,6 +36,9 @@ public class BufferData<T> : BufferData where T : unmanaged
     /// <inheritdoc />
     public override Guid DefaultFormat => Generic;
 
+    /// <inheritdoc />
+    public override IReadOnlyCollection<Guid> SupportedFormats { get; } = new[] { Generic };
+
     /// <summary>
     /// Memory owner.
     /// </summary>
@@ -100,16 +103,20 @@ public class BufferData<T> : BufferData where T : unmanaged
     }
 
     /// <inheritdoc />
+    public override bool SupportsFormat(Guid format, Dictionary<object, object>? formatOptions = null)
+    {
+        return format == Generic;
+    }
+
+    /// <inheritdoc />
     public override bool WriteConvertedData(Stream outputStream, Guid format,
         Dictionary<object, object>? formatOptions = null)
     {
         if (Dry) throw new InvalidOperationException("Cannot convert a dry data container");
-        if (_disposed)
-            throw new ObjectDisposedException(nameof(BufferData<T>));
+        if (_disposed) throw new ObjectDisposedException(nameof(BufferData<T>));
         if (format == Generic)
         {
-            Processor.WriteBaseSpan(outputStream,
-                MemoryMarshal.Cast<T, byte>(Buffer.Span));
+            Processor.WriteBaseSpan(outputStream, MemoryMarshal.Cast<T, byte>(Buffer.Span));
             return true;
         }
 

@@ -6,27 +6,36 @@ using System.Text;
 namespace Fp;
 
 /// <summary>
-/// Represents general metadata.
+/// Represents general text data.
 /// </summary>
-public class MetaData : Data
+public class StringData : Data
 {
     /// <summary>
-    /// Metadata value.
+    /// String value.
     /// </summary>
-    public object Value { get; }
+    public string Value { get; }
 
     /// <summary>
-    /// Creates a new instance of <see cref="MetaData"/>.
+    /// Creates a new instance of <see cref="StringData"/>.
     /// </summary>
     /// <param name="basePath">Base path of resource.</param>
-    /// <param name="value">Metadata value.</param>
-    public MetaData(string basePath, object value) : base(basePath)
+    /// <param name="stringBuilder">String builder to get content string from.</param>
+    public StringData(string basePath, StringBuilder stringBuilder) : this(basePath, stringBuilder.ToString())
+    {
+    }
+
+    /// <summary>
+    /// Creates a new instance of <see cref="StringData"/>.
+    /// </summary>
+    /// <param name="basePath">Base path of resource.</param>
+    /// <param name="value">String value.</param>
+    public StringData(string basePath, string value) : base(basePath)
     {
         Value = value;
     }
 
     /// <inheritdoc />
-    public override Guid DefaultFormat => Generic;
+    public override Guid DefaultFormat => UTF8;
 
     /// <inheritdoc />
     public override IReadOnlyCollection<Guid> SupportedFormats { get; } = new[] { Generic, UTF8 };
@@ -34,19 +43,18 @@ public class MetaData : Data
     /// <inheritdoc />
     public override bool SupportsFormat(Guid format, Dictionary<object, object>? formatOptions = null)
     {
-        return format == Generic;
+        return format == Generic || format == UTF8;
     }
 
     /// <inheritdoc />
     public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary<object, object>? formatOptions = null)
     {
-        if (format == Generic || format == Generic)
+        if (format == Generic || format == UTF8)
         {
             using var tw = new StreamWriter(outputStream, Encoding.UTF8, 4096, true);
             tw.Write(Value);
             return true;
         }
-
         return false;
     }
 
@@ -56,47 +64,47 @@ public class MetaData : Data
     }
 
     /// <inheritdoc />
-    public override object Clone() => new MetaData(BasePath, Value);
+    public override object Clone() => new StringData(BasePath, Value);
 
     /// <inheritdoc />
     // ReSharper disable once ReturnTypeCanBeNotNullable
-    public override string? ToString() => Value.ToString();
+    public override string? ToString() => Value;
 }
 
 public partial class Processor
 {
     /// <summary>
-    /// Creates metadata object.
+    /// Creates string data object.
     /// </summary>
     /// <param name="path">Path.</param>
     /// <param name="value">Value.</param>
     /// <returns>Data object.</returns>
-    public static MetaData Meta(FpPath path, object value) => new(path.AsCombined(), value);
+    public static StringData Text(FpPath path, string value) => new(path.AsCombined(), value);
 
     /// <summary>
-    /// Creates metadata object.
+    /// Creates string data object.
     /// </summary>
     /// <param name="name">Path.</param>
     /// <param name="value">Value.</param>
     /// <returns>Data object.</returns>
-    public static MetaData Meta(string name, object value) => new(name, value);
+    public static StringData Text(string name, string value) => new(name, value);
 }
 
 public partial class Scripting
 {
     /// <summary>
-    /// Creates metadata object.
+    /// Creates string data object.
     /// </summary>
     /// <param name="path">Path.</param>
     /// <param name="value">Value.</param>
     /// <returns>Data object.</returns>
-    public static Data meta(this FpPath path, object value) => Processor.Meta(path, value);
+    public static Data text(this FpPath path, string value) => Processor.Text(path, value);
 
     /// <summary>
-    /// Creates metadata object.
+    /// Creates string data object.
     /// </summary>
     /// <param name="path">Path.</param>
     /// <param name="value">Value.</param>
     /// <returns>Data object.</returns>
-    public static Data meta(this string path, object value) => Processor.Meta(path, value);
+    public static Data text(this string path, string value) => Processor.Text(path, value);
 }

@@ -25,11 +25,13 @@ public class Rgba32Data : BufferData<uint>
     /// </summary>
     public static readonly Guid Jpeg = Guid.Parse("7AE22A2F-CE7F-470B-BC58-674AC8B5EA9E");
 
-    private static readonly PngEncoder s_pngEncoder =
-        new() { CompressionLevel = PngCompressionLevel.BestCompression };
+    private static readonly PngEncoder s_pngEncoder = new() { CompressionLevel = PngCompressionLevel.BestCompression };
 
     /// <inheritdoc />
     public override Guid DefaultFormat => PngDeflate;
+
+    /// <inheritdoc />
+    public override  IReadOnlyCollection<Guid> SupportedFormats { get; } = new[] { PngDeflate, Jpeg };
 
     /// <summary>
     /// Provides option keys for <see cref="Rgba32Data"/>.
@@ -93,6 +95,12 @@ public class Rgba32Data : BufferData<uint>
     {
         Width = width;
         Height = height;
+    }
+
+    /// <inheritdoc />
+    public override bool SupportsFormat(Guid format, Dictionary<object, object>? formatOptions = null)
+    {
+        return format == PngDeflate || format == Jpeg;
     }
 
     /// <inheritdoc />
