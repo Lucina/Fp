@@ -141,12 +141,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Value.</returns>
-    public static short SetS16(Span<byte> span, short value, bool littleEndian, int offset = 0)
+    public static unsafe short SetS16(Span<byte> span, short value, bool littleEndian, int offset = 0)
     {
         if (littleEndian ^ BitConverter.IsLittleEndian) value = BinaryPrimitives.ReverseEndianness(value);
-        Span<byte> span2 = stackalloc byte[2];
-        MemoryMarshal.Cast<byte, short>(span2)[0] = value;
-        span2.CopyTo(span.Slice(offset, 2));
+        new Span<byte>(&value, 2).CopyTo(span.Slice(offset, 2));
         return value;
     }
 
@@ -172,12 +170,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Value.</returns>
-    public static ushort SetU16(Span<byte> span, ushort value, bool littleEndian, int offset = 0)
+    public static unsafe ushort SetU16(Span<byte> span, ushort value, bool littleEndian, int offset = 0)
     {
         if (littleEndian ^ BitConverter.IsLittleEndian) value = BinaryPrimitives.ReverseEndianness(value);
-        Span<byte> span2 = stackalloc byte[2];
-        MemoryMarshal.Cast<byte, ushort>(span2)[0] = value;
-        span2.CopyTo(span.Slice(offset, 2));
+        new Span<byte>(&value, 2).CopyTo(span.Slice(offset, 2));
         return value;
     }
 
@@ -203,12 +199,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Value.</returns>
-    public static int SetS32(Span<byte> span, int value, bool littleEndian, int offset = 0)
+    public static unsafe int SetS32(Span<byte> span, int value, bool littleEndian, int offset = 0)
     {
         if (littleEndian ^ BitConverter.IsLittleEndian) value = BinaryPrimitives.ReverseEndianness(value);
-        Span<byte> span2 = stackalloc byte[4];
-        MemoryMarshal.Cast<byte, int>(span2)[0] = value;
-        span2.CopyTo(span.Slice(offset, 4));
+        new Span<byte>(&value, 4).CopyTo(span.Slice(offset, 4));
         return value;
     }
 
@@ -234,12 +228,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Value.</returns>
-    public static uint SetU32(Span<byte> span, uint value, bool littleEndian, int offset = 0)
+    public static unsafe uint SetU32(Span<byte> span, uint value, bool littleEndian, int offset = 0)
     {
         if (littleEndian ^ BitConverter.IsLittleEndian) value = BinaryPrimitives.ReverseEndianness(value);
-        Span<byte> span2 = stackalloc byte[4];
-        MemoryMarshal.Cast<byte, uint>(span2)[0] = value;
-        span2.CopyTo(span.Slice(offset, 4));
+        new Span<byte>(&value, 4).CopyTo(span.Slice(offset, 4));
         return value;
     }
 
@@ -264,12 +256,10 @@ public partial class Processor
     /// <param name="value">Value.</param>
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to write to.</param>
-    public static long SetS64(Span<byte> span, long value, bool littleEndian, int offset = 0)
+    public static unsafe long SetS64(Span<byte> span, long value, bool littleEndian, int offset = 0)
     {
         if (littleEndian ^ BitConverter.IsLittleEndian) value = BinaryPrimitives.ReverseEndianness(value);
-        Span<byte> span2 = stackalloc byte[8];
-        MemoryMarshal.Cast<byte, long>(span2)[0] = value;
-        span2.CopyTo(span.Slice(offset, 8));
+        new Span<byte>(&value, 8).CopyTo(span.Slice(offset, 8));
         return value;
     }
 
@@ -295,12 +285,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Value.</returns>
-    public static ulong SetU64(Span<byte> span, ulong value, bool littleEndian, int offset = 0)
+    public static unsafe ulong SetU64(Span<byte> span, ulong value, bool littleEndian, int offset = 0)
     {
         if (littleEndian ^ BitConverter.IsLittleEndian) value = BinaryPrimitives.ReverseEndianness(value);
-        Span<byte> span2 = stackalloc byte[8];
-        MemoryMarshal.Cast<byte, ulong>(span2)[0] = value;
-        span2.CopyTo(span.Slice(offset, 8));
+        new Span<byte>(&value, 8).CopyTo(span.Slice(offset, 8));
         return value;
     }
 
