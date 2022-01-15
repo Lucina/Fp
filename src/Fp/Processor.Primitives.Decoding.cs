@@ -126,11 +126,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to read from.</param>
     /// <returns>Value.</returns>
-    public static short GetS16(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
+    public static unsafe short GetS16(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
     {
-        Span<byte> span2 = stackalloc byte[2];
-        span.Slice(offset, 2).CopyTo(span2);
-        short value = MemoryMarshal.Cast<byte, short>(span2)[0];
+        short value;
+        span.Slice(offset, 2).CopyTo(new Span<byte>(&value, 2));
         return littleEndian ^ BitConverter.IsLittleEndian ? BinaryPrimitives.ReverseEndianness(value) : value;
     }
 
@@ -158,11 +157,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to read from.</param>
     /// <returns>Value.</returns>
-    public static ushort GetU16(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
+    public static unsafe ushort GetU16(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
     {
-        Span<byte> span2 = stackalloc byte[2];
-        span.Slice(offset, 2).CopyTo(span2);
-        ushort value = MemoryMarshal.Cast<byte, ushort>(span2)[0];
+        ushort value;
+        span.Slice(offset, 2).CopyTo(new Span<byte>(&value, 2));
         return littleEndian ^ BitConverter.IsLittleEndian ? BinaryPrimitives.ReverseEndianness(value) : value;
     }
 
@@ -190,11 +188,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to read from.</param>
     /// <returns>Value.</returns>
-    public static int GetS32(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
+    public static unsafe int GetS32(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
     {
-        Span<byte> span2 = stackalloc byte[4];
-        span.Slice(offset, 4).CopyTo(span2);
-        int value = MemoryMarshal.Cast<byte, int>(span2)[0];
+        int value;
+        span.Slice(offset, 4).CopyTo(new Span<byte>(&value, 4));
         return littleEndian ^ BitConverter.IsLittleEndian ? BinaryPrimitives.ReverseEndianness(value) : value;
     }
 
@@ -222,11 +219,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to read from.</param>
     /// <returns>Value.</returns>
-    public static uint GetU32(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
+    public static unsafe uint GetU32(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
     {
-        Span<byte> span2 = stackalloc byte[4];
-        span.Slice(offset, 4).CopyTo(span2);
-        uint value = MemoryMarshal.Cast<byte, uint>(span2)[0];
+        uint value;
+        span.Slice(offset, 4).CopyTo(new Span<byte>(&value, 4));
         return littleEndian ^ BitConverter.IsLittleEndian ? BinaryPrimitives.ReverseEndianness(value) : value;
     }
 
@@ -254,11 +250,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to read from.</param>
     /// <returns>Value.</returns>
-    public static long GetS64(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
+    public static unsafe long GetS64(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
     {
-        Span<byte> span2 = stackalloc byte[8];
-        span.Slice(offset, 8).CopyTo(span2);
-        long value = MemoryMarshal.Cast<byte, long>(span2)[0];
+        long value;
+        span.Slice(offset, 8).CopyTo(new Span<byte>(&value, 8));
         return littleEndian ^ BitConverter.IsLittleEndian ? BinaryPrimitives.ReverseEndianness(value) : value;
     }
 
@@ -285,11 +280,10 @@ public partial class Processor
     /// <param name="littleEndian">If true, use little-endian encoding.</param>
     /// <param name="offset">Offset to read from.</param>
     /// <returns>Value.</returns>
-    public static ulong GetU64(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
+    public static unsafe ulong GetU64(ReadOnlySpan<byte> span, bool littleEndian, int offset = 0)
     {
-        Span<byte> span2 = stackalloc byte[8];
-        span.Slice(offset, 8).CopyTo(span2);
-        ulong value = MemoryMarshal.Cast<byte, ulong>(span2)[0];
+        ulong value;
+        span.Slice(offset, 8).CopyTo(new Span<byte>(&value, 8));
         return littleEndian ^ BitConverter.IsLittleEndian ? BinaryPrimitives.ReverseEndianness(value) : value;
     }
 
@@ -318,11 +312,7 @@ public partial class Processor
     public static void ConvertS16Array(Span<short> span, bool littleEndian)
     {
         if (littleEndian == BitConverter.IsLittleEndian) return;
-
-        for (int i = 0; i < span.Length; i++)
-        {
-            span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
     }
 
     /// <summary>
@@ -341,11 +331,7 @@ public partial class Processor
     public static void ConvertU16Array(Span<ushort> span, bool littleEndian)
     {
         if (littleEndian == BitConverter.IsLittleEndian) return;
-
-        for (int i = 0; i < span.Length; i++)
-        {
-            span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
     }
 
     /// <summary>
@@ -364,11 +350,7 @@ public partial class Processor
     public static void ConvertS32Array(Span<int> span, bool littleEndian)
     {
         if (littleEndian == BitConverter.IsLittleEndian) return;
-
-        for (int i = 0; i < span.Length; i++)
-        {
-            span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
     }
 
     /// <summary>
@@ -387,11 +369,7 @@ public partial class Processor
     public static void ConvertU32Array(Span<uint> span, bool littleEndian)
     {
         if (littleEndian == BitConverter.IsLittleEndian) return;
-
-        for (int i = 0; i < span.Length; i++)
-        {
-            span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
     }
 
     /// <summary>
@@ -410,11 +388,7 @@ public partial class Processor
     public static void ConvertS64Array(Span<long> span, bool littleEndian)
     {
         if (littleEndian == BitConverter.IsLittleEndian) return;
-
-        for (int i = 0; i < span.Length; i++)
-        {
-            span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
     }
 
     /// <summary>
@@ -433,11 +407,7 @@ public partial class Processor
     public static void ConvertU64Array(Span<ulong> span, bool littleEndian)
     {
         if (littleEndian == BitConverter.IsLittleEndian) return;
-
-        for (int i = 0; i < span.Length; i++)
-        {
-            span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
-        }
+        for (int i = 0; i < span.Length; i++) span[i] = BinaryPrimitives.ReverseEndianness(span[i]);
     }
 
     /// <summary>
@@ -799,8 +769,7 @@ public partial class Processor
     /// Converts endianness of signed 16-bit array between source and platform's endianness.
     /// </summary>
     /// <param name="span">Span to convert.</param>
-    public void ConvertS16Array(Span<byte> span) =>
-        ConvertS16Array(MemoryMarshal.Cast<byte, short>(span), LittleEndian);
+    public void ConvertS16Array(Span<byte> span) => ConvertS16Array(MemoryMarshal.Cast<byte, short>(span), LittleEndian);
 
     /// <summary>
     /// Converts endianness of unsigned 16-bit array between source and platform's endianness.
@@ -812,8 +781,7 @@ public partial class Processor
     /// Converts endianness of unsigned 16-bit array between source and platform's endianness.
     /// </summary>
     /// <param name="span">Span to convert.</param>
-    public void ConvertU16Array(Span<byte> span) =>
-        ConvertU16Array(MemoryMarshal.Cast<byte, ushort>(span), LittleEndian);
+    public void ConvertU16Array(Span<byte> span) => ConvertU16Array(MemoryMarshal.Cast<byte, ushort>(span), LittleEndian);
 
     /// <summary>
     /// Converts endianness of signed 32-bit array between source and platform's endianness.
@@ -825,8 +793,7 @@ public partial class Processor
     /// Converts endianness of signed 32-bit array between source and platform's endianness.
     /// </summary>
     /// <param name="span">Span to convert.</param>
-    public void ConvertS32Array(Span<byte> span) =>
-        ConvertS32Array(MemoryMarshal.Cast<byte, int>(span), LittleEndian);
+    public void ConvertS32Array(Span<byte> span) => ConvertS32Array(MemoryMarshal.Cast<byte, int>(span), LittleEndian);
 
     /// <summary>
     /// Converts endianness of unsigned 32-bit array between source and platform's endianness.
@@ -838,8 +805,7 @@ public partial class Processor
     /// Converts endianness of unsigned 32-bit array between source and platform's endianness.
     /// </summary>
     /// <param name="span">Span to convert.</param>
-    public void ConvertU32Array(Span<byte> span) =>
-        ConvertU32Array(MemoryMarshal.Cast<byte, uint>(span), LittleEndian);
+    public void ConvertU32Array(Span<byte> span) => ConvertU32Array(MemoryMarshal.Cast<byte, uint>(span), LittleEndian);
 
     /// <summary>
     /// Converts endianness of signed 64-bit array between source and platform's endianness.
@@ -851,8 +817,7 @@ public partial class Processor
     /// Converts endianness of signed 64-bit array between source and platform's endianness.
     /// </summary>
     /// <param name="span">Span to convert.</param>
-    public void ConvertS64Array(Span<byte> span) =>
-        ConvertS64Array(MemoryMarshal.Cast<byte, long>(span), LittleEndian);
+    public void ConvertS64Array(Span<byte> span) => ConvertS64Array(MemoryMarshal.Cast<byte, long>(span), LittleEndian);
 
     /// <summary>
     /// Converts endianness of unsigned 64-bit array between source and platform's endianness.
@@ -864,8 +829,7 @@ public partial class Processor
     /// Converts endianness of unsigned 64-bit array between source and platform's endianness.
     /// </summary>
     /// <param name="span">Span to convert.</param>
-    public void ConvertU64Array(Span<byte> span) =>
-        ConvertU64Array(MemoryMarshal.Cast<byte, ulong>(span), LittleEndian);
+    public void ConvertU64Array(Span<byte> span) => ConvertU64Array(MemoryMarshal.Cast<byte, ulong>(span), LittleEndian);
 
     #endregion
 

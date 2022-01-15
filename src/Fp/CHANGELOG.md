@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Fix xor arm intrinsic
 - Initialize Processor.LittleEndian to true in constructor
+- Use local variables in static Processor.GetX
 
 ## [0.23.2] 2022-1-11
 ### Changed
