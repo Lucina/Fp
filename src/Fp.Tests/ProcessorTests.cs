@@ -155,7 +155,7 @@ public class ProcessorTests
 
         byte[] encData = ms1.ToArray();
         PlusUtil.DecryptAesEcb(encData, aesAlg.Key);
-        int pos = Processor.GetDepaddedLength(encData, Processor.PaddingMode.Pkcs7);
+        int pos = Processor.GetDepaddedLength(encData, CipherPaddingMode.Pkcs7);
         Assert.AreEqual(data.Length, pos);
         Assert.IsTrue(data.AsSpan().SequenceEqual(encData));
     }
@@ -176,7 +176,7 @@ public class ProcessorTests
 
         byte[] encData = ms1.ToArray();
         PlusUtil.DecryptAesCbc(encData, aesAlg.Key, aesAlg.IV);
-        int pos = Processor.GetDepaddedLength(encData, Processor.PaddingMode.Pkcs7);
+        int pos = Processor.GetDepaddedLength(encData, CipherPaddingMode.Pkcs7);
         Assert.AreEqual(data.Length, pos);
         Assert.IsTrue(data.AsSpan().SequenceEqual(encData));
     }

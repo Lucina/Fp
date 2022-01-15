@@ -13,73 +13,36 @@ public partial class Processor
     #region Decryption utilities
 
     /// <summary>
-    /// Block cipher padding mode.
-    /// </summary>
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public enum PaddingMode
-    {
-        /// <summary>
-        /// End of message is padded with null bytes.
-        /// </summary>
-        Zero,
-
-        /// <summary>
-        /// ANSI X9.23 padding.
-        /// </summary>
-        AnsiX9_23,
-
-        /// <summary>
-        /// ISO 10126 padding.
-        /// </summary>
-        Iso10126,
-
-        /// <summary>
-        /// PKCS#7 padding.
-        /// </summary>
-        Pkcs7,
-
-        /// <summary>
-        /// PKCS#5 padding.
-        /// </summary>
-        Pkcs5,
-
-        /// <summary>
-        /// ISO/IEC 7816-4:2005 padding.
-        /// </summary>
-        Iso_Iec_7816_4
-    }
-
-    /// <summary>
     /// Gets padded message length using specified padding mode.
     /// </summary>
     /// <param name="length">Input message length.</param>
-    /// <param name="paddingMode">Padding mode to use.</param>
+    /// <param name="cipherPaddingMode">Padding mode to use.</param>
     /// <param name="blockSize">Cipher block size.</param>
     /// <returns>Padded length of message.</returns>
-    public static int GetPaddedLength(int length, PaddingMode paddingMode, int blockSize) =>
-        paddingMode switch
+    public static int GetPaddedLength(int length, CipherPaddingMode cipherPaddingMode, int blockSize) =>
+        cipherPaddingMode switch
         {
-            PaddingMode.Zero => length + (blockSize - length % blockSize),
-            PaddingMode.Iso_Iec_7816_4 or PaddingMode.AnsiX9_23 or PaddingMode.Iso10126 or PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => length + 1 + (blockSize - (length + 1) % blockSize),
-            _ => throw new ArgumentOutOfRangeException(nameof(paddingMode), paddingMode, null)
+            CipherPaddingMode.Zero => length + (blockSize - length % blockSize),
+            CipherPaddingMode.Iso_Iec_7816_4 or CipherPaddingMode.AnsiX9_23 or CipherPaddingMode.Iso10126 or CipherPaddingMode.Pkcs7 or CipherPaddingMode.Pkcs5 => length + 1 + (blockSize - (length + 1) % blockSize),
+            _ => throw new ArgumentOutOfRangeException(nameof(cipherPaddingMode), cipherPaddingMode, null)
         };
 
     /// <summary>
     /// Gets depadded message length using specified padding mode.
     /// </summary>
     /// <param name="span">Message.</param>
-    /// <param name="paddingMode">Padding mode to use.</param>
+    /// <param name="cipherPaddingMode">Padding mode to use.</param>
     /// <param name="validate">Apply validation, throwing an error on invalid input.</param>
     /// <returns>Depadded length of message.</returns>
-    public static int GetDepaddedLength(Span<byte> span, PaddingMode paddingMode, bool validate = true) =>
-        paddingMode switch
+    public static int GetDepaddedLength(Span<byte> span, CipherPaddingMode cipherPaddingMode, bool validate = true) =>
+        cipherPaddingMode switch
         {
-            PaddingMode.Zero => GetDepaddedLengthZero(span),
-            PaddingMode.Iso_Iec_7816_4 => GetDepaddedLengthIso_Iec_7816_4(span),
-            PaddingMode.AnsiX9_23 => GetDepaddedLengthAnsiX9_23(span, validate),
-            PaddingMode.Iso10126 => GetDepaddedLengthLastByteSubtract(span),
-            PaddingMode.Pkcs7 or PaddingMode.Pkcs5 => GetDepaddedLengthPkcs5Pkcs7(span, validate),
-            _ => throw new ArgumentOutOfRangeException(nameof(paddingMode), paddingMode, null)
+            CipherPaddingMode.Zero => GetDepaddedLengthZero(span),
+            CipherPaddingMode.Iso_Iec_7816_4 => GetDepaddedLengthIso_Iec_7816_4(span),
+            CipherPaddingMode.AnsiX9_23 => GetDepaddedLengthAnsiX9_23(span, validate),
+            CipherPaddingMode.Iso10126 => GetDepaddedLengthLastByteSubtract(span),
+            CipherPaddingMode.Pkcs7 or CipherPaddingMode.Pkcs5 => GetDepaddedLengthPkcs5Pkcs7(span, validate),
+            _ => throw new ArgumentOutOfRangeException(nameof(cipherPaddingMode), cipherPaddingMode, null)
         };
 
     private static int GetDepaddedLengthZero(Span<byte> span)
@@ -101,9 +64,9 @@ public partial class Processor
                 case 0x80:
                     return i;
                 default:
-                    throw new ArgumentException($"Invalid padding byte for {nameof(PaddingMode.Iso_Iec_7816_4)}, need 0x80 or 0x00 but got 0x{span[i]:X2}");
+                    throw new ArgumentException($"Invalid padding byte for {nameof(CipherPaddingMode.Iso_Iec_7816_4)}, need 0x80 or 0x00 but got 0x{span[i]:X2}");
             }
-        throw new ArgumentException($"Message is all null bytes and {nameof(PaddingMode.Iso_Iec_7816_4)} requires 0x80 to mark beginning of padding");
+        throw new ArgumentException($"Message is all null bytes and {nameof(CipherPaddingMode.Iso_Iec_7816_4)} requires 0x80 to mark beginning of padding");
     }
 
     private static int GetDepaddedLengthPkcs5Pkcs7(ReadOnlySpan<byte> span, bool validate)

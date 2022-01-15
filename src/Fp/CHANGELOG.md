@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initialize Processor.LittleEndian to true in constructor
 - Use local variables in static Processor.GetX/SetX
 - Moved Data.CastNumber to FpUtil
+- Moved Processor.PaddingMode to CipherPaddingMode
 
 ## [0.23.2] 2022-1-11
 ### Changed
