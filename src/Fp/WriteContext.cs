@@ -116,12 +116,26 @@ public ref struct WriteContext<T> where T : unmanaged
     /// </summary>
     /// <param name="value">Values to write.</param>
     /// <exception cref="IOException">End has been reached.</exception>
-    public void WriteAdvance(Span<T> value)
+    public void WriteAdvance(ReadOnlySpan<T> value)
     {
         if (!IsAvailable(value.Length)) throw new IOException();
         int offset = Offset;
         Offset += value.Length;
         value.CopyTo(Source.Slice(offset, value.Length));
+    }
+
+    /// <summary>
+    /// Gets buffer and advances.
+    /// </summary>
+    /// <param name="count">Count of elements to retrieve.</param>
+    /// <exception cref="IOException">End has been reached.</exception>
+    /// <returns>Buffer with specified length.</returns>
+    public Span<T> GetAdvance(int count)
+    {
+        if (!IsAvailable(count)) throw new IOException();
+        int offset = Offset;
+        Offset += count;
+        return Source.Slice(offset, count);
     }
 
     /// <summary>

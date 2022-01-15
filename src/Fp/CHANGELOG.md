@@ -5,12 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- WriteContext extensions in ReadWriteContextByteExtensions
+- `WriteContext<byte>.GetAdvance(int)` to claim buffer
+
 ### Changed
 - Fix xor arm intrinsic
 - Initialize Processor.LittleEndian to true in constructor
 - Use local variables in static Processor.GetX/SetX
 - Moved Data.CastNumber to FpUtil
 - Moved Processor.PaddingMode to CipherPaddingMode
+- Moved ReadContextByteExtensions to ReadWriteContextByteExtensions
+- Use ReadOnlySpan param on WriteContext.WriteAdvance
 
 ## [0.23.2] 2022-1-11
 ### Changed
