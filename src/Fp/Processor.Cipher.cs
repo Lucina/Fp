@@ -132,7 +132,7 @@ public partial class Processor
         span.Length == 0 ? 0 : span.Length - span[span.Length - 1];
 
     /// <summary>
-    /// Creates a byte array from a hex string.
+    /// Creates a byte array from a hex string. Hex strings may only be prefixed with "0x".
     /// </summary>
     /// <param name="hex">Hex string to decode.</param>
     /// <param name="validate">Validate characters.</param>
@@ -160,42 +160,20 @@ public partial class Processor
                 for (int i = 0; i < len; i++)
                 {
                     c = *rBuf++;
-                    if (c > 0x60)
-                    {
-                        if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                        res[i] = (byte)((c + 9) << 4);
-                    }
-                    else if (c > 0x40)
-                    {
-                        if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                        res[i] = (byte)((c + 9) << 4);
-                    }
-                    else if (c > 0x2F)
-                    {
-                        if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                        res[i] = (byte)(c << 4);
-                    }
-                    else
-                    {
-                        throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    }
-
+                    if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    if (c > 0x60) res[i] = (byte)((c + 9) << 4);
+                    else if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    else if (c > 0x40) res[i] = (byte)((c + 9) << 4);
+                    else if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    else if (c > 0x2F) res[i] = (byte)(c << 4);
+                    else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                     c = *rBuf++;
-                    if (c > 0x60)
-                    {
-                        if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                        res[i] += (byte)((c + 9) & 0xf);
-                    }
-                    else if (c > 0x40)
-                    {
-                        if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                        res[i] += (byte)((c + 9) & 0xf);
-                    }
-                    else if (c > 0x2F)
-                    {
-                        if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                        res[i] += (byte)(c & 0xf);
-                    }
+                    if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    if (c > 0x60) res[i] += (byte)((c + 9) & 0xf);
+                    else if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    else if (c > 0x40) res[i] += (byte)((c + 9) & 0xf);
+                    else if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    else if (c > 0x2F) res[i] += (byte)(c & 0xf);
                     else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
                 }
             }

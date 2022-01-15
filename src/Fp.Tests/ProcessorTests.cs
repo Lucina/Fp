@@ -130,6 +130,16 @@ public class ProcessorTests
     }
 
     [Test]
+    public void TestDecodeHex()
+    {
+        Assert.That(Processor.DecodeHex("0xaBCdEF1088"), Is.EqualTo(new byte[] { 0xab, 0xcd, 0xef, 0x10, 0x88 }));
+        Assert.That(Processor.DecodeHex("0xaBCdEF1088", false), Is.EqualTo(new byte[] { 0xab, 0xcd, 0xef, 0x10, 0x88 }));
+        Assert.That(() => Processor.DecodeHex("xab"), Throws.TypeOf<ArgumentException>());
+        Assert.That(Processor.DecodeHex("abf0", false), Is.EqualTo(new byte[] { 0xab, 0xf0 }));
+        Assert.That(() => Processor.DecodeHex("abg0"), Throws.TypeOf<ArgumentException>());
+    }
+
+    [Test]
     public void TestAesEcb()
     {
         byte[] data = new byte[128 / 8 * 5];
