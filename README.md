@@ -31,9 +31,9 @@ Many utilities for working with primitive data (including endianness-dependent I
 
 ### Details
 
-File format processors are a unit worker derived from `Fp.FormatSingleProcessor`, `Fp.FormatMultiProcessor`, or one of their descendants.
-
 Filesystem processors are a unit worker derived from `Fp.FsProcessor` or one of its descendants that are called to operate on each applicable (by default, based on extension) file path, optionally opening a stream and generating console output or file artifacts. If written to only use compatible APIs (e.g. working with the `FileSystemSource` APIs and not directly using `System.IO.File` etc.), processors can be used to work with synthetic filesystems (e.g. directly working on files in a zip file) and more generally be used to efficiently interact with any binary data regardless of source.
+
+File format processors are a unit worker derived from `Fp.FormatSingleProcessor`, `Fp.FormatMultiProcessor`, or one of their descendants. They can be used to efficiently obtain converted data from individual files, or be wrapped with `FormatSingleProcessorFsWrapper` / `FormatMultiProcessorFsWrapper` to be used as a `FsProcessor`.
 
 A scripting API also exists that mirrors much of the `FsProcessor` functionality in static, single-context form (multithreading not supported, unlike standard `FsProcessor`s).
 
