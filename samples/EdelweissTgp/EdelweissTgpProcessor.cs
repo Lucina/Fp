@@ -7,10 +7,11 @@ FsProcessor.Run<EdelweissTgpProcessor>(args,
     "Edelweiss TGP container",
     ".tgp");
 
-public class EdelweissTgpProcessor : DataProcessor
+public class EdelweissTgpProcessor : FsProcessor
 {
-    protected override IEnumerable<Data> ProcessData()
+    protected override IEnumerable<Data> ProcessSegmentedImpl()
     {
+        OpenMainFile();
         if (!HasMagic("TGP0")) return Nothing;
         ushort ver = u2l[0x4];
         return ver switch

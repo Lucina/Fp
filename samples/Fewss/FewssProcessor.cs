@@ -5,9 +5,9 @@ FsProcessor.Run<FewssProcessor>(args,
     "Fire Emblem Warriors Switch Sound Archives",
     ".bin.gz", ".bin", ".g1l");
 
-public class FewssProcessor : DataProcessor
+public class FewssProcessor : FsProcessor
 {
-    protected override IEnumerable<Data> ProcessData() => SelectedExtension switch
+    protected override IEnumerable<Data> ProcessSegmentedImpl() => SelectedExtension switch
     {
         ".bin.gz" => ProcessBinGz(),
         ".bin" => ProcessBin(),
@@ -17,6 +17,7 @@ public class FewssProcessor : DataProcessor
 
     private IEnumerable<Data> ProcessBinGz()
     {
+        OpenMainFile();
         int wbhOff = i4l[0];
         int wbhLen = i4l[4];
         int wbdOff = i4l[8];
@@ -79,6 +80,7 @@ public class FewssProcessor : DataProcessor
 
     private IEnumerable<Data> ProcessBin()
     {
+        OpenMainFile();
         int count = i4l[0];
         for (int i = 0; i < count; i++)
         {
@@ -90,6 +92,7 @@ public class FewssProcessor : DataProcessor
 
     private IEnumerable<Data> ProcessG1L()
     {
+        OpenMainFile();
         if (!HasMagic("_L1G0000")) yield break;
         int count = i4l[0x14];
         for (int i = 0; i < count; i++)

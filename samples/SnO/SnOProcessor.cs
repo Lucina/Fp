@@ -7,10 +7,11 @@ FsProcessor.Run<SnOProcessor>(args,
     "SnO",
     "Sousei no Onmyouji containers");
 
-public class SnOProcessor : DataProcessor
+public class SnOProcessor : FsProcessor
 {
-    protected override IEnumerable<Data> ProcessData()
+    protected override IEnumerable<Data> ProcessSegmentedImpl()
     {
+        OpenMainFile();
         switch (ReadUtf8String(out _, out _, 4))
         {
             case "bg  ":

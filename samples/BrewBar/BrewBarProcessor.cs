@@ -5,10 +5,11 @@ FsProcessor.Run<BrewBarProcessor>(args,
     "BREW MP .bar containers with gzip-compressed files",
     ".bar");
 
-public class BrewBarProcessor : DataProcessor
+public class BrewBarProcessor : FsProcessor
 {
-    protected override IEnumerable<Data> ProcessData()
+    protected override IEnumerable<Data> ProcessSegmentedImpl()
     {
+        OpenMainFile();
         int count = i4l[0x14];
         int[] offsets = i4la[0x28, count + 1];
         for (int i = 0; i < count; i++)

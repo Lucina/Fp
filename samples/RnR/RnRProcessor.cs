@@ -6,10 +6,11 @@ FsProcessor.Run<RnRProcessor>(args,
     "Ryuusei no Rockman 1/2/3 .bin containers",
     ".bin");
 
-public class RnRProcessor : DataProcessor
+public class RnRProcessor : FsProcessor
 {
-    protected override IEnumerable<Data> ProcessData()
+    protected override IEnumerable<Data> ProcessSegmentedImpl()
     {
+        OpenMainFile();
         /*
          * Format
          * (little)
