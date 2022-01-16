@@ -2,10 +2,10 @@
 
     <PropertyGroup>
         <PackageType>Template</PackageType>
-        <PackageVersion>0.22.0</PackageVersion>
+        <PackageVersion>0.24.0</PackageVersion>
         <PackageId>Fp.Templates</PackageId>
         <Title>Fp Templates</Title>
-        <Authors>riina</Authors>
+        <Authors>riina,Lucina</Authors>
         <Description>Templates for Fp-based projects.</Description>
         <PackageTags>dotnet-new;templates;fp</PackageTags>
         <TargetFrameworks>net6.0;net472;netstandard2.0</TargetFrameworks>
@@ -13,11 +13,11 @@
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <ContentTargetFolders>content</ContentTargetFolders>
         <Copyright>Copyright ©2020 riina</Copyright>
-        <PackageProjectUrl>https://github.com/Lucina/Fp</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/Lucina/Fp</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/collectioneering/Fp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/collectioneering/Fp</RepositoryUrl>
         <Company>riina</Company>
         <PackOnBuild>true</PackOnBuild>
-        <Owners>riina</Owners>
+        <Owners>riina,Lucina</Owners>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>

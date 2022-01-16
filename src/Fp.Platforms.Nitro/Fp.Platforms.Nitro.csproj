@@ -26,8 +26,8 @@
     <Owners>riina,Lucina</Owners>
     <Description>Nitro utilities</Description>
     <Copyright>Copyright ©2020 riina</Copyright>
-    <PackageProjectUrl>https://github.com/Lucina/Fp</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Lucina/Fp</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/collectioneering/Fp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/collectioneering/Fp</RepositoryUrl>
     <Company>riina</Company>
   </PropertyGroup>
 
