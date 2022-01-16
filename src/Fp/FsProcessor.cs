@@ -96,8 +96,7 @@ public partial class FsProcessor : Processor
     /// <remarks>
     /// Not applicable in a multithreaded environment.
     /// </remarks>
-    [SuppressMessage("ReSharper", "UnassignedField.Global")]
-    public bool Lock;
+    [SuppressMessage("ReSharper", "UnassignedField.Global")] public bool Lock;
 
     /// <summary>
     /// Current file path.
@@ -184,8 +183,7 @@ public partial class FsProcessor : Processor
     public bool ValidateExtension(string path, out string? extension)
     {
         extension = null;
-        if (Source?.Info.Extensions is not { } exts) return true;
-        if (exts.Length == 0) return true;
+        if (Source?.Info.Extensions is not { Length: > 0 } exts) return true;
         foreach (string? ext in exts.OrderByDescending(e => e?.Length ?? int.MaxValue))
             if (ext == null)
             {
@@ -196,7 +194,6 @@ public partial class FsProcessor : Processor
                 extension = ext;
                 return true;
             }
-
         return false;
     }
 
