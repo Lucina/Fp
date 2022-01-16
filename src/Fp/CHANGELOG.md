@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Clearing of stored singletons via `One<T>.Clear` / and `One.ClearAll`
 - `StringData` type for data containing string
 - `Data.SupportsFormat` and `Data.SupportedFormats` for pre-checking output support
+- `FormatProcessor` / `FormatSingleProcessor` / `FormatMultiProcessor` for pure file-based operation
 
 ### Changed
 - Fix xor arm intrinsic

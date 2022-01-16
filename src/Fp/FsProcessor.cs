@@ -150,8 +150,7 @@ public partial class FsProcessor : Processor
     /// <param name="file">Input file.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <param name="workerId">Worker ID.</param>
-    public void Prepare(FileSystemSource fileSystem, string inputRoot, string outputRoot, string file,
-        ProcessorConfiguration? configuration = null, int workerId = 0)
+    public void Prepare(FileSystemSource fileSystem, string inputRoot, string outputRoot, string file, ProcessorConfiguration? configuration = null, int workerId = 0)
     {
         Prepare(configuration);
         InputRootDirectory = fileSystem.NormalizePath(inputRoot);
