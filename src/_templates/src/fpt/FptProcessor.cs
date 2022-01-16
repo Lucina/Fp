@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using Fp;
 
-FsProcessor.Run<FptProcessor>(args,
+FptProcessor.Run<FptProcessor>(args,
     "Fpt",
     "yourDescription",
-    ".yourExtension1");
+    ".yourExtension1"); // Remove if no filtering desired
 public class FptProcessor : FsProcessor
 {
     protected override void ProcessImpl()
@@ -24,11 +24,35 @@ public class FptProcessor : FsProcessor
     */
 }
 
-// Segmented, automatic OpenFile()
+// One output, InputStream available
 /*
-public class FptProcessor : DataProcessor
+public class FptProcessor : FormatSingleProcessor
 {
-    protected override IEnumerable<Data> ProcessData()
+    public override bool TryProcess(out Data? data)
+    {
+        // Implement your logic here
+        
+    }
+}
+*/
+
+// One output of specific type, InputStream available
+/*
+public class FptProcessor : FormatSingleProcessor<BufferData<byte>>
+{
+    public override bool TryProcess(out BufferData<byte>? data)
+    {
+        // Implement your logic here
+        
+    }
+}
+*/
+
+// Segmented, InputStream available
+/*
+public class FptProcessor : FormatMultiProcessor
+{
+    public override IEnumerable<Data> Process()
     {
         // Implement your logic here
         

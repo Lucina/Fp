@@ -1,7 +1,7 @@
 If AOT compilation is not desired, delete Microsoft.DotNet.ILCompiler PackageReference
 
-Possible corert optimizations:
-https://github.com/dotnet/corert/blob/master/Documentation/using-corert/optimizing-corert.md
+Possible NativeAOT optimizations:
+https://github.com/dotnet/runtimelab/blob/feature/NativeAOT/docs/using-nativeaot/optimizing.md
 
 API reference / documentation:
-https://riina.github.io/Fp/
+https://collectioneering.github.io/Fp/
