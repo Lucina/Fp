@@ -73,8 +73,7 @@
   
   <h1 id="Fp_BufferData_1" data-uid="Fp.BufferData`1" class="text-break">Class BufferData&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Buffer containing unstructured data.</p>
-</div>
+  <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -85,7 +84,8 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">ICloneable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">System.ICloneable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -96,23 +96,41 @@
       <a class="xref" href="Fp.Data.html#Fp_Data_ExportUnsupported">Data.ExportUnsupported</a>
     </div>
     <div>
+      <a class="xref" href="Fp.Data.html#Fp_Data_UTF8">Data.UTF8</a>
+    </div>
+    <div>
       <a class="xref" href="Fp.Data.html#Fp_Data_BasePath">Data.BasePath</a>
     </div>
     <div>
       <a class="xref" href="Fp.Data.html#Fp_Data_Dry">Data.Dry</a>
     </div>
     <div>
-      <a class="xref" href="Fp.Data.html#Fp_Data_GetExtension_System_Nullable_Guid__">Data.GetExtension(Nullable&lt;Guid&gt;)</a>
+      <a class="xref" href="Fp.Data.html#Fp_Data_GetExtension_System_Nullable_System_Guid__">Data.GetExtension(Nullable&lt;Guid&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Fp.Data.html#Fp_Data_CastNumber__2___0_">Data.CastNumber&lt;TIn, TOut&gt;(TIn)</a>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
   <h6><strong>Assembly</strong>: Fp.dll</h6>
   <h5 id="Fp_BufferData_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BufferData&lt;T&gt; : BufferData, ICloneable where T : struct</code></pre>
+    <pre><code class="lang-csharp hljs">public class BufferData&lt;T&gt; : BufferData, IDisposable, ICloneable where T : struct</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -133,13 +151,13 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1__ctor_System_String_IMemoryOwner__0__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.%23ctor(System.String%2CIMemoryOwner%7B%600%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1__ctor_System_String_System_Buffers_IMemoryOwner__0__System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.%23ctor(System.String%2CSystem.Buffers.IMemoryOwner%7B%600%7D%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L73">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L76">View Source</a>
   </span>
   <a id="Fp_BufferData_1__ctor_" data-uid="Fp.BufferData`1.#ctor*"></a>
-  <h4 id="Fp_BufferData_1__ctor_System_String_IMemoryOwner__0__System_Nullable_System_Int32__" data-uid="Fp.BufferData`1.#ctor(System.String,IMemoryOwner{`0},System.Nullable{System.Int32})">BufferData(String, IMemoryOwner&lt;T&gt;, Nullable&lt;Int32&gt;)</h4>
+  <h4 id="Fp_BufferData_1__ctor_System_String_System_Buffers_IMemoryOwner__0__System_Nullable_System_Int32__" data-uid="Fp.BufferData`1.#ctor(System.String,System.Buffers.IMemoryOwner{`0},System.Nullable{System.Int32})">BufferData(String, IMemoryOwner&lt;T&gt;, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Fp.BufferData-1.html">BufferData&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -164,7 +182,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IMemoryOwner</span>&lt;T&gt;</td>
+        <td><span class="xref">System.Buffers.IMemoryOwner</span>&lt;T&gt;</td>
         <td><span class="parametername">memoryOwner</span></td>
         <td><p>Owner of data buffer.</p>
 </td>
@@ -179,50 +197,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1__ctor_System_String_ReadOnlyMemory__0__.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.%23ctor(System.String%2CReadOnlyMemory%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1__ctor_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.%23ctor(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L86">View Source</a>
-  </span>
-  <a id="Fp_BufferData_1__ctor_" data-uid="Fp.BufferData`1.#ctor*"></a>
-  <h4 id="Fp_BufferData_1__ctor_System_String_ReadOnlyMemory__0__" data-uid="Fp.BufferData`1.#ctor(System.String,ReadOnlyMemory{`0})">BufferData(String, ReadOnlyMemory&lt;T&gt;)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Fp.BufferData-1.html">BufferData&lt;T&gt;</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BufferData(string basePath, ReadOnlyMemory&lt;T&gt; buffer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">basePath</span></td>
-        <td><p>Base path of resource.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ReadOnlyMemory</span>&lt;T&gt;</td>
-        <td><span class="parametername">buffer</span></td>
-        <td><p>Data in container.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1__ctor_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.%23ctor(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L59">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L62">View Source</a>
   </span>
   <a id="Fp_BufferData_1__ctor_" data-uid="Fp.BufferData`1.#ctor*"></a>
   <h4 id="Fp_BufferData_1__ctor_System_String_System_Int32_" data-uid="Fp.BufferData`1.#ctor(System.String,System.Int32)">BufferData(String, Int32)</h4>
@@ -257,14 +235,54 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1__ctor_System_String_System_ReadOnlyMemory__0__.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.%23ctor(System.String%2CSystem.ReadOnlyMemory%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L89">View Source</a>
+  </span>
+  <a id="Fp_BufferData_1__ctor_" data-uid="Fp.BufferData`1.#ctor*"></a>
+  <h4 id="Fp_BufferData_1__ctor_System_String_System_ReadOnlyMemory__0__" data-uid="Fp.BufferData`1.#ctor(System.String,System.ReadOnlyMemory{`0})">BufferData(String, ReadOnlyMemory&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Fp.BufferData-1.html">BufferData&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BufferData(string basePath, ReadOnlyMemory&lt;T&gt; buffer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">basePath</span></td>
+        <td><p>Base path of resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ReadOnlyMemory</span>&lt;T&gt;</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>Data in container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Count.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Count.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L52">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L55">View Source</a>
   </span>
   <h4 id="Fp_BufferData_1_Count" data-uid="Fp.BufferData`1.Count">Count</h4>
   <div class="markdown level1 summary"><p>Buffer content length.</p>
@@ -293,10 +311,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Buffer.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Buffer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Buffer.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Buffer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L47">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L50">View Source</a>
   </span>
   <a id="Fp_BufferData_1_Buffer_" data-uid="Fp.BufferData`1.Buffer*"></a>
   <h4 id="Fp_BufferData_1_Buffer" data-uid="Fp.BufferData`1.Buffer">Buffer</h4>
@@ -317,22 +335,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ReadOnlyMemory</span>&lt;T&gt;</td>
+        <td><span class="xref">System.ReadOnlyMemory</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_DefaultFormat.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.DefaultFormat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_DefaultFormat.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.DefaultFormat%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L37">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L37">View Source</a>
   </span>
   <a id="Fp_BufferData_1_DefaultFormat_" data-uid="Fp.BufferData`1.DefaultFormat*"></a>
   <h4 id="Fp_BufferData_1_DefaultFormat" data-uid="Fp.BufferData`1.DefaultFormat">DefaultFormat</h4>
-  <div class="markdown level1 summary"><p>Default format for container.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -348,7 +365,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Guid</span></td>
+        <td><span class="xref">System.Guid</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -357,10 +374,10 @@
   <div><a class="xref" href="Fp.Data.html#Fp_Data_DefaultFormat">Data.DefaultFormat</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_MemoryOwner.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.MemoryOwner%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_MemoryOwner.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.MemoryOwner%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L42">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L45">View Source</a>
   </span>
   <a id="Fp_BufferData_1_MemoryOwner_" data-uid="Fp.BufferData`1.MemoryOwner*"></a>
   <h4 id="Fp_BufferData_1_MemoryOwner" data-uid="Fp.BufferData`1.MemoryOwner">MemoryOwner</h4>
@@ -369,7 +386,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IMemoryOwner&lt;T&gt;? MemoryOwner { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IMemoryOwner&lt;T&gt; MemoryOwner { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -381,28 +398,60 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">IMemoryOwner</span>&lt;T&gt;&gt;</td>
+        <td><span class="xref">System.Buffers.IMemoryOwner</span>&lt;T&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_SupportedFormats.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.SupportedFormats%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L40">View Source</a>
+  </span>
+  <a id="Fp_BufferData_1_SupportedFormats_" data-uid="Fp.BufferData`1.SupportedFormats*"></a>
+  <h4 id="Fp_BufferData_1_SupportedFormats" data-uid="Fp.BufferData`1.SupportedFormats">SupportedFormats</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IReadOnlyCollection&lt;Guid&gt; SupportedFormats { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<span class="xref">System.Guid</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Fp.Data.html#Fp_Data_SupportedFormats">Data.SupportedFormats</a></div>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_AsSpan__1.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.AsSpan%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_AsSpan__1.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.AsSpan%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L95">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L98">View Source</a>
   </span>
   <a id="Fp_BufferData_1_AsSpan_" data-uid="Fp.BufferData`1.AsSpan*"></a>
   <h4 id="Fp_BufferData_1_AsSpan__1" data-uid="Fp.BufferData`1.AsSpan``1">AsSpan&lt;TWant&gt;()</h4>
-  <div class="markdown level1 summary"><p>Gets span of specified type from buffer.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override ReadOnlySpan&lt;TWant&gt; AsSpan&lt;TWant&gt;()
+
     where TWant : struct</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
@@ -415,9 +464,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ReadOnlySpan</span>&lt;TWant&gt;</td>
-        <td><p>Span.</p>
-</td>
+        <td><span class="xref">System.ReadOnlySpan</span>&lt;TWant&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -432,8 +480,7 @@
     <tbody>
       <tr>
         <td><span class="parametername">TWant</span></td>
-        <td><p>Target type.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -441,10 +488,10 @@
   <div><a class="xref" href="Fp.BufferData.html#Fp_BufferData_AsSpan__1">BufferData.AsSpan&lt;TWant&gt;()</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Clone.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Clone.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L120">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L127">View Source</a>
   </span>
   <a id="Fp_BufferData_1_Clone_" data-uid="Fp.BufferData`1.Clone*"></a>
   <h4 id="Fp_BufferData_1_Clone" data-uid="Fp.BufferData`1.Clone">Clone()</h4>
@@ -473,10 +520,10 @@
   <div><a class="xref" href="Fp.Data.html#Fp_Data_Clone">Data.Clone()</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Dispose.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Dispose.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L146">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L153">View Source</a>
   </span>
   <a id="Fp_BufferData_1_Dispose_" data-uid="Fp.BufferData`1.Dispose*"></a>
   <h4 id="Fp_BufferData_1_Dispose" data-uid="Fp.BufferData`1.Dispose">Dispose()</h4>
@@ -490,10 +537,10 @@
   <div><a class="xref" href="Fp.Data.html#Fp_Data_Dispose">Data.Dispose()</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L133">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L140">View Source</a>
   </span>
   <a id="Fp_BufferData_1_Dispose_" data-uid="Fp.BufferData`1.Dispose*"></a>
   <h4 id="Fp_BufferData_1_Dispose_System_Boolean_" data-uid="Fp.BufferData`1.Dispose(System.Boolean)">Dispose(Boolean)</h4>
@@ -524,10 +571,64 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_ToString.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_SupportsFormat_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.SupportsFormat(System.Guid%2CSystem.Collections.Generic.Dictionary%7BSystem.Object%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L153">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L106">View Source</a>
+  </span>
+  <a id="Fp_BufferData_1_SupportsFormat_" data-uid="Fp.BufferData`1.SupportsFormat*"></a>
+  <h4 id="Fp_BufferData_1_SupportsFormat_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__" data-uid="Fp.BufferData`1.SupportsFormat(System.Guid,System.Collections.Generic.Dictionary{System.Object,System.Object})">SupportsFormat(Guid, Dictionary&lt;Object, Object&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool SupportsFormat(Guid format, Dictionary&lt;object, object&gt; formatOptions = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">format</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">formatOptions</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Fp.Data.html#Fp_Data_SupportsFormat_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__">Data.SupportsFormat(Guid, Dictionary&lt;Object, Object&gt;)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_ToString.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L160">View Source</a>
   </span>
   <a id="Fp_BufferData_1_ToString_" data-uid="Fp.BufferData`1.ToString*"></a>
   <h4 id="Fp_BufferData_1_ToString" data-uid="Fp.BufferData`1.ToString">ToString()</h4>
@@ -552,21 +653,22 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Object.ToString()</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_WriteConvertedData_Stream_Guid_System_Nullable_Dictionary_System_Object_System_Object___.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.WriteConvertedData(Stream%2CGuid%2CSystem.Nullable%7BDictionary%7BSystem.Object%2CSystem.Object%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1_WriteConvertedData_System_IO_Stream_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__.md&amp;value=---%0Auid%3A%20Fp.BufferData%601.WriteConvertedData(System.IO.Stream%2CSystem.Guid%2CSystem.Collections.Generic.Dictionary%7BSystem.Object%2CSystem.Object%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L103">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L112">View Source</a>
   </span>
   <a id="Fp_BufferData_1_WriteConvertedData_" data-uid="Fp.BufferData`1.WriteConvertedData*"></a>
-  <h4 id="Fp_BufferData_1_WriteConvertedData_Stream_Guid_System_Nullable_Dictionary_System_Object_System_Object___" data-uid="Fp.BufferData`1.WriteConvertedData(Stream,Guid,System.Nullable{Dictionary{System.Object,System.Object}})">WriteConvertedData(Stream, Guid, Nullable&lt;Dictionary&lt;Object, Object&gt;&gt;)</h4>
-  <div class="markdown level1 summary"><p>Writes stream of data converted to common file format.</p>
-</div>
+  <h4 id="Fp_BufferData_1_WriteConvertedData_System_IO_Stream_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__" data-uid="Fp.BufferData`1.WriteConvertedData(System.IO.Stream,System.Guid,System.Collections.Generic.Dictionary{System.Object,System.Object})">WriteConvertedData(Stream, Guid, Dictionary&lt;Object, Object&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary&lt;object, object&gt;? formatOptions = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary&lt;object, object&gt; formatOptions = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -579,22 +681,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Stream</span></td>
+        <td><span class="xref">System.IO.Stream</span></td>
         <td><span class="parametername">outputStream</span></td>
-        <td><p>Target stream.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
-        <td><span class="xref">Guid</span></td>
+        <td><span class="xref">System.Guid</span></td>
         <td><span class="parametername">format</span></td>
-        <td><p>Requested file format.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">Dictionary</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Object</span>, <span class="xref">System.Object</span>&gt;</td>
         <td><span class="parametername">formatOptions</span></td>
-        <td><p>Format-specific options.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -609,16 +708,18 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><p>False if requested format is not supported.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.Data.html#Fp_Data_WriteConvertedData_Stream_Guid_System_Nullable_Dictionary_System_Object_System_Object___">Data.WriteConvertedData(Stream, Guid, Nullable&lt;Dictionary&lt;Object, Object&gt;&gt;)</a></div>
+  <div><a class="xref" href="Fp.Data.html#Fp_Data_WriteConvertedData_System_IO_Stream_System_Guid_System_Collections_Generic_Dictionary_System_Object_System_Object__">Data.WriteConvertedData(Stream, Guid, Dictionary&lt;Object, Object&gt;)</a></div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">ICloneable</span>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <span class="xref">System.ICloneable</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
@@ -632,10 +733,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Lucina/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1.md&amp;value=---%0Auid%3A%20Fp.BufferData%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_BufferData_1.md&amp;value=---%0Auid%3A%20Fp.BufferData%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Lucina/Fp/blob/main/src/Fp/BufferData.cs/#L32" class="contribution-link">View Source</a>
+                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/BufferData.cs/#L32" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

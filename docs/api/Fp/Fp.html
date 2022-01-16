@@ -84,8 +84,7 @@
       <section><p>Buffer containing unstructured data.</p>
 </section>
       <h4><a class="xref" href="Fp.BufferData-1.html">BufferData&lt;T&gt;</a></h4>
-      <section><p>Buffer containing unstructured data.</p>
-</section>
+      <section></section>
       <h4><a class="xref" href="Fp.CircleBuffer-1.html">CircleBuffer&lt;T&gt;</a></h4>
       <section><p>Stores circular buffer of elements.</p>
 </section>
@@ -99,7 +98,7 @@
       <section><p>Execution manager.</p>
 </section>
       <h4><a class="xref" href="Fp.Coordinator..html">Coordinator.</a></h4>
-      <section><p>FP target.</p>
+      <section><p>FP input.</p>
 </section>
       <h4><a class="xref" href="Fp.Coordinator.ExecutionSettings.html">Coordinator.ExecutionSettings</a></h4>
       <section><p>Settings for execution.</p>
@@ -107,14 +106,8 @@
       <h4><a class="xref" href="Fp.Coordinator.ExecutionSource.html">Coordinator.ExecutionSource</a></h4>
       <section><p>Represents execution config.</p>
 </section>
-      <h4><a class="xref" href="Fp.Coordinator.FpInput.html">Coordinator.FpInput</a></h4>
-      <section><p>FP input.</p>
-</section>
       <h4><a class="xref" href="Fp.Data.html">Data</a></h4>
       <section><p>Intermediate-format data container.</p>
-</section>
-      <h4><a class="xref" href="Fp.DataProcessor.html">DataProcessor</a></h4>
-      <section><p>Represents a segmented processor that automatically opens <a class="xref" href="Fp.Processor.html#Fp_Processor_InputStream">InputStream</a>.</p>
 </section>
       <h4><a class="xref" href="Fp.DataUtil.html">DataUtil</a></h4>
       <section><p>Utility functions for format conversion.</p>
@@ -130,6 +123,30 @@
 </section>
       <h4><a class="xref" href="Fp.FileSystemSource.html">FileSystemSource</a></h4>
       <section><p>Object for I/O to some filesystem provider.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatMultiProcessor.html">FormatMultiProcessor</a></h4>
+      <section><p>Represents a processor that operates on a single input and generates multiple outputs.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatMultiProcessorFsWrapper.html">FormatMultiProcessorFsWrapper</a></h4>
+      <section><p><a class="xref" href="Fp.FsProcessor.html">FsProcessor</a> wrapper for <a class="xref" href="Fp.FormatMultiProcessor.html">FormatMultiProcessor</a>.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatMultiProcessorFsWrapper-1.html">FormatMultiProcessorFsWrapper&lt;T&gt;</a></h4>
+      <section><p><a class="xref" href="Fp.FsProcessor.html">FsProcessor</a> wrapper for <a class="xref" href="Fp.FormatMultiProcessor.html">FormatMultiProcessor</a>.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatProcessor.html">FormatProcessor</a></h4>
+      <section><p>Represents a processor that operates on a single input.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatSingleProcessor.html">FormatSingleProcessor</a></h4>
+      <section><p>Represents a processor that operates on a single input and generates multiple outputs.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatSingleProcessor-1.html">FormatSingleProcessor&lt;T&gt;</a></h4>
+      <section><p>Represents a processor that operates on a single input and generates multiple outputs.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatSingleProcessorFsWrapper.html">FormatSingleProcessorFsWrapper</a></h4>
+      <section><p><a class="xref" href="Fp.FsProcessor.html">FsProcessor</a> wrapper for <a class="xref" href="Fp.FormatSingleProcessor.html">FormatSingleProcessor</a>.</p>
+</section>
+      <h4><a class="xref" href="Fp.FormatSingleProcessorFsWrapper-1.html">FormatSingleProcessorFsWrapper&lt;T&gt;</a></h4>
+      <section><p><a class="xref" href="Fp.FsProcessor.html">FsProcessor</a> wrapper for <a class="xref" href="Fp.FormatSingleProcessor.html">FormatSingleProcessor</a>.</p>
 </section>
       <h4><a class="xref" href="Fp.FpPath.html">FpPath</a></h4>
       <section><p>Represents a path element linked to parent nodes.</p>
@@ -162,17 +179,11 @@ This class is internally used in the Half class.</p>
       <h4><a class="xref" href="Fp.HexPrint.html">HexPrint</a></h4>
       <section><p>Prints hex text with color codes for labelled sections.</p>
 </section>
-      <h4><a class="xref" href="Fp.LayeredDataProcessor.html">LayeredDataProcessor</a></h4>
-      <section><p>Provides processor with additional sub-processing children.</p>
-</section>
-      <h4><a class="xref" href="Fp.LayeredDataProcessor-2.html">LayeredDataProcessor&lt;TKey, TValue&gt;</a></h4>
-      <section><p>Provides processor with additional sub-processing children using keyed lookup.</p>
-</section>
       <h4><a class="xref" href="Fp.MetaData.html">MetaData</a></h4>
       <section><p>Represents general metadata.</p>
 </section>
       <h4><a class="xref" href="Fp.MStream.html">MStream</a></h4>
-      <section><p>Stream from <see cref="!:Memory&lt;T>"></see> of bytes.</p>
+      <section><p>Stream from <span class="xref">System.Memory&lt;T&gt;</span> of bytes.</p>
 </section>
       <h4><a class="xref" href="Fp.MultiBufferStream.html">MultiBufferStream</a></h4>
       <section><p>Adds multiple buffers for reducing reads to underlying stream.</p>
@@ -180,17 +191,14 @@ This class is internally used in the Half class.</p>
       <h4><a class="xref" href="Fp.NullLog.html">NullLog</a></h4>
       <section><p>Provides dummy log receiver.</p>
 </section>
+      <h4><a class="xref" href="Fp.One.html">One</a></h4>
+      <section><p>Manage singleton instances of new() types.</p>
+</section>
       <h4><a class="xref" href="Fp.One-1.html">One&lt;T&gt;</a></h4>
       <section><p>Manage singleton instances of new() types.</p>
 </section>
       <h4><a class="xref" href="Fp.Processor.html">Processor</a></h4>
       <section><p>Base type for processors.</p>
-</section>
-      <h4><a class="xref" href="Fp.ProcessorChild.html">ProcessorChild</a></h4>
-      <section><p>Represents a child for <a class="xref" href="Fp.LayeredDataProcessor.html">LayeredDataProcessor</a>.</p>
-</section>
-      <h4><a class="xref" href="Fp.ProcessorChild-2.html">ProcessorChild&lt;TKey, TValue&gt;</a></h4>
-      <section><p>Represents a child for <a class="xref" href="Fp.LayeredDataProcessor-2.html">LayeredDataProcessor&lt;TKey, TValue&gt;</a>.</p>
 </section>
       <h4><a class="xref" href="Fp.ProcessorConfiguration.html">ProcessorConfiguration</a></h4>
       <section><p>Configuration for batch-processing fs with processors.</p>
@@ -201,8 +209,8 @@ This class is internally used in the Half class.</p>
       <h4><a class="xref" href="Fp.PStream.html">PStream</a></h4>
       <section><p>Stream from pointer.</p>
 </section>
-      <h4><a class="xref" href="Fp.ReadContextByteExtensions.html">ReadContextByteExtensions</a></h4>
-      <section><p>Provides extensions for <a class="xref" href="Fp.ReadContext-1.html">ReadContext&lt;T&gt;</a> of byte.</p>
+      <h4><a class="xref" href="Fp.ReadWriteContextByteExtensions.html">ReadWriteContextByteExtensions</a></h4>
+      <section><p>Provides extensions for <a class="xref" href="Fp.ReadContext-1.html">ReadContext&lt;T&gt;</a> and <a class="xref" href="Fp.WriteContext-1.html">WriteContext&lt;T&gt;</a> of byte.</p>
 </section>
       <h4><a class="xref" href="Fp.RealFileSystemSource.html">RealFileSystemSource</a></h4>
       <section><p>Filesystem provider using System.IO APIs.</p>
@@ -216,11 +224,14 @@ This class is internally used in the Half class.</p>
       <h4><a class="xref" href="Fp.StringBuilderLog.html">StringBuilderLog</a></h4>
       <section><p>Provides basic logging to <a class="xref" href="Fp.StringBuilderLog.html#Fp_StringBuilderLog_StringBuilder">StringBuilder</a>.</p>
 </section>
+      <h4><a class="xref" href="Fp.StringData.html">StringData</a></h4>
+      <section><p>Represents general text data.</p>
+</section>
       <h4><a class="xref" href="Fp.Unknown-1.html">Unknown&lt;T&gt;</a></h4>
-      <section><p>Marks unknown mapping with <see cref="!:NotSupportedException"></see>.</p>
+      <section><p>Marks unknown mapping with <span class="xref">System.NotSupportedException</span>.</p>
 </section>
       <h4><a class="xref" href="Fp.Unknown-2.html">Unknown&lt;T, TOut&gt;</a></h4>
-      <section><p>Marks unknown mapping with <see cref="!:NotSupportedException"></see>.</p>
+      <section><p>Marks unknown mapping with <span class="xref">System.NotSupportedException</span>.</p>
 </section>
     <h3 id="structs">Structs
   </h3>
@@ -231,10 +242,10 @@ This class is internally used in the Half class.</p>
       <section><p>Row-major raster position helper.</p>
 </section>
       <h4><a class="xref" href="Fp.ReadContext-1.html">ReadContext&lt;T&gt;</a></h4>
-      <section><p>Represents a reading context over a <see cref="!:ReadOnlySpan&lt;T>"></see>.</p>
+      <section><p>Represents a reading context over a <span class="xref">System.ReadOnlySpan&lt;T&gt;</span>.</p>
 </section>
       <h4><a class="xref" href="Fp.WriteContext-1.html">WriteContext&lt;T&gt;</a></h4>
-      <section><p>Represents a reading/writing context over a <see cref="!:Span&lt;T>"></see>.</p>
+      <section><p>Represents a reading/writing context over a <span class="xref">System.Span&lt;T&gt;</span>.</p>
 </section>
     <h3 id="interfaces">Interfaces
   </h3>
@@ -243,11 +254,11 @@ This class is internally used in the Half class.</p>
 </section>
     <h3 id="enums">Enums
   </h3>
+      <h4><a class="xref" href="Fp.CipherPaddingMode.html">CipherPaddingMode</a></h4>
+      <section><p>Block cipher padding mode.</p>
+</section>
       <h4><a class="xref" href="Fp.ILogReceiver.LogLevel.html">ILogReceiver.LogLevel</a></h4>
       <section><p>Log level.</p>
-</section>
-      <h4><a class="xref" href="Fp.Processor.PaddingMode.html">Processor.PaddingMode</a></h4>
-      <section><p>Block cipher padding mode.</p>
 </section>
       <h4><a class="xref" href="Fp.SequenceBehaviour.html">SequenceBehaviour</a></h4>
       <section><p>Behaviour of sequence.</p>
