@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `StringData` type for data containing string
 - `Data.SupportsFormat` and `Data.SupportedFormats` for pre-checking output support
 - `FormatProcessor` / `FormatSingleProcessor` / `FormatMultiProcessor` for pure file-based operation
+- `Processor.Configuration` for sharing
 
 ### Changed
 - Fix xor arm intrinsic
@@ -22,6 +23,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Moved ReadContextByteExtensions to ReadWriteContextByteExtensions
 - Use ReadOnlySpan param on WriteContext.WriteAdvance
 - Moved `T FsProcessor.Initialize<T>(string[]? args)` to Processor
+
+### Removed
+- `DataProcessor` / `LayeredDataProcessor` / `ProcessorChild`
 
 ## [0.23.2] 2022-1-11
 ### Changed

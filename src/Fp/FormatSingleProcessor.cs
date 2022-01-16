@@ -7,7 +7,7 @@ namespace Fp;
 /// <summary>
 /// Represents a processor that operates on a single input and generates multiple outputs.
 /// </summary>
-public class FormatSingleProcessor : FormatProcessor
+public partial class FormatSingleProcessor : FormatProcessor
 {
     /// <summary>
     /// Attempts to process and get an output.
@@ -133,8 +133,6 @@ public class FormatSingleProcessor : FormatProcessor
         result = null;
         return false;
     }
-
-    // TODO easy cli
 }
 
 /// <summary>

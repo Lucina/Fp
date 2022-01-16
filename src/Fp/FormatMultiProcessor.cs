@@ -7,7 +7,7 @@ namespace Fp;
 /// <summary>
 /// Represents a processor that operates on a single input and generates multiple outputs.
 /// </summary>
-public class FormatMultiProcessor : FormatProcessor
+public partial class FormatMultiProcessor : FormatProcessor
 {
     /// <summary>
     /// Attempts to process and get outputs.
@@ -120,6 +120,4 @@ public class FormatMultiProcessor : FormatProcessor
     /// </summary>
     /// <returns>Outputs.</returns>
     public virtual IEnumerable<Data> Process() => Array.Empty<Data>();
-
-    // TODO easy cli
 }

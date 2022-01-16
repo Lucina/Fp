@@ -36,6 +36,11 @@ public partial class Processor : IDisposable
         Path.DirectorySeparatorChar == '\\' || Path.AltDirectorySeparatorChar == '\\';
 
     /// <summary>
+    /// Current configuration.
+    /// </summary>
+    public ProcessorConfiguration? Configuration;
+
+    /// <summary>
     /// Whether to allow backslash as separator.
     /// </summary>
     public bool SupportBackSlash;
@@ -182,6 +187,7 @@ public partial class Processor : IDisposable
     public void Prepare(ProcessorConfiguration? configuration = null)
     {
         Cleanup(true);
+        Configuration = configuration;
         LittleEndian = true;
         SupportBackSlash = false;
         if (configuration == null) return;
