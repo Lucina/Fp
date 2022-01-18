@@ -68,10 +68,10 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Fp.RealFileSystemSource">
+            <article class="content wrap" id="_content" data-uid="Fp.Fs.RealFileSystemSource">
   
   
-  <h1 id="Fp_RealFileSystemSource" data-uid="Fp.RealFileSystemSource" class="text-break">Class RealFileSystemSource
+  <h1 id="Fp_Fs_RealFileSystemSource" data-uid="Fp.Fs.RealFileSystemSource" class="text-break">Class RealFileSystemSource
   </h1>
   <div class="markdown level0 summary"><p>Filesystem provider using System.IO APIs.</p>
 </div>
@@ -79,19 +79,19 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Fp.FileSystemSource.html">FileSystemSource</a></div>
+    <div class="level1"><a class="xref" href="Fp.Fs.FileSystemSource.html">FileSystemSource</a></div>
     <div class="level2"><span class="xref">RealFileSystemSource</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_ParallelAccess">FileSystemSource.ParallelAccess</a>
+      <a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_ParallelAccess">FileSystemSource.ParallelAccess</a>
     </div>
     <div>
-      <a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_Default">FileSystemSource.Default</a>
+      <a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_Default">FileSystemSource.Default</a>
     </div>
     <div>
-      <a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_OpenRead_System_String_System_IO_FileMode_System_IO_FileShare_">FileSystemSource.OpenRead(String, FileMode, FileShare)</a>
+      <a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_OpenRead_System_String_System_IO_FileMode_System_IO_FileShare_">FileSystemSource.OpenRead(String, FileMode, FileShare)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
@@ -115,9 +115,9 @@
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
-  <h6><strong>Assembly</strong>: Fp.dll</h6>
-  <h5 id="Fp_RealFileSystemSource_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Fp.Fs.html">Fp.Fs</a></h6>
+  <h6><strong>Assembly</strong>: Fp.Fs.dll</h6>
+  <h5 id="Fp_Fs_RealFileSystemSource_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RealFileSystemSource : FileSystemSource</code></pre>
   </div>
@@ -125,14 +125,15 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_CreateDirectory_System_String_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.CreateDirectory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_CreateDirectory_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.CreateDirectory(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L30">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L30">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_CreateDirectory_" data-uid="Fp.RealFileSystemSource.CreateDirectory*"></a>
-  <h4 id="Fp_RealFileSystemSource_CreateDirectory_System_String_" data-uid="Fp.RealFileSystemSource.CreateDirectory(System.String)">CreateDirectory(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_CreateDirectory_" data-uid="Fp.Fs.RealFileSystemSource.CreateDirectory*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_CreateDirectory_System_String_" data-uid="Fp.Fs.RealFileSystemSource.CreateDirectory(System.String)">CreateDirectory(String)</h4>
+  <div class="markdown level1 summary"><p>Creates a directory (including parents).</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -151,7 +152,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Directory to create.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -166,22 +168,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if succeeded.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_CreateDirectory_System_String_">FileSystemSource.CreateDirectory(String)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_CreateDirectory_System_String_">FileSystemSource.CreateDirectory(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_DirectoryExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.DirectoryExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_DirectoryExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.DirectoryExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L38">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L38">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_DirectoryExists_" data-uid="Fp.RealFileSystemSource.DirectoryExists*"></a>
-  <h4 id="Fp_RealFileSystemSource_DirectoryExists_System_String_" data-uid="Fp.RealFileSystemSource.DirectoryExists(System.String)">DirectoryExists(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_DirectoryExists_" data-uid="Fp.Fs.RealFileSystemSource.DirectoryExists*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_DirectoryExists_System_String_" data-uid="Fp.Fs.RealFileSystemSource.DirectoryExists(System.String)">DirectoryExists(String)</h4>
+  <div class="markdown level1 summary"><p>Checks if a directory exists.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -200,7 +204,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Directory path to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -215,22 +220,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if exists.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_DirectoryExists_System_String_">FileSystemSource.DirectoryExists(String)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_DirectoryExists_System_String_">FileSystemSource.DirectoryExists(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_EnumerateDirectories_System_String_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.EnumerateDirectories(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_EnumerateDirectories_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.EnumerateDirectories(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L26">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L26">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_EnumerateDirectories_" data-uid="Fp.RealFileSystemSource.EnumerateDirectories*"></a>
-  <h4 id="Fp_RealFileSystemSource_EnumerateDirectories_System_String_" data-uid="Fp.RealFileSystemSource.EnumerateDirectories(System.String)">EnumerateDirectories(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_EnumerateDirectories_" data-uid="Fp.Fs.RealFileSystemSource.EnumerateDirectories*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_EnumerateDirectories_System_String_" data-uid="Fp.Fs.RealFileSystemSource.EnumerateDirectories(System.String)">EnumerateDirectories(String)</h4>
+  <div class="markdown level1 summary"><p>Enumerates directories in a directory.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -249,7 +256,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Directory to enumerate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -264,22 +272,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
+        <td><p>Directories in directory.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_EnumerateDirectories_System_String_">FileSystemSource.EnumerateDirectories(String)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_EnumerateDirectories_System_String_">FileSystemSource.EnumerateDirectories(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_EnumerateFiles_System_String_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.EnumerateFiles(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_EnumerateFiles_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.EnumerateFiles(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L22">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L22">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_EnumerateFiles_" data-uid="Fp.RealFileSystemSource.EnumerateFiles*"></a>
-  <h4 id="Fp_RealFileSystemSource_EnumerateFiles_System_String_" data-uid="Fp.RealFileSystemSource.EnumerateFiles(System.String)">EnumerateFiles(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_EnumerateFiles_" data-uid="Fp.Fs.RealFileSystemSource.EnumerateFiles*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_EnumerateFiles_System_String_" data-uid="Fp.Fs.RealFileSystemSource.EnumerateFiles(System.String)">EnumerateFiles(String)</h4>
+  <div class="markdown level1 summary"><p>Enumerates files in a directory.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -298,7 +308,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Directory to enumerate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -313,22 +324,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
+        <td><p>Files in directory.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_EnumerateFiles_System_String_">FileSystemSource.EnumerateFiles(String)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_EnumerateFiles_System_String_">FileSystemSource.EnumerateFiles(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_FileExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.FileExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_FileExists_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.FileExists(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L34">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L34">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_FileExists_" data-uid="Fp.RealFileSystemSource.FileExists*"></a>
-  <h4 id="Fp_RealFileSystemSource_FileExists_System_String_" data-uid="Fp.RealFileSystemSource.FileExists(System.String)">FileExists(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_FileExists_" data-uid="Fp.Fs.RealFileSystemSource.FileExists*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_FileExists_System_String_" data-uid="Fp.Fs.RealFileSystemSource.FileExists(System.String)">FileExists(String)</h4>
+  <div class="markdown level1 summary"><p>Checks if a file exists.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -347,7 +360,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>File path to check.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -362,22 +376,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if exists.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_FileExists_System_String_">FileSystemSource.FileExists(String)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_FileExists_System_String_">FileSystemSource.FileExists(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_NormalizePath_System_String_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.NormalizePath(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_NormalizePath_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.NormalizePath(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L42">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L42">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_NormalizePath_" data-uid="Fp.RealFileSystemSource.NormalizePath*"></a>
-  <h4 id="Fp_RealFileSystemSource_NormalizePath_System_String_" data-uid="Fp.RealFileSystemSource.NormalizePath(System.String)">NormalizePath(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_NormalizePath_" data-uid="Fp.Fs.RealFileSystemSource.NormalizePath*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_NormalizePath_System_String_" data-uid="Fp.Fs.RealFileSystemSource.NormalizePath(System.String)">NormalizePath(String)</h4>
+  <div class="markdown level1 summary"><p>Normalizes a path to the underlying filesystem.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -396,7 +412,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Path to normalize.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -411,22 +428,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Normalized path.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_NormalizePath_System_String_">FileSystemSource.NormalizePath(String)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_NormalizePath_System_String_">FileSystemSource.NormalizePath(String)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_OpenReadImpl_System_String_System_IO_FileMode_System_IO_FileShare_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.OpenReadImpl(System.String%2CSystem.IO.FileMode%2CSystem.IO.FileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_OpenReadImpl_System_String_System_IO_FileMode_System_IO_FileShare_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.OpenReadImpl(System.String%2CSystem.IO.FileMode%2CSystem.IO.FileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L12">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L12">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_OpenReadImpl_" data-uid="Fp.RealFileSystemSource.OpenReadImpl*"></a>
-  <h4 id="Fp_RealFileSystemSource_OpenReadImpl_System_String_System_IO_FileMode_System_IO_FileShare_" data-uid="Fp.RealFileSystemSource.OpenReadImpl(System.String,System.IO.FileMode,System.IO.FileShare)">OpenReadImpl(String, FileMode, FileShare)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_OpenReadImpl_" data-uid="Fp.Fs.RealFileSystemSource.OpenReadImpl*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_OpenReadImpl_System_String_System_IO_FileMode_System_IO_FileShare_" data-uid="Fp.Fs.RealFileSystemSource.OpenReadImpl(System.String,System.IO.FileMode,System.IO.FileShare)">OpenReadImpl(String, FileMode, FileShare)</h4>
+  <div class="markdown level1 summary"><p>Gets a read-only stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -445,17 +464,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Path to open.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.IO.FileMode</span></td>
         <td><span class="parametername">fileMode</span></td>
-        <td></td>
+        <td><p>File open mode.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.IO.FileShare</span></td>
         <td><span class="parametername">fileShare</span></td>
-        <td></td>
+        <td><p>File sharing mode.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -470,22 +492,24 @@
     <tbody>
       <tr>
         <td><span class="xref">System.IO.Stream</span></td>
-        <td></td>
+        <td><p>Stream.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_OpenReadImpl_System_String_System_IO_FileMode_System_IO_FileShare_">FileSystemSource.OpenReadImpl(String, FileMode, FileShare)</a></div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_OpenReadImpl_System_String_System_IO_FileMode_System_IO_FileShare_">FileSystemSource.OpenReadImpl(String, FileMode, FileShare)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource_OpenWrite_System_String_System_IO_FileMode_System_IO_FileShare_.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource.OpenWrite(System.String%2CSystem.IO.FileMode%2CSystem.IO.FileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource_OpenWrite_System_String_System_IO_FileMode_System_IO_FileShare_.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource.OpenWrite(System.String%2CSystem.IO.FileMode%2CSystem.IO.FileShare)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L17">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L17">View Source</a>
   </span>
-  <a id="Fp_RealFileSystemSource_OpenWrite_" data-uid="Fp.RealFileSystemSource.OpenWrite*"></a>
-  <h4 id="Fp_RealFileSystemSource_OpenWrite_System_String_System_IO_FileMode_System_IO_FileShare_" data-uid="Fp.RealFileSystemSource.OpenWrite(System.String,System.IO.FileMode,System.IO.FileShare)">OpenWrite(String, FileMode, FileShare)</h4>
-  <div class="markdown level1 summary"></div>
+  <a id="Fp_Fs_RealFileSystemSource_OpenWrite_" data-uid="Fp.Fs.RealFileSystemSource.OpenWrite*"></a>
+  <h4 id="Fp_Fs_RealFileSystemSource_OpenWrite_System_String_System_IO_FileMode_System_IO_FileShare_" data-uid="Fp.Fs.RealFileSystemSource.OpenWrite(System.String,System.IO.FileMode,System.IO.FileShare)">OpenWrite(String, FileMode, FileShare)</h4>
+  <div class="markdown level1 summary"><p>Get a write-only stream.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -504,17 +528,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td></td>
+        <td><p>Path to open.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.IO.FileMode</span></td>
         <td><span class="parametername">fileMode</span></td>
-        <td></td>
+        <td><p>File open mode.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.IO.FileShare</span></td>
         <td><span class="parametername">fileShare</span></td>
-        <td></td>
+        <td><p>File sharing mode.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -529,16 +556,13 @@
     <tbody>
       <tr>
         <td><span class="xref">System.IO.Stream</span></td>
-        <td></td>
+        <td><p>Stream.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Fp.FileSystemSource.html#Fp_FileSystemSource_OpenWrite_System_String_System_IO_FileMode_System_IO_FileShare_">FileSystemSource.OpenWrite(String, FileMode, FileShare)</a></div>
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Fp.FpUtil.html#Fp_FpUtil____System_Object_System_String_System_String_System_Int32_">FpUtil.__(Object, String, String, Int32)</a>
-  </div>
+  <div><a class="xref" href="Fp.Fs.FileSystemSource.html#Fp_Fs_FileSystemSource_OpenWrite_System_String_System_IO_FileMode_System_IO_FileShare_">FileSystemSource.OpenWrite(String, FileMode, FileShare)</a></div>
 </article>
           </div>
           
@@ -547,10 +571,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_RealFileSystemSource.md&amp;value=---%0Auid%3A%20Fp.RealFileSystemSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_RealFileSystemSource.md&amp;value=---%0Auid%3A%20Fp.Fs.RealFileSystemSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/RealFileSystemSource.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/RealFileSystemSource.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

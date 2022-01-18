@@ -91,7 +91,19 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_InputFile">FormatProcessor.InputFile</a>
+    </div>
+    <div>
       <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_Name">FormatProcessor.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_NameNoExt">FormatProcessor.NameNoExt</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_NamePath">FormatProcessor.NamePath</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_NamePathNoExt">FormatProcessor.NamePathNoExt</a>
     </div>
     <div>
       <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_Prepare_System_IO_Stream_System_String_Fp_ProcessorConfiguration_">FormatProcessor.Prepare(Stream, String, ProcessorConfiguration)</a>
@@ -1571,76 +1583,6 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatSingleProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.FormatSingleProcessor.Run%60%601(System.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatSingleProcessor.Run.cs/#L16">View Source</a>
-  </span>
-  <a id="Fp_FormatSingleProcessor_Run_" data-uid="Fp.FormatSingleProcessor.Run*"></a>
-  <h4 id="Fp_FormatSingleProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___" data-uid="Fp.FormatSingleProcessor.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])">Run&lt;T&gt;(IList&lt;String&gt;, String, String, String[])</h4>
-  <div class="markdown level1 summary"><p>Processes using segmented function.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Run&lt;T&gt;(IList&lt;string&gt; args, string name, string description, params string[] extensions)
-
-    where T : FormatSingleProcessor, new()</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">args</span></td>
-        <td><p>Arguments. If null, only register processor.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>Processor name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">description</span></td>
-        <td><p>Processor description.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">extensions</span></td>
-        <td><p>Processor extensions.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>Processor type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
     <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatSingleProcessor_TryProcess_Fp_BufferData_System_Byte__Fp_Data__Fp_ProcessorConfiguration_.md&amp;value=---%0Auid%3A%20Fp.FormatSingleProcessor.TryProcess(Fp.BufferData%7BSystem.Byte%7D%2CFp.Data%40%2CFp.ProcessorConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -1970,7 +1912,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;T&gt;(BufferData&lt;byte&gt; data, out Data result, ProcessorConfiguration configuration = null)
-
     where T : FormatSingleProcessor, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2050,7 +1991,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;T&gt;(BufferData&lt;byte&gt; data, string name, out Data result, ProcessorConfiguration configuration = null)
-
     where T : FormatSingleProcessor, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2136,7 +2076,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;T&gt;(Stream stream, string name, out Data result, ProcessorConfiguration configuration = null)
-
     where T : FormatSingleProcessor, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2222,7 +2161,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;T&gt;(ReadOnlyMemory&lt;byte&gt; memory, string name, out Data result, ProcessorConfiguration configuration = null)
-
     where T : FormatSingleProcessor, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2312,7 +2250,7 @@
                     <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatSingleProcessor.md&amp;value=---%0Auid%3A%20Fp.FormatSingleProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatSingleProcessor.Run.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatSingleProcessor.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

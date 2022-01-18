@@ -115,10 +115,19 @@
       <a class="xref" href="Fp.FormatSingleProcessor.html#Fp_FormatSingleProcessor_TryProcess_Fp_BufferData_System_Byte__Fp_Data__Fp_ProcessorConfiguration_">FormatSingleProcessor.TryProcess(BufferData&lt;Byte&gt;, Data, ProcessorConfiguration)</a>
     </div>
     <div>
-      <a class="xref" href="Fp.FormatSingleProcessor.html#Fp_FormatSingleProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___">FormatSingleProcessor.Run&lt;T&gt;(IList&lt;String&gt;, String, String, String[])</a>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_InputFile">FormatProcessor.InputFile</a>
     </div>
     <div>
       <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_Name">FormatProcessor.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_NameNoExt">FormatProcessor.NameNoExt</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_NamePath">FormatProcessor.NamePath</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_NamePathNoExt">FormatProcessor.NamePathNoExt</a>
     </div>
     <div>
       <a class="xref" href="Fp.FormatProcessor.html#Fp_FormatProcessor_Prepare_System_IO_Stream_System_String_Fp_ProcessorConfiguration_">FormatProcessor.Prepare(Stream, String, ProcessorConfiguration)</a>
@@ -1737,7 +1746,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryProcess(BufferData&lt;byte&gt; data, string name, out T result, ProcessorConfiguration configuration = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool TryProcess(BufferData&lt;byte&gt; data, string inputFile, out T result, ProcessorConfiguration configuration = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1757,7 +1766,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><span class="parametername">inputFile</span></td>
         <td><p>Input name.</p>
 </td>
       </tr>
@@ -1800,7 +1809,8 @@
   </span>
   <a id="Fp_FormatSingleProcessor_1_TryProcess_" data-uid="Fp.FormatSingleProcessor`1.TryProcess*"></a>
   <h4 id="Fp_FormatSingleProcessor_1_TryProcess_Fp_Data__" data-uid="Fp.FormatSingleProcessor`1.TryProcess(Fp.Data@)">TryProcess(out Data)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Attempts to process and get an output.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -1819,7 +1829,8 @@
       <tr>
         <td><a class="xref" href="Fp.Data.html">Data</a></td>
         <td><span class="parametername">result</span></td>
-        <td></td>
+        <td><p>Data output.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1834,7 +1845,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if successful and output was created.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1854,7 +1866,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryProcess(Stream stream, string name, out T result, ProcessorConfiguration configuration = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool TryProcess(Stream stream, string inputFile, out T result, ProcessorConfiguration configuration = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1874,7 +1886,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><span class="parametername">inputFile</span></td>
         <td><p>Input name.</p>
 </td>
       </tr>
@@ -1922,7 +1934,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TryProcess(ReadOnlyMemory&lt;byte&gt; memory, string name, out T result, ProcessorConfiguration configuration = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool TryProcess(ReadOnlyMemory&lt;byte&gt; memory, string inputFile, out T result, ProcessorConfiguration configuration = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1942,7 +1954,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><span class="parametername">inputFile</span></td>
         <td><p>Input name.</p>
 </td>
       </tr>
@@ -1991,7 +2003,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(BufferData&lt;byte&gt; data, out T result, ProcessorConfiguration configuration = null)
-
     where TProcessor : FormatSingleProcessor&lt;T&gt;, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2070,8 +2081,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(BufferData&lt;byte&gt; data, string name, out T result, ProcessorConfiguration configuration = null)
-
+    <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(BufferData&lt;byte&gt; data, string inputFile, out T result, ProcessorConfiguration configuration = null)
     where TProcessor : FormatSingleProcessor&lt;T&gt;, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2092,7 +2102,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><span class="parametername">inputFile</span></td>
         <td><p>Input name.</p>
 </td>
       </tr>
@@ -2156,8 +2166,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(Stream stream, string name, out T result, ProcessorConfiguration configuration = null)
-
+    <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(Stream stream, string inputFile, out T result, ProcessorConfiguration configuration = null)
     where TProcessor : FormatSingleProcessor&lt;T&gt;, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2178,7 +2187,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><span class="parametername">inputFile</span></td>
         <td><p>Input name.</p>
 </td>
       </tr>
@@ -2242,8 +2251,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(ReadOnlyMemory&lt;byte&gt; memory, string name, out T result, ProcessorConfiguration configuration = null)
-
+    <pre><code class="lang-csharp hljs">public static bool TryProcess&lt;TProcessor&gt;(ReadOnlyMemory&lt;byte&gt; memory, string inputFile, out T result, ProcessorConfiguration configuration = null)
     where TProcessor : FormatSingleProcessor&lt;T&gt;, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2264,7 +2272,7 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
+        <td><span class="parametername">inputFile</span></td>
         <td><p>Input name.</p>
 </td>
       </tr>
