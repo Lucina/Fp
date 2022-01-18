@@ -5,6 +5,7 @@ FsProcessor.Run<FewssProcessor>(args,
     "FireEmblemWarriorsSwitchSound",
     "Fire Emblem Warriors Switch Sound Archives",
     ".bin.gz", ".bin", ".g1l");
+// TODO source generator that automatically populates processor info from attribute in assembly => internal class FsRunGen.Run<T>, generic invocation map type
 
 public class FewssProcessor : FsProcessor
 {
