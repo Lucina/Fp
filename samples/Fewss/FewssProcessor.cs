@@ -1,4 +1,5 @@
 using Fp;
+using Fp.Fs;
 
 FsProcessor.Run<FewssProcessor>(args,
     "FireEmblemWarriorsSwitchSound",
@@ -7,7 +8,7 @@ FsProcessor.Run<FewssProcessor>(args,
 
 public class FewssProcessor : FsProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl() => SelectedExtension switch
+    protected override IEnumerable<Data> ProcessSegmentedImpl() => SelectedExtension switch // TODO SelectedExtension equivalent on FormatProcessor
     {
         ".bin.gz" => ProcessBinGz(),
         ".bin" => ProcessBin(),

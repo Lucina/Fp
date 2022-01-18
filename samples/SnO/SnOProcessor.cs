@@ -1,17 +1,17 @@
 using System.Runtime.InteropServices;
 using System.Text;
 using Fp;
+using Fp.Fs;
 using Fp.Plus.Images;
 
-FsProcessor.Run<SnOProcessor>(args,
+FsFormatMultiProcessor.Run<SnOProcessor>(args,
     "SnO",
     "Sousei no Onmyouji containers");
 
-public class SnOProcessor : FsProcessor
+public class SnOProcessor : FsFormatMultiProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl()
+    public override IEnumerable<Data> Process()
     {
-        OpenMainFile();
         switch (ReadUtf8String(out _, out _, 4))
         {
             case "bg  ":

@@ -1,17 +1,17 @@
 using System.IO.Compression;
 using Esper.Zstandard;
 using Fp;
+using Fp.Fs;
 
-FsProcessor.Run<EdelweissTgpProcessor>(args,
+FsFormatMultiProcessor.Run<EdelweissTgpProcessor>(args,
     "EdelweissTgp",
     "Edelweiss TGP container",
     ".tgp");
 
-public class EdelweissTgpProcessor : FsProcessor
+public class EdelweissTgpProcessor : FsFormatMultiProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl()
+    public override IEnumerable<Data> Process()
     {
-        OpenMainFile();
         if (!HasMagic("TGP0")) return Nothing;
         ushort ver = u2l[0x4];
         return ver switch

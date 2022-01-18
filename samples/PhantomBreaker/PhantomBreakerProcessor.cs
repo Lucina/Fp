@@ -1,16 +1,16 @@
 using Fp;
 using System.Collections;
+using Fp.Fs;
 
-FsProcessor.Run<PhantomBreakerProcessor>(args,
+FsFormatMultiProcessor.Run<PhantomBreakerProcessor>(args,
     "PhantomBreaker",
     "Decode / extract assets from Phantom Breaker series",
     (string?)null);
 
-public partial class PhantomBreakerProcessor : FsProcessor
+public partial class PhantomBreakerProcessor : FsFormatMultiProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl()
+    public override IEnumerable<Data> Process()
     {
-        OpenMainFile();
         Dictionary<(int i, int j), Memory<byte>> dict = new();
         List<Data> content = new();
         byte[] a = Load();

@@ -1,16 +1,16 @@
 using Fp;
+using Fp.Fs;
 using Fp.Platforms.Nitro;
 
-FsProcessor.Run<RnRProcessor>(args,
+FsFormatMultiProcessor.Run<RnRProcessor>(args,
     "RnR",
     "Ryuusei no Rockman 1/2/3 .bin containers",
     ".bin");
 
-public class RnRProcessor : FsProcessor
+public class RnRProcessor : FsFormatMultiProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl()
+    public override IEnumerable<Data> Process()
     {
-        OpenMainFile();
         /*
          * Format
          * (little)

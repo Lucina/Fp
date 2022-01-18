@@ -1,15 +1,15 @@
 using Fp;
+using Fp.Fs;
 
-FsProcessor.Run<LinkDataAbcProcessor>(args,
+FsFormatMultiProcessor.Run<LinkDataAbcProcessor>(args,
     "LinkDataAbcProcessor",
     "Dynasty Warriors Gundam linkdata files",
     ".ans", ".bns", ".cns");
 
-public class LinkDataAbcProcessor : FsProcessor
+public class LinkDataAbcProcessor : FsFormatMultiProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl()
+    public override IEnumerable<Data> Process()
     {
-        OpenMainFile();
         int numEntries = i4b[0x4];
         for (int i = 0; i < numEntries; i++)
         {
