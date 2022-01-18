@@ -35,8 +35,6 @@ Filesystem processors are a unit worker derived from `Fp.FsProcessor` or one of 
 
 File format processors are a unit worker derived from `Fp.FormatSingleProcessor`, `Fp.FormatMultiProcessor`, or one of their descendants. They can be used to efficiently obtain converted data from individual files, or be wrapped with `FormatSingleProcessorFsWrapper` / `FormatMultiProcessorFsWrapper` to be used as a `FsProcessor`.
 
-A scripting API also exists that mirrors much of the `FsProcessor` functionality in static, single-context form (multithreading not supported, unlike standard `FsProcessor`s).
-
 Programs intended to extract from a set of files / folders (recursively) to a destination can utilize the default `FsProcessor.Run<T>` function where `T` is a user-created processor class. All file I/O is managed by the library, the processor will be automatically fed input file paths and can opt to open these files / create new files (automatically placed in the output directory) via the `Processor` class APIs.
 
 Processors can be designed to generate a `System.Collections.Generic.IEnumerable<Fp.Data>` where `Data` represents an arbitrary content result with an associated filename, such as `Fp.Plus.Images.Rgba32Data` for an RGBA 32-bit image, or `Fp.BufferData<byte>` for an arbitrary byte buffer. This can be a useful pattern for designing an arbitrary import scheme for software that needs to be able to work with new file types without unnecessary pipeline changes.

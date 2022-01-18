@@ -4,7 +4,20 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.24.0]
+## [Unreleased]
+
+### Added
+- Additional filename members in FormatProcessor
+
+### Changed
+- FormatProcessor.Name now FormatProcessor.InputFile (parity with FsProcessor)
+
+### Removed
+- ProcessorException
+- Scripting class
+- Filesystem-related code (moved to Fp.Fs)
+
+## [0.24.0] 2022-1-16
 ### Added
 - WriteContext extensions in ReadWriteContextByteExtensions
 - `WriteContext<byte>.GetAdvance(int)` to claim buffer

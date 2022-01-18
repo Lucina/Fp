@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace Fp;
 
-// ReSharper disable InconsistentNaming
-public partial class FormatMultiProcessor
+/// <inheritdoc />
+public class FsFormatMultiProcessor : FormatMultiProcessor
 {
     /// <summary>
     /// Processes using segmented function.
@@ -16,4 +16,3 @@ public partial class FormatMultiProcessor
     public static void Run<T>(IList<string>? args, string name, string description, params string?[] extensions) where T : FormatMultiProcessor, new() =>
         FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatMultiProcessorFsWrapper<T>>(new FsProcessorInfo(name, description, description, extensions)));
 }
-// ReSharper restore InconsistentNaming

@@ -181,22 +181,3 @@ public partial class Processor
     public static BufferData<byte> Buffer(string name, ReadOnlyMemory<byte> memory) =>
         new(name, memory);
 }
-
-public partial class Scripting
-{
-    /// <summary>
-    /// Creates byte data object.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    /// <param name="memory">Data.</param>
-    /// <returns>Data object.</returns>
-    public static Data data(this FpPath path, ReadOnlyMemory<byte> memory) => Processor.Buffer(path, memory);
-
-    /// <summary>
-    /// Creates byte data object.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    /// <param name="memory">Data.</param>
-    /// <returns>Data object.</returns>
-    public static Data data(this string path, ReadOnlyMemory<byte> memory) => Processor.Buffer(path, memory);
-}

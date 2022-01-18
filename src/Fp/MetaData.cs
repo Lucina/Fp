@@ -38,7 +38,8 @@ public class MetaData : Data
     }
 
     /// <inheritdoc />
-    public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary<object, object>? formatOptions = null)
+    public override bool WriteConvertedData(Stream outputStream, Guid format,
+        Dictionary<object, object>? formatOptions = null)
     {
         if (format == Generic || format == Generic)
         {
@@ -80,23 +81,4 @@ public partial class Processor
     /// <param name="value">Value.</param>
     /// <returns>Data object.</returns>
     public static MetaData Meta(string name, object value) => new(name, value);
-}
-
-public partial class Scripting
-{
-    /// <summary>
-    /// Creates metadata object.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    /// <param name="value">Value.</param>
-    /// <returns>Data object.</returns>
-    public static Data meta(this FpPath path, object value) => Processor.Meta(path, value);
-
-    /// <summary>
-    /// Creates metadata object.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    /// <param name="value">Value.</param>
-    /// <returns>Data object.</returns>
-    public static Data meta(this string path, object value) => Processor.Meta(path, value);
 }

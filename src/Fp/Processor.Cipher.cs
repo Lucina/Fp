@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using static Fp.Processor;
 
 namespace Fp;
 
@@ -157,21 +156,3 @@ public partial class Processor
 
     #endregion
 }
-
-// ReSharper disable InconsistentNaming
-public partial class Scripting
-{
-    #region Cipher
-
-    /// <summary>
-    /// Creates a byte array from a hex string.
-    /// </summary>
-    /// <param name="hex">Hex string to decode.</param>
-    /// <param name="validate">Validate characters.</param>
-    /// <returns>Array with decoded hex string.</returns>
-    /// <exception cref="ArgumentException">Thrown if <paramref name="hex"/> has an odd length.</exception>
-    public static byte[] decodeHex(string hex, bool validate = true) => DecodeHex(hex, validate);
-
-    #endregion
-}
-// ReSharper restore InconsistentNaming

@@ -7,7 +7,7 @@ namespace Fp;
 /// <summary>
 /// Represents a processor that operates on a single input and generates multiple outputs.
 /// </summary>
-public partial class FormatSingleProcessor : FormatProcessor
+public class FormatSingleProcessor : FormatProcessor
 {
     /// <summary>
     /// Attempts to process and get an output.
@@ -144,28 +144,28 @@ public class FormatSingleProcessor<T> : FormatSingleProcessor where T : Data
     /// Attempts to process and get an output.
     /// </summary>
     /// <param name="stream">Source stream.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="result">Data output.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <typeparam name="TProcessor">Processor type.</typeparam>
     /// <returns>True if successful and output was created.</returns>
-    public static bool TryProcess<TProcessor>(Stream stream, string name, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null) where TProcessor : FormatSingleProcessor<T>, new()
+    public static bool TryProcess<TProcessor>(Stream stream, string inputFile, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null) where TProcessor : FormatSingleProcessor<T>, new()
     {
         using TProcessor processor = new();
-        return processor.TryProcess(stream, name, out result, configuration);
+        return processor.TryProcess(stream, inputFile, out result, configuration);
     }
 
     /// <summary>
     /// Attempts to process and get an output.
     /// </summary>
     /// <param name="stream">Source stream.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="result">Data output.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <returns>True if successful and output was created.</returns>
-    public bool TryProcess(Stream stream, string name, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null)
+    public bool TryProcess(Stream stream, string inputFile, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null)
     {
-        Prepare(stream, name, configuration);
+        Prepare(stream, inputFile, configuration);
         return TryProcess(out result);
     }
 
@@ -173,28 +173,28 @@ public class FormatSingleProcessor<T> : FormatSingleProcessor where T : Data
     /// Attempts to process and get an output.
     /// </summary>
     /// <param name="memory">Source memory.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="result">Data output.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <typeparam name="TProcessor">Processor type.</typeparam>
     /// <returns>True if successful and output was created.</returns>
-    public static bool TryProcess<TProcessor>(ReadOnlyMemory<byte> memory, string name, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null) where TProcessor : FormatSingleProcessor<T>, new()
+    public static bool TryProcess<TProcessor>(ReadOnlyMemory<byte> memory, string inputFile, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null) where TProcessor : FormatSingleProcessor<T>, new()
     {
         using TProcessor processor = new();
-        return processor.TryProcess(memory, name, out result, configuration);
+        return processor.TryProcess(memory, inputFile, out result, configuration);
     }
 
     /// <summary>
     /// Attempts to process and get an output.
     /// </summary>
     /// <param name="memory">Source memory.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="result">Data output.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <returns>True if successful and output was created.</returns>
-    public bool TryProcess(ReadOnlyMemory<byte> memory, string name, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null)
+    public bool TryProcess(ReadOnlyMemory<byte> memory, string inputFile, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null)
     {
-        Prepare(memory, name, configuration);
+        Prepare(memory, inputFile, configuration);
         return TryProcess(out result);
     }
 
@@ -202,28 +202,28 @@ public class FormatSingleProcessor<T> : FormatSingleProcessor where T : Data
     /// Attempts to process and get an output.
     /// </summary>
     /// <param name="data">Source data.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="result">Data output.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <typeparam name="TProcessor">Processor type.</typeparam>
     /// <returns>True if successful and output was created.</returns>
-    public static bool TryProcess<TProcessor>(BufferData<byte> data, string name, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null) where TProcessor : FormatSingleProcessor<T>, new()
+    public static bool TryProcess<TProcessor>(BufferData<byte> data, string inputFile, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null) where TProcessor : FormatSingleProcessor<T>, new()
     {
         using TProcessor processor = new();
-        return processor.TryProcess(data, name, out result, configuration);
+        return processor.TryProcess(data, inputFile, out result, configuration);
     }
 
     /// <summary>
     /// Attempts to process and get an output.
     /// </summary>
     /// <param name="data">Source data.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <param name="result">Data output.</param>
     /// <returns>True if successful and output was created.</returns>
-    public bool TryProcess(BufferData<byte> data, string name, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null)
+    public bool TryProcess(BufferData<byte> data, string inputFile, [NotNullWhen(true)] out T? result, ProcessorConfiguration? configuration = null)
     {
-        Prepare(data, name, configuration);
+        Prepare(data, inputFile, configuration);
         return TryProcess(out result);
     }
 

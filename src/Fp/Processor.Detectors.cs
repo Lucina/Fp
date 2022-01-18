@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using static Fp.Detector;
-using static Fp.FsProcessor;
 using static Fp.Processor;
 
 namespace Fp;
@@ -49,36 +48,6 @@ public partial class Processor
         LogWarn(extension != null ? $"Extension {extension} unsupported" : "Empty extension unsupported");
         return Nothing;
     }
-}
-
-public partial class Scripting
-{
-    /// <summary>
-    /// Empty enumerable of data.
-    /// </summary>
-    public static readonly IEnumerable<Data> _nothing = Nothing;
-
-    /// <summary>
-    /// Warns version value as unsupported.
-    /// </summary>
-    /// <param name="value">Version value.</param>
-    /// <returns>Empty enumerable.</returns>
-    public static IEnumerable<Data> unsupported(long value) => Current.UnsupportedVersion(value);
-
-    /// <summary>
-    /// Warns version value as unsupported.
-    /// </summary>
-    /// <param name="value">Version value.</param>
-    /// <returns>Empty enumerable.</returns>
-    public static IEnumerable<Data> unsupportedVersion(ulong value) => Current.UnsupportedVersion(value);
-
-    /// <summary>
-    /// Warns extension value as unsupported.
-    /// </summary>
-    /// <param name="extension">Extension value.</param>
-    /// <returns>Empty enumerable.</returns>
-    public static IEnumerable<Data> unsupportedExtension(string? extension) =>
-        Current.UnsupportedExtension(extension);
 }
 
 #endregion
@@ -184,7 +153,7 @@ public record Detector(Detector? Prev, object Source, Func<object?, string?> Det
     /// <param name="source">Source if available.</param>
     /// <returns>Resolved source.</returns>
     public static object ResolveSource(Detector? detector, object? source) =>
-        source ?? detector?.Source ?? (object?)NullableCurrent ?? Nothing;
+        source ?? detector?.Source ?? Nothing;
 
     /// <summary>
     /// Resolves source.
@@ -194,7 +163,7 @@ public record Detector(Detector? Prev, object Source, Func<object?, string?> Det
     /// <param name="originalSource">Original source.</param>
     /// <returns>Resolved source.</returns>
     public static object ResolveSource(Detector? detector, object? source, object? originalSource) =>
-        source ?? originalSource ?? detector?.Source ?? (object?)NullableCurrent ?? Nothing;
+        source ?? originalSource ?? detector?.Source ?? Nothing;
 
     private static object? CoerceToROM(object? value) => value switch
     {

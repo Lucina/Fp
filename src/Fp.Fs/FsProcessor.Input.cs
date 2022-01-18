@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using static Fp.FsProcessor;
 
 namespace Fp;
 
@@ -22,20 +21,4 @@ public partial class FsProcessor
     }
 
     #endregion
-}
-
-public partial class Scripting
-{
-    /// <summary>
-    /// Loads byte array from input.
-    /// </summary>
-    /// <returns>Byte array.</returns>
-    public static byte[] load() => Current.Load();
-
-    /// <summary>
-    /// Dumps byte array from input.
-    /// </summary>
-    /// <param name="maxLength">Maximum input length.</param>
-    /// <returns>Byte array.</returns>
-    public static byte[] dump(int maxLength = int.MaxValue) => Current.Dump(maxLength);
 }

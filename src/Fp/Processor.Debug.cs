@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static Fp.FsProcessor;
 
 namespace Fp;
 
@@ -111,65 +110,4 @@ public partial class Processor
     }
 
     #endregion
-}
-
-public partial class Scripting
-{
-    /// <summary>
-    /// If true, enable debugging features.
-    /// </summary>
-    public static bool _debug
-    {
-        get => Current.Debug;
-        set => Current.Debug = value;
-    }
-
-    /// <summary>
-    /// If true, disable outputs.
-    /// </summary>
-    public static bool _nop
-    {
-        get => Current.Nop;
-        set => Current.Nop = value;
-    }
-
-    /// <summary>
-    /// Clears stored memories and annotations.
-    /// </summary>
-    /// <remarks>No-op if <see cref="Processor.Debug"/> is false.</remarks>
-    public static void MemClear() => Current.MemClear();
-
-    /// <summary>
-    /// Labels memory with annotation.
-    /// </summary>
-    /// <param name="memory">Target memory.</param>
-    /// <param name="offset">Data offset.</param>
-    /// <param name="length">Data length.</param>
-    /// <param name="label">Annotation to add.</param>
-    /// <param name="color">Color, random default.</param>
-    /// <remarks>No-op if <see cref="Processor.Debug"/> is false.<br/>Users should not slice memory struct between label and print, uses <see cref="Processor.MemAnnotations"/> which uses the memory as a key.</remarks>
-    public static void memLabel(ReadOnlyMemory<byte> memory, int offset, int length, string? label = null,
-        ConsoleColor? color = null) => Current.MemLabel(memory, offset, length, label, color);
-
-    /// <summary>
-    /// Labels occurrences of sequence in memory with annotation.
-    /// </summary>
-    /// <param name="memory">Target memory.</param>
-    /// <param name="sequence">Sequence to search for.</param>
-    /// <param name="label">Annotation to add.</param>
-    /// <param name="color">Color, random default.</param>
-    /// <remarks>No-op if <see cref="Processor.Debug"/> is false.<br/>Users should not slice memory struct between label and print, uses <see cref="Processor.MemAnnotations"/> which uses the memory as a key.</remarks>
-    /// <returns>Matches (regardless of debug enabled/not).</returns>
-    public static List<int> memLabel(ReadOnlyMemory<byte> memory, ReadOnlySpan<byte> sequence, string? label = null,
-        ConsoleColor? color = null) => Current.MemLabel(memory, sequence, label, color);
-
-    /// <summary>
-    /// Prints memory with associated annotations.
-    /// </summary>
-    /// <param name="memory">Target memory.</param>
-    /// <param name="space">Space between bytes.</param>
-    /// <param name="pow2Modulus">Only display power of 2 per line.</param>
-    /// <remarks>No-op if <see cref="Processor.Debug"/> is false.<br/>Users should not slice memory struct between label and print, uses <see cref="Processor.MemAnnotations"/> which uses the memory as a key.</remarks>
-    public static void memPrint(ReadOnlyMemory<byte> memory, bool space = true, bool pow2Modulus = true) =>
-        Current.MemPrint(memory, space, pow2Modulus);
 }

@@ -47,7 +47,8 @@ public class StringData : Data
     }
 
     /// <inheritdoc />
-    public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary<object, object>? formatOptions = null)
+    public override bool WriteConvertedData(Stream outputStream, Guid format,
+        Dictionary<object, object>? formatOptions = null)
     {
         if (format == Generic || format == UTF8)
         {
@@ -88,23 +89,4 @@ public partial class Processor
     /// <param name="value">Value.</param>
     /// <returns>Data object.</returns>
     public static StringData Text(string name, string value) => new(name, value);
-}
-
-public partial class Scripting
-{
-    /// <summary>
-    /// Creates string data object.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    /// <param name="value">Value.</param>
-    /// <returns>Data object.</returns>
-    public static Data text(this FpPath path, string value) => Processor.Text(path, value);
-
-    /// <summary>
-    /// Creates string data object.
-    /// </summary>
-    /// <param name="path">Path.</param>
-    /// <param name="value">Value.</param>
-    /// <returns>Data object.</returns>
-    public static Data text(this string path, string value) => Processor.Text(path, value);
 }

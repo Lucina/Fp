@@ -459,9 +459,3 @@ public partial class Processor
 
     #endregion
 }
-
-// ReSharper disable InconsistentNaming
-public partial class Scripting
-{
-}
-// ReSharper restore InconsistentNaming

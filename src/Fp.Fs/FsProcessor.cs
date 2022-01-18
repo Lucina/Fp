@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using static Fp.FsProcessor;
 
 namespace Fp;
 
@@ -96,27 +95,28 @@ public partial class FsProcessor : Processor
     /// <remarks>
     /// Not applicable in a multithreaded environment.
     /// </remarks>
-    [SuppressMessage("ReSharper", "UnassignedField.Global")] public bool Lock;
+    [SuppressMessage("ReSharper", "UnassignedField.Global")]
+    public bool Lock;
 
     /// <summary>
     /// Current file path.
     /// </summary>
-    public FpPath FilePath => FpPath.GetFromString(Current.InputFile) ?? throw new InvalidOperationException();
+    public FpPath FilePath => FpPath.GetFromString(InputFile) ?? throw new InvalidOperationException();
 
     /// <summary>
     /// Current file path without extension.
     /// </summary>
-    public FpPath FilePathNoExt => new(Path.GetFileNameWithoutExtension(Current.InputFile), Current.InputDirectory);
+    public FpPath FilePathNoExt => new(Path.GetFileNameWithoutExtension(InputFile), InputDirectory);
 
     /// <summary>
     /// Current file name.
     /// </summary>
-    public string Name => Path.GetFileName(Current.InputFile);
+    public string Name => Path.GetFileName(InputFile);
 
     /// <summary>
     /// Current file name without extension.
     /// </summary>
-    public string NameNoExt => Path.GetFileNameWithoutExtension(Current.InputFile);
+    public string NameNoExt => Path.GetFileNameWithoutExtension(InputFile);
 
     /// <summary>
     /// Current file name.
@@ -149,7 +149,8 @@ public partial class FsProcessor : Processor
     /// <param name="file">Input file.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <param name="workerId">Worker ID.</param>
-    public void Prepare(FileSystemSource fileSystem, string inputRoot, string outputRoot, string file, ProcessorConfiguration? configuration = null, int workerId = 0)
+    public void Prepare(FileSystemSource fileSystem, string inputRoot, string outputRoot, string file,
+        ProcessorConfiguration? configuration = null, int workerId = 0)
     {
         Prepare(configuration);
         InputRootDirectory = fileSystem.NormalizePath(inputRoot);
@@ -205,13 +206,15 @@ public partial class FsProcessor : Processor
     /// <param name="additionalFiles">Additional files to pass to processor.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     /// <returns>Created processor.</returns>
-    public T Initialize<T>(BufferData<byte> main, string[]? args = null, IEnumerable<BufferData<byte>>? additionalFiles = null) where T : FsProcessor, new()
+    public T Initialize<T>(BufferData<byte> main, string[]? args = null,
+        IEnumerable<BufferData<byte>>? additionalFiles = null) where T : FsProcessor, new()
     {
         T child = new();
         IEnumerable<BufferData<byte>> seq = new[] { main };
         if (additionalFiles != null) seq = seq.Concat(additionalFiles);
         var layer1 = new SegmentedFileSystemSource(FileSystem, true, seq);
-        child.Prepare(layer1, InputRootDirectory, OutputRootDirectory, main.BasePath, new ProcessorConfiguration(Preload, Debug, Nop, LogReceiver, args ?? Array.Empty<string>()));
+        child.Prepare(layer1, InputRootDirectory, OutputRootDirectory, main.BasePath,
+            new ProcessorConfiguration(Preload, Debug, Nop, LogReceiver, args ?? Array.Empty<string>()));
         return child;
     }
 
@@ -242,7 +245,9 @@ public partial class FsProcessor : Processor
         {
             if (Nop || d is MetaData && !Debug) continue;
             using Data data = d;
-            using Stream stream = (FileSystem ?? throw new InvalidOperationException()).OpenWrite(GenPath(data.GetExtension(), data.BasePath));
+            using Stream stream =
+                (FileSystem ?? throw new InvalidOperationException()).OpenWrite(GenPath(data.GetExtension(),
+                    data.BasePath));
             data.WriteConvertedData(stream, data.DefaultFormat);
         }
     }
@@ -324,7 +329,7 @@ public partial class FsProcessor : Processor
                 if (has)
                     yield return
 #if NET6_0_OR_GREATER
-                            enumerator.Current;
+                        enumerator.Current;
 #else
                         enumerator.Current!;
 #endif
@@ -363,90 +368,3 @@ public partial class FsProcessor : Processor
 
     #endregion
 }
-
-// ReSharper disable InconsistentNaming
-public partial class Scripting
-{
-    #region Properties
-
-    /// <summary>
-    /// Current file path.
-    /// </summary>
-    public static FpPath _file => FpPath.GetFromString(Current.InputFile) ?? throw new InvalidOperationException();
-
-    /// <summary>
-    /// Current file path without extension.
-    /// </summary>
-    public static FpPath _fileNoExt =>
-        new(Path.GetFileNameWithoutExtension(Current.InputFile), Current.InputDirectory);
-
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public static string _name => Path.GetFileName(Current.InputFile);
-
-    /// <summary>
-    /// Current file length.
-    /// </summary>
-    public static long _length => Current.InputLength;
-
-    /// <summary>
-    /// Current file name without extension.
-    /// </summary>
-    public static string _nameNoExt => Path.GetFileNameWithoutExtension(Current.InputFile);
-
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public static FpPath _namePath => FpPath.GetFromString(_name) ?? throw new InvalidOperationException();
-
-    /// <summary>
-    /// Current file name without extension.
-    /// </summary>
-    public static FpPath _namePathNoExt =>
-        FpPath.GetFromString(_nameNoExt) ?? throw new InvalidOperationException();
-
-    #endregion
-
-    #region Shield
-
-    /// <summary>
-    /// Sets <see cref="FsProcessor.Current"/>.
-    /// </summary>
-    /// <param name="preserve">If true, preserve existing value.</param>
-    public static void shield(bool preserve = true)
-    {
-        if (NullableCurrent == null || !preserve)
-            (NullableCurrent ?? FsInstance).ShieldUp();
-    }
-
-    /// <summary>
-    /// Unsets <see cref="FsProcessor.Current"/>.
-    /// </summary>
-    public static void unshield() => ShieldDown();
-
-    #endregion
-
-    #region Logging
-
-    /// <summary>
-    /// Invokes logger with formatted string containing specified information log.
-    /// </summary>
-    /// <param name="log">Message.</param>
-    public static void info(string log) => Current.LogInfo(log);
-
-    /// <summary>
-    /// Invokes logger with formatted string containing specified warning log.
-    /// </summary>
-    /// <param name="log">Message.</param>
-    public static void warn(string log) => Current.LogWarn(log);
-
-    /// <summary>
-    /// Invokes logger with formatted string containing specified error log.
-    /// </summary>
-    /// <param name="log">Message.</param>
-    public static void fail(string log) => Current.LogFail(log);
-
-    #endregion
-}
-// ReSharper restore InconsistentNaming

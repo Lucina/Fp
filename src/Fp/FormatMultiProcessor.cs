@@ -7,32 +7,32 @@ namespace Fp;
 /// <summary>
 /// Represents a processor that operates on a single input and generates multiple outputs.
 /// </summary>
-public partial class FormatMultiProcessor : FormatProcessor
+public class FormatMultiProcessor : FormatProcessor
 {
     /// <summary>
     /// Attempts to process and get outputs.
     /// </summary>
     /// <param name="stream">Source stream.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     /// <returns>Outputs.</returns>
-    public static IEnumerable<Data> Process<T>(Stream stream, string name, ProcessorConfiguration? configuration = null) where T : FormatMultiProcessor, new()
+    public static IEnumerable<Data> Process<T>(Stream stream, string inputFile, ProcessorConfiguration? configuration = null) where T : FormatMultiProcessor, new()
     {
         using T processor = new();
-        return processor.Process(stream, name, configuration);
+        return processor.Process(stream, inputFile, configuration);
     }
 
     /// <summary>
     /// Attempts to process and get outputs.
     /// </summary>
     /// <param name="stream">Source stream.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <returns>Outputs.</returns>
-    public IEnumerable<Data> Process(Stream stream, string name, ProcessorConfiguration? configuration = null)
+    public IEnumerable<Data> Process(Stream stream, string inputFile, ProcessorConfiguration? configuration = null)
     {
-        Prepare(stream, name, configuration);
+        Prepare(stream, inputFile, configuration);
         return Process();
     }
 
@@ -40,26 +40,26 @@ public partial class FormatMultiProcessor : FormatProcessor
     /// Attempts to process and get outputs.
     /// </summary>
     /// <param name="memory">Source memory.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     /// <returns>Outputs.</returns>
-    public static IEnumerable<Data> Process<T>(ReadOnlyMemory<byte> memory, string name, ProcessorConfiguration? configuration = null) where T : FormatMultiProcessor, new()
+    public static IEnumerable<Data> Process<T>(ReadOnlyMemory<byte> memory, string inputFile, ProcessorConfiguration? configuration = null) where T : FormatMultiProcessor, new()
     {
         using T processor = new();
-        return processor.Process(memory, name, configuration);
+        return processor.Process(memory, inputFile, configuration);
     }
 
     /// <summary>
     /// Attempts to process and get outputs.
     /// </summary>
     /// <param name="memory">Source memory.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <returns>Outputs.</returns>
-    public IEnumerable<Data> Process(ReadOnlyMemory<byte> memory, string name, ProcessorConfiguration? configuration = null)
+    public IEnumerable<Data> Process(ReadOnlyMemory<byte> memory, string inputFile, ProcessorConfiguration? configuration = null)
     {
-        Prepare(memory, name, configuration);
+        Prepare(memory, inputFile, configuration);
         return Process();
     }
 
@@ -67,26 +67,26 @@ public partial class FormatMultiProcessor : FormatProcessor
     /// Attempts to process and get outputs.
     /// </summary>
     /// <param name="data">Source data.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     /// <returns>Outputs.</returns>
-    public static IEnumerable<Data> Process<T>(BufferData<byte> data, string name, ProcessorConfiguration? configuration = null) where T : FormatMultiProcessor, new()
+    public static IEnumerable<Data> Process<T>(BufferData<byte> data, string inputFile, ProcessorConfiguration? configuration = null) where T : FormatMultiProcessor, new()
     {
         using T processor = new();
-        return processor.Process(data, name, configuration);
+        return processor.Process(data, inputFile, configuration);
     }
 
     /// <summary>
     /// Attempts to process and get outputs.
     /// </summary>
     /// <param name="data">Source data.</param>
-    /// <param name="name">Input name.</param>
+    /// <param name="inputFile">Input name.</param>
     /// <param name="configuration">Additional configuration object.</param>
     /// <returns>Outputs.</returns>
-    public IEnumerable<Data> Process(BufferData<byte> data, string name, ProcessorConfiguration? configuration = null)
+    public IEnumerable<Data> Process(BufferData<byte> data, string inputFile, ProcessorConfiguration? configuration = null)
     {
-        Prepare(data, name, configuration);
+        Prepare(data, inputFile, configuration);
         return Process();
     }
 

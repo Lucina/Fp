@@ -24,7 +24,7 @@
   <PropertyGroup>
     <Authors>riina,Lucina</Authors>
     <Owners>riina,Lucina</Owners>
-    <Description>Native utilities</Description>
+    <Description>File processing (filesystem variants)</Description>
     <Copyright>Copyright ©2020 riina</Copyright>
     <PackageProjectUrl>https://github.com/collectioneering/Fp</PackageProjectUrl>
     <RepositoryUrl>https://github.com/collectioneering/Fp</RepositoryUrl>
@@ -32,21 +32,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Fp\Fp.csproj" />
     <!--<PackageReference Include="Fp" Version="0.25.0" />-->
   </ItemGroup>
 
+  <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="NOTICE.Fp.Plus.txt">
-      <Link>NOTICE.Fp.Plus.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <PackagePath>contentFiles/any/any/</PackagePath>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-    </Content>
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
+
 
 </Project>
