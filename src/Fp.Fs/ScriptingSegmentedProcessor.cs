@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Represents a processor designed for scripting.

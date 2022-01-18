@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Base type for file processors.

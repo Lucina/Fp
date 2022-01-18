@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Execution manager.

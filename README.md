@@ -6,6 +6,7 @@
 | Package              | Release                                                                                                               |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------|
 | `Fp`                 | [![NuGet](https://img.shields.io/nuget/v/Fp.svg)](https://www.nuget.org/packages/Fp/)                                 |
+| `Fp.Fs`              | [![NuGet](https://img.shields.io/nuget/v/Fp.Fs.svg)](https://www.nuget.org/packages/Fp.Fs/)                           |
 | `Fp.Plus`            | [![NuGet](https://img.shields.io/nuget/v/Fp.Plus.svg)](https://www.nuget.org/packages/Fp.Plus/)                       |
 | `Fp.Platforms.Nitro` | [![NuGet](https://img.shields.io/nuget/v/Fp.Platforms.Nitro.svg)](https://www.nuget.org/packages/Fp.Platforms.Nitro/) |
 | `Fp.Templates`       | [![NuGet](https://img.shields.io/nuget/v/Fp.Templates.svg)](https://www.nuget.org/packages/Fp.Templates/)             |
@@ -19,6 +20,8 @@ Many utilities for working with primitive data (including endianness-dependent I
 ### Libraries
 * Fp: Base file processing library
     - .NET Standard 2.0 / .NET 6.0
+* Fp.Fs: Filesystem processing library
+    - .NET Standard 2.0 / .NET 6.0
 * Fp.Plus: Extension library (e.g. RGBA32 image (through ImageSharp) / PCM WAVE output)
     - .NET Standard 2.0 / .NET 6.0
 * Fp.Platforms.Nitro: Nintendo DS file format integrations
@@ -31,7 +34,7 @@ Many utilities for working with primitive data (including endianness-dependent I
 
 ### Details
 
-Filesystem processors are a unit worker derived from `Fp.FsProcessor` or one of its descendants that are called to operate on each applicable (by default, based on extension) file path, optionally opening a stream and generating console output or file artifacts. If written to only use compatible APIs (e.g. working with the `FileSystemSource` APIs and not directly using `System.IO.File` etc.), processors can be used to work with synthetic filesystems (e.g. directly working on files in a zip file) and more generally be used to efficiently interact with any binary data regardless of source.
+Filesystem processors are a unit worker derived from `Fp.Fs.FsProcessor` or one of its descendants that are called to operate on each applicable (by default, based on extension) file path, optionally opening a stream and generating console output or file artifacts. If written to only use compatible APIs (e.g. working with the `FileSystemSource` APIs and not directly using `System.IO.File` etc.), processors can be used to work with synthetic filesystems (e.g. directly working on files in a zip file) and more generally be used to efficiently interact with any binary data regardless of source.
 
 File format processors are a unit worker derived from `Fp.FormatSingleProcessor`, `Fp.FormatMultiProcessor`, or one of their descendants. They can be used to efficiently obtain converted data from individual files, or be wrapped with `FormatSingleProcessorFsWrapper` / `FormatMultiProcessorFsWrapper` to be used as a `FsProcessor`.
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fp;
+namespace Fp.Fs;
 
 // ReSharper disable InconsistentNaming
 public partial class FsProcessor

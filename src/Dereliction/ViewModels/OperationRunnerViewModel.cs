@@ -12,6 +12,7 @@ using Avalonia.VisualTree;
 using Dereliction.Models;
 using Dereliction.Views;
 using Fp;
+using Fp.Fs;
 using ReactiveUI;
 
 namespace Dereliction.ViewModels;

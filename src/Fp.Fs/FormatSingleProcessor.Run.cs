@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <inheritdoc />
 public class FsFormatSingleProcessor : FormatSingleProcessor

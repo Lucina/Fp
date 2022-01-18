@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// <see cref="FsProcessor"/> wrapper for <see cref="FormatMultiProcessor"/>.

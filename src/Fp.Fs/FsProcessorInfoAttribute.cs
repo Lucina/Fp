@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Processor information attribute.

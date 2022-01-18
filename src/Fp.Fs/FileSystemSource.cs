@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Object for I/O to some filesystem provider.

@@ -1,6 +1,6 @@
 using System;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Represents a processor designed for scripting.

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Dotnet.Script.Core;
 using Dotnet.Script.Core.Commands;
 using Dotnet.Script.DependencyModel.Logging;
-using Fp;
+using Fp.Fs;
 using Microsoft.CodeAnalysis;
 
 namespace fpx

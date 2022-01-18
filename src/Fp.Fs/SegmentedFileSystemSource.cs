@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Fp;
+namespace Fp.Fs;
 
 internal class SegmentedFileSystemSource : FileSystemSource,
     IEnumerable<(string path, Stream stream)>

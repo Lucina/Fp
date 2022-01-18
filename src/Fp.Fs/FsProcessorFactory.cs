@@ -1,6 +1,6 @@
 using System;
 
-namespace Fp;
+namespace Fp.Fs;
 
 /// <summary>
 /// Processor factory.
