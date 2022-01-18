@@ -9,7 +9,7 @@
     
     <ItemGroup>
         <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="7.0.0-*" Condition="'$(TargetFramework)'=='net6.0' And $(RuntimeIdentifier.EndsWith(`-x64`))"/>
-        <PackageReference Include="Fp" Version="0.24.0"/>
+        <PackageReference Include="Fp.Fs" Version="0.25.0"/>
     </ItemGroup>
 
 </Project>

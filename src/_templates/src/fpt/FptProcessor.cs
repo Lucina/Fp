@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Fp;
+using Fp.Fs;
 
 FptProcessor.Run<FptProcessor>(args,
     "Fpt",
@@ -26,7 +27,7 @@ public class FptProcessor : FsProcessor
 
 // One output, InputStream available
 /*
-public class FptProcessor : FormatSingleProcessor
+public class FptProcessor : FsFormatSingleProcessor
 {
     public override bool TryProcess(out Data? data)
     {
@@ -38,7 +39,7 @@ public class FptProcessor : FormatSingleProcessor
 
 // One output of specific type, InputStream available
 /*
-public class FptProcessor : FormatSingleProcessor<BufferData<byte>>
+public class FptProcessor : FsFormatSingleProcessor<BufferData<byte>>
 {
     public override bool TryProcess(out BufferData<byte>? data)
     {
@@ -50,7 +51,7 @@ public class FptProcessor : FormatSingleProcessor<BufferData<byte>>
 
 // Segmented, InputStream available
 /*
-public class FptProcessor : FormatMultiProcessor
+public class FptProcessor : FsFormatMultiProcessor
 {
     public override IEnumerable<Data> Process()
     {
