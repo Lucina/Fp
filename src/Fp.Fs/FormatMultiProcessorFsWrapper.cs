@@ -25,6 +25,13 @@ public class FormatMultiProcessorFsWrapper : FsProcessor
         _baseProcessor.Prepare(input, Name, Configuration);
         return _baseProcessor.Process();
     }
+
+    /// <inheritdoc />
+    public override void Cleanup(bool warn = false)
+    {
+        base.Cleanup(warn);
+        _baseProcessor.Cleanup();
+    }
 }
 
 /// <summary>

@@ -238,7 +238,6 @@ public partial class FsProcessor : Processor
     /// </summary>
     public void Process()
     {
-        SetupArgs();
         ShieldProcess();
         if (_overrideProcess) return;
         foreach (Data d in ShieldProcessSegmented())
@@ -258,7 +257,6 @@ public partial class FsProcessor : Processor
     /// <returns>Generated outputs.</returns>
     public IEnumerable<Data> ProcessSegmented()
     {
-        SetupArgs();
         foreach (Data entry in ShieldProcessSegmented()) yield return entry;
         if (_overrideProcessSegmented) yield break;
         FileSystemSource prevFs = FileSystem ?? throw new InvalidOperationException();

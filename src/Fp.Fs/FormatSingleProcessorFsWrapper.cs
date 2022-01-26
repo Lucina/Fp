@@ -26,6 +26,13 @@ public class FormatSingleProcessorFsWrapper : FsProcessor
         _baseProcessor.Prepare(input, Name, Configuration);
         return _baseProcessor.TryProcess(out Data? data) ? new[] { data! } : Array.Empty<Data>();
     }
+
+    /// <inheritdoc />
+    public override void Cleanup(bool warn = false)
+    {
+        base.Cleanup(warn);
+        _baseProcessor.Cleanup();
+    }
 }
 
 /// <summary>

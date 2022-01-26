@@ -196,6 +196,7 @@ public partial class Processor : IDisposable
         Preload = configuration.Preload;
         LogReceiver = configuration.LogReceiver;
         Args = configuration.Args;
+        SetupArgs();
     }
 
     /// <summary>
