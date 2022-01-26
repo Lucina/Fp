@@ -32,8 +32,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fp\Fp.csproj" />
-    <!--<PackageReference Include="Fp" Version="0.25.0" />-->
+    <!--<ProjectReference Include="..\Fp\Fp.csproj" />-->
+    <PackageReference Include="Fp" Version="0.25.0" />
   </ItemGroup>
 
   <PropertyGroup>
