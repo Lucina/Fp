@@ -92,7 +92,8 @@ public class SnOProcessor : FsFormatMultiProcessor
                     int w = i4l[post3 + 12], h = i4l[post3 + 16];
                     WriteContext<uint> wc = NamePathNoExt.CreateImage(w, h, out Data image);
                     Read(dpos, MemoryMarshal.Cast<uint, byte>(wc.Source), false);
-                    yield return image;
+                    // TODO more "research"
+                    //yield return image;
                     break;
                 }
             default:

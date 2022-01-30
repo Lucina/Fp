@@ -1,7 +1,7 @@
 # PhantomBreaker
 Decode / extract assets from Phantom Breaker series
 
-Code supports .NET Standard 2.0 (and builds to executable in .NET Framework 4.7.2 and.NET 5),
+Code supports .NET Standard 2.0 (and builds to executable in .NET Framework 4.7.2 and .NET 6),
 build instructions are available [here](../../../README.md#building-net).
 
 ## Basic usage (on Windows)
@@ -37,16 +37,3 @@ something to do with vfx, also could be animation.
 This processor attempts extraction on all files it receives as input.
 
 This processor uses filenames to determine whether to automatically attempt character / RLE graphics conversion. I only have access to names from PBE and PB:BG. The behaviour can be overridden with the above options.
-
-Header source:
-
-https://hatebin.com/pssgnczaqu
-
-https://pastebin.com/xhwKmqsn
-
-Body source:
-
-https://hatebin.com/iwelojtqqt
-
-https://pastebin.com/LR1mqn36
-
