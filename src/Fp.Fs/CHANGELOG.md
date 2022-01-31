@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Add FileProcessorInfo-accepting Run overloads for FsFormatSingle/FsFormatMulti/Fs
+
 ### Changed
 - Updated Fp dependency to 0.26.0
 - Arg setup now happens in `Processor.Prepare(ProcessorConfiguration?)`

@@ -74,6 +74,15 @@ public partial class FsProcessor
     /// Processes using segmented function.
     /// </summary>
     /// <param name="args">Arguments. If null, only register processor.</param>
+    /// <param name="info">Processor info.</param>
+    /// <typeparam name="T">Processor type.</typeparam>
+    public static void Run<T>(IList<string>? args, FileProcessorInfo? info = null) where T : FsProcessor, new() =>
+        Run(null, args, new GenericNewFsProcessorFactory<T>(info));
+
+    /// <summary>
+    /// Processes using segmented function.
+    /// </summary>
+    /// <param name="args">Arguments. If null, only register processor.</param>
     /// <param name="name">Processor name.</param>
     /// <param name="description">Processor description.</param>
     /// <param name="extensions">Processor extensions.</param>
