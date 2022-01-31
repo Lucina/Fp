@@ -1220,6 +1220,211 @@ references:
   isSpec: "True"
   fullName: Fp.Fallback.Value
   nameWithType: Fallback.Value
+- uid: Fp.FileProcessor
+  name: FileProcessor
+  href: api/Fp/Fp.FileProcessor.html
+  commentId: T:Fp.FileProcessor
+  fullName: Fp.FileProcessor
+  nameWithType: FileProcessor
+- uid: Fp.FileProcessor.AcceptFile(System.String)
+  name: AcceptFile(String)
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_AcceptFile_System_String_
+  commentId: M:Fp.FileProcessor.AcceptFile(System.String)
+  fullName: Fp.FileProcessor.AcceptFile(System.String)
+  nameWithType: FileProcessor.AcceptFile(String)
+- uid: Fp.FileProcessor.AcceptFile*
+  name: AcceptFile
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_AcceptFile_
+  commentId: Overload:Fp.FileProcessor.AcceptFile
+  isSpec: "True"
+  fullName: Fp.FileProcessor.AcceptFile
+  nameWithType: FileProcessor.AcceptFile
+- uid: Fp.FileProcessor.Info
+  name: Info
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_Info
+  commentId: F:Fp.FileProcessor.Info
+  fullName: Fp.FileProcessor.Info
+  nameWithType: FileProcessor.Info
+- uid: Fp.FileProcessor.InputFile
+  name: InputFile
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_InputFile
+  commentId: P:Fp.FileProcessor.InputFile
+  fullName: Fp.FileProcessor.InputFile
+  nameWithType: FileProcessor.InputFile
+- uid: Fp.FileProcessor.InputFile*
+  name: InputFile
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_InputFile_
+  commentId: Overload:Fp.FileProcessor.InputFile
+  isSpec: "True"
+  fullName: Fp.FileProcessor.InputFile
+  nameWithType: FileProcessor.InputFile
+- uid: Fp.FileProcessor.Name
+  name: Name
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_Name
+  commentId: P:Fp.FileProcessor.Name
+  fullName: Fp.FileProcessor.Name
+  nameWithType: FileProcessor.Name
+- uid: Fp.FileProcessor.Name*
+  name: Name
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_Name_
+  commentId: Overload:Fp.FileProcessor.Name
+  isSpec: "True"
+  fullName: Fp.FileProcessor.Name
+  nameWithType: FileProcessor.Name
+- uid: Fp.FileProcessor.NameNoExt
+  name: NameNoExt
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_NameNoExt
+  commentId: P:Fp.FileProcessor.NameNoExt
+  fullName: Fp.FileProcessor.NameNoExt
+  nameWithType: FileProcessor.NameNoExt
+- uid: Fp.FileProcessor.NameNoExt*
+  name: NameNoExt
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_NameNoExt_
+  commentId: Overload:Fp.FileProcessor.NameNoExt
+  isSpec: "True"
+  fullName: Fp.FileProcessor.NameNoExt
+  nameWithType: FileProcessor.NameNoExt
+- uid: Fp.FileProcessor.NamePath
+  name: NamePath
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePath
+  commentId: P:Fp.FileProcessor.NamePath
+  fullName: Fp.FileProcessor.NamePath
+  nameWithType: FileProcessor.NamePath
+- uid: Fp.FileProcessor.NamePath*
+  name: NamePath
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePath_
+  commentId: Overload:Fp.FileProcessor.NamePath
+  isSpec: "True"
+  fullName: Fp.FileProcessor.NamePath
+  nameWithType: FileProcessor.NamePath
+- uid: Fp.FileProcessor.NamePathNoExt
+  name: NamePathNoExt
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePathNoExt
+  commentId: P:Fp.FileProcessor.NamePathNoExt
+  fullName: Fp.FileProcessor.NamePathNoExt
+  nameWithType: FileProcessor.NamePathNoExt
+- uid: Fp.FileProcessor.NamePathNoExt*
+  name: NamePathNoExt
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePathNoExt_
+  commentId: Overload:Fp.FileProcessor.NamePathNoExt
+  isSpec: "True"
+  fullName: Fp.FileProcessor.NamePathNoExt
+  nameWithType: FileProcessor.NamePathNoExt
+- uid: Fp.FileProcessor.Prepare(System.String,Fp.ProcessorConfiguration)
+  name: Prepare(String, ProcessorConfiguration)
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_Prepare_System_String_Fp_ProcessorConfiguration_
+  commentId: M:Fp.FileProcessor.Prepare(System.String,Fp.ProcessorConfiguration)
+  fullName: Fp.FileProcessor.Prepare(System.String, Fp.ProcessorConfiguration)
+  nameWithType: FileProcessor.Prepare(String, ProcessorConfiguration)
+- uid: Fp.FileProcessor.Prepare*
+  name: Prepare
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_Prepare_
+  commentId: Overload:Fp.FileProcessor.Prepare
+  isSpec: "True"
+  fullName: Fp.FileProcessor.Prepare
+  nameWithType: FileProcessor.Prepare
+- uid: Fp.FileProcessor.SelectedExtension
+  name: SelectedExtension
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_SelectedExtension
+  commentId: F:Fp.FileProcessor.SelectedExtension
+  fullName: Fp.FileProcessor.SelectedExtension
+  nameWithType: FileProcessor.SelectedExtension
+- uid: Fp.FileProcessor.ValidateExtension(System.String,System.String@)
+  name: ValidateExtension(String, out String)
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_ValidateExtension_System_String_System_String__
+  commentId: M:Fp.FileProcessor.ValidateExtension(System.String,System.String@)
+  name.vb: ValidateExtension(String, ByRef String)
+  fullName: Fp.FileProcessor.ValidateExtension(System.String, out System.String)
+  fullName.vb: Fp.FileProcessor.ValidateExtension(System.String, ByRef System.String)
+  nameWithType: FileProcessor.ValidateExtension(String, out String)
+  nameWithType.vb: FileProcessor.ValidateExtension(String, ByRef String)
+- uid: Fp.FileProcessor.ValidateExtension*
+  name: ValidateExtension
+  href: api/Fp/Fp.FileProcessor.html#Fp_FileProcessor_ValidateExtension_
+  commentId: Overload:Fp.FileProcessor.ValidateExtension
+  isSpec: "True"
+  fullName: Fp.FileProcessor.ValidateExtension
+  nameWithType: FileProcessor.ValidateExtension
+- uid: Fp.FileProcessorInfo
+  name: FileProcessorInfo
+  href: api/Fp/Fp.FileProcessorInfo.html
+  commentId: T:Fp.FileProcessorInfo
+  fullName: Fp.FileProcessorInfo
+  nameWithType: FileProcessorInfo
+- uid: Fp.FileProcessorInfo.#ctor
+  name: FileProcessorInfo()
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo__ctor
+  commentId: M:Fp.FileProcessorInfo.#ctor
+  fullName: Fp.FileProcessorInfo.FileProcessorInfo()
+  nameWithType: FileProcessorInfo.FileProcessorInfo()
+- uid: Fp.FileProcessorInfo.#ctor(System.String,System.String,System.String,System.String[])
+  name: FileProcessorInfo(String, String, String, String[])
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo__ctor_System_String_System_String_System_String_System_String___
+  commentId: M:Fp.FileProcessorInfo.#ctor(System.String,System.String,System.String,System.String[])
+  name.vb: FileProcessorInfo(String, String, String, String())
+  fullName: Fp.FileProcessorInfo.FileProcessorInfo(System.String, System.String, System.String, System.String[])
+  fullName.vb: Fp.FileProcessorInfo.FileProcessorInfo(System.String, System.String, System.String, System.String())
+  nameWithType: FileProcessorInfo.FileProcessorInfo(String, String, String, String[])
+  nameWithType.vb: FileProcessorInfo.FileProcessorInfo(String, String, String, String())
+- uid: Fp.FileProcessorInfo.#ctor*
+  name: FileProcessorInfo
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo__ctor_
+  commentId: Overload:Fp.FileProcessorInfo.#ctor
+  isSpec: "True"
+  fullName: Fp.FileProcessorInfo.FileProcessorInfo
+  nameWithType: FileProcessorInfo.FileProcessorInfo
+- uid: Fp.FileProcessorInfo.Description
+  name: Description
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Description
+  commentId: P:Fp.FileProcessorInfo.Description
+  fullName: Fp.FileProcessorInfo.Description
+  nameWithType: FileProcessorInfo.Description
+- uid: Fp.FileProcessorInfo.Description*
+  name: Description
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Description_
+  commentId: Overload:Fp.FileProcessorInfo.Description
+  isSpec: "True"
+  fullName: Fp.FileProcessorInfo.Description
+  nameWithType: FileProcessorInfo.Description
+- uid: Fp.FileProcessorInfo.ExtendedDescription
+  name: ExtendedDescription
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_ExtendedDescription
+  commentId: P:Fp.FileProcessorInfo.ExtendedDescription
+  fullName: Fp.FileProcessorInfo.ExtendedDescription
+  nameWithType: FileProcessorInfo.ExtendedDescription
+- uid: Fp.FileProcessorInfo.ExtendedDescription*
+  name: ExtendedDescription
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_ExtendedDescription_
+  commentId: Overload:Fp.FileProcessorInfo.ExtendedDescription
+  isSpec: "True"
+  fullName: Fp.FileProcessorInfo.ExtendedDescription
+  nameWithType: FileProcessorInfo.ExtendedDescription
+- uid: Fp.FileProcessorInfo.Extensions
+  name: Extensions
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Extensions
+  commentId: P:Fp.FileProcessorInfo.Extensions
+  fullName: Fp.FileProcessorInfo.Extensions
+  nameWithType: FileProcessorInfo.Extensions
+- uid: Fp.FileProcessorInfo.Extensions*
+  name: Extensions
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Extensions_
+  commentId: Overload:Fp.FileProcessorInfo.Extensions
+  isSpec: "True"
+  fullName: Fp.FileProcessorInfo.Extensions
+  nameWithType: FileProcessorInfo.Extensions
+- uid: Fp.FileProcessorInfo.Name
+  name: Name
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Name
+  commentId: P:Fp.FileProcessorInfo.Name
+  fullName: Fp.FileProcessorInfo.Name
+  nameWithType: FileProcessorInfo.Name
+- uid: Fp.FileProcessorInfo.Name*
+  name: Name
+  href: api/Fp/Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Name_
+  commentId: Overload:Fp.FileProcessorInfo.Name
+  isSpec: "True"
+  fullName: Fp.FileProcessorInfo.Name
+  nameWithType: FileProcessorInfo.Name
 - uid: Fp.FormatMultiProcessor
   name: FormatMultiProcessor
   href: api/Fp/Fp.FormatMultiProcessor.html
@@ -1314,71 +1519,6 @@ references:
   commentId: T:Fp.FormatProcessor
   fullName: Fp.FormatProcessor
   nameWithType: FormatProcessor
-- uid: Fp.FormatProcessor.InputFile
-  name: InputFile
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_InputFile
-  commentId: P:Fp.FormatProcessor.InputFile
-  fullName: Fp.FormatProcessor.InputFile
-  nameWithType: FormatProcessor.InputFile
-- uid: Fp.FormatProcessor.InputFile*
-  name: InputFile
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_InputFile_
-  commentId: Overload:Fp.FormatProcessor.InputFile
-  isSpec: "True"
-  fullName: Fp.FormatProcessor.InputFile
-  nameWithType: FormatProcessor.InputFile
-- uid: Fp.FormatProcessor.Name
-  name: Name
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_Name
-  commentId: P:Fp.FormatProcessor.Name
-  fullName: Fp.FormatProcessor.Name
-  nameWithType: FormatProcessor.Name
-- uid: Fp.FormatProcessor.Name*
-  name: Name
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_Name_
-  commentId: Overload:Fp.FormatProcessor.Name
-  isSpec: "True"
-  fullName: Fp.FormatProcessor.Name
-  nameWithType: FormatProcessor.Name
-- uid: Fp.FormatProcessor.NameNoExt
-  name: NameNoExt
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_NameNoExt
-  commentId: P:Fp.FormatProcessor.NameNoExt
-  fullName: Fp.FormatProcessor.NameNoExt
-  nameWithType: FormatProcessor.NameNoExt
-- uid: Fp.FormatProcessor.NameNoExt*
-  name: NameNoExt
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_NameNoExt_
-  commentId: Overload:Fp.FormatProcessor.NameNoExt
-  isSpec: "True"
-  fullName: Fp.FormatProcessor.NameNoExt
-  nameWithType: FormatProcessor.NameNoExt
-- uid: Fp.FormatProcessor.NamePath
-  name: NamePath
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_NamePath
-  commentId: P:Fp.FormatProcessor.NamePath
-  fullName: Fp.FormatProcessor.NamePath
-  nameWithType: FormatProcessor.NamePath
-- uid: Fp.FormatProcessor.NamePath*
-  name: NamePath
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_NamePath_
-  commentId: Overload:Fp.FormatProcessor.NamePath
-  isSpec: "True"
-  fullName: Fp.FormatProcessor.NamePath
-  nameWithType: FormatProcessor.NamePath
-- uid: Fp.FormatProcessor.NamePathNoExt
-  name: NamePathNoExt
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_NamePathNoExt
-  commentId: P:Fp.FormatProcessor.NamePathNoExt
-  fullName: Fp.FormatProcessor.NamePathNoExt
-  nameWithType: FormatProcessor.NamePathNoExt
-- uid: Fp.FormatProcessor.NamePathNoExt*
-  name: NamePathNoExt
-  href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_NamePathNoExt_
-  commentId: Overload:Fp.FormatProcessor.NamePathNoExt
-  isSpec: "True"
-  fullName: Fp.FormatProcessor.NamePathNoExt
-  nameWithType: FormatProcessor.NamePathNoExt
 - uid: Fp.FormatProcessor.Prepare(Fp.BufferData{System.Byte},Fp.ProcessorConfiguration)
   name: Prepare(BufferData<Byte>, ProcessorConfiguration)
   href: api/Fp/Fp.FormatProcessor.html#Fp_FormatProcessor_Prepare_Fp_BufferData_System_Byte__Fp_ProcessorConfiguration_
@@ -2328,15 +2468,15 @@ references:
   commentId: T:Fp.Fs.DelegateFsProcessorFactory
   fullName: Fp.Fs.DelegateFsProcessorFactory
   nameWithType: DelegateFsProcessorFactory
-- uid: Fp.Fs.DelegateFsProcessorFactory.#ctor(Fp.Fs.FsProcessorInfo,System.Func{Fp.Fs.FsProcessor})
-  name: DelegateFsProcessorFactory(FsProcessorInfo, Func<FsProcessor>)
-  href: api/Fp.Fs/Fp.Fs.DelegateFsProcessorFactory.html#Fp_Fs_DelegateFsProcessorFactory__ctor_Fp_Fs_FsProcessorInfo_System_Func_Fp_Fs_FsProcessor__
-  commentId: M:Fp.Fs.DelegateFsProcessorFactory.#ctor(Fp.Fs.FsProcessorInfo,System.Func{Fp.Fs.FsProcessor})
-  name.vb: DelegateFsProcessorFactory(FsProcessorInfo, Func(Of FsProcessor))
-  fullName: Fp.Fs.DelegateFsProcessorFactory.DelegateFsProcessorFactory(Fp.Fs.FsProcessorInfo, System.Func<Fp.Fs.FsProcessor>)
-  fullName.vb: Fp.Fs.DelegateFsProcessorFactory.DelegateFsProcessorFactory(Fp.Fs.FsProcessorInfo, System.Func(Of Fp.Fs.FsProcessor))
-  nameWithType: DelegateFsProcessorFactory.DelegateFsProcessorFactory(FsProcessorInfo, Func<FsProcessor>)
-  nameWithType.vb: DelegateFsProcessorFactory.DelegateFsProcessorFactory(FsProcessorInfo, Func(Of FsProcessor))
+- uid: Fp.Fs.DelegateFsProcessorFactory.#ctor(Fp.FileProcessorInfo,System.Func{Fp.Fs.FsProcessor})
+  name: DelegateFsProcessorFactory(FileProcessorInfo, Func<FsProcessor>)
+  href: api/Fp.Fs/Fp.Fs.DelegateFsProcessorFactory.html#Fp_Fs_DelegateFsProcessorFactory__ctor_Fp_FileProcessorInfo_System_Func_Fp_Fs_FsProcessor__
+  commentId: M:Fp.Fs.DelegateFsProcessorFactory.#ctor(Fp.FileProcessorInfo,System.Func{Fp.Fs.FsProcessor})
+  name.vb: DelegateFsProcessorFactory(FileProcessorInfo, Func(Of FsProcessor))
+  fullName: Fp.Fs.DelegateFsProcessorFactory.DelegateFsProcessorFactory(Fp.FileProcessorInfo, System.Func<Fp.Fs.FsProcessor>)
+  fullName.vb: Fp.Fs.DelegateFsProcessorFactory.DelegateFsProcessorFactory(Fp.FileProcessorInfo, System.Func(Of Fp.Fs.FsProcessor))
+  nameWithType: DelegateFsProcessorFactory.DelegateFsProcessorFactory(FileProcessorInfo, Func<FsProcessor>)
+  nameWithType.vb: DelegateFsProcessorFactory.DelegateFsProcessorFactory(FileProcessorInfo, Func(Of FsProcessor))
 - uid: Fp.Fs.DelegateFsProcessorFactory.#ctor*
   name: DelegateFsProcessorFactory
   href: api/Fp.Fs/Fp.Fs.DelegateFsProcessorFactory.html#Fp_Fs_DelegateFsProcessorFactory__ctor_
@@ -2524,6 +2664,19 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FormatMultiProcessorFsWrapper.FormatMultiProcessorFsWrapper
   nameWithType: FormatMultiProcessorFsWrapper.FormatMultiProcessorFsWrapper
+- uid: Fp.Fs.FormatMultiProcessorFsWrapper.Cleanup(System.Boolean)
+  name: Cleanup(Boolean)
+  href: api/Fp.Fs/Fp.Fs.FormatMultiProcessorFsWrapper.html#Fp_Fs_FormatMultiProcessorFsWrapper_Cleanup_System_Boolean_
+  commentId: M:Fp.Fs.FormatMultiProcessorFsWrapper.Cleanup(System.Boolean)
+  fullName: Fp.Fs.FormatMultiProcessorFsWrapper.Cleanup(System.Boolean)
+  nameWithType: FormatMultiProcessorFsWrapper.Cleanup(Boolean)
+- uid: Fp.Fs.FormatMultiProcessorFsWrapper.Cleanup*
+  name: Cleanup
+  href: api/Fp.Fs/Fp.Fs.FormatMultiProcessorFsWrapper.html#Fp_Fs_FormatMultiProcessorFsWrapper_Cleanup_
+  commentId: Overload:Fp.Fs.FormatMultiProcessorFsWrapper.Cleanup
+  isSpec: "True"
+  fullName: Fp.Fs.FormatMultiProcessorFsWrapper.Cleanup
+  nameWithType: FormatMultiProcessorFsWrapper.Cleanup
 - uid: Fp.Fs.FormatMultiProcessorFsWrapper.ProcessSegmentedImpl
   name: ProcessSegmentedImpl()
   href: api/Fp.Fs/Fp.Fs.FormatMultiProcessorFsWrapper.html#Fp_Fs_FormatMultiProcessorFsWrapper_ProcessSegmentedImpl
@@ -2582,6 +2735,19 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FormatSingleProcessorFsWrapper.FormatSingleProcessorFsWrapper
   nameWithType: FormatSingleProcessorFsWrapper.FormatSingleProcessorFsWrapper
+- uid: Fp.Fs.FormatSingleProcessorFsWrapper.Cleanup(System.Boolean)
+  name: Cleanup(Boolean)
+  href: api/Fp.Fs/Fp.Fs.FormatSingleProcessorFsWrapper.html#Fp_Fs_FormatSingleProcessorFsWrapper_Cleanup_System_Boolean_
+  commentId: M:Fp.Fs.FormatSingleProcessorFsWrapper.Cleanup(System.Boolean)
+  fullName: Fp.Fs.FormatSingleProcessorFsWrapper.Cleanup(System.Boolean)
+  nameWithType: FormatSingleProcessorFsWrapper.Cleanup(Boolean)
+- uid: Fp.Fs.FormatSingleProcessorFsWrapper.Cleanup*
+  name: Cleanup
+  href: api/Fp.Fs/Fp.Fs.FormatSingleProcessorFsWrapper.html#Fp_Fs_FormatSingleProcessorFsWrapper_Cleanup_
+  commentId: Overload:Fp.Fs.FormatSingleProcessorFsWrapper.Cleanup
+  isSpec: "True"
+  fullName: Fp.Fs.FormatSingleProcessorFsWrapper.Cleanup
+  nameWithType: FormatSingleProcessorFsWrapper.Cleanup
 - uid: Fp.Fs.FormatSingleProcessorFsWrapper.ProcessSegmentedImpl
   name: ProcessSegmentedImpl()
   href: api/Fp.Fs/Fp.Fs.FormatSingleProcessorFsWrapper.html#Fp_Fs_FormatSingleProcessorFsWrapper_ProcessSegmentedImpl
@@ -2634,6 +2800,15 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FsFormatMultiProcessor.Run
   nameWithType: FsFormatMultiProcessor.Run
+- uid: Fp.Fs.FsFormatMultiProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name: Run<T>(IList<String>, FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsFormatMultiProcessor.html#Fp_Fs_FsFormatMultiProcessor_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsFormatMultiProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name.vb: Run(Of T)(IList(Of String), FileProcessorInfo)
+  fullName: Fp.Fs.FsFormatMultiProcessor.Run<T>(System.Collections.Generic.IList<System.String>, Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.FsFormatMultiProcessor.Run(Of T)(System.Collections.Generic.IList(Of System.String), Fp.FileProcessorInfo)
+  nameWithType: FsFormatMultiProcessor.Run<T>(IList<String>, FileProcessorInfo)
+  nameWithType.vb: FsFormatMultiProcessor.Run(Of T)(IList(Of String), FileProcessorInfo)
 - uid: Fp.Fs.FsFormatMultiProcessor.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
   name: Run<T>(IList<String>, String, String, String[])
   href: api/Fp.Fs/Fp.Fs.FsFormatMultiProcessor.html#Fp_Fs_FsFormatMultiProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___
@@ -2656,6 +2831,15 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FsFormatSingleProcessor.Run
   nameWithType: FsFormatSingleProcessor.Run
+- uid: Fp.Fs.FsFormatSingleProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name: Run<T>(IList<String>, FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsFormatSingleProcessor.html#Fp_Fs_FsFormatSingleProcessor_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsFormatSingleProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name.vb: Run(Of T)(IList(Of String), FileProcessorInfo)
+  fullName: Fp.Fs.FsFormatSingleProcessor.Run<T>(System.Collections.Generic.IList<System.String>, Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.FsFormatSingleProcessor.Run(Of T)(System.Collections.Generic.IList(Of System.String), Fp.FileProcessorInfo)
+  nameWithType: FsFormatSingleProcessor.Run<T>(IList<String>, FileProcessorInfo)
+  nameWithType.vb: FsFormatSingleProcessor.Run(Of T)(IList(Of String), FileProcessorInfo)
 - uid: Fp.Fs.FsFormatSingleProcessor.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
   name: Run<T>(IList<String>, String, String, String[])
   href: api/Fp.Fs/Fp.Fs.FsFormatSingleProcessor.html#Fp_Fs_FsFormatSingleProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___
@@ -2665,25 +2849,48 @@ references:
   fullName.vb: Fp.Fs.FsFormatSingleProcessor.Run(Of T)(System.Collections.Generic.IList(Of System.String), System.String, System.String, System.String())
   nameWithType: FsFormatSingleProcessor.Run<T>(IList<String>, String, String, String[])
   nameWithType.vb: FsFormatSingleProcessor.Run(Of T)(IList(Of String), String, String, String())
+- uid: Fp.Fs.FsFormatSingleProcessor`1
+  name: FsFormatSingleProcessor<T>
+  href: api/Fp.Fs/Fp.Fs.FsFormatSingleProcessor-1.html
+  commentId: T:Fp.Fs.FsFormatSingleProcessor`1
+  name.vb: FsFormatSingleProcessor(Of T)
+  fullName: Fp.Fs.FsFormatSingleProcessor<T>
+  fullName.vb: Fp.Fs.FsFormatSingleProcessor(Of T)
+  nameWithType: FsFormatSingleProcessor<T>
+  nameWithType.vb: FsFormatSingleProcessor(Of T)
+- uid: Fp.Fs.FsFormatSingleProcessor`1.Run*
+  name: Run
+  href: api/Fp.Fs/Fp.Fs.FsFormatSingleProcessor-1.html#Fp_Fs_FsFormatSingleProcessor_1_Run_
+  commentId: Overload:Fp.Fs.FsFormatSingleProcessor`1.Run
+  isSpec: "True"
+  fullName: Fp.Fs.FsFormatSingleProcessor<T>.Run
+  fullName.vb: Fp.Fs.FsFormatSingleProcessor(Of T).Run
+  nameWithType: FsFormatSingleProcessor<T>.Run
+  nameWithType.vb: FsFormatSingleProcessor(Of T).Run
+- uid: Fp.Fs.FsFormatSingleProcessor`1.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name: Run<TProcessor>(IList<String>, FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsFormatSingleProcessor-1.html#Fp_Fs_FsFormatSingleProcessor_1_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsFormatSingleProcessor`1.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name.vb: Run(Of TProcessor)(IList(Of String), FileProcessorInfo)
+  fullName: Fp.Fs.FsFormatSingleProcessor<T>.Run<TProcessor>(System.Collections.Generic.IList<System.String>, Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.FsFormatSingleProcessor(Of T).Run(Of TProcessor)(System.Collections.Generic.IList(Of System.String), Fp.FileProcessorInfo)
+  nameWithType: FsFormatSingleProcessor<T>.Run<TProcessor>(IList<String>, FileProcessorInfo)
+  nameWithType.vb: FsFormatSingleProcessor(Of T).Run(Of TProcessor)(IList(Of String), FileProcessorInfo)
+- uid: Fp.Fs.FsFormatSingleProcessor`1.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
+  name: Run<TProcessor>(IList<String>, String, String, String[])
+  href: api/Fp.Fs/Fp.Fs.FsFormatSingleProcessor-1.html#Fp_Fs_FsFormatSingleProcessor_1_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___
+  commentId: M:Fp.Fs.FsFormatSingleProcessor`1.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
+  name.vb: Run(Of TProcessor)(IList(Of String), String, String, String())
+  fullName: Fp.Fs.FsFormatSingleProcessor<T>.Run<TProcessor>(System.Collections.Generic.IList<System.String>, System.String, System.String, System.String[])
+  fullName.vb: Fp.Fs.FsFormatSingleProcessor(Of T).Run(Of TProcessor)(System.Collections.Generic.IList(Of System.String), System.String, System.String, System.String())
+  nameWithType: FsFormatSingleProcessor<T>.Run<TProcessor>(IList<String>, String, String, String[])
+  nameWithType.vb: FsFormatSingleProcessor(Of T).Run(Of TProcessor)(IList(Of String), String, String, String())
 - uid: Fp.Fs.FsProcessor
   name: FsProcessor
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html
   commentId: T:Fp.Fs.FsProcessor
   fullName: Fp.Fs.FsProcessor
   nameWithType: FsProcessor
-- uid: Fp.Fs.FsProcessor.AcceptFile(System.String)
-  name: AcceptFile(String)
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_AcceptFile_System_String_
-  commentId: M:Fp.Fs.FsProcessor.AcceptFile(System.String)
-  fullName: Fp.Fs.FsProcessor.AcceptFile(System.String)
-  nameWithType: FsProcessor.AcceptFile(String)
-- uid: Fp.Fs.FsProcessor.AcceptFile*
-  name: AcceptFile
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_AcceptFile_
-  commentId: Overload:Fp.Fs.FsProcessor.AcceptFile
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessor.AcceptFile
-  nameWithType: FsProcessor.AcceptFile
 - uid: Fp.Fs.FsProcessor.Current
   name: Current
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Current
@@ -2841,12 +3048,6 @@ references:
   commentId: F:Fp.Fs.FsProcessor.InputDirectory
   fullName: Fp.Fs.FsProcessor.InputDirectory
   nameWithType: FsProcessor.InputDirectory
-- uid: Fp.Fs.FsProcessor.InputFile
-  name: InputFile
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_InputFile
-  commentId: F:Fp.Fs.FsProcessor.InputFile
-  fullName: Fp.Fs.FsProcessor.InputFile
-  nameWithType: FsProcessor.InputFile
 - uid: Fp.Fs.FsProcessor.InputRootDirectory
   name: InputRootDirectory
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_InputRootDirectory
@@ -2898,58 +3099,6 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FsProcessor.MkParents
   nameWithType: FsProcessor.MkParents
-- uid: Fp.Fs.FsProcessor.Name
-  name: Name
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Name
-  commentId: P:Fp.Fs.FsProcessor.Name
-  fullName: Fp.Fs.FsProcessor.Name
-  nameWithType: FsProcessor.Name
-- uid: Fp.Fs.FsProcessor.Name*
-  name: Name
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Name_
-  commentId: Overload:Fp.Fs.FsProcessor.Name
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessor.Name
-  nameWithType: FsProcessor.Name
-- uid: Fp.Fs.FsProcessor.NameNoExt
-  name: NameNoExt
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NameNoExt
-  commentId: P:Fp.Fs.FsProcessor.NameNoExt
-  fullName: Fp.Fs.FsProcessor.NameNoExt
-  nameWithType: FsProcessor.NameNoExt
-- uid: Fp.Fs.FsProcessor.NameNoExt*
-  name: NameNoExt
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NameNoExt_
-  commentId: Overload:Fp.Fs.FsProcessor.NameNoExt
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessor.NameNoExt
-  nameWithType: FsProcessor.NameNoExt
-- uid: Fp.Fs.FsProcessor.NamePath
-  name: NamePath
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NamePath
-  commentId: P:Fp.Fs.FsProcessor.NamePath
-  fullName: Fp.Fs.FsProcessor.NamePath
-  nameWithType: FsProcessor.NamePath
-- uid: Fp.Fs.FsProcessor.NamePath*
-  name: NamePath
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NamePath_
-  commentId: Overload:Fp.Fs.FsProcessor.NamePath
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessor.NamePath
-  nameWithType: FsProcessor.NamePath
-- uid: Fp.Fs.FsProcessor.NamePathNoExt
-  name: NamePathNoExt
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NamePathNoExt
-  commentId: P:Fp.Fs.FsProcessor.NamePathNoExt
-  fullName: Fp.Fs.FsProcessor.NamePathNoExt
-  nameWithType: FsProcessor.NamePathNoExt
-- uid: Fp.Fs.FsProcessor.NamePathNoExt*
-  name: NamePathNoExt
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NamePathNoExt_
-  commentId: Overload:Fp.Fs.FsProcessor.NamePathNoExt
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessor.NamePathNoExt
-  nameWithType: FsProcessor.NamePathNoExt
 - uid: Fp.Fs.FsProcessor.NO_EXECUTE_CLI
   name: NO_EXECUTE_CLI
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NO_EXECUTE_CLI
@@ -3313,15 +3462,15 @@ references:
   fullName.vb: Fp.Fs.FsProcessor.Run(Fp.Fs.FileSystemSource, System.Collections.Generic.IList(Of System.String), Fp.Fs.FsProcessorFactory())
   nameWithType: FsProcessor.Run(FileSystemSource, IList<String>, FsProcessorFactory[])
   nameWithType.vb: FsProcessor.Run(FileSystemSource, IList(Of String), FsProcessorFactory())
-- uid: Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorInfo)
-  name: Run(Action, IList<String>, FsProcessorInfo)
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_
-  commentId: M:Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorInfo)
-  name.vb: Run(Action, IList(Of String), FsProcessorInfo)
-  fullName: Fp.Fs.FsProcessor.Run(System.Action, System.Collections.Generic.IList<System.String>, Fp.Fs.FsProcessorInfo)
-  fullName.vb: Fp.Fs.FsProcessor.Run(System.Action, System.Collections.Generic.IList(Of System.String), Fp.Fs.FsProcessorInfo)
-  nameWithType: FsProcessor.Run(Action, IList<String>, FsProcessorInfo)
-  nameWithType.vb: FsProcessor.Run(Action, IList(Of String), FsProcessorInfo)
+- uid: Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name: Run(Action, IList<String>, FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name.vb: Run(Action, IList(Of String), FileProcessorInfo)
+  fullName: Fp.Fs.FsProcessor.Run(System.Action, System.Collections.Generic.IList<System.String>, Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.FsProcessor.Run(System.Action, System.Collections.Generic.IList(Of System.String), Fp.FileProcessorInfo)
+  nameWithType: FsProcessor.Run(Action, IList<String>, FileProcessorInfo)
+  nameWithType.vb: FsProcessor.Run(Action, IList(Of String), FileProcessorInfo)
 - uid: Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
   name: Run(Action, IList<String>, String, String, String[])
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___
@@ -3331,15 +3480,15 @@ references:
   fullName.vb: Fp.Fs.FsProcessor.Run(System.Action, System.Collections.Generic.IList(Of System.String), System.String, System.String, System.String())
   nameWithType: FsProcessor.Run(Action, IList<String>, String, String, String[])
   nameWithType.vb: FsProcessor.Run(Action, IList(Of String), String, String, String())
-- uid: Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorInfo)
-  name: Run(Func<IEnumerable<Data>>, IList<String>, FsProcessorInfo)
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_
-  commentId: M:Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorInfo)
-  name.vb: Run(Func(Of IEnumerable(Of Data)), IList(Of String), FsProcessorInfo)
-  fullName: Fp.Fs.FsProcessor.Run(System.Func<System.Collections.Generic.IEnumerable<Fp.Data>>, System.Collections.Generic.IList<System.String>, Fp.Fs.FsProcessorInfo)
-  fullName.vb: Fp.Fs.FsProcessor.Run(System.Func(Of System.Collections.Generic.IEnumerable(Of Fp.Data)), System.Collections.Generic.IList(Of System.String), Fp.Fs.FsProcessorInfo)
-  nameWithType: FsProcessor.Run(Func<IEnumerable<Data>>, IList<String>, FsProcessorInfo)
-  nameWithType.vb: FsProcessor.Run(Func(Of IEnumerable(Of Data)), IList(Of String), FsProcessorInfo)
+- uid: Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name: Run(Func<IEnumerable<Data>>, IList<String>, FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name.vb: Run(Func(Of IEnumerable(Of Data)), IList(Of String), FileProcessorInfo)
+  fullName: Fp.Fs.FsProcessor.Run(System.Func<System.Collections.Generic.IEnumerable<Fp.Data>>, System.Collections.Generic.IList<System.String>, Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.FsProcessor.Run(System.Func(Of System.Collections.Generic.IEnumerable(Of Fp.Data)), System.Collections.Generic.IList(Of System.String), Fp.FileProcessorInfo)
+  nameWithType: FsProcessor.Run(Func<IEnumerable<Data>>, IList<String>, FileProcessorInfo)
+  nameWithType.vb: FsProcessor.Run(Func(Of IEnumerable(Of Data)), IList(Of String), FileProcessorInfo)
 - uid: Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
   name: Run(Func<IEnumerable<Data>>, IList<String>, String, String, String[])
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__System_String_System_String_System_String___
@@ -3356,6 +3505,15 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FsProcessor.Run
   nameWithType: FsProcessor.Run
+- uid: Fp.Fs.FsProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name: Run<T>(IList<String>, FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)
+  name.vb: Run(Of T)(IList(Of String), FileProcessorInfo)
+  fullName: Fp.Fs.FsProcessor.Run<T>(System.Collections.Generic.IList<System.String>, Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.FsProcessor.Run(Of T)(System.Collections.Generic.IList(Of System.String), Fp.FileProcessorInfo)
+  nameWithType: FsProcessor.Run<T>(IList<String>, FileProcessorInfo)
+  nameWithType.vb: FsProcessor.Run(Of T)(IList(Of String), FileProcessorInfo)
 - uid: Fp.Fs.FsProcessor.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])
   name: Run<T>(IList<String>, String, String, String[])
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___
@@ -3365,12 +3523,6 @@ references:
   fullName.vb: Fp.Fs.FsProcessor.Run(Of T)(System.Collections.Generic.IList(Of System.String), System.String, System.String, System.String())
   nameWithType: FsProcessor.Run<T>(IList<String>, String, String, String[])
   nameWithType.vb: FsProcessor.Run(Of T)(IList(Of String), String, String, String())
-- uid: Fp.Fs.FsProcessor.SelectedExtension
-  name: SelectedExtension
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_SelectedExtension
-  commentId: F:Fp.Fs.FsProcessor.SelectedExtension
-  fullName: Fp.Fs.FsProcessor.SelectedExtension
-  nameWithType: FsProcessor.SelectedExtension
 - uid: Fp.Fs.FsProcessor.ShieldDown
   name: ShieldDown()
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_ShieldDown
@@ -3423,28 +3575,6 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FsProcessor.ShieldUp
   nameWithType: FsProcessor.ShieldUp
-- uid: Fp.Fs.FsProcessor.Source
-  name: Source
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Source
-  commentId: F:Fp.Fs.FsProcessor.Source
-  fullName: Fp.Fs.FsProcessor.Source
-  nameWithType: FsProcessor.Source
-- uid: Fp.Fs.FsProcessor.ValidateExtension(System.String,System.String@)
-  name: ValidateExtension(String, out String)
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_ValidateExtension_System_String_System_String__
-  commentId: M:Fp.Fs.FsProcessor.ValidateExtension(System.String,System.String@)
-  name.vb: ValidateExtension(String, ByRef String)
-  fullName: Fp.Fs.FsProcessor.ValidateExtension(System.String, out System.String)
-  fullName.vb: Fp.Fs.FsProcessor.ValidateExtension(System.String, ByRef System.String)
-  nameWithType: FsProcessor.ValidateExtension(String, out String)
-  nameWithType.vb: FsProcessor.ValidateExtension(String, ByRef String)
-- uid: Fp.Fs.FsProcessor.ValidateExtension*
-  name: ValidateExtension
-  href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_ValidateExtension_
-  commentId: Overload:Fp.Fs.FsProcessor.ValidateExtension
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessor.ValidateExtension
-  nameWithType: FsProcessor.ValidateExtension
 - uid: Fp.Fs.FsProcessor.WorkerId
   name: WorkerId
   href: api/Fp.Fs/Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_WorkerId
@@ -3457,12 +3587,12 @@ references:
   commentId: T:Fp.Fs.FsProcessorFactory
   fullName: Fp.Fs.FsProcessorFactory
   nameWithType: FsProcessorFactory
-- uid: Fp.Fs.FsProcessorFactory.#ctor(Fp.Fs.FsProcessorInfo)
-  name: FsProcessorFactory(FsProcessorInfo)
-  href: api/Fp.Fs/Fp.Fs.FsProcessorFactory.html#Fp_Fs_FsProcessorFactory__ctor_Fp_Fs_FsProcessorInfo_
-  commentId: M:Fp.Fs.FsProcessorFactory.#ctor(Fp.Fs.FsProcessorInfo)
-  fullName: Fp.Fs.FsProcessorFactory.FsProcessorFactory(Fp.Fs.FsProcessorInfo)
-  nameWithType: FsProcessorFactory.FsProcessorFactory(FsProcessorInfo)
+- uid: Fp.Fs.FsProcessorFactory.#ctor(Fp.FileProcessorInfo)
+  name: FsProcessorFactory(FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.FsProcessorFactory.html#Fp_Fs_FsProcessorFactory__ctor_Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.FsProcessorFactory.#ctor(Fp.FileProcessorInfo)
+  fullName: Fp.Fs.FsProcessorFactory.FsProcessorFactory(Fp.FileProcessorInfo)
+  nameWithType: FsProcessorFactory.FsProcessorFactory(FileProcessorInfo)
 - uid: Fp.Fs.FsProcessorFactory.#ctor*
   name: FsProcessorFactory
   href: api/Fp.Fs/Fp.Fs.FsProcessorFactory.html#Fp_Fs_FsProcessorFactory__ctor_
@@ -3496,86 +3626,6 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.FsProcessorFactory.Info
   nameWithType: FsProcessorFactory.Info
-- uid: Fp.Fs.FsProcessorInfo
-  name: FsProcessorInfo
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html
-  commentId: T:Fp.Fs.FsProcessorInfo
-  fullName: Fp.Fs.FsProcessorInfo
-  nameWithType: FsProcessorInfo
-- uid: Fp.Fs.FsProcessorInfo.#ctor
-  name: FsProcessorInfo()
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo__ctor
-  commentId: M:Fp.Fs.FsProcessorInfo.#ctor
-  fullName: Fp.Fs.FsProcessorInfo.FsProcessorInfo()
-  nameWithType: FsProcessorInfo.FsProcessorInfo()
-- uid: Fp.Fs.FsProcessorInfo.#ctor(System.String,System.String,System.String,System.String[])
-  name: FsProcessorInfo(String, String, String, String[])
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo__ctor_System_String_System_String_System_String_System_String___
-  commentId: M:Fp.Fs.FsProcessorInfo.#ctor(System.String,System.String,System.String,System.String[])
-  name.vb: FsProcessorInfo(String, String, String, String())
-  fullName: Fp.Fs.FsProcessorInfo.FsProcessorInfo(System.String, System.String, System.String, System.String[])
-  fullName.vb: Fp.Fs.FsProcessorInfo.FsProcessorInfo(System.String, System.String, System.String, System.String())
-  nameWithType: FsProcessorInfo.FsProcessorInfo(String, String, String, String[])
-  nameWithType.vb: FsProcessorInfo.FsProcessorInfo(String, String, String, String())
-- uid: Fp.Fs.FsProcessorInfo.#ctor*
-  name: FsProcessorInfo
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo__ctor_
-  commentId: Overload:Fp.Fs.FsProcessorInfo.#ctor
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessorInfo.FsProcessorInfo
-  nameWithType: FsProcessorInfo.FsProcessorInfo
-- uid: Fp.Fs.FsProcessorInfo.Description
-  name: Description
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Description
-  commentId: P:Fp.Fs.FsProcessorInfo.Description
-  fullName: Fp.Fs.FsProcessorInfo.Description
-  nameWithType: FsProcessorInfo.Description
-- uid: Fp.Fs.FsProcessorInfo.Description*
-  name: Description
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Description_
-  commentId: Overload:Fp.Fs.FsProcessorInfo.Description
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessorInfo.Description
-  nameWithType: FsProcessorInfo.Description
-- uid: Fp.Fs.FsProcessorInfo.ExtendedDescription
-  name: ExtendedDescription
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_ExtendedDescription
-  commentId: P:Fp.Fs.FsProcessorInfo.ExtendedDescription
-  fullName: Fp.Fs.FsProcessorInfo.ExtendedDescription
-  nameWithType: FsProcessorInfo.ExtendedDescription
-- uid: Fp.Fs.FsProcessorInfo.ExtendedDescription*
-  name: ExtendedDescription
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_ExtendedDescription_
-  commentId: Overload:Fp.Fs.FsProcessorInfo.ExtendedDescription
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessorInfo.ExtendedDescription
-  nameWithType: FsProcessorInfo.ExtendedDescription
-- uid: Fp.Fs.FsProcessorInfo.Extensions
-  name: Extensions
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Extensions
-  commentId: P:Fp.Fs.FsProcessorInfo.Extensions
-  fullName: Fp.Fs.FsProcessorInfo.Extensions
-  nameWithType: FsProcessorInfo.Extensions
-- uid: Fp.Fs.FsProcessorInfo.Extensions*
-  name: Extensions
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Extensions_
-  commentId: Overload:Fp.Fs.FsProcessorInfo.Extensions
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessorInfo.Extensions
-  nameWithType: FsProcessorInfo.Extensions
-- uid: Fp.Fs.FsProcessorInfo.Name
-  name: Name
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Name
-  commentId: P:Fp.Fs.FsProcessorInfo.Name
-  fullName: Fp.Fs.FsProcessorInfo.Name
-  nameWithType: FsProcessorInfo.Name
-- uid: Fp.Fs.FsProcessorInfo.Name*
-  name: Name
-  href: api/Fp.Fs/Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Name_
-  commentId: Overload:Fp.Fs.FsProcessorInfo.Name
-  isSpec: "True"
-  fullName: Fp.Fs.FsProcessorInfo.Name
-  nameWithType: FsProcessorInfo.Name
 - uid: Fp.Fs.FsProcessorInfoAttribute
   name: FsProcessorInfoAttribute
   href: api/Fp.Fs/Fp.Fs.FsProcessorInfoAttribute.html
@@ -3616,15 +3666,15 @@ references:
   commentId: F:Fp.Fs.FsProcessorSource.Factories
   fullName: Fp.Fs.FsProcessorSource.Factories
   nameWithType: FsProcessorSource.Factories
-- uid: Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate{Fp.Fs.FsProcessorInfo})
-  name: GetProcessors(Predicate<FsProcessorInfo>)
-  href: api/Fp.Fs/Fp.Fs.FsProcessorSource.html#Fp_Fs_FsProcessorSource_GetProcessors_System_Predicate_Fp_Fs_FsProcessorInfo__
-  commentId: M:Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate{Fp.Fs.FsProcessorInfo})
-  name.vb: GetProcessors(Predicate(Of FsProcessorInfo))
-  fullName: Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate<Fp.Fs.FsProcessorInfo>)
-  fullName.vb: Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate(Of Fp.Fs.FsProcessorInfo))
-  nameWithType: FsProcessorSource.GetProcessors(Predicate<FsProcessorInfo>)
-  nameWithType.vb: FsProcessorSource.GetProcessors(Predicate(Of FsProcessorInfo))
+- uid: Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate{Fp.FileProcessorInfo})
+  name: GetProcessors(Predicate<FileProcessorInfo>)
+  href: api/Fp.Fs/Fp.Fs.FsProcessorSource.html#Fp_Fs_FsProcessorSource_GetProcessors_System_Predicate_Fp_FileProcessorInfo__
+  commentId: M:Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate{Fp.FileProcessorInfo})
+  name.vb: GetProcessors(Predicate(Of FileProcessorInfo))
+  fullName: Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate<Fp.FileProcessorInfo>)
+  fullName.vb: Fp.Fs.FsProcessorSource.GetProcessors(System.Predicate(Of Fp.FileProcessorInfo))
+  nameWithType: FsProcessorSource.GetProcessors(Predicate<FileProcessorInfo>)
+  nameWithType.vb: FsProcessorSource.GetProcessors(Predicate(Of FileProcessorInfo))
 - uid: Fp.Fs.FsProcessorSource.GetProcessors*
   name: GetProcessors
   href: api/Fp.Fs/Fp.Fs.FsProcessorSource.html#Fp_Fs_FsProcessorSource_GetProcessors_
@@ -3650,14 +3700,14 @@ references:
   fullName.vb: Fp.Fs.GenericNewFsProcessorFactory(Of T)
   nameWithType: GenericNewFsProcessorFactory<T>
   nameWithType.vb: GenericNewFsProcessorFactory(Of T)
-- uid: Fp.Fs.GenericNewFsProcessorFactory`1.#ctor(Fp.Fs.FsProcessorInfo)
-  name: GenericNewFsProcessorFactory(FsProcessorInfo)
-  href: api/Fp.Fs/Fp.Fs.GenericNewFsProcessorFactory-1.html#Fp_Fs_GenericNewFsProcessorFactory_1__ctor_Fp_Fs_FsProcessorInfo_
-  commentId: M:Fp.Fs.GenericNewFsProcessorFactory`1.#ctor(Fp.Fs.FsProcessorInfo)
-  fullName: Fp.Fs.GenericNewFsProcessorFactory<T>.GenericNewFsProcessorFactory(Fp.Fs.FsProcessorInfo)
-  fullName.vb: Fp.Fs.GenericNewFsProcessorFactory(Of T).GenericNewFsProcessorFactory(Fp.Fs.FsProcessorInfo)
-  nameWithType: GenericNewFsProcessorFactory<T>.GenericNewFsProcessorFactory(FsProcessorInfo)
-  nameWithType.vb: GenericNewFsProcessorFactory(Of T).GenericNewFsProcessorFactory(FsProcessorInfo)
+- uid: Fp.Fs.GenericNewFsProcessorFactory`1.#ctor(Fp.FileProcessorInfo)
+  name: GenericNewFsProcessorFactory(FileProcessorInfo)
+  href: api/Fp.Fs/Fp.Fs.GenericNewFsProcessorFactory-1.html#Fp_Fs_GenericNewFsProcessorFactory_1__ctor_Fp_FileProcessorInfo_
+  commentId: M:Fp.Fs.GenericNewFsProcessorFactory`1.#ctor(Fp.FileProcessorInfo)
+  fullName: Fp.Fs.GenericNewFsProcessorFactory<T>.GenericNewFsProcessorFactory(Fp.FileProcessorInfo)
+  fullName.vb: Fp.Fs.GenericNewFsProcessorFactory(Of T).GenericNewFsProcessorFactory(Fp.FileProcessorInfo)
+  nameWithType: GenericNewFsProcessorFactory<T>.GenericNewFsProcessorFactory(FileProcessorInfo)
+  nameWithType.vb: GenericNewFsProcessorFactory(Of T).GenericNewFsProcessorFactory(FileProcessorInfo)
 - uid: Fp.Fs.GenericNewFsProcessorFactory`1.#ctor*
   name: GenericNewFsProcessorFactory
   href: api/Fp.Fs/Fp.Fs.GenericNewFsProcessorFactory-1.html#Fp_Fs_GenericNewFsProcessorFactory_1__ctor_

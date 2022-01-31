@@ -80,9 +80,10 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="../Fp/Fp.Processor.html">Processor</a></div>
-    <div class="level2"><span class="xref">FsProcessor</span></div>
-      <div class="level3"><a class="xref" href="Fp.Fs.FormatMultiProcessorFsWrapper.html">FormatMultiProcessorFsWrapper</a></div>
-      <div class="level3"><a class="xref" href="Fp.Fs.FormatSingleProcessorFsWrapper.html">FormatSingleProcessorFsWrapper</a></div>
+    <div class="level2"><a class="xref" href="../Fp/Fp.FileProcessor.html">FileProcessor</a></div>
+    <div class="level3"><span class="xref">FsProcessor</span></div>
+      <div class="level4"><a class="xref" href="Fp.Fs.FormatMultiProcessorFsWrapper.html">FormatMultiProcessorFsWrapper</a></div>
+      <div class="level4"><a class="xref" href="Fp.Fs.FormatSingleProcessorFsWrapper.html">FormatSingleProcessorFsWrapper</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -90,6 +91,36 @@
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_InputFile">FileProcessor.InputFile</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_Name">FileProcessor.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_NameNoExt">FileProcessor.NameNoExt</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePath">FileProcessor.NamePath</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePathNoExt">FileProcessor.NamePathNoExt</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_SelectedExtension">FileProcessor.SelectedExtension</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_Info">FileProcessor.Info</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_Prepare_System_String_Fp_ProcessorConfiguration_">FileProcessor.Prepare(String, ProcessorConfiguration)</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_AcceptFile_System_String_">FileProcessor.AcceptFile(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_ValidateExtension_System_String_System_String__">FileProcessor.ValidateExtension(String, String)</a>
+    </div>
     <div>
       <a class="xref" href="../Fp/Fp.Processor.html#Fp_Processor_Buffer_Fp_FpPath_System_ReadOnlyMemory_System_Byte__">Processor.Buffer(FpPath, ReadOnlyMemory&lt;Byte&gt;)</a>
     </div>
@@ -1550,16 +1581,16 @@
   <h6><strong>Assembly</strong>: Fp.Fs.dll</h6>
   <h5 id="Fp_Fs_FsProcessor_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FsProcessor : Processor, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class FsProcessor : FileProcessor, IDisposable</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Dry.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Dry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Dry.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Dry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L44">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L44">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_Dry" data-uid="Fp.Fs.FsProcessor.Dry">Dry</h4>
   <div class="markdown level1 summary"><p>Hint for segmented processor to perform dry-run.</p>
@@ -1586,10 +1617,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_FileSystem.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FileSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_FileSystem.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FileSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L89">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L79">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_FileSystem" data-uid="Fp.Fs.FsProcessor.FileSystem">FileSystem</h4>
   <div class="markdown level1 summary"><p>Filesystem provider for this processor.</p>
@@ -1616,10 +1647,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_InputDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.InputDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_InputDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.InputDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L59">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L59">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_InputDirectory" data-uid="Fp.Fs.FsProcessor.InputDirectory">InputDirectory</h4>
   <div class="markdown level1 summary"><p>Current input directory.</p>
@@ -1646,40 +1677,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_InputFile.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.InputFile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_InputRootDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.InputRootDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L64">View Source</a>
-  </span>
-  <h4 id="Fp_Fs_FsProcessor_InputFile" data-uid="Fp.Fs.FsProcessor.InputFile">InputFile</h4>
-  <div class="markdown level1 summary"><p>Current input file.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string InputFile</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_InputRootDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.InputRootDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L54">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L54">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_InputRootDirectory" data-uid="Fp.Fs.FsProcessor.InputRootDirectory">InputRootDirectory</h4>
   <div class="markdown level1 summary"><p>Root input directory.</p>
@@ -1706,10 +1707,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Lock.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Lock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Lock.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Lock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L99">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L89">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_Lock" data-uid="Fp.Fs.FsProcessor.Lock">Lock</h4>
   <div class="markdown level1 summary"><p>Set by subclasses to indicate if no more processors
@@ -1740,10 +1741,10 @@ should be run on the current input file.</p>
 </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_NO_EXECUTE_CLI.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NO_EXECUTE_CLI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_NO_EXECUTE_CLI.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NO_EXECUTE_CLI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L13">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L13">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_NO_EXECUTE_CLI" data-uid="Fp.Fs.FsProcessor.NO_EXECUTE_CLI">NO_EXECUTE_CLI</h4>
   <div class="markdown level1 summary"><p>Keyword arg for stopping cli execution.</p>
@@ -1770,10 +1771,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputCounter.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputCounter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputCounter.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputCounter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L84">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L74">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_OutputCounter" data-uid="Fp.Fs.FsProcessor.OutputCounter">OutputCounter</h4>
   <div class="markdown level1 summary"><p>Current output file index.</p>
@@ -1800,10 +1801,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L79">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L69">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_OutputDirectory" data-uid="Fp.Fs.FsProcessor.OutputDirectory">OutputDirectory</h4>
   <div class="markdown level1 summary"><p>Current output directory.</p>
@@ -1830,10 +1831,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputRootDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputRootDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputRootDirectory.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputRootDirectory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L74">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L64">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_OutputRootDirectory" data-uid="Fp.Fs.FsProcessor.OutputRootDirectory">OutputRootDirectory</h4>
   <div class="markdown level1 summary"><p>Root output directory.</p>
@@ -1860,10 +1861,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Registered.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Registered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Registered.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Registered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L18">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L18">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_Registered" data-uid="Fp.Fs.FsProcessor.Registered">Registered</h4>
   <div class="markdown level1 summary"><p>Registered scripting processors.</p>
@@ -1890,70 +1891,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_SelectedExtension.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.SelectedExtension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_WorkerId.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.WorkerId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L69">View Source</a>
-  </span>
-  <h4 id="Fp_Fs_FsProcessor_SelectedExtension" data-uid="Fp.Fs.FsProcessor.SelectedExtension">SelectedExtension</h4>
-  <div class="markdown level1 summary"><p>Selected file extension from input file, if available.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SelectedExtension</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Source.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Source%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L134">View Source</a>
-  </span>
-  <h4 id="Fp_Fs_FsProcessor_Source" data-uid="Fp.Fs.FsProcessor.Source">Source</h4>
-  <div class="markdown level1 summary"><p>Origin factory for this processor, if available.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FsProcessorFactory Source</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Fp.Fs.FsProcessorFactory.html">FsProcessorFactory</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_WorkerId.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.WorkerId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L49">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L49">View Source</a>
   </span>
   <h4 id="Fp_Fs_FsProcessor_WorkerId" data-uid="Fp.Fs.FsProcessor.WorkerId">WorkerId</h4>
   <div class="markdown level1 summary"><p>ID of worker thread processor is using.</p>
@@ -1982,10 +1923,10 @@ should be run on the current input file.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Current.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Current.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Current%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L25">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L25">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Current_" data-uid="Fp.Fs.FsProcessor.Current*"></a>
   <h4 id="Fp_Fs_FsProcessor_Current" data-uid="Fp.Fs.FsProcessor.Current">Current</h4>
@@ -2013,10 +1954,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_FilePath.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FilePath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_FilePath.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FilePath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L104">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L94">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_FilePath_" data-uid="Fp.Fs.FsProcessor.FilePath*"></a>
   <h4 id="Fp_Fs_FsProcessor_FilePath" data-uid="Fp.Fs.FsProcessor.FilePath">FilePath</h4>
@@ -2044,10 +1985,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_FilePathNoExt.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FilePathNoExt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_FilePathNoExt.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FilePathNoExt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L109">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L99">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_FilePathNoExt_" data-uid="Fp.Fs.FsProcessor.FilePathNoExt*"></a>
   <h4 id="Fp_Fs_FsProcessor_FilePathNoExt" data-uid="Fp.Fs.FsProcessor.FilePathNoExt">FilePathNoExt</h4>
@@ -2075,10 +2016,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_FsInstance.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FsInstance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_FsInstance.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.FsInstance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L37">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L37">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_FsInstance_" data-uid="Fp.Fs.FsProcessor.FsInstance*"></a>
   <h4 id="Fp_Fs_FsProcessor_FsInstance" data-uid="Fp.Fs.FsProcessor.FsInstance">FsInstance</h4>
@@ -2106,134 +2047,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Name.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_NullableCurrent.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NullableCurrent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L114">View Source</a>
-  </span>
-  <a id="Fp_Fs_FsProcessor_Name_" data-uid="Fp.Fs.FsProcessor.Name*"></a>
-  <h4 id="Fp_Fs_FsProcessor_Name" data-uid="Fp.Fs.FsProcessor.Name">Name</h4>
-  <div class="markdown level1 summary"><p>Current file name.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_NameNoExt.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NameNoExt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L119">View Source</a>
-  </span>
-  <a id="Fp_Fs_FsProcessor_NameNoExt_" data-uid="Fp.Fs.FsProcessor.NameNoExt*"></a>
-  <h4 id="Fp_Fs_FsProcessor_NameNoExt" data-uid="Fp.Fs.FsProcessor.NameNoExt">NameNoExt</h4>
-  <div class="markdown level1 summary"><p>Current file name without extension.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string NameNoExt { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_NamePath.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NamePath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L124">View Source</a>
-  </span>
-  <a id="Fp_Fs_FsProcessor_NamePath_" data-uid="Fp.Fs.FsProcessor.NamePath*"></a>
-  <h4 id="Fp_Fs_FsProcessor_NamePath" data-uid="Fp.Fs.FsProcessor.NamePath">NamePath</h4>
-  <div class="markdown level1 summary"><p>Current file name.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FpPath NamePath { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../Fp/Fp.FpPath.html">FpPath</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_NamePathNoExt.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NamePathNoExt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L129">View Source</a>
-  </span>
-  <a id="Fp_Fs_FsProcessor_NamePathNoExt_" data-uid="Fp.Fs.FsProcessor.NamePathNoExt*"></a>
-  <h4 id="Fp_Fs_FsProcessor_NamePathNoExt" data-uid="Fp.Fs.FsProcessor.NamePathNoExt">NamePathNoExt</h4>
-  <div class="markdown level1 summary"><p>Current file name without extension.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FpPath NamePathNoExt { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../Fp/Fp.FpPath.html">FpPath</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_NullableCurrent.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.NullableCurrent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L30">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L30">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_NullableCurrent_" data-uid="Fp.Fs.FsProcessor.NullableCurrent*"></a>
   <h4 id="Fp_Fs_FsProcessor_NullableCurrent" data-uid="Fp.Fs.FsProcessor.NullableCurrent">NullableCurrent</h4>
@@ -2263,63 +2080,10 @@ should be run on the current input file.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_AcceptFile_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.AcceptFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_GenPath_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.GenPath(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L176">View Source</a>
-  </span>
-  <a id="Fp_Fs_FsProcessor_AcceptFile_" data-uid="Fp.Fs.FsProcessor.AcceptFile*"></a>
-  <h4 id="Fp_Fs_FsProcessor_AcceptFile_System_String_" data-uid="Fp.Fs.FsProcessor.AcceptFile(System.String)">AcceptFile(String)</h4>
-  <div class="markdown level1 summary"><p>Checks if this processor will accept the specified path.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool AcceptFile(string path)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">path</span></td>
-        <td><p>Path to check.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if accepted.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Fp_Fs_FsProcessor_AcceptFile_System_String__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The default implementation uses <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_ValidateExtension_System_String_System_String__">ValidateExtension(String, out String)</a>.</p>
-</div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_GenPath_System_String_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.GenPath(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L165">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L165">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_GenPath_" data-uid="Fp.Fs.FsProcessor.GenPath*"></a>
   <h4 id="Fp_Fs_FsProcessor_GenPath_System_String_System_String_System_String_System_String_System_Boolean_" data-uid="Fp.Fs.FsProcessor.GenPath(System.String,System.String,System.String,System.String,System.Boolean)">GenPath(String, String, String, String, Boolean)</h4>
@@ -2390,10 +2154,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_GenPathSub_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.GenPathSub(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_GenPathSub_System_String_System_String_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.GenPathSub(System.String%2CSystem.String%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L137">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L137">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_GenPathSub_" data-uid="Fp.Fs.FsProcessor.GenPathSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_GenPathSub_System_String_System_String_System_String_System_Boolean_" data-uid="Fp.Fs.FsProcessor.GenPathSub(System.String,System.String,System.String,System.Boolean)">GenPathSub(String, String, String, Boolean)</h4>
@@ -2458,10 +2222,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_GetFsFactory__1.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.GetFsFactory%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_GetFsFactory__1.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.GetFsFactory%60%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L353">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L283">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_GetFsFactory_" data-uid="Fp.Fs.FsProcessor.GetFsFactory*"></a>
   <h4 id="Fp_Fs_FsProcessor_GetFsFactory__1" data-uid="Fp.Fs.FsProcessor.GetFsFactory``1">GetFsFactory&lt;T&gt;()</h4>
@@ -2507,10 +2271,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_HasExtension_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.HasExtension(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_HasExtension_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.HasExtension(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filter.cs/#L37">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filter.cs/#L37">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_HasExtension_" data-uid="Fp.Fs.FsProcessor.HasExtension*"></a>
   <h4 id="Fp_Fs_FsProcessor_HasExtension_System_String___" data-uid="Fp.Fs.FsProcessor.HasExtension(System.String[])">HasExtension(String[])</h4>
@@ -2557,10 +2321,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_HasSibling_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.HasSibling(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_HasSibling_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.HasSibling(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filter.cs/#L18">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filter.cs/#L18">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_HasSibling_" data-uid="Fp.Fs.FsProcessor.HasSibling*"></a>
   <h4 id="Fp_Fs_FsProcessor_HasSibling_System_String_" data-uid="Fp.Fs.FsProcessor.HasSibling(System.String)">HasSibling(String)</h4>
@@ -2607,10 +2371,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Initialize__1_Fp_BufferData_System_Byte__System_String___System_Collections_Generic_IEnumerable_Fp_BufferData_System_Byte___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Initialize%60%601(Fp.BufferData%7BSystem.Byte%7D%2CSystem.String%5B%5D%2CSystem.Collections.Generic.IEnumerable%7BFp.BufferData%7BSystem.Byte%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Initialize__1_Fp_BufferData_System_Byte__System_String___System_Collections_Generic_IEnumerable_Fp_BufferData_System_Byte___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Initialize%60%601(Fp.BufferData%7BSystem.Byte%7D%2CSystem.String%5B%5D%2CSystem.Collections.Generic.IEnumerable%7BFp.BufferData%7BSystem.Byte%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L209">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L141">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Initialize_" data-uid="Fp.Fs.FsProcessor.Initialize*"></a>
   <h4 id="Fp_Fs_FsProcessor_Initialize__1_Fp_BufferData_System_Byte__System_String___System_Collections_Generic_IEnumerable_Fp_BufferData_System_Byte___" data-uid="Fp.Fs.FsProcessor.Initialize``1(Fp.BufferData{System.Byte},System.String[],System.Collections.Generic.IEnumerable{Fp.BufferData{System.Byte}})">Initialize&lt;T&gt;(BufferData&lt;Byte&gt;, String[], IEnumerable&lt;BufferData&lt;Byte&gt;&gt;)</h4>
@@ -2686,10 +2450,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Load_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Load(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Load_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Load(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Input.cs/#L17">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Input.cs/#L17">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Load_" data-uid="Fp.Fs.FsProcessor.Load*"></a>
   <h4 id="Fp_Fs_FsProcessor_Load_System_String_" data-uid="Fp.Fs.FsProcessor.Load(System.String)">Load(String)</h4>
@@ -2736,10 +2500,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_MkDirs_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.MkDirs(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_MkDirs_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.MkDirs(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L115">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L115">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_MkDirs_" data-uid="Fp.Fs.FsProcessor.MkDirs*"></a>
   <h4 id="Fp_Fs_FsProcessor_MkDirs_System_String_" data-uid="Fp.Fs.FsProcessor.MkDirs(System.String)">MkDirs(String)</h4>
@@ -2786,10 +2550,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_MkParents_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.MkParents(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_MkParents_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.MkParents(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L108">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L108">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_MkParents_" data-uid="Fp.Fs.FsProcessor.MkParents*"></a>
   <h4 id="Fp_Fs_FsProcessor_MkParents_System_String_" data-uid="Fp.Fs.FsProcessor.MkParents(System.String)">MkParents(String)</h4>
@@ -2836,10 +2600,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenFile_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenFile(System.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenFile_System_Boolean_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenFile(System.Boolean%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L19">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L19">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenFile_" data-uid="Fp.Fs.FsProcessor.OpenFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenFile_System_Boolean_System_String_" data-uid="Fp.Fs.FsProcessor.OpenFile(System.Boolean,System.String)">OpenFile(Boolean, String)</h4>
@@ -2869,7 +2633,7 @@ should be run on the current input file.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">file</span></td>
-        <td><p>File to open, <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_InputFile">InputFile</a> by default.</p>
+        <td><p>File to open, <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_InputFile">InputFile</a> by default.</p>
 </td>
       </tr>
     </tbody>
@@ -2892,10 +2656,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenFile_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenFile_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L52">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L52">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenFile_" data-uid="Fp.Fs.FsProcessor.OpenFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenFile_System_String_" data-uid="Fp.Fs.FsProcessor.OpenFile(System.String)">OpenFile(String)</h4>
@@ -2942,10 +2706,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenMainFile_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenMainFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenMainFile_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenMainFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L44">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L44">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenMainFile_" data-uid="Fp.Fs.FsProcessor.OpenMainFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenMainFile_System_String_" data-uid="Fp.Fs.FsProcessor.OpenMainFile(System.String)">OpenMainFile(String)</h4>
@@ -2969,7 +2733,7 @@ should be run on the current input file.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">file</span></td>
-        <td><p>File to open, <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_InputFile">InputFile</a> by default.</p>
+        <td><p>File to open, <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_InputFile">InputFile</a> by default.</p>
 </td>
       </tr>
     </tbody>
@@ -2992,10 +2756,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputFile_System_Boolean_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputFile(System.Boolean%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputFile_System_Boolean_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputFile(System.Boolean%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L72">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L72">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenOutputFile_" data-uid="Fp.Fs.FsProcessor.OpenOutputFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenOutputFile_System_Boolean_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OpenOutputFile(System.Boolean,System.String,System.String)">OpenOutputFile(Boolean, String, String)</h4>
@@ -3054,10 +2818,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L81">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L81">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenOutputFile_" data-uid="Fp.Fs.FsProcessor.OpenOutputFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenOutputFile_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OpenOutputFile(System.String,System.String)">OpenOutputFile(String, String)</h4>
@@ -3110,10 +2874,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputSubFile_System_Boolean_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputSubFile(System.Boolean%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputSubFile_System_Boolean_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputSubFile(System.Boolean%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L91">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L91">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenOutputSubFile_" data-uid="Fp.Fs.FsProcessor.OpenOutputSubFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenOutputSubFile_System_Boolean_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OpenOutputSubFile(System.Boolean,System.String,System.String)">OpenOutputSubFile(Boolean, String, String)</h4>
@@ -3172,10 +2936,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputSubFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputSubFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OpenOutputSubFile_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OpenOutputSubFile(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filesystem.cs/#L100">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filesystem.cs/#L100">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OpenOutputSubFile_" data-uid="Fp.Fs.FsProcessor.OpenOutputSubFile*"></a>
   <h4 id="Fp_Fs_FsProcessor_OpenOutputSubFile_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OpenOutputSubFile(System.String,System.String)">OpenOutputSubFile(String, String)</h4>
@@ -3228,10 +2992,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Byte___System_Int32_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Byte___System_Int32_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L268">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L268">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_Byte___System_Int32_System_Int32_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.Output(System.Byte[],System.Int32,System.Int32,System.String,System.String)">Output(Byte[], Int32, Int32, String, String)</h4>
@@ -3286,10 +3050,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Byte___System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Byte%5B%5D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Byte___System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Byte%5B%5D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L257">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L257">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_Byte___System_String_System_String_" data-uid="Fp.Fs.FsProcessor.Output(System.Byte[],System.String,System.String)">Output(Byte[], String, String)</h4>
@@ -3332,10 +3096,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L141">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L141">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.Output(System.Int64,System.Int64,System.String,System.String,System.Boolean,System.Int32)">Output(Int64, Int64, String, String, Boolean, Int32)</h4>
@@ -3431,10 +3195,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L124">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L124">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.Output(System.Int64,System.String,System.String,System.Boolean,System.Int32)">Output(Int64, String, String, Boolean, Int32)</h4>
@@ -3521,10 +3285,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_IO_Stream_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.IO.Stream%2CSystem.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_IO_Stream_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.IO.Stream%2CSystem.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L98">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L98">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_IO_Stream_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.Output(System.IO.Stream,System.Int64,System.Int64,System.String,System.String,System.Boolean,System.Int32)">Output(Stream, Int64, Int64, String, String, Boolean, Int32)</h4>
@@ -3626,10 +3390,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_IO_Stream_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.IO.Stream%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_IO_Stream_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.IO.Stream%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L78">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L78">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_IO_Stream_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.Output(System.IO.Stream,System.Int64,System.String,System.String,System.Boolean,System.Int32)">Output(Stream, Int64, String, String, Boolean, Int32)</h4>
@@ -3722,10 +3486,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_IO_Stream_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.IO.Stream%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Output_System_IO_Stream_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Output(System.IO.Stream%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L64">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L64">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Output_" data-uid="Fp.Fs.FsProcessor.Output*"></a>
   <h4 id="Fp_Fs_FsProcessor_Output_System_IO_Stream_System_String_" data-uid="Fp.Fs.FsProcessor.Output(System.IO.Stream,System.String)">Output(Stream, String)</h4>
@@ -3778,10 +3542,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_Byte___System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.Byte%5B%5D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_Byte___System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.Byte%5B%5D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L233">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L233">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAll_" data-uid="Fp.Fs.FsProcessor.OutputAll*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAll_System_Byte___System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAll(System.Byte[],System.String,System.String)">OutputAll(Byte[], String, String)</h4>
@@ -3824,10 +3588,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_IO_Stream_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.IO.Stream%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_IO_Stream_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.IO.Stream%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L21">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L21">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAll_" data-uid="Fp.Fs.FsProcessor.OutputAll*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAll_System_IO_Stream_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAll(System.IO.Stream,System.String,System.String)">OutputAll(Stream, String, String)</h4>
@@ -3886,10 +3650,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_ReadOnlySpan_System_Byte__System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_ReadOnlySpan_System_Byte__System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L298">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L298">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAll_" data-uid="Fp.Fs.FsProcessor.OutputAll*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAll_System_ReadOnlySpan_System_Byte__System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAll(System.ReadOnlySpan{System.Byte},System.String,System.String)">OutputAll(ReadOnlySpan&lt;Byte&gt;, String, String)</h4>
@@ -3932,10 +3696,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAll_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAll(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L33">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L33">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAll_" data-uid="Fp.Fs.FsProcessor.OutputAll*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAll_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAll(System.String,System.String)">OutputAll(String, String)</h4>
@@ -3988,10 +3752,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_Byte___System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.Byte%5B%5D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_Byte___System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.Byte%5B%5D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L245">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L245">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAllSub_" data-uid="Fp.Fs.FsProcessor.OutputAllSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAllSub_System_Byte___System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAllSub(System.Byte[],System.String,System.String)">OutputAllSub(Byte[], String, String)</h4>
@@ -4034,10 +3798,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_IO_Stream_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.IO.Stream%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_IO_Stream_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.IO.Stream%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L43">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L43">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAllSub_" data-uid="Fp.Fs.FsProcessor.OutputAllSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAllSub_System_IO_Stream_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAllSub(System.IO.Stream,System.String,System.String)">OutputAllSub(Stream, String, String)</h4>
@@ -4096,10 +3860,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_ReadOnlySpan_System_Byte__System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_ReadOnlySpan_System_Byte__System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.ReadOnlySpan%7BSystem.Byte%7D%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L310">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L310">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAllSub_" data-uid="Fp.Fs.FsProcessor.OutputAllSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAllSub_System_ReadOnlySpan_System_Byte__System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAllSub(System.ReadOnlySpan{System.Byte},System.String,System.String)">OutputAllSub(ReadOnlySpan&lt;Byte&gt;, String, String)</h4>
@@ -4142,10 +3906,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputAllSub_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputAllSub(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L55">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L55">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputAllSub_" data-uid="Fp.Fs.FsProcessor.OutputAllSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputAllSub_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputAllSub(System.String,System.String)">OutputAllSub(String, String)</h4>
@@ -4198,10 +3962,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_Byte___System_Int32_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_Byte___System_Int32_System_Int32_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L282">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L282">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputSub_" data-uid="Fp.Fs.FsProcessor.OutputSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputSub_System_Byte___System_Int32_System_Int32_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.OutputSub(System.Byte[],System.Int32,System.Int32,System.String,System.String)">OutputSub(Byte[], Int32, Int32, String, String)</h4>
@@ -4256,10 +4020,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L218">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L218">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputSub_" data-uid="Fp.Fs.FsProcessor.OutputSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputSub_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.OutputSub(System.Int64,System.Int64,System.String,System.String,System.Boolean,System.Int32)">OutputSub(Int64, Int64, String, String, Boolean, Int32)</h4>
@@ -4355,10 +4119,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_IO_Stream_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.IO.Stream%2CSystem.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_IO_Stream_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.IO.Stream%2CSystem.Int64%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L189">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L189">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputSub_" data-uid="Fp.Fs.FsProcessor.OutputSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputSub_System_IO_Stream_System_Int64_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.OutputSub(System.IO.Stream,System.Int64,System.Int64,System.String,System.String,System.Boolean,System.Int32)">OutputSub(Stream, Int64, Int64, String, String, Boolean, Int32)</h4>
@@ -4460,10 +4224,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_IO_Stream_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.IO.Stream%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_OutputSub_System_IO_Stream_System_Int64_System_String_System_String_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.OutputSub(System.IO.Stream%2CSystem.Int64%2CSystem.String%2CSystem.String%2CSystem.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Output.cs/#L168">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Output.cs/#L168">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_OutputSub_" data-uid="Fp.Fs.FsProcessor.OutputSub*"></a>
   <h4 id="Fp_Fs_FsProcessor_OutputSub_System_IO_Stream_System_Int64_System_String_System_String_System_Boolean_System_Int32_" data-uid="Fp.Fs.FsProcessor.OutputSub(System.IO.Stream,System.Int64,System.String,System.String,System.Boolean,System.Int32)">OutputSub(Stream, Int64, String, String, Boolean, Int32)</h4>
@@ -4556,10 +4320,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_PathHasSibling_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.PathHasSibling(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_PathHasSibling_System_String_System_String_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.PathHasSibling(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Filter.cs/#L28">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Filter.cs/#L28">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_PathHasSibling_" data-uid="Fp.Fs.FsProcessor.PathHasSibling*"></a>
   <h4 id="Fp_Fs_FsProcessor_PathHasSibling_System_String_System_String_" data-uid="Fp.Fs.FsProcessor.PathHasSibling(System.String,System.String)">PathHasSibling(String, String)</h4>
@@ -4612,10 +4376,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Prepare_Fp_Fs_FileSystemSource_System_String_System_String_System_String_Fp_ProcessorConfiguration_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Prepare(Fp.Fs.FileSystemSource%2CSystem.String%2CSystem.String%2CSystem.String%2CFp.ProcessorConfiguration%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Prepare_Fp_Fs_FileSystemSource_System_String_System_String_System_String_Fp_ProcessorConfiguration_System_Int32_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Prepare(Fp.Fs.FileSystemSource%2CSystem.String%2CSystem.String%2CSystem.String%2CFp.ProcessorConfiguration%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L152">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L117">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Prepare_" data-uid="Fp.Fs.FsProcessor.Prepare*"></a>
   <h4 id="Fp_Fs_FsProcessor_Prepare_Fp_Fs_FileSystemSource_System_String_System_String_System_String_Fp_ProcessorConfiguration_System_Int32_" data-uid="Fp.Fs.FsProcessor.Prepare(Fp.Fs.FileSystemSource,System.String,System.String,System.String,Fp.ProcessorConfiguration,System.Int32)">Prepare(FileSystemSource, String, String, String, ProcessorConfiguration, Int32)</h4>
@@ -4676,10 +4440,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Process.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Process%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Process.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Process%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L239">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L171">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Process_" data-uid="Fp.Fs.FsProcessor.Process*"></a>
   <h4 id="Fp_Fs_FsProcessor_Process" data-uid="Fp.Fs.FsProcessor.Process">Process()</h4>
@@ -4692,10 +4456,10 @@ should be run on the current input file.</p>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ProcessImpl.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ProcessImpl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ProcessImpl.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ProcessImpl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L224">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L156">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ProcessImpl_" data-uid="Fp.Fs.FsProcessor.ProcessImpl*"></a>
   <h4 id="Fp_Fs_FsProcessor_ProcessImpl" data-uid="Fp.Fs.FsProcessor.ProcessImpl">ProcessImpl()</h4>
@@ -4708,10 +4472,10 @@ should be run on the current input file.</p>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ProcessSegmented.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ProcessSegmented%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ProcessSegmented.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ProcessSegmented%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L259">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L190">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ProcessSegmented_" data-uid="Fp.Fs.FsProcessor.ProcessSegmented*"></a>
   <h4 id="Fp_Fs_FsProcessor_ProcessSegmented" data-uid="Fp.Fs.FsProcessor.ProcessSegmented">ProcessSegmented()</h4>
@@ -4740,10 +4504,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ProcessSegmentedImpl.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ProcessSegmentedImpl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ProcessSegmentedImpl.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ProcessSegmentedImpl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L230">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L162">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ProcessSegmentedImpl_" data-uid="Fp.Fs.FsProcessor.ProcessSegmentedImpl*"></a>
   <h4 id="Fp_Fs_FsProcessor_ProcessSegmentedImpl" data-uid="Fp.Fs.FsProcessor.ProcessSegmentedImpl">ProcessSegmentedImpl()</h4>
@@ -4772,10 +4536,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_Fp_Fs_FileSystemSource_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorFactory___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(Fp.Fs.FileSystemSource%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.Fs.FsProcessorFactory%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_Fp_Fs_FileSystemSource_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorFactory___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(Fp.Fs.FileSystemSource%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.Fs.FsProcessorFactory%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L26">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L26">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
   <h4 id="Fp_Fs_FsProcessor_Run_Fp_Fs_FileSystemSource_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorFactory___" data-uid="Fp.Fs.FsProcessor.Run(Fp.Fs.FileSystemSource,System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorFactory[])">Run(FileSystemSource, IList&lt;String&gt;, FsProcessorFactory[])</h4>
@@ -4818,19 +4582,19 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Action%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.Fs.FsProcessorInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Action%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.FileProcessorInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L39">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L39">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
-  <h4 id="Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_" data-uid="Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorInfo)">Run(Action, IList&lt;String&gt;, FsProcessorInfo)</h4>
+  <h4 id="Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_" data-uid="Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)">Run(Action, IList&lt;String&gt;, FileProcessorInfo)</h4>
   <div class="markdown level1 summary"><p>Processes using direct function.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Run(Action func, IList&lt;string&gt; args, FsProcessorInfo info = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Run(Action func, IList&lt;string&gt; args, FileProcessorInfo info = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -4855,7 +4619,7 @@ should be run on the current input file.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Fp.Fs.FsProcessorInfo.html">FsProcessorInfo</a></td>
+        <td><a class="xref" href="../Fp/Fp.FileProcessorInfo.html">FileProcessorInfo</a></td>
         <td><span class="parametername">info</span></td>
         <td><p>Processor info.</p>
 </td>
@@ -4864,10 +4628,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Action%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Action%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L50">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L50">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
   <h4 id="Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___" data-uid="Fp.Fs.FsProcessor.Run(System.Action,System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])">Run(Action, IList&lt;String&gt;, String, String, String[])</h4>
@@ -4922,19 +4686,19 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Func%7BSystem.Collections.Generic.IEnumerable%7BFp.Data%7D%7D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.Fs.FsProcessorInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Func%7BSystem.Collections.Generic.IEnumerable%7BFp.Data%7D%7D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.FileProcessorInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L59">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L59">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
-  <h4 id="Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_" data-uid="Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},Fp.Fs.FsProcessorInfo)">Run(Func&lt;IEnumerable&lt;Data&gt;&gt;, IList&lt;String&gt;, FsProcessorInfo)</h4>
+  <h4 id="Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_" data-uid="Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)">Run(Func&lt;IEnumerable&lt;Data&gt;&gt;, IList&lt;String&gt;, FileProcessorInfo)</h4>
   <div class="markdown level1 summary"><p>Processes using segmented function.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Run(Func&lt;IEnumerable&lt;Data&gt;&gt; func, IList&lt;string&gt; args, FsProcessorInfo info = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Run(Func&lt;IEnumerable&lt;Data&gt;&gt; func, IList&lt;string&gt; args, FileProcessorInfo info = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -4959,7 +4723,7 @@ should be run on the current input file.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Fp.Fs.FsProcessorInfo.html">FsProcessorInfo</a></td>
+        <td><a class="xref" href="../Fp/Fp.FileProcessorInfo.html">FileProcessorInfo</a></td>
         <td><span class="parametername">info</span></td>
         <td><p>Processor info.</p>
 </td>
@@ -4968,10 +4732,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Func%7BSystem.Collections.Generic.IEnumerable%7BFp.Data%7D%7D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run(System.Func%7BSystem.Collections.Generic.IEnumerable%7BFp.Data%7D%7D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L70">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L70">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
   <h4 id="Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__System_String_System_String_System_String___" data-uid="Fp.Fs.FsProcessor.Run(System.Func{System.Collections.Generic.IEnumerable{Fp.Data}},System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])">Run(Func&lt;IEnumerable&lt;Data&gt;&gt;, IList&lt;String&gt;, String, String, String[])</h4>
@@ -5026,10 +4790,67 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run%60%601(System.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run%60%601(System.Collections.Generic.IList%7BSystem.String%7D%2CFp.FileProcessorInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L81">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L79">View Source</a>
+  </span>
+  <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
+  <h4 id="Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_" data-uid="Fp.Fs.FsProcessor.Run``1(System.Collections.Generic.IList{System.String},Fp.FileProcessorInfo)">Run&lt;T&gt;(IList&lt;String&gt;, FileProcessorInfo)</h4>
+  <div class="markdown level1 summary"><p>Processes using segmented function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Run&lt;T&gt;(IList&lt;string&gt; args, FileProcessorInfo info = null)
+    where T : FsProcessor, new()</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>Arguments. If null, only register processor.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="../Fp/Fp.FileProcessorInfo.html">FileProcessorInfo</a></td>
+        <td><span class="parametername">info</span></td>
+        <td><p>Processor info.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Processor type.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.Run%60%601(System.Collections.Generic.IList%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L90">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_Run_" data-uid="Fp.Fs.FsProcessor.Run*"></a>
   <h4 id="Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___" data-uid="Fp.Fs.FsProcessor.Run``1(System.Collections.Generic.IList{System.String},System.String,System.String,System.String[])">Run&lt;T&gt;(IList&lt;String&gt;, String, String, String[])</h4>
@@ -5095,10 +4916,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldDown.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldDown.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L287">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L217">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ShieldDown_" data-uid="Fp.Fs.FsProcessor.ShieldDown*"></a>
   <h4 id="Fp_Fs_FsProcessor_ShieldDown" data-uid="Fp.Fs.FsProcessor.ShieldDown">ShieldDown()</h4>
@@ -5111,10 +4932,10 @@ should be run on the current input file.</p>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldProcess.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldProcess%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldProcess.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldProcess%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L292">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L222">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ShieldProcess_" data-uid="Fp.Fs.FsProcessor.ShieldProcess*"></a>
   <h4 id="Fp_Fs_FsProcessor_ShieldProcess" data-uid="Fp.Fs.FsProcessor.ShieldProcess">ShieldProcess()</h4>
@@ -5127,10 +4948,10 @@ should be run on the current input file.</p>
   </div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldProcessSegmented.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldProcessSegmented%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldProcessSegmented.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldProcessSegmented%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L309">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L239">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ShieldProcessSegmented_" data-uid="Fp.Fs.FsProcessor.ShieldProcessSegmented*"></a>
   <h4 id="Fp_Fs_FsProcessor_ShieldProcessSegmented" data-uid="Fp.Fs.FsProcessor.ShieldProcessSegmented">ShieldProcessSegmented()</h4>
@@ -5159,10 +4980,10 @@ should be run on the current input file.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldUp.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor_ShieldUp.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ShieldUp%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L282">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.cs/#L212">View Source</a>
   </span>
   <a id="Fp_Fs_FsProcessor_ShieldUp_" data-uid="Fp.Fs.FsProcessor.ShieldUp*"></a>
   <h4 id="Fp_Fs_FsProcessor_ShieldUp" data-uid="Fp.Fs.FsProcessor.ShieldUp">ShieldUp()</h4>
@@ -5173,62 +4994,6 @@ should be run on the current input file.</p>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ShieldUp()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor_ValidateExtension_System_String_System_String__.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor.ValidateExtension(System.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.cs/#L184">View Source</a>
-  </span>
-  <a id="Fp_Fs_FsProcessor_ValidateExtension_" data-uid="Fp.Fs.FsProcessor.ValidateExtension*"></a>
-  <h4 id="Fp_Fs_FsProcessor_ValidateExtension_System_String_System_String__" data-uid="Fp.Fs.FsProcessor.ValidateExtension(System.String,System.String@)">ValidateExtension(String, out String)</h4>
-  <div class="markdown level1 summary"><p>Validates extension based on <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Source">Source</a>.<a class="xref" href="Fp.Fs.FsProcessorFactory.html#Fp_Fs_FsProcessorFactory_Info">Info</a>.<a class="xref" href="Fp.Fs.FsProcessorInfo.html#Fp_Fs_FsProcessorInfo_Extensions">Extensions</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ValidateExtension(string path, out string extension)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">path</span></td>
-        <td><p>Path to check.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">extension</span></td>
-        <td><p>Null or selected extension (may also be null if successful).</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>True if succeeded.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">System.IDisposable</span>
@@ -5241,10 +5006,10 @@ should be run on the current input file.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FsProcessor.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FsProcessor.md&amp;value=---%0Auid%3A%20Fp.Fs.FsProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FsProcessor.Run.cs/#L8" class="contribution-link">View Source</a>
+                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FsProcessor.Run.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

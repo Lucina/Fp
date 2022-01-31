@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class FormatProcessor
+    <title>Class FileProcessor
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class FormatProcessor
+    <meta name="title" content="Class FileProcessor
    ">
     <meta name="generator" content="docfx 2.58.9.0">
     
@@ -68,22 +68,20 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Fp.FormatProcessor">
+            <article class="content wrap" id="_content" data-uid="Fp.FileProcessor">
   
   
-  <h1 id="Fp_FormatProcessor" data-uid="Fp.FormatProcessor" class="text-break">Class FormatProcessor
+  <h1 id="Fp_FileProcessor" data-uid="Fp.FileProcessor" class="text-break">Class FileProcessor
   </h1>
-  <div class="markdown level0 summary"><p>Represents a processor that operates on a single named input stream.</p>
+  <div class="markdown level0 summary"><p>Represents a processor that operates on a single named input.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Fp.Processor.html">Processor</a></div>
-    <div class="level2"><a class="xref" href="Fp.FileProcessor.html">FileProcessor</a></div>
-    <div class="level3"><span class="xref">FormatProcessor</span></div>
-      <div class="level4"><a class="xref" href="Fp.FormatMultiProcessor.html">FormatMultiProcessor</a></div>
-      <div class="level4"><a class="xref" href="Fp.FormatSingleProcessor.html">FormatSingleProcessor</a></div>
+    <div class="level2"><span class="xref">FileProcessor</span></div>
+      <div class="level3"><a class="xref" href="Fp.FormatProcessor.html">FormatProcessor</a></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -91,36 +89,6 @@
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_InputFile">FileProcessor.InputFile</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_Name">FileProcessor.Name</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_NameNoExt">FileProcessor.NameNoExt</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_NamePath">FileProcessor.NamePath</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_NamePathNoExt">FileProcessor.NamePathNoExt</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_SelectedExtension">FileProcessor.SelectedExtension</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_Info">FileProcessor.Info</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_Prepare_System_String_Fp_ProcessorConfiguration_">FileProcessor.Prepare(String, ProcessorConfiguration)</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_AcceptFile_System_String_">FileProcessor.AcceptFile(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_ValidateExtension_System_String_System_String__">FileProcessor.ValidateExtension(String, String)</a>
-    </div>
     <div>
       <a class="xref" href="Fp.Processor.html#Fp_Processor_Buffer_Fp_FpPath_System_ReadOnlyMemory_System_Byte__">Processor.Buffer(FpPath, ReadOnlyMemory&lt;Byte&gt;)</a>
     </div>
@@ -1579,27 +1547,246 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="../Fp.Plus/Fp.html">Fp</a></h6>
   <h6><strong>Assembly</strong>: Fp.dll</h6>
-  <h5 id="Fp_FormatProcessor_syntax">Syntax</h5>
+  <h5 id="Fp_FileProcessor_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class FormatProcessor : FileProcessor, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class FileProcessor : Processor, IDisposable</code></pre>
   </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_Info.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.Info%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L45">View Source</a>
+  </span>
+  <h4 id="Fp_FileProcessor_Info" data-uid="Fp.FileProcessor.Info">Info</h4>
+  <div class="markdown level1 summary"><p>Info for this processor, if available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FileProcessorInfo Info</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Fp.FileProcessorInfo.html">FileProcessorInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_SelectedExtension.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.SelectedExtension%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L40">View Source</a>
+  </span>
+  <h4 id="Fp_FileProcessor_SelectedExtension" data-uid="Fp.FileProcessor.SelectedExtension">SelectedExtension</h4>
+  <div class="markdown level1 summary"><p>Selected file extension from input file, if available.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SelectedExtension</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_InputFile.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.InputFile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L15">View Source</a>
+  </span>
+  <a id="Fp_FileProcessor_InputFile_" data-uid="Fp.FileProcessor.InputFile*"></a>
+  <h4 id="Fp_FileProcessor_InputFile" data-uid="Fp.FileProcessor.InputFile">InputFile</h4>
+  <div class="markdown level1 summary"><p>Current file name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string InputFile { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_Name.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L20">View Source</a>
+  </span>
+  <a id="Fp_FileProcessor_Name_" data-uid="Fp.FileProcessor.Name*"></a>
+  <h4 id="Fp_FileProcessor_Name" data-uid="Fp.FileProcessor.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Current file name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_NameNoExt.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.NameNoExt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L25">View Source</a>
+  </span>
+  <a id="Fp_FileProcessor_NameNoExt_" data-uid="Fp.FileProcessor.NameNoExt*"></a>
+  <h4 id="Fp_FileProcessor_NameNoExt" data-uid="Fp.FileProcessor.NameNoExt">NameNoExt</h4>
+  <div class="markdown level1 summary"><p>Current file name without extension.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string NameNoExt { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_NamePath.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.NamePath%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L30">View Source</a>
+  </span>
+  <a id="Fp_FileProcessor_NamePath_" data-uid="Fp.FileProcessor.NamePath*"></a>
+  <h4 id="Fp_FileProcessor_NamePath" data-uid="Fp.FileProcessor.NamePath">NamePath</h4>
+  <div class="markdown level1 summary"><p>Current file name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FpPath NamePath { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Fp.FpPath.html">FpPath</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_NamePathNoExt.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.NamePathNoExt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L35">View Source</a>
+  </span>
+  <a id="Fp_FileProcessor_NamePathNoExt_" data-uid="Fp.FileProcessor.NamePathNoExt*"></a>
+  <h4 id="Fp_FileProcessor_NamePathNoExt" data-uid="Fp.FileProcessor.NamePathNoExt">NamePathNoExt</h4>
+  <div class="markdown level1 summary"><p>Current file name without extension.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FpPath NamePathNoExt { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Fp.FpPath.html">FpPath</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatProcessor_Prepare_Fp_BufferData_System_Byte__Fp_ProcessorConfiguration_.md&amp;value=---%0Auid%3A%20Fp.FormatProcessor.Prepare(Fp.BufferData%7BSystem.Byte%7D%2CFp.ProcessorConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_AcceptFile_System_String_.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.AcceptFile(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatProcessor.cs/#L44">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L67">View Source</a>
   </span>
-  <a id="Fp_FormatProcessor_Prepare_" data-uid="Fp.FormatProcessor.Prepare*"></a>
-  <h4 id="Fp_FormatProcessor_Prepare_Fp_BufferData_System_Byte__Fp_ProcessorConfiguration_" data-uid="Fp.FormatProcessor.Prepare(Fp.BufferData{System.Byte},Fp.ProcessorConfiguration)">Prepare(BufferData&lt;Byte&gt;, ProcessorConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Prepares critical state for operation.</p>
+  <a id="Fp_FileProcessor_AcceptFile_" data-uid="Fp.FileProcessor.AcceptFile*"></a>
+  <h4 id="Fp_FileProcessor_AcceptFile_System_String_" data-uid="Fp.FileProcessor.AcceptFile(System.String)">AcceptFile(String)</h4>
+  <div class="markdown level1 summary"><p>Checks if this processor will accept the specified path.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Prepare(BufferData&lt;byte&gt; data, ProcessorConfiguration configuration = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool AcceptFile(string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1612,34 +1799,47 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Fp.BufferData-1.html">BufferData</a>&lt;<span class="xref">System.Byte</span>&gt;</td>
-        <td><span class="parametername">data</span></td>
-        <td><p>Source data.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Fp.ProcessorConfiguration.html">ProcessorConfiguration</a></td>
-        <td><span class="parametername">configuration</span></td>
-        <td><p>Additional configuration object.</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Path to check.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if accepted.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Fp_FileProcessor_AcceptFile_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default implementation uses <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_ValidateExtension_System_String_System_String__">ValidateExtension(String, out String)</a>.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatProcessor_Prepare_Fp_BufferData_System_Byte__System_String_Fp_ProcessorConfiguration_.md&amp;value=---%0Auid%3A%20Fp.FormatProcessor.Prepare(Fp.BufferData%7BSystem.Byte%7D%2CSystem.String%2CFp.ProcessorConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_Prepare_System_String_Fp_ProcessorConfiguration_.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.Prepare(System.String%2CFp.ProcessorConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatProcessor.cs/#L37">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L52">View Source</a>
   </span>
-  <a id="Fp_FormatProcessor_Prepare_" data-uid="Fp.FormatProcessor.Prepare*"></a>
-  <h4 id="Fp_FormatProcessor_Prepare_Fp_BufferData_System_Byte__System_String_Fp_ProcessorConfiguration_" data-uid="Fp.FormatProcessor.Prepare(Fp.BufferData{System.Byte},System.String,Fp.ProcessorConfiguration)">Prepare(BufferData&lt;Byte&gt;, String, ProcessorConfiguration)</h4>
+  <a id="Fp_FileProcessor_Prepare_" data-uid="Fp.FileProcessor.Prepare*"></a>
+  <h4 id="Fp_FileProcessor_Prepare_System_String_Fp_ProcessorConfiguration_" data-uid="Fp.FileProcessor.Prepare(System.String,Fp.ProcessorConfiguration)">Prepare(String, ProcessorConfiguration)</h4>
   <div class="markdown level1 summary"><p>Prepares critical state for operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Prepare(BufferData&lt;byte&gt; data, string inputFile, ProcessorConfiguration configuration = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Prepare(string inputFile, ProcessorConfiguration configuration = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1651,12 +1851,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><a class="xref" href="Fp.BufferData-1.html">BufferData</a>&lt;<span class="xref">System.Byte</span>&gt;</td>
-        <td><span class="parametername">data</span></td>
-        <td><p>Source data.</p>
-</td>
-      </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">inputFile</span></td>
@@ -1673,19 +1867,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatProcessor_Prepare_System_IO_Stream_System_String_Fp_ProcessorConfiguration_.md&amp;value=---%0Auid%3A%20Fp.FormatProcessor.Prepare(System.IO.Stream%2CSystem.String%2CFp.ProcessorConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor_ValidateExtension_System_String_System_String__.md&amp;value=---%0Auid%3A%20Fp.FileProcessor.ValidateExtension(System.String%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatProcessor.cs/#L17">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L75">View Source</a>
   </span>
-  <a id="Fp_FormatProcessor_Prepare_" data-uid="Fp.FormatProcessor.Prepare*"></a>
-  <h4 id="Fp_FormatProcessor_Prepare_System_IO_Stream_System_String_Fp_ProcessorConfiguration_" data-uid="Fp.FormatProcessor.Prepare(System.IO.Stream,System.String,Fp.ProcessorConfiguration)">Prepare(Stream, String, ProcessorConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Prepares critical state for operation.</p>
+  <a id="Fp_FileProcessor_ValidateExtension_" data-uid="Fp.FileProcessor.ValidateExtension*"></a>
+  <h4 id="Fp_FileProcessor_ValidateExtension_System_String_System_String__" data-uid="Fp.FileProcessor.ValidateExtension(System.String,System.String@)">ValidateExtension(String, out String)</h4>
+  <div class="markdown level1 summary"><p>Validates extension based on <a class="xref" href="Fp.FileProcessor.html#Fp_FileProcessor_Info">Info</a>.<a class="xref" href="Fp.FileProcessorInfo.html#Fp_FileProcessorInfo_Extensions">Extensions</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Prepare(Stream stream, string inputFile, ProcessorConfiguration configuration = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool ValidateExtension(string path, out string extension)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1698,67 +1892,31 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
-        <td><span class="parametername">stream</span></td>
-        <td><p>Source stream.</p>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">path</span></td>
+        <td><p>Path to check.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">inputFile</span></td>
-        <td><p>Input name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Fp.ProcessorConfiguration.html">ProcessorConfiguration</a></td>
-        <td><span class="parametername">configuration</span></td>
-        <td><p>Additional configuration object.</p>
+        <td><span class="parametername">extension</span></td>
+        <td><p>Null or selected extension (may also be null if successful).</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatProcessor_Prepare_System_ReadOnlyMemory_System_Byte__System_String_Fp_ProcessorConfiguration_.md&amp;value=---%0Auid%3A%20Fp.FormatProcessor.Prepare(System.ReadOnlyMemory%7BSystem.Byte%7D%2CSystem.String%2CFp.ProcessorConfiguration)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatProcessor.cs/#L29">View Source</a>
-  </span>
-  <a id="Fp_FormatProcessor_Prepare_" data-uid="Fp.FormatProcessor.Prepare*"></a>
-  <h4 id="Fp_FormatProcessor_Prepare_System_ReadOnlyMemory_System_Byte__System_String_Fp_ProcessorConfiguration_" data-uid="Fp.FormatProcessor.Prepare(System.ReadOnlyMemory{System.Byte},System.String,Fp.ProcessorConfiguration)">Prepare(ReadOnlyMemory&lt;Byte&gt;, String, ProcessorConfiguration)</h4>
-  <div class="markdown level1 summary"><p>Prepares critical state for operation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Prepare(ReadOnlyMemory&lt;byte&gt; memory, string inputFile, ProcessorConfiguration configuration = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.ReadOnlyMemory</span>&lt;<span class="xref">System.Byte</span>&gt;</td>
-        <td><span class="parametername">memory</span></td>
-        <td><p>Source memory.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">inputFile</span></td>
-        <td><p>Input name.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Fp.ProcessorConfiguration.html">ProcessorConfiguration</a></td>
-        <td><span class="parametername">configuration</span></td>
-        <td><p>Additional configuration object.</p>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if succeeded.</p>
 </td>
       </tr>
     </tbody>
@@ -1779,10 +1937,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FormatProcessor.md&amp;value=---%0Auid%3A%20Fp.FormatProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_FileProcessor.md&amp;value=---%0Auid%3A%20Fp.FileProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FormatProcessor.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/FileProcessor.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -80,9 +80,10 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="../Fp/Fp.Processor.html">Processor</a></div>
-    <div class="level2"><a class="xref" href="Fp.Fs.FsProcessor.html">FsProcessor</a></div>
-    <div class="level3"><a class="xref" href="Fp.Fs.FormatMultiProcessorFsWrapper.html">FormatMultiProcessorFsWrapper</a></div>
-    <div class="level4"><span class="xref">FormatMultiProcessorFsWrapper&lt;T&gt;</span></div>
+    <div class="level2"><a class="xref" href="../Fp/Fp.FileProcessor.html">FileProcessor</a></div>
+    <div class="level3"><a class="xref" href="Fp.Fs.FsProcessor.html">FsProcessor</a></div>
+    <div class="level4"><a class="xref" href="Fp.Fs.FormatMultiProcessorFsWrapper.html">FormatMultiProcessorFsWrapper</a></div>
+    <div class="level5"><span class="xref">FormatMultiProcessorFsWrapper&lt;T&gt;</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -92,6 +93,9 @@
     <h5>Inherited Members</h5>
     <div>
       <a class="xref" href="Fp.Fs.FormatMultiProcessorFsWrapper.html#Fp_Fs_FormatMultiProcessorFsWrapper_ProcessSegmentedImpl">FormatMultiProcessorFsWrapper.ProcessSegmentedImpl()</a>
+    </div>
+    <div>
+      <a class="xref" href="Fp.Fs.FormatMultiProcessorFsWrapper.html#Fp_Fs_FormatMultiProcessorFsWrapper_Cleanup_System_Boolean_">FormatMultiProcessorFsWrapper.Cleanup(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Current">FsProcessor.Current</a>
@@ -115,12 +119,6 @@
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_InputDirectory">FsProcessor.InputDirectory</a>
     </div>
     <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_InputFile">FsProcessor.InputFile</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_SelectedExtension">FsProcessor.SelectedExtension</a>
-    </div>
-    <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_OutputRootDirectory">FsProcessor.OutputRootDirectory</a>
     </div>
     <div>
@@ -142,28 +140,7 @@
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_FilePathNoExt">FsProcessor.FilePathNoExt</a>
     </div>
     <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Name">FsProcessor.Name</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NameNoExt">FsProcessor.NameNoExt</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NamePath">FsProcessor.NamePath</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_NamePathNoExt">FsProcessor.NamePathNoExt</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Source">FsProcessor.Source</a>
-    </div>
-    <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Prepare_Fp_Fs_FileSystemSource_System_String_System_String_System_String_Fp_ProcessorConfiguration_System_Int32_">FsProcessor.Prepare(FileSystemSource, String, String, String, ProcessorConfiguration, Int32)</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_AcceptFile_System_String_">FsProcessor.AcceptFile(String)</a>
-    </div>
-    <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_ValidateExtension_System_String_System_String__">FsProcessor.ValidateExtension(String, String)</a>
     </div>
     <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Initialize__1_Fp_BufferData_System_Byte__System_String___System_Collections_Generic_IEnumerable_Fp_BufferData_System_Byte___">FsProcessor.Initialize&lt;T&gt;(BufferData&lt;Byte&gt;, String[], IEnumerable&lt;BufferData&lt;Byte&gt;&gt;)</a>
@@ -304,19 +281,52 @@
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_Fp_Fs_FileSystemSource_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorFactory___">FsProcessor.Run(FileSystemSource, IList&lt;String&gt;, FsProcessorFactory[])</a>
     </div>
     <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_">FsProcessor.Run(Action, IList&lt;String&gt;, FsProcessorInfo)</a>
+      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_">FsProcessor.Run(Action, IList&lt;String&gt;, FileProcessorInfo)</a>
     </div>
     <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Action_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___">FsProcessor.Run(Action, IList&lt;String&gt;, String, String, String[])</a>
     </div>
     <div>
-      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_Fs_FsProcessorInfo_">FsProcessor.Run(Func&lt;IEnumerable&lt;Data&gt;&gt;, IList&lt;String&gt;, FsProcessorInfo)</a>
+      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_">FsProcessor.Run(Func&lt;IEnumerable&lt;Data&gt;&gt;, IList&lt;String&gt;, FileProcessorInfo)</a>
     </div>
     <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run_System_Func_System_Collections_Generic_IEnumerable_Fp_Data___System_Collections_Generic_IList_System_String__System_String_System_String_System_String___">FsProcessor.Run(Func&lt;IEnumerable&lt;Data&gt;&gt;, IList&lt;String&gt;, String, String, String[])</a>
     </div>
     <div>
+      <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__Fp_FileProcessorInfo_">FsProcessor.Run&lt;T&gt;(IList&lt;String&gt;, FileProcessorInfo)</a>
+    </div>
+    <div>
       <a class="xref" href="Fp.Fs.FsProcessor.html#Fp_Fs_FsProcessor_Run__1_System_Collections_Generic_IList_System_String__System_String_System_String_System_String___">FsProcessor.Run&lt;T&gt;(IList&lt;String&gt;, String, String, String[])</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_InputFile">FileProcessor.InputFile</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_Name">FileProcessor.Name</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_NameNoExt">FileProcessor.NameNoExt</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePath">FileProcessor.NamePath</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_NamePathNoExt">FileProcessor.NamePathNoExt</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_SelectedExtension">FileProcessor.SelectedExtension</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_Info">FileProcessor.Info</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_Prepare_System_String_Fp_ProcessorConfiguration_">FileProcessor.Prepare(String, ProcessorConfiguration)</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_AcceptFile_System_String_">FileProcessor.AcceptFile(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="../Fp/Fp.FileProcessor.html#Fp_FileProcessor_ValidateExtension_System_String_System_String__">FileProcessor.ValidateExtension(String, String)</a>
     </div>
     <div>
       <a class="xref" href="../Fp/Fp.Processor.html#Fp_Processor_Buffer_Fp_FpPath_System_ReadOnlyMemory_System_Byte__">Processor.Buffer(FpPath, ReadOnlyMemory&lt;Byte&gt;)</a>
@@ -470,9 +480,6 @@
     </div>
     <div>
       <a class="xref" href="../Fp/Fp.Processor.html#Fp_Processor_Region_System_Int64_System_Nullable_System_Int64__">Processor.Region(Int64, Nullable&lt;Int64&gt;)</a>
-    </div>
-    <div>
-      <a class="xref" href="../Fp/Fp.Processor.html#Fp_Processor_Cleanup_System_Boolean_">Processor.Cleanup(Boolean)</a>
     </div>
     <div>
       <a class="xref" href="../Fp/Fp.Processor.html#Fp_Processor_Dispose_System_Boolean_">Processor.Dispose(Boolean)</a>
@@ -1799,10 +1806,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FormatMultiProcessorFsWrapper_1__ctor.md&amp;value=---%0Auid%3A%20Fp.Fs.FormatMultiProcessorFsWrapper%601.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FormatMultiProcessorFsWrapper_1__ctor.md&amp;value=---%0Auid%3A%20Fp.Fs.FormatMultiProcessorFsWrapper%601.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FormatMultiProcessorFsWrapper.cs/#L38">View Source</a>
+    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FormatMultiProcessorFsWrapper.cs/#L46">View Source</a>
   </span>
   <a id="Fp_Fs_FormatMultiProcessorFsWrapper_1__ctor_" data-uid="Fp.Fs.FormatMultiProcessorFsWrapper`1.#ctor*"></a>
   <h4 id="Fp_Fs_FormatMultiProcessorFsWrapper_1__ctor" data-uid="Fp.Fs.FormatMultiProcessorFsWrapper`1.#ctor">FormatMultiProcessorFsWrapper()</h4>
@@ -1825,10 +1832,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/new/0.25.0-fixdoc/apiSpec/new?filename=Fp_Fs_FormatMultiProcessorFsWrapper_1.md&amp;value=---%0Auid%3A%20Fp.Fs.FormatMultiProcessorFsWrapper%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_FormatMultiProcessorFsWrapper_1.md&amp;value=---%0Auid%3A%20Fp.Fs.FormatMultiProcessorFsWrapper%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/collectioneering/Fp/blob/0.25.0-fixdoc/src/Fp.Fs/FormatMultiProcessorFsWrapper.cs/#L33" class="contribution-link">View Source</a>
+                    <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/FormatMultiProcessorFsWrapper.cs/#L41" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
