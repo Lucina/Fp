@@ -2,10 +2,10 @@ using Fp;
 
 public partial class PhantomBreakerProcessor
 {
-    public void RunMariko(Dictionary<(int i, int j), Memory<byte>> dict, List<Data> content)
+    public IEnumerable<Data> RunMariko(IReadOnlyDictionary<(int i, int j), BufferData<byte>> dict)
     {
-        if (!dict.ContainsKey((0, 0)) || !Flags.Contains("c") && !PbbgChara.Contains(Name) && !Name.StartsWith("c_")) return;
-        var a = dict[(0, 0)];
+        if (!dict.ContainsKey((0, 0)) || !Flags.Contains("c") && !PbbgChara.Contains(Name) && !Name.StartsWith("c_")) yield break;
+        var a = dict[(0, 0)].Buffer;
         // Main graphics file
         for (int i = 0, hOffset = 0x800; i < 0x1000 / 4; i++, hOffset += 4)
         {
@@ -16,9 +16,9 @@ public partial class PhantomBreakerProcessor
                 if (!dict.TryGetValue((3, p), out var palette)) continue;
                 string subName = $"mn_{p:D4}_{i:D4}";
                 var b = a.Slice(0x1800 + offset, next - offset);
-                if (MarikoConvert(NamePathNoExt / "mariko" / subName, b.Span, palette.Span) is { } res)
-                    content.Add(res);
-                content.Add(Buffer(NamePathNoExt / "mariko_src" / $"{subName}.dat", b));
+                if (MarikoConvert(NamePathNoExt / "mariko" / subName, b.Span, palette.Buffer.Span) is { } res)
+                    yield return res;
+                yield return Buffer(NamePathNoExt / "mariko_src" / $"{subName}.dat", b);
             }
 
             if (next >= a.Length - 0x1800) break;
@@ -27,13 +27,12 @@ public partial class PhantomBreakerProcessor
         // Sub-files
         foreach (var kvp in dict)
         {
-            ((int i, int j), Memory<byte> b) = (kvp.Key, kvp.Value);
+            ((int i, int j), ReadOnlyMemory<byte> b) = (kvp.Key, kvp.Value.Buffer);
             if (i is <= 3 or 6) continue;
             for (int p = 0; p < 8; p++)
                 if (dict.TryGetValue((6, p), out var palette) &&
-                    MarikoConvert(NamePathNoExt / "mariko" / $"ex_{p:D4}_{i:D4}_{j:D4}", b.Span, palette.Span) is
-                        { } res)
-                    content.Add(res);
+                    MarikoConvert(NamePathNoExt / "mariko" / $"ex_{p:D4}_{i:D4}_{j:D4}", b.Span, palette.Buffer.Span) is { } res)
+                    yield return res;
         }
     }
 

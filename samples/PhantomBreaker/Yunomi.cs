@@ -2,14 +2,13 @@ using Fp;
 
 public partial class PhantomBreakerProcessor
 {
-    public void RunYunomi(Dictionary<(int i, int j), Memory<byte>> dict, List<Data> content)
+    public IEnumerable<Data> RunYunomi(IReadOnlyDictionary<(int i, int j), BufferData<byte>> dict)
     {
-        if (!Flags.Contains("t") && Name is not ("21560002" or "Graphic")) return;
+        if (!Flags.Contains("t") && Name is not ("21560002" or "Graphic")) yield break;
         // Try to process all files as yunomi
         foreach (var kvp in dict)
-            if (YunomiConvert(NamePathNoExt / "yunomi" / $"{kvp.Key.i:D4}_{kvp.Key.j:D4}", kvp.Value.Span) is
-                { } data)
-                content.Add(data);
+            if (YunomiConvert(NamePathNoExt / "yunomi" / $"{kvp.Key.i:D4}_{kvp.Key.j:D4}", kvp.Value.Buffer.Span) is { } data)
+                yield return (data);
     }
 
     /// Process run-length graphics file
