@@ -4,12 +4,18 @@ using Fp;
 using Fp.Fs;
 using Fp.Plus.Images;
 
-FsFormatMultiProcessor.Run<SnOProcessor>(args,
-    "SnO",
-    "Sousei no Onmyouji containers");
 
-public class SnOProcessor : FsFormatMultiProcessor
+public class SnOProcessor : FormatMultiProcessor
 {
+    private static readonly FileProcessorInfo s_info = new(
+        "SnO",
+        "Sousei no Onmyouji containers",
+        "Sousei no Onmyouji containers");
+
+    public SnOProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<SnOProcessor>(args, s_info);
+
     public override IEnumerable<Data> Process()
     {
         switch (ReadUtf8String(out _, out _, 4))

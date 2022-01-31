@@ -1,13 +1,19 @@
 using Fp;
 using Fp.Fs;
 
-FsFormatMultiProcessor.Run<LinkDataAbcProcessor>(args,
-    "LinkDataAbcProcessor",
-    "Dynasty Warriors Gundam linkdata files",
-    ".ans", ".bns", ".cns");
 
-public class LinkDataAbcProcessor : FsFormatMultiProcessor
+public class LinkDataAbcProcessor : FormatMultiProcessor
 {
+    private static readonly FileProcessorInfo s_info = new(
+        "LinkDataAbcProcessor",
+        "Dynasty Warriors Gundam linkdata files",
+        "Dynasty Warriors Gundam linkdata files",
+        ".ans", ".bns", ".cns");
+
+    public LinkDataAbcProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<LinkDataAbcProcessor>(args, s_info);
+
     public override IEnumerable<Data> Process()
     {
         int numEntries = i4b[0x4];

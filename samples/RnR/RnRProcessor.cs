@@ -2,13 +2,19 @@ using Fp;
 using Fp.Fs;
 using Fp.Platforms.Nitro;
 
-FsFormatMultiProcessor.Run<RnRProcessor>(args,
-    "RnR",
-    "Ryuusei no Rockman 1/2/3 .bin containers",
-    ".bin");
 
-public class RnRProcessor : FsFormatMultiProcessor
+public class RnRProcessor : FormatMultiProcessor
 {
+    private static readonly FileProcessorInfo s_info = new(
+        "RnR",
+        "Ryuusei no Rockman 1/2/3 .bin containers",
+        "Ryuusei no Rockman 1/2/3 .bin containers",
+        ".bin");
+
+    public RnRProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<RnRProcessor>(args, s_info);
+
     public override IEnumerable<Data> Process()
     {
         /*

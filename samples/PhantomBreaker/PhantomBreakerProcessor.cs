@@ -2,13 +2,19 @@ using Fp;
 using System.Collections;
 using Fp.Fs;
 
-FsFormatMultiProcessor.Run<PhantomBreakerProcessor>(args,
-    "PhantomBreaker",
-    "Decode / extract assets from Phantom Breaker series",
-    (string?)null);
 
-public partial class PhantomBreakerProcessor : FsFormatMultiProcessor
+public partial class PhantomBreakerProcessor : FormatMultiProcessor
 {
+    private static readonly FileProcessorInfo s_info = new(
+        "PhantomBreaker",
+        "Decode / extract assets from Phantom Breaker series",
+        "Decode / extract assets from Phantom Breaker series"
+    );
+
+    public PhantomBreakerProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<PhantomBreakerProcessor>(args, s_info);
+
     public override IEnumerable<Data> Process()
     {
         Dictionary<(int i, int j), Memory<byte>> dict = new();

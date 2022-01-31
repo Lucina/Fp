@@ -1,13 +1,19 @@
 using Fp;
 using Fp.Fs;
 
-FsFormatMultiProcessor.Run<BrewBarProcessor>(args,
-    "BrewBar",
-    "BREW MP .bar containers with gzip-compressed files",
-    ".bar");
 
-public class BrewBarProcessor : FsFormatMultiProcessor
+public class BrewBarProcessor : FormatMultiProcessor
 {
+    private static readonly FileProcessorInfo s_info = new(
+        "BrewBar",
+        "Brew MP .bar",
+        "BREW MP .bar containers with gzip-compressed files",
+        ".bar");
+
+    public BrewBarProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<BrewBarProcessor>(args, s_info);
+
     public override IEnumerable<Data> Process()
     {
         int count = i4l[0x14];

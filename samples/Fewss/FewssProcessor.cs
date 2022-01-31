@@ -1,15 +1,19 @@
 using Fp;
 using Fp.Fs;
 
-FsProcessor.Run<FewssProcessor>(args,
-    "FireEmblemWarriorsSwitchSound",
-    "Fire Emblem Warriors Switch Sound Archives",
-    ".bin.gz", ".bin", ".g1l");
-// TODO source generator that automatically populates processor info from attribute in assembly => internal class FsRunGen.Run<T>, generic invocation map type
-
-public class FewssProcessor : FsProcessor
+public class FewssProcessor : FormatMultiProcessor
 {
-    protected override IEnumerable<Data> ProcessSegmentedImpl() => SelectedExtension switch // TODO SelectedExtension equivalent on FormatProcessor
+    private static readonly FileProcessorInfo s_info = new(
+        "FireEmblemWarriorsSwitchSound",
+        "Fire Emblem Warriors Switch Sound Archives",
+        "Fire Emblem Warriors Switch Sound Archives",
+        ".bin.gz", ".bin", ".g1l");
+
+    public FewssProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<FewssProcessor>(args, s_info);
+
+    public override IEnumerable<Data> Process() => SelectedExtension switch
     {
         ".bin.gz" => ProcessBinGz(),
         ".bin" => ProcessBin(),
@@ -19,7 +23,6 @@ public class FewssProcessor : FsProcessor
 
     private IEnumerable<Data> ProcessBinGz()
     {
-        OpenMainFile();
         int wbhOff = i4l[0];
         int wbhLen = i4l[4];
         int wbdOff = i4l[8];
@@ -82,7 +85,6 @@ public class FewssProcessor : FsProcessor
 
     private IEnumerable<Data> ProcessBin()
     {
-        OpenMainFile();
         int count = i4l[0];
         for (int i = 0; i < count; i++)
         {
@@ -94,7 +96,6 @@ public class FewssProcessor : FsProcessor
 
     private IEnumerable<Data> ProcessG1L()
     {
-        OpenMainFile();
         if (!HasMagic("_L1G0000")) yield break;
         int count = i4l[0x14];
         for (int i = 0; i < count; i++)

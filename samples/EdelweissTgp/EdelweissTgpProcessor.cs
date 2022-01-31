@@ -3,13 +3,19 @@ using Esper.Zstandard;
 using Fp;
 using Fp.Fs;
 
-FsFormatMultiProcessor.Run<EdelweissTgpProcessor>(args,
-    "EdelweissTgp",
-    "Edelweiss TGP container",
-    ".tgp");
 
-public class EdelweissTgpProcessor : FsFormatMultiProcessor
+public class EdelweissTgpProcessor : FormatMultiProcessor
 {
+    private static readonly FileProcessorInfo s_info = new(
+        "EdelweissTgp",
+        "Edelweiss TGP container",
+        "Edelweiss TGP container",
+        ".tgp");
+
+    public EdelweissTgpProcessor() => Info = s_info;
+
+    private static void Main(string[] args) => FsFormatMultiProcessor.Run<EdelweissTgpProcessor>(args, s_info);
+
     public override IEnumerable<Data> Process()
     {
         if (!HasMagic("TGP0")) return Nothing;
