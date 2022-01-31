@@ -6,8 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- FileProcessorInfo (moved from Fp.Fs FsProcessorInfo)
+
 ### Changed
 - Arg setup now happens in `Processor.Prepare(ProcessorConfiguration?)`
+- FormatProcessor is now derived from FileProcessor
+- Adjusted FormatProcessor members (moved commons to FileProcessor)
 
 ## [0.25.0] 2022-1-18
 

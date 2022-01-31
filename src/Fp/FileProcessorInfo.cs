@@ -1,11 +1,11 @@
 using System;
 
-namespace Fp.Fs;
+namespace Fp;
 
 /// <summary>
 /// Processor information.
 /// </summary>
-public record FsProcessorInfo
+public record FileProcessorInfo
 {
     /// <summary>
     /// Processor name.
@@ -31,9 +31,9 @@ public record FsProcessorInfo
     public string?[] Extensions { get; init; }
 
     /// <summary>
-    /// Creates a new instance of <see cref="FsProcessorInfo"/> with generic values.
+    /// Creates a new instance of <see cref="FileProcessorInfo"/> with generic values.
     /// </summary>
-    public FsProcessorInfo()
+    public FileProcessorInfo()
     {
         Name = "unnamed processor";
         Description = "no description provided";
@@ -42,13 +42,13 @@ public record FsProcessorInfo
     }
 
     /// <summary>
-    /// Creates a new instance of <see cref="FsProcessorInfo"/>.
+    /// Creates a new instance of <see cref="FileProcessorInfo"/>.
     /// </summary>
     /// <param name="name">Processor name.</param>
     /// <param name="description">Processor description.</param>
     /// <param name="extendedDescription">Processor extended description.</param>
     /// <param name="extensions">Processor extensions.</param>
-    public FsProcessorInfo(string name, string description, string extendedDescription,
+    public FileProcessorInfo(string name, string description, string extendedDescription,
         params string?[] extensions)
     {
         Name = name;

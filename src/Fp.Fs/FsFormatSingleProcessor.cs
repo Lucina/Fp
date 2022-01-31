@@ -14,7 +14,7 @@ public class FsFormatSingleProcessor : FormatSingleProcessor
     /// <param name="extensions">Processor extensions.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     public static void Run<T>(IList<string>? args, string name, string description, params string?[] extensions) where T : FormatSingleProcessor, new() =>
-        FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatSingleProcessorFsWrapper<T>>(new FsProcessorInfo(name, description, description, extensions)));
+        FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatSingleProcessorFsWrapper<T>>(new FileProcessorInfo(name, description, description, extensions)));
 }
 
 /// <inheritdoc />
@@ -29,5 +29,5 @@ public class FsFormatSingleProcessor<T> : FormatSingleProcessor<T> where T : Dat
     /// <param name="extensions">Processor extensions.</param>
     /// <typeparam name="TProcessor">Processor type.</typeparam>
     public static void Run<TProcessor>(IList<string>? args, string name, string description, params string?[] extensions) where TProcessor : FormatSingleProcessor, new() =>
-        FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatSingleProcessorFsWrapper<TProcessor>>(new FsProcessorInfo(name, description, description, extensions)));
+        FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatSingleProcessorFsWrapper<TProcessor>>(new FileProcessorInfo(name, description, description, extensions)));
 }

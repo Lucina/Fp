@@ -4,35 +4,10 @@ using System.IO;
 namespace Fp;
 
 /// <summary>
-/// Represents a processor that operates on a single input.
+/// Represents a processor that operates on a single named input stream.
 /// </summary>
-public class FormatProcessor : Processor
+public class FormatProcessor : FileProcessor
 {
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public string InputFile { get; set; } = "";
-
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public string Name => Path.GetFileName(InputFile);
-
-    /// <summary>
-    /// Current file name without extension.
-    /// </summary>
-    public string NameNoExt => Path.GetFileNameWithoutExtension(InputFile);
-
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public FpPath NamePath => FpPath.GetFromString(Name) ?? throw new InvalidOperationException();
-
-    /// <summary>
-    /// Current file name without extension.
-    /// </summary>
-    public FpPath NamePathNoExt => FpPath.GetFromString(NameNoExt) ?? throw new InvalidOperationException();
-
     /// <summary>
     /// Prepares critical state for operation.
     /// </summary>
@@ -41,9 +16,8 @@ public class FormatProcessor : Processor
     /// <param name="configuration">Additional configuration object.</param>
     public void Prepare(Stream stream, string inputFile, ProcessorConfiguration? configuration = null)
     {
-        Prepare(configuration);
+        Prepare(inputFile, configuration);
         UseStream(stream);
-        InputFile = inputFile;
     }
 
     /// <summary>

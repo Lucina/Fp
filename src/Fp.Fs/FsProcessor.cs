@@ -15,7 +15,7 @@ namespace Fp.Fs;
 [SuppressMessage("ReSharper", "NotAccessedField.Global")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
 [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
-public partial class FsProcessor : Processor
+public partial class FsProcessor : FileProcessor
 {
     #region Properties and fields
 
@@ -59,16 +59,6 @@ public partial class FsProcessor : Processor
     public string InputDirectory = null!;
 
     /// <summary>
-    /// Current input file.
-    /// </summary>
-    public string InputFile = null!;
-
-    /// <summary>
-    /// Selected file extension from input file, if available.
-    /// </summary>
-    public string? SelectedExtension;
-
-    /// <summary>
     /// Root output directory.
     /// </summary>
     public string OutputRootDirectory = null!;
@@ -108,31 +98,6 @@ public partial class FsProcessor : Processor
     /// </summary>
     public FpPath FilePathNoExt => new(Path.GetFileNameWithoutExtension(InputFile), InputDirectory);
 
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public string Name => Path.GetFileName(InputFile);
-
-    /// <summary>
-    /// Current file name without extension.
-    /// </summary>
-    public string NameNoExt => Path.GetFileNameWithoutExtension(InputFile);
-
-    /// <summary>
-    /// Current file name.
-    /// </summary>
-    public FpPath NamePath => FpPath.GetFromString(Name) ?? throw new InvalidOperationException();
-
-    /// <summary>
-    /// Current file name without extension.
-    /// </summary>
-    public FpPath NamePathNoExt => FpPath.GetFromString(NameNoExt) ?? throw new InvalidOperationException();
-
-    /// <summary>
-    /// Origin factory for this processor, if available.
-    /// </summary>
-    public FsProcessorFactory? Source;
-
     private bool _overrideProcess = true;
     private bool _overrideProcessSegmented = true;
 
@@ -163,39 +128,6 @@ public partial class FsProcessor : Processor
         OutputCounter = 0;
         FileSystem = fileSystem;
         WorkerId = workerId;
-    }
-
-    /// <summary>
-    /// Checks if this processor will accept the specified path.
-    /// </summary>
-    /// <param name="path">Path to check.</param>
-    /// <returns>True if accepted.</returns>
-    /// <remarks>
-    /// The default implementation uses <see cref="ValidateExtension"/>.
-    /// </remarks>
-    public virtual bool AcceptFile(string path) => ValidateExtension(path, out _);
-
-    /// <summary>
-    /// Validates extension based on <see cref="Source"/>.<see cref="FsProcessorFactory.Info"/>.<see cref="FsProcessorInfo.Extensions"/>.
-    /// </summary>
-    /// <param name="path">Path to check.</param>
-    /// <param name="extension">Null or selected extension (may also be null if successful).</param>
-    /// <returns>True if succeeded.</returns>
-    public bool ValidateExtension(string path, out string? extension)
-    {
-        extension = null;
-        if (Source?.Info.Extensions is not { Length: > 0 } exts) return true;
-        foreach (string? ext in exts.OrderByDescending(e => e?.Length ?? int.MaxValue))
-            if (ext == null)
-            {
-                if (!path.Contains('.')) return true;
-            }
-            else if (path.EndsWith(ext, StringComparison.InvariantCultureIgnoreCase))
-            {
-                extension = ext;
-                return true;
-            }
-        return false;
     }
 
     /// <summary>
@@ -350,7 +282,7 @@ public partial class FsProcessor : Processor
     /// <returns>Processor factory.</returns>
     public static FsProcessorFactory GetFsFactory<T>() where T : FsProcessor, new()
     {
-        FsProcessorInfo? processorInfo = null;
+        FileProcessorInfo? processorInfo = null;
         try
         {
             object[] attrs = typeof(T).GetCustomAttributes(typeof(FsProcessorInfoAttribute), true);

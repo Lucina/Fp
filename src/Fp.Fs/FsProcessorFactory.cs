@@ -10,13 +10,13 @@ public abstract record FsProcessorFactory
     /// <summary>
     /// Processor info.
     /// </summary>
-    public FsProcessorInfo Info { get; init; }
+    public FileProcessorInfo Info { get; init; }
 
     /// <summary>
     /// Creates a new instance of <see cref="FsProcessorFactory"/>.
     /// </summary>
     /// <param name="info">Processor info.</param>
-    public FsProcessorFactory(FsProcessorInfo? info) => Info = info ?? new FsProcessorInfo();
+    public FsProcessorFactory(FileProcessorInfo? info) => Info = info ?? new FileProcessorInfo();
 
     /// <summary>
     /// Creates a new processor instance from this factory.
@@ -35,12 +35,12 @@ public record GenericNewFsProcessorFactory<T> : FsProcessorFactory where T : FsP
     /// Creates a new instance of <see cref="GenericNewFsProcessorFactory{T}"/>.
     /// </summary>
     /// <param name="info">Processor info.</param>
-    public GenericNewFsProcessorFactory(FsProcessorInfo? info) : base(info)
+    public GenericNewFsProcessorFactory(FileProcessorInfo? info) : base(info)
     {
     }
 
     /// <inheritdoc />
-    public override FsProcessor CreateProcessor() => new T { Source = this };
+    public override FsProcessor CreateProcessor() => new T { Info = Info };
 }
 
 /// <summary>
@@ -58,13 +58,13 @@ public record DelegateFsProcessorFactory : FsProcessorFactory
     /// </summary>
     /// <param name="info">Processor info.</param>
     /// <param name="del">Source delegate.</param>
-    public DelegateFsProcessorFactory(FsProcessorInfo? info, Func<FsProcessor> del) : base(info) => Delegate = del;
+    public DelegateFsProcessorFactory(FileProcessorInfo? info, Func<FsProcessor> del) : base(info) => Delegate = del;
 
     /// <inheritdoc />
     public override FsProcessor CreateProcessor()
     {
         var re = Delegate();
-        re.Source = this;
+        re.Info = Info;
         return re;
     }
 }

@@ -14,7 +14,7 @@ public partial class FsProcessor
     /// Opens file for reading.
     /// </summary>
     /// <param name="asMain">If true, sets <see cref="Processor.InputStream"/>.</param>
-    /// <param name="file">File to open, <see cref="InputFile"/> by default.</param>
+    /// <param name="file">File to open, <see cref="FileProcessor.InputFile"/> by default.</param>
     /// <returns>Created stream.</returns>
     public Stream OpenFile(bool asMain, string? file = null)
     {
@@ -39,7 +39,7 @@ public partial class FsProcessor
     /// <summary>
     /// Opens file for reading and set <see cref="Processor.InputStream"/>.
     /// </summary>
-    /// <param name="file">File to open, <see cref="InputFile"/> by default.</param>
+    /// <param name="file">File to open, <see cref="FileProcessor.InputFile"/> by default.</param>
     /// <returns>Created stream.</returns>
     public Stream OpenMainFile(string? file = null)
         => OpenFile(true, file);

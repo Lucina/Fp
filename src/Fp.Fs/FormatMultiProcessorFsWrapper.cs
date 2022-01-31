@@ -21,6 +21,7 @@ public class FormatMultiProcessorFsWrapper : FsProcessor
     /// <inheritdoc />
     protected override IEnumerable<Data> ProcessSegmentedImpl()
     {
+        _baseProcessor.Info = Info;
         var input = OpenMainFile();
         _baseProcessor.Prepare(input, Name, Configuration);
         return _baseProcessor.Process();
@@ -30,7 +31,7 @@ public class FormatMultiProcessorFsWrapper : FsProcessor
     public override void Cleanup(bool warn = false)
     {
         base.Cleanup(warn);
-        _baseProcessor.Cleanup();
+        _baseProcessor.Cleanup(warn);
     }
 }
 

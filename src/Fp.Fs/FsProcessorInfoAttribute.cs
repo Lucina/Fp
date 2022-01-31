@@ -13,7 +13,7 @@ public class FsProcessorInfoAttribute : Attribute
     /// <summary>
     /// Processor information.
     /// </summary>
-    public readonly FsProcessorInfo Info;
+    public readonly FileProcessorInfo Info;
 
     /// <summary>
     /// Processor information attribute.
@@ -25,6 +25,6 @@ public class FsProcessorInfoAttribute : Attribute
     public FsProcessorInfoAttribute(string name, string description, string extendedDescription,
         params string?[] extensions)
     {
-        Info = new FsProcessorInfo(name, description, extendedDescription, extensions);
+        Info = new FileProcessorInfo(name, description, extendedDescription, extensions);
     }
 }

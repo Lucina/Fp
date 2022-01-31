@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageVersion>0.25.0</PackageVersion>
+    <PackageVersion>0.26.0</PackageVersion>
     <AssemblyVersion>1.0.0</AssemblyVersion>
   </PropertyGroup>
 
@@ -32,8 +32,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\Fp\Fp.csproj" />-->
-    <PackageReference Include="Fp" Version="0.25.0" />
+    <ProjectReference Include="..\Fp\Fp.csproj" />
+    <!--<PackageReference Include="Fp" Version="0.26.0" />-->
   </ItemGroup>
 
   <PropertyGroup>

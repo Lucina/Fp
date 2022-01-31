@@ -19,7 +19,7 @@ public class FsProcessorSource
     /// </summary>
     /// <param name="predicate">Predicate on on info.</param>
     /// <returns>Processors.</returns>
-    public IEnumerable<Processor> GetProcessors(Predicate<FsProcessorInfo> predicate) =>
+    public IEnumerable<Processor> GetProcessors(Predicate<FileProcessorInfo> predicate) =>
         Factories.Where(f => predicate(f.Info)).Select(f => f.CreateProcessor());
 
     /// <summary>

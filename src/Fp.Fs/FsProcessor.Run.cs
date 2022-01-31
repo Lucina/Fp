@@ -36,7 +36,7 @@ public partial class FsProcessor
     /// <param name="func">Function or delegate run per file.</param>
     /// <param name="args">Arguments. If null, only register processor.</param>
     /// <param name="info">Processor info.</param>
-    public static void Run(Action func, IList<string>? args, FsProcessorInfo? info = null) =>
+    public static void Run(Action func, IList<string>? args, FileProcessorInfo? info = null) =>
         Run(null, args, new DelegateFsProcessorFactory(info, () => new ScriptingDirectProcessor(func)));
 
     /// <summary>
@@ -48,7 +48,7 @@ public partial class FsProcessor
     /// <param name="description">Processor description.</param>
     /// <param name="extensions">Processor extensions.</param>
     public static void Run(Action func, IList<string>? args, string name, string description, params string?[] extensions) =>
-        Run(func, args, new FsProcessorInfo(name, description, description, extensions));
+        Run(func, args, new FileProcessorInfo(name, description, description, extensions));
 
     /// <summary>
     /// Processes using segmented function.
@@ -56,7 +56,7 @@ public partial class FsProcessor
     /// <param name="func">Function that returns enumerable (segmented processing enumerator).</param>
     /// <param name="args">Arguments. If null, only register processor.</param>
     /// <param name="info">Processor info.</param>
-    public static void Run(Func<IEnumerable<Data>> func, IList<string>? args, FsProcessorInfo? info = null) =>
+    public static void Run(Func<IEnumerable<Data>> func, IList<string>? args, FileProcessorInfo? info = null) =>
         Run(null, args, new DelegateFsProcessorFactory(info, () => new ScriptingSegmentedProcessor(func)));
 
     /// <summary>
@@ -68,7 +68,7 @@ public partial class FsProcessor
     /// <param name="description">Processor description.</param>
     /// <param name="extensions">Processor extensions.</param>
     public static void Run(Func<IEnumerable<Data>> func, IList<string>? args, string name, string description, params string?[] extensions) =>
-        Run(func, args, new FsProcessorInfo(name, description, description, extensions));
+        Run(func, args, new FileProcessorInfo(name, description, description, extensions));
 
     /// <summary>
     /// Processes using segmented function.
@@ -79,5 +79,5 @@ public partial class FsProcessor
     /// <param name="extensions">Processor extensions.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     public static void Run<T>(IList<string>? args, string name, string description, params string?[] extensions) where T : FsProcessor, new() =>
-        Run(null, args, new GenericNewFsProcessorFactory<T>(new FsProcessorInfo(name, description, description, extensions)));
+        Run(null, args, new GenericNewFsProcessorFactory<T>(new FileProcessorInfo(name, description, description, extensions)));
 }

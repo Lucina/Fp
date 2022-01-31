@@ -14,5 +14,5 @@ public class FsFormatMultiProcessor : FormatMultiProcessor
     /// <param name="extensions">Processor extensions.</param>
     /// <typeparam name="T">Processor type.</typeparam>
     public static void Run<T>(IList<string>? args, string name, string description, params string?[] extensions) where T : FormatMultiProcessor, new() =>
-        FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatMultiProcessorFsWrapper<T>>(new FsProcessorInfo(name, description, description, extensions)));
+        FsProcessor.Run(null, args, new GenericNewFsProcessorFactory<FormatMultiProcessorFsWrapper<T>>(new FileProcessorInfo(name, description, description, extensions)));
 }
