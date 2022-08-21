@@ -58,7 +58,7 @@ public static class NitroUtils
     /// <returns>Result buffer.</returns>
     public static byte[] DeNitro(this Stream source, int capacity = 0)
     {
-        if (source.CanSeek) throw new InvalidOperationException();
+        if (!source.CanSeek) throw new InvalidOperationException();
         MemoryStream ms = new(capacity);
         GetNitroFormat(source).Decompress(source, source.Length - source.Position, ms);
         return ms.ToArray();
@@ -180,7 +180,7 @@ public static class NitroUtils
     /// <returns>Result buffer.</returns>
     public static byte[] DeNitro(this Stream source, NitroCFormat format, int capacity = 0)
     {
-        if (source.CanSeek) throw new InvalidOperationException();
+        if (!source.CanSeek) throw new InvalidOperationException();
         MemoryStream ms = new(capacity);
         format.Decompress(source, source.Length - source.Position, ms);
         return ms.ToArray();
@@ -230,7 +230,7 @@ public static class NitroUtils
     /// <returns>Result buffer.</returns>
     public static byte[] DeNitro<T>(this Stream source, int capacity = 0) where T : NitroCFormat, new()
     {
-        if (source.CanSeek) throw new InvalidOperationException();
+        if (!source.CanSeek) throw new InvalidOperationException();
         MemoryStream ms = new(capacity);
         One<T>.Value.Decompress(source, source.Length - source.Position, ms);
         return ms.ToArray();
