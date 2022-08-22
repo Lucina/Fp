@@ -7,51 +7,6 @@ using static Fp.Processor;
 namespace Fp.Helpers;
 
 /// <summary>
-/// Represents converted string.
-/// </summary>
-public readonly struct StringData
-{
-    /// <summary>
-    /// String value.
-    /// </summary>
-    public readonly string String;
-
-    /// <summary>
-    /// Byte length.
-    /// </summary>
-    public readonly int ByteLength;
-
-    /// <summary>
-    /// Creates a new instance of <see cref="StringData"/>.
-    /// </summary>
-    /// <param name="s">String value.</param>
-    /// <param name="byteLength">Byte length.</param>
-    public StringData(string s, int byteLength)
-    {
-        String = s;
-        ByteLength = byteLength;
-    }
-
-    /// <summary>
-    /// Converts string to <see cref="StringData"/> with 0 byte length.
-    /// </summary>
-    /// <param name="str">String value.</param>
-    /// <returns><see cref="StringData"/><see cref="StringData"/> instance.</returns>
-    public static implicit operator StringData(string str) => new StringData(str, 0);
-
-    /// <summary>
-    /// Deconstructs this instance.
-    /// </summary>
-    /// <param name="s">String value.</param>
-    /// <param name="byteLength">Byte length.</param>
-    public void Deconstruct(out string s, out int byteLength)
-    {
-        s = String;
-        byteLength = ByteLength;
-    }
-}
-
-/// <summary>
 /// Base helper type for strings.
 /// </summary>
 public abstract record BaseStringHelper : Helper
