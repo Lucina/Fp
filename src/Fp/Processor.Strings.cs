@@ -141,7 +141,7 @@ public partial class Processor
         int maxLength = int.MaxValue)
     {
         int lim = Math.Min(span.Length, maxLength);
-        int end = span.Slice(0, lim).IndexOf((byte)0);
+        int end = span[..lim].IndexOf((byte)0);
         if (end == -1)
         {
             read = lim;
@@ -154,7 +154,7 @@ public partial class Processor
         }
 
         numBytes = Math.Min(lim, numBytes);
-        return DecodeSpan(span.Slice(0, numBytes), Encoding.UTF8);
+        return DecodeSpan(span[..numBytes], Encoding.UTF8);
     }
 
     /// <summary>
@@ -305,7 +305,7 @@ public partial class Processor
             big = (float)countAscii / countTotal >= threshold;
         }
 
-        return DecodeSpan(span.Slice(0, numBytes), GetUtf16Encoding(big, bom));
+        return DecodeSpan(span[..numBytes], GetUtf16Encoding(big, bom));
     }
 
     /// <summary>

@@ -66,7 +66,7 @@ public ref struct ReadContext<T> where T : unmanaged
     /// Gets backing span from current offset.
     /// </summary>
     /// <returns>Backing span starting at current offset.</returns>
-    public ReadOnlySpan<T> GetSpan() => Source.Slice(Offset);
+    public ReadOnlySpan<T> GetSpan() => Source[Offset..];
 
     /// <summary>
     /// Gets backing span from current offset with specified length.
@@ -111,5 +111,5 @@ public ref struct ReadContext<T> where T : unmanaged
     /// </summary>
     /// <param name="value">Context.</param>
     /// <returns>Offset span.</returns>
-    public static implicit operator ReadOnlySpan<T>(ReadContext<T> value) => value.Source.Slice(value.Offset);
+    public static implicit operator ReadOnlySpan<T>(ReadContext<T> value) => value.Source[value.Offset..];
 }

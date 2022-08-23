@@ -112,7 +112,7 @@ namespace Fp
             int left = span.Length, read, tot = 0;
             do
             {
-                read = stream.Read(span.Slice(tot));
+                read = stream.Read(span[tot..]);
                 left -= read;
                 tot += read;
             } while (left > 0 && read != 0);
@@ -134,7 +134,7 @@ namespace Fp
                 do
                 {
                     read = stream.Read(buf, 0, Math.Min(left, bufLen));
-                    bufSpan.Slice(0, read).CopyTo(span.Slice(tot));
+                    bufSpan[..read].CopyTo(span[tot..]);
                     left -= read;
                     tot += read;
                 } while (left > 0 && read != 0);

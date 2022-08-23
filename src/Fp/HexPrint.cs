@@ -105,7 +105,7 @@ public static class HexPrint
                 (_, _, string label, ConsoleColor color) = annotationPrintQueue.Dequeue();
                 target.LogChunk(" ", false);
                 target.LogChunk(label.Length > TextWidth
-                    ? label.Substring(0, TextWidth)
+                    ? label[..TextWidth]
                     : label, false, color);
             }
 
@@ -121,7 +121,7 @@ public static class HexPrint
                 $"{{0,{2 + PosWidth + 1 + w * (space ? 3 : 2) + (space ? 0 : 1)}}}",
                 ' '), false, color);
             target.LogChunk(label.Length > TextWidth
-                ? label.Substring(0, TextWidth)
+                ? label[..TextWidth]
                 : label, false);
             target.LogChunk("\n", false);
         }

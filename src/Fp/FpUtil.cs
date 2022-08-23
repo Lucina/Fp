@@ -58,7 +58,7 @@ public static partial class FpUtil
                     continue;
                 }
 
-                string id = str.Substring(2);
+                string id = str[2..];
                 if (optKeys.Contains(id))
                 {
                     string? res = GetArg(arguments, i);
@@ -253,7 +253,7 @@ public static partial class FpUtil
     {
         string sub = Path.GetFullPath(path);
         if (s_subNormalize && sub.Length >= 2 && char.IsLetter(sub[0]) && sub[1] == Path.VolumeSeparatorChar)
-            sub = sub.Substring(2);
+            sub = sub[2..];
         return sub;
     }
 

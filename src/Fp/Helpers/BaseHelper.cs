@@ -58,8 +58,8 @@ public abstract record BaseHelper<T> : Helper
     /// <param name="offset">Offset.</param>
     public virtual T this[Span<byte> source, int offset]
     {
-        get => this[source.Slice(offset)];
-        set => this[source.Slice(offset)] = value;
+        get => this[source[offset..]];
+        set => this[source[offset..]] = value;
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public abstract record BaseHelper<T> : Helper
     /// </summary>
     /// <param name="source">Data source.</param>
     /// <param name="offset">Offset.</param>
-    public virtual T this[ReadOnlySpan<byte> source, int offset] => this[source.Slice(offset)];
+    public virtual T this[ReadOnlySpan<byte> source, int offset] => this[source[offset..]];
 
     /// <summary>
     /// Reads value.

@@ -140,13 +140,13 @@ public partial class Processor
                     bufSpan[cIdx++] = supportBackSlash ? '\\' : '/';
                 }
 
-                span.CopyTo(bufSpan.Slice(cIdx));
+                span.CopyTo(bufSpan[cIdx..]);
                 cIdx += span.Length;
                 char last = span[pathLength - 1];
                 prevEndWithSeparator = last == '/' || supportBackSlash && last == '\\';
             }
 
-            return new string(bufSpan);
+            return new string(bufSpan[..cIdx]);
         }
         finally
         {

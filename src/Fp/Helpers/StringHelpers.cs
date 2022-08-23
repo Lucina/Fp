@@ -87,8 +87,8 @@ public abstract record BaseStringHelper : Helper
     /// <param name="offset">Offset.</param>
     public virtual StringData this[Span<byte> source, int offset]
     {
-        get => this[source.Slice(offset)];
-        set => this[source.Slice(offset)] = value;
+        get => this[source[offset..]];
+        set => this[source[offset..]] = value;
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public record AsciiStringHelper(Processor Parent) : BaseStringHelper
     /// <inheritdoc />
     public override StringData this[ReadOnlySpan<byte> source, int offset,
         int maxBytes] =>
-        new(ReadUtf8String(source.Slice(offset), out _, out int numBytes, maxBytes), numBytes);
+        new(ReadUtf8String(source[offset..], out _, out int numBytes, maxBytes), numBytes);
 
     /// <inheritdoc />
     public override StringData this[long offset, Stream stream, int maxBytes] =>
@@ -246,7 +246,7 @@ public record Utf8StringHelper(Processor Parent) : BaseStringHelper
     /// <inheritdoc />
     public override StringData this[ReadOnlySpan<byte> source, int offset,
         int maxBytes] =>
-        new(ReadUtf8String(source.Slice(offset), out _, out int numBytes, maxBytes), numBytes);
+        new(ReadUtf8String(source[offset..], out _, out int numBytes, maxBytes), numBytes);
 
     /// <inheritdoc />
     public override StringData this[long offset, Stream stream, int maxBytes] =>
@@ -288,7 +288,7 @@ public record Utf16StringHelper(Processor Parent) : BaseStringHelper
     /// <inheritdoc />
     public override StringData this[ReadOnlySpan<byte> source, int offset,
         int maxBytes] =>
-        new(ReadUtf16String(source.Slice(offset), out _, out int numBytes, maxBytes), numBytes);
+        new(ReadUtf16String(source[offset..], out _, out int numBytes, maxBytes), numBytes);
 
     /// <inheritdoc />
     public override StringData this[long offset, Stream stream, int maxBytes] =>

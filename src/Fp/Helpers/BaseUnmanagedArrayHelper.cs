@@ -120,7 +120,7 @@ public abstract unsafe record BaseUnmanagedArrayHelper<T> : Helper where T : unm
     /// <param name="offset">Offset.</param>
     public virtual ReadOnlySpan<T> this[Span<byte> source, int offset]
     {
-        set => this[source.Slice(offset)] = value;
+        set => this[source[offset..]] = value;
     }
 
     /// <summary>

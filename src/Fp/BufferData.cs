@@ -78,7 +78,7 @@ public class BufferData<T> : BufferData where T : unmanaged
         MemoryOwner = memoryOwner;
         Dry = false;
         Count = count ?? MemoryOwner.Memory.Length;
-        Buffer = MemoryOwner.Memory.Slice(0, Count);
+        Buffer = MemoryOwner.Memory[..Count];
     }
 
     /// <summary>

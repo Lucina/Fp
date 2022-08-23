@@ -453,7 +453,7 @@ public record F16ArrayHelper(Processor Parent) : BaseUnmanagedArrayHelper<float>
         {
             float[] result = new float[source.Length / 2];
             // New array for aligning
-            ConvertHalfArrayToFloat(source.Slice(0, source.Length / 2 * 2), result);
+            ConvertHalfArrayToFloat(source[..(source.Length / 2 * 2)], result);
             return result;
         }
         set
@@ -471,7 +471,7 @@ public record F16ArrayHelper(Processor Parent) : BaseUnmanagedArrayHelper<float>
         {
             float[] result = new float[source.Length / 2];
             // New array for aligning
-            ConvertHalfArrayToFloat(source.Slice(0, source.Length / 2 * 2), result);
+            ConvertHalfArrayToFloat(source[..(source.Length / 2 * 2)], result);
             return result;
         }
     }
