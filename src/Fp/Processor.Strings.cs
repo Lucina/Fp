@@ -326,7 +326,7 @@ public partial class Processor
     /// <param name="nullTerminate">If true, null-terminate string.</param>
     /// <param name="stream">Stream to write to, uses current output file if null.</param>
     /// <param name="offset">Offset to write to, current position if null.</param>
-    public unsafe void WriteUtf8String(string value, bool nullTerminate = true, Stream? stream = null,
+    public void WriteUtf8String(string value, bool nullTerminate = true, Stream? stream = null,
         long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -340,21 +340,12 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            fixed (char* strPtr = value)
+            ReadOnlySpan<char> valueBuf = value;
+            while (!valueBuf.IsEmpty)
             {
-                fixed (byte* tmpBufPtr = tmpBuf)
-                {
-                    int vStringOfs = 0;
-                    int vStringLeft = value.Length;
-                    while (vStringLeft > 0)
-                    {
-                        Utf8Encoder.Convert(strPtr + vStringOfs, vStringLeft, tmpBufPtr, 4096, false,
-                            out int numIn, out int numOut, out _);
-                        vStringOfs += numIn;
-                        vStringLeft -= numIn;
-                        stream.Write(tmpBuf, 0, numOut);
-                    }
-                }
+                Utf8Encoder.Convert(valueBuf, tmpBuf, false, out int numIn, out int numOut, out _);
+                valueBuf = valueBuf[numIn..];
+                stream.Write(tmpBuf, 0, numOut);
             }
 
             if (!nullTerminate)
@@ -396,7 +387,7 @@ public partial class Processor
     /// <param name="byteOrderMark">If true, write byte order mark.</param>
     /// <param name="stream">Stream to write to, uses current output file if null.</param>
     /// <param name="offset">Offset to write to, current position if null.</param>
-    public unsafe void WriteUtf16String(string value, bool nullTerminate = true, bool bigEndian = false,
+    public void WriteUtf16String(string value, bool nullTerminate = true, bool bigEndian = false,
         bool byteOrderMark = false, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
@@ -411,21 +402,12 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            fixed (char* strPtr = value)
+            ReadOnlySpan<char> valueBuf = value;
+            while (!valueBuf.IsEmpty)
             {
-                fixed (byte* tmpBufPtr = tmpBuf)
-                {
-                    int vStringOfs = 0;
-                    int vStringLeft = value.Length;
-                    while (vStringLeft > 0)
-                    {
-                        encoder.Convert(strPtr + vStringOfs, vStringLeft, tmpBufPtr, 4096, false,
-                            out int numIn, out int numOut, out _);
-                        vStringOfs += numIn;
-                        vStringLeft -= numIn;
-                        stream.Write(tmpBuf, 0, numOut);
-                    }
-                }
+                encoder.Convert(valueBuf, tmpBuf, false, out int numIn, out int numOut, out _);
+                valueBuf = valueBuf[numIn..];
+                stream.Write(tmpBuf, 0, numOut);
             }
 
             if (!nullTerminate)

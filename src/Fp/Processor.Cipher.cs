@@ -71,7 +71,7 @@ public partial class Processor
     private static int GetDepaddedLengthPkcs5Pkcs7(ReadOnlySpan<byte> span, bool validate)
     {
         if (span.Length == 0) return 0;
-        byte l = span[span.Length - 1];
+        byte l = span[^1];
         if (!validate) return span.Length - l;
         for (int i = span.Length - l; i < span.Length - 1; i++)
             if (span[i] != l)
@@ -82,7 +82,7 @@ public partial class Processor
     private static int GetDepaddedLengthAnsiX9_23(ReadOnlySpan<byte> span, bool validate)
     {
         if (span.Length == 0) return 0;
-        byte l = span[span.Length - 1];
+        byte l = span[^1];
         if (!validate) return span.Length - l;
         for (int i = span.Length - l; i < span.Length - 1; i++)
             if (span[i] != 0)
@@ -91,7 +91,7 @@ public partial class Processor
     }
 
     private static int GetDepaddedLengthLastByteSubtract(ReadOnlySpan<byte> span) =>
-        span.Length == 0 ? 0 : span.Length - span[span.Length - 1];
+        span.Length == 0 ? 0 : span.Length - span[^1];
 
     /// <summary>
     /// Creates a byte array from a hex string. Hex strings may only be prefixed with "0x".
@@ -109,7 +109,7 @@ public partial class Processor
         fixed (char* buf = hex)
         {
             char* rBuf = buf;
-            if (len != 0 && rBuf[0] == '0' && (rBuf[1] == 'x' || rBuf[1] == 'X'))
+            if (len != 0 && rBuf[0] == '0' && char.ToLowerInvariant(rBuf[1]) == 'x')
             {
                 rBuf += 2;
                 len--;
