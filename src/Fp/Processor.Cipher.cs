@@ -100,57 +100,104 @@ public partial class Processor
     /// <param name="validate">Validate characters.</param>
     /// <returns>Array with decoded hex string.</returns>
     /// <exception cref="ArgumentException">Thrown if <paramref name="hex"/> has an odd length.</exception>
-    public static unsafe byte[] DecodeHex(string hex, bool validate = true)
+    public static byte[] DecodeHex(ReadOnlySpan<char> hex, bool validate = true)
+    {
+        int byteCount = GetHexByteCount(hex, out int start);
+        byte[] res = new byte[byteCount];
+        if (validate) DecodeHexPtrValidatedInternal(start, hex, res, byteCount);
+        else DecodeHexPtrNonValidatedInternal(start, hex, res, byteCount);
+        return res;
+    }
+
+    /// <summary>
+    /// Creates a byte array from a hex string. Hex strings may only be prefixed with "0x".
+    /// </summary>
+    /// <param name="hex">Hex string to decode.</param>
+    /// <param name="result">Decoded hex buffer.</param>
+    /// <param name="validate">Validate characters.</param>
+    /// <exception cref="ArgumentException">Thrown if <paramref name="hex"/> has an invalid length or if <paramref name="result"/> is not long enough for result.</exception>
+    public static void DecodeHex(ReadOnlySpan<char> hex, Span<byte> result, bool validate = true)
+    {
+        int byteCount = GetHexByteCount(hex, out int start);
+        if (result.Length < byteCount)
+            throw new ArgumentException($"Result buffer is too short ({result.Length} bytes) to contain result of length {byteCount} bytes", nameof(result));
+        if (validate) DecodeHexPtrValidatedInternal(start, hex, result, byteCount);
+        else DecodeHexPtrNonValidatedInternal(start, hex, result, byteCount);
+    }
+
+    /// <summary>
+    /// Gets byte count for a hex string, stripping 0[xX] prefix.
+    /// </summary>
+    /// <param name="hex">Hex buffer.</param>
+    /// <param name="start">Expected start of hex payload (skips ahead of 0[xX] prefix).</param>
+    /// <returns>Number of bytes expected.</returns>
+    /// <exception cref="ArgumentException">Thrown for invalid input length.</exception>
+    public static int GetHexByteCount(ReadOnlySpan<char> hex, out int start)
     {
         int len = hex.Length;
-        if (len == 0) return Array.Empty<byte>();
-        if (len % 2 != 0) throw new ArgumentException($"Hex string has length {hex.Length}, must be even");
-        len /= 2;
+        if (len == 0)
+        {
+            start = 0;
+            return 0;
+        }
+        if (len % 2 != 0) throw new ArgumentException($"Hex string has length {len}, must be even", nameof(hex));
+        start = len >= 2 && hex[0] == '0' && char.ToLowerInvariant(hex[1]) == 'x' ? 2 : 0;
+        return (len - start) >> 1;
+    }
+
+    private static unsafe void DecodeHexPtrValidatedInternal(int start, ReadOnlySpan<char> hex, Span<byte> target, int byteCount)
+    {
         fixed (char* buf = hex)
         {
-            char* rBuf = buf;
-            if (len != 0 && rBuf[0] == '0' && char.ToLowerInvariant(rBuf[1]) == 'x')
+            fixed (byte* res = target)
             {
-                rBuf += 2;
-                len--;
-            }
-
-            byte[] res = new byte[len];
-            char c;
-            if (validate)
-            {
-                for (int i = 0; i < len; i++)
+                char* rBuf = buf + start;
+                byte* rRes = res;
+                for (int i = 0; i < byteCount; i++)
                 {
+                    byte v;
+                    char c = *rBuf++;
+                    if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    if (c > 0x60) v = (byte)((c + 9) << 4);
+                    else if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    else if (c > 0x40) v = (byte)((c + 9) << 4);
+                    else if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    else if (c > 0x2F) v = (byte)(c << 4);
+                    else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
                     c = *rBuf++;
-                    if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    if (c > 0x60) res[i] = (byte)((c + 9) << 4);
-                    else if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    else if (c > 0x40) res[i] = (byte)((c + 9) << 4);
-                    else if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    else if (c > 0x2F) res[i] = (byte)(c << 4);
-                    else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    c = *rBuf++;
-                    if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    if (c > 0x60) res[i] += (byte)((c + 9) & 0xf);
-                    else if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    else if (c > 0x40) res[i] += (byte)((c + 9) & 0xf);
-                    else if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
-                    else if (c > 0x2F) res[i] += (byte)(c & 0xf);
-                    else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}");
+                    if (c > 0x66) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    if (c > 0x60) v |= (byte)((c + 9) & 0xf);
+                    else if (c > 0x46) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    else if (c > 0x40) v |= (byte)((c + 9) & 0xf);
+                    else if (c > 0x39) throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    else if (c > 0x2F) v |= (byte)(c & 0xf);
+                    else throw new ArgumentException($"Illegal character {c} at position {rBuf - buf - 1}", nameof(hex));
+                    *rRes = v;
+                    rRes++;
                 }
             }
-            else
+        }
+    }
+
+    private static unsafe void DecodeHexPtrNonValidatedInternal(int start, ReadOnlySpan<char> hex, Span<byte> target, int byteCount)
+    {
+        fixed (char* buf = hex)
+        {
+            fixed (byte* res = target)
             {
-                for (int i = 0; i < len; i++)
+                char* rBuf = buf + start;
+                byte* rRes = res;
+                for (int i = 0; i < byteCount; i++)
                 {
+                    byte v;
+                    char c = *rBuf++;
+                    v = c < 0x3A ? (byte)(c << 4) : (byte)((c + 9) << 4);
                     c = *rBuf++;
-                    res[i] = c < 0x3A ? (byte)(c << 4) : (byte)((c + 9) << 4);
-                    c = *rBuf++;
-                    res[i] += c < 0x3A ? (byte)(c & 0xf) : (byte)((c + 9) & 0xf);
+                    v |= c < 0x3A ? (byte)(c & 0xf) : (byte)((c + 9) & 0xf);
+                    *rRes = v;
+                    rRes++;
                 }
             }
-
-            return res;
         }
     }
 

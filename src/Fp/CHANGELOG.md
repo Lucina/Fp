@@ -6,11 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.26.0] 2022-1-30
+### Added
+- Non-allocating Processor.DecodeHex overload
+- Processor.GetHexByteCount
 
 ## Changed
 - StringData is now a record struct
 - DataUtil renamed to BufferExtensions
+- Processor.DecodeHex uses `ReadOnlySpan<char>` instead of `string`
+
+## [0.26.0] 2022-1-30
 
 ### Added
 - FileProcessorInfo (moved from Fp.Fs FsProcessorInfo)
