@@ -8,10 +8,11 @@ namespace Fp;
 public static class DataUtil
 {
     /// <summary>
-    /// Clones buffer to newly allocated array.
+    /// Copies buffer to new compact array.
     /// </summary>
-    /// <param name="memory">Memory to clone.</param>
-    /// <returns>New array.</returns>
+    /// <param name="memory">Data to copy.</param>
+    /// <typeparam name="T">Element type.</typeparam>
+    /// <returns>Newly allocated array with copied data.</returns>
     public static T[] CloneBuffer<T>(this ReadOnlySpan<T> memory)
     {
         T[] target = new T[memory.Length];

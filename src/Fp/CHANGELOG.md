@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Changed
 - StringData is now a record struct
+- DataUtil renamed to BufferExtensions
 
 ### Added
 - FileProcessorInfo (moved from Fp.Fs FsProcessorInfo)
