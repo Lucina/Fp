@@ -20,17 +20,14 @@ public partial class Processor
     /// <returns>Byte array containing lower byte of each code unit in the string.</returns>
     public static byte[] Ascii(string text, byte[]? result = null) => text.Ascii(result);
 
-    private static unsafe string DecodeSpan(ReadOnlySpan<byte> span, Encoding encoding)
+    private static string DecodeSpan(ReadOnlySpan<byte> span, Encoding encoding)
     {
         if (span.Length == 0)
         {
             return string.Empty;
         }
 
-        fixed (byte* spanFixed = &span.GetPinnableReference())
-        {
-            return encoding.GetString(spanFixed, span.Length);
-        }
+        return encoding.GetString(span);
     }
 
     /// <summary>
@@ -317,12 +314,9 @@ public partial class Processor
     /// <param name="value">String to test.</param>
     /// <param name="nullTerminate">If true, check length with null byte.</param>
     /// <returns>Predicted length.</returns>
-    public unsafe int GetUtf8Length(string value, bool nullTerminate = true)
+    public int GetUtf8Length(string value, bool nullTerminate = true)
     {
-        fixed (char* c = value)
-        {
-            return Utf8Encoder.GetByteCount(c, value.Length, true) + (nullTerminate ? 1 : 0);
-        }
+        return Utf8Encoder.GetByteCount(value, true) + (nullTerminate ? 1 : 0);
     }
 
     /// <summary>
@@ -388,13 +382,9 @@ public partial class Processor
     /// <param name="nullTerminate">If true, check length with null byte.</param>
     /// <param name="bom">If true, check length with byte order mark.</param>
     /// <returns>Predicted length.</returns>
-    public unsafe int GetUtf16Length(string value, bool nullTerminate = true, bool bom = false)
+    public int GetUtf16Length(string value, bool nullTerminate = true, bool bom = false)
     {
-        fixed (char* c = value)
-        {
-            return GetUtf16Encoder(false, bom).GetByteCount(c, value.Length, true) +
-                   (nullTerminate ? 2 : 0);
-        }
+        return GetUtf16Encoder(false, bom).GetByteCount(value, true) + (nullTerminate ? 2 : 0);
     }
 
     /// <summary>

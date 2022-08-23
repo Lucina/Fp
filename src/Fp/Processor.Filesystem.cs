@@ -100,7 +100,7 @@ public partial class Processor
     /// <param name="paths">Elements to join.</param>
     /// <returns>Path.</returns>
     /// <exception cref="ArgumentException">Thrown if separator is encountered by itself.</exception>
-    public static unsafe string Join(bool supportBackSlash, params string[] paths)
+    public static string Join(bool supportBackSlash, params string[] paths)
     {
         if (paths.Length < 2)
         {
@@ -146,10 +146,7 @@ public partial class Processor
                 prevEndWithSeparator = last == '/' || supportBackSlash && last == '\\';
             }
 
-            fixed (char* ptr = &bufSpan.GetPinnableReference())
-            {
-                return new string(ptr, 0, cIdx);
-            }
+            return new string(bufSpan);
         }
         finally
         {
