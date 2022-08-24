@@ -5,7 +5,7 @@ namespace Fp;
 /// <summary>
 /// Provides dummy log receiver.
 /// </summary>
-public sealed class NullLog : ILogReceiver
+public sealed class NullLog : ILogWriter
 {
     /// <summary>
     /// Static instance.
@@ -13,22 +13,22 @@ public sealed class NullLog : ILogReceiver
     public static readonly NullLog Instance = new();
 
     /// <inheritdoc />
-    public void LogChunk(string log, bool tail, ConsoleColor? color = null)
+    public void WriteChunk(string log, bool tail, ConsoleColor? color = null)
     {
     }
 
     /// <inheritdoc />
-    public void LogInformation(string log, ConsoleColor? color = null)
+    public void WriteInformation(string log, ConsoleColor? color = null)
     {
     }
 
     /// <inheritdoc />
-    public void LogWarning(string log, ConsoleColor? color = null)
+    public void WriteWarning(string log, ConsoleColor? color = null)
     {
     }
 
     /// <inheritdoc />
-    public void LogError(string log, ConsoleColor? color = null)
+    public void WriteError(string log, ConsoleColor? color = null)
     {
     }
 }

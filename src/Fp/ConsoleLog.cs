@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using static Fp.ILogReceiver;
+using static Fp.ILogWriter;
 
 namespace Fp;
 
 /// <summary>
 /// Provides basic logging to console output.
 /// </summary>
-public class ConsoleLog : ILogReceiver
+public class ConsoleLog : ILogWriter
 {
     private static class WindowsAnsi
     {
@@ -162,25 +162,25 @@ public class ConsoleLog : ILogReceiver
     private bool IsEnabled(LogLevel logLevel) => (logLevel & _config.EnabledLevels) != 0;
 
     /// <inheritdoc />
-    public void LogChunk(string log, bool tail, ConsoleColor? color = null) =>
+    public void WriteChunk(string log, bool tail, ConsoleColor? color = null) =>
         Log(LogLevel.Information, log, tail, color);
 
     /// <inheritdoc />
-    public void LogInformation(string log, ConsoleColor? color = null)
+    public void WriteInformation(string log, ConsoleColor? color = null)
     {
         Log(LogLevel.Information, log, false, color);
         Console.WriteLine();
     }
 
     /// <inheritdoc />
-    public void LogWarning(string log, ConsoleColor? color = null)
+    public void WriteWarning(string log, ConsoleColor? color = null)
     {
         Log(LogLevel.Warning, log, false, color);
         Console.WriteLine();
     }
 
     /// <inheritdoc />
-    public void LogError(string log, ConsoleColor? color = null)
+    public void WriteError(string log, ConsoleColor? color = null)
     {
         Log(LogLevel.Error, log, false, color);
         Console.WriteLine();

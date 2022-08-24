@@ -20,13 +20,13 @@ public record ProcessorConfiguration
     /// <param name="preload">Whether to read all streams to memory.</param>
     /// <param name="debug">Whether to enable <see cref="Processor.Debug"/></param>
     /// <param name="nop">Whether to disable outputs.</param>
-    /// <param name="logReceiver">Log writer.</param>
-    public ProcessorConfiguration(IReadOnlyList<string> args, bool preload = false, bool debug = false, bool nop = false, ILogReceiver? logReceiver = default)
+    /// <param name="logWriter">Log writer.</param>
+    public ProcessorConfiguration(IReadOnlyList<string> args, bool preload = false, bool debug = false, bool nop = false, ILogWriter? logWriter = default)
     {
         Preload = preload;
         Debug = debug;
         Nop = nop;
-        LogReceiver = logReceiver;
+        LogWriter = logWriter;
         Args = args;
     }
 
@@ -48,7 +48,7 @@ public record ProcessorConfiguration
     /// <summary>
     /// Log writer.
     /// </summary>
-    public ILogReceiver? LogReceiver { get; init; }
+    public ILogWriter? LogWriter { get; init; }
 
     /// <summary>
     /// Arguments.

@@ -29,7 +29,7 @@ public static class HexPrint
     /// <param name="space">Space between bytes.</param>
     /// <param name="pow2Modulus">Only display power of 2 per line.</param>
     /// <param name="displayWidth">Available display width.</param>
-    public static void Print(ReadOnlySpan<byte> data, ILogReceiver target,
+    public static void Print(ReadOnlySpan<byte> data, IChunkWriter target,
         IEnumerable<MemAnnotation>? annotations = null,
         bool space = true, bool pow2Modulus = false, int? displayWidth = null)
     {
@@ -64,7 +64,7 @@ public static class HexPrint
                 annotationOffset++;
             }
 
-            target.LogChunk(string.Format(CultureInfo.InvariantCulture, $"0x{{0:X{PosWidth}}} ", cur), false,
+            target.WriteChunk(string.Format(CultureInfo.InvariantCulture, $"0x{{0:X{PosWidth}}} ", cur), false,
                 ConsoleColor.White);
             for (; curLine < w && cur < data.Length; curLine++)
             {
@@ -73,12 +73,12 @@ public static class HexPrint
                     if (x.offset <= cur && x.offset + x.length > cur)
                     {
                         consumed = true;
-                        target.LogChunk($"{data[cur]:X2}", false, x.color);
+                        target.WriteChunk($"{data[cur]:X2}", false, x.color);
                         break;
                     }
 
-                if (!consumed) target.LogChunk($"{data[cur]:X2}", false, ConsoleColor.White);
-                if (space && curLine + 1 != w) target.LogChunk(" ", false);
+                if (!consumed) target.WriteChunk($"{data[cur]:X2}", false, ConsoleColor.White);
+                if (space && curLine + 1 != w) target.WriteChunk(" ", false);
                 cur++;
             }
 
@@ -90,20 +90,20 @@ public static class HexPrint
             }
 
             if (curLine != w)
-                target.LogChunk(
+                target.WriteChunk(
                     string.Format(CultureInfo.InvariantCulture, $"{{0,{(w - curLine) * (space ? 3 : 2) - 1}}}",
                         ' '), false);
 
             if (annotationPrintQueue.Count > 0)
             {
                 (_, _, string label, ConsoleColor color) = annotationPrintQueue.Dequeue();
-                target.LogChunk(" ", false);
-                target.LogChunk(label.Length > TextWidth
+                target.WriteChunk(" ", false);
+                target.WriteChunk(label.Length > TextWidth
                     ? label[..TextWidth]
                     : label, false, color);
             }
 
-            target.LogChunk("\n", false);
+            target.WriteChunk("\n", false);
 
             left -= curLine;
         }
@@ -111,15 +111,15 @@ public static class HexPrint
         while (annotationPrintQueue.Count > 0)
         {
             (_, _, string label, ConsoleColor color) = annotationPrintQueue.Dequeue();
-            target.LogChunk(string.Format(CultureInfo.InvariantCulture,
+            target.WriteChunk(string.Format(CultureInfo.InvariantCulture,
                 $"{{0,{2 + PosWidth + 1 + w * (space ? 3 : 2) + (space ? 0 : 1)}}}",
                 ' '), false, color);
-            target.LogChunk(label.Length > TextWidth
+            target.WriteChunk(label.Length > TextWidth
                 ? label[..TextWidth]
                 : label, false);
-            target.LogChunk("\n", false);
+            target.WriteChunk("\n", false);
         }
 
-        target.LogChunk("", true);
+        target.WriteChunk("", true);
     }
 }

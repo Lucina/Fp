@@ -6,7 +6,7 @@ namespace Fp;
 /// <summary>
 /// Provides basic logging to <see cref="StringBuilder"/>.
 /// </summary>
-public sealed class StringBuilderLog : ILogReceiver
+public sealed class StringBuilderLog : ILogWriter
 {
     /// <summary>
     /// Newline delimiter for terminating log lines.
@@ -40,26 +40,26 @@ public sealed class StringBuilderLog : ILogReceiver
     public readonly StringBuilder StringBuilder = new();
 
     /// <inheritdoc />
-    public void LogChunk(string log, bool tail, ConsoleColor? color = null)
+    public void WriteChunk(string log, bool tail, ConsoleColor? color = null)
     {
         StringBuilder.Append(log);
         if (tail) StringBuilder.Append(Delimiter);
     }
 
     /// <inheritdoc />
-    public void LogInformation(string log, ConsoleColor? color = null)
+    public void WriteInformation(string log, ConsoleColor? color = null)
     {
         StringBuilder.Append(log).Append(Delimiter);
     }
 
     /// <inheritdoc />
-    public void LogWarning(string log, ConsoleColor? color = null)
+    public void WriteWarning(string log, ConsoleColor? color = null)
     {
         StringBuilder.Append(log).Append(Delimiter);
     }
 
     /// <inheritdoc />
-    public void LogError(string log, ConsoleColor? color = null)
+    public void WriteError(string log, ConsoleColor? color = null)
     {
         StringBuilder.Append(log).Append(Delimiter);
     }

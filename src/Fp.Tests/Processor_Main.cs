@@ -12,7 +12,7 @@ public class Processor_Main : ProcessorTestBase
     public void DefaultProperties_Correct()
     {
         Assert.That(P.Args, Is.EquivalentTo(Array.Empty<string>()));
-        Assert.That(P.LogReceiver, Is.EqualTo(NullLog.Instance));
+        Assert.That(P.LogWriter, Is.EqualTo(NullLog.Instance));
         Assert.That(P.Preload, Is.EqualTo(false));
         Assert.That(P.Debug, Is.EqualTo(false));
         Assert.That(P.Nop, Is.EqualTo(false));
@@ -23,10 +23,10 @@ public class Processor_Main : ProcessorTestBase
     {
         string[] args = { "a", "b" };
         var sbl = new StringBuilderLog();
-        var conf = new ProcessorConfiguration(args, preload: true, debug: true, nop: true, logReceiver: sbl);
+        var conf = new ProcessorConfiguration(args, preload: true, debug: true, nop: true, logWriter: sbl);
         P.Prepare(conf);
         Assert.That(P.Args, Is.EquivalentTo(args));
-        Assert.That(P.LogReceiver, Is.EqualTo(sbl));
+        Assert.That(P.LogWriter, Is.EqualTo(sbl));
         Assert.That(P.Preload, Is.EqualTo(true));
         Assert.That(P.Debug, Is.EqualTo(true));
         Assert.That(P.Nop, Is.EqualTo(true));
@@ -37,11 +37,11 @@ public class Processor_Main : ProcessorTestBase
     {
         string[] args = { "a", "b" };
         var sbl = new StringBuilderLog();
-        var conf = new ProcessorConfiguration(args, preload: true, debug: true, nop: true, logReceiver: sbl);
+        var conf = new ProcessorConfiguration(args, preload: true, debug: true, nop: true, logWriter: sbl);
         P.Prepare(conf);
         var child = P.Initialize<Processor>(args);
         Assert.That(child.Args, Is.EquivalentTo(args));
-        Assert.That(child.LogReceiver, Is.EqualTo(sbl));
+        Assert.That(child.LogWriter, Is.EqualTo(sbl));
         Assert.That(child.Preload, Is.EqualTo(true));
         Assert.That(child.Debug, Is.EqualTo(true));
         Assert.That(child.Nop, Is.EqualTo(true));
@@ -52,10 +52,10 @@ public class Processor_Main : ProcessorTestBase
     {
         string[] args = { "a", "b" };
         var sbl = new StringBuilderLog();
-        var conf = new ProcessorConfiguration(args, preload: true, debug: true, nop: true, logReceiver: sbl);
+        var conf = new ProcessorConfiguration(args, preload: true, debug: true, nop: true, logWriter: sbl);
         var child = Processor.Initialize<Processor>(conf);
         Assert.That(child.Args, Is.EquivalentTo(args));
-        Assert.That(child.LogReceiver, Is.EqualTo(sbl));
+        Assert.That(child.LogWriter, Is.EqualTo(sbl));
         Assert.That(child.Preload, Is.EqualTo(true));
         Assert.That(child.Debug, Is.EqualTo(true));
         Assert.That(child.Nop, Is.EqualTo(true));
@@ -64,7 +64,7 @@ public class Processor_Main : ProcessorTestBase
     public void LogInfo_Works()
     {
         var sbl = new StringBuilderLog("\n");
-        P.Prepare(ProcessorConfiguration.Default with { LogReceiver = sbl });
+        P.Prepare(ProcessorConfiguration.Default with { LogWriter = sbl });
         P.LogInfo("text2impeach");
         Assert.That(sbl.GetContent(), Is.EqualTo("text2impeach\n"));
     }
@@ -73,7 +73,7 @@ public class Processor_Main : ProcessorTestBase
     public void LogWarn_Works()
     {
         var sbl = new StringBuilderLog("\n");
-        P.Prepare(ProcessorConfiguration.Default with { LogReceiver = sbl });
+        P.Prepare(ProcessorConfiguration.Default with { LogWriter = sbl });
         P.LogWarn("text2impeach");
         Assert.That(sbl.GetContent(), Is.EqualTo("text2impeach\n"));
     }
@@ -82,7 +82,7 @@ public class Processor_Main : ProcessorTestBase
     public void LogFail_Works()
     {
         var sbl = new StringBuilderLog("\n");
-        P.Prepare(ProcessorConfiguration.Default with { LogReceiver = sbl });
+        P.Prepare(ProcessorConfiguration.Default with { LogWriter = sbl });
         P.LogFail("text2impeach");
         Assert.That(sbl.GetContent(), Is.EqualTo("text2impeach\n"));
     }
@@ -91,7 +91,7 @@ public class Processor_Main : ProcessorTestBase
     public void LogChunk_Works()
     {
         var sbl = new StringBuilderLog("\n");
-        P.Prepare(ProcessorConfiguration.Default with { LogReceiver = sbl });
+        P.Prepare(ProcessorConfiguration.Default with { LogWriter = sbl });
         P.LogChunk("text", false);
         Assert.That(sbl.GetContent(), Is.EqualTo("text"));
         P.LogChunk("2", true);

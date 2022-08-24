@@ -34,7 +34,7 @@ public partial class FsProcessor : FileProcessor
     /// <summary>
     /// Per-thread instance.
     /// </summary>
-    public static FsProcessor FsInstance => s_fsInstance ??= new FsProcessor { LogReceiver = ConsoleLog.Default };
+    public static FsProcessor FsInstance => s_fsInstance ??= new FsProcessor { LogWriter = ConsoleLog.Default };
 
     [ThreadStatic] private static FsProcessor? s_fsInstance;
 
@@ -146,7 +146,7 @@ public partial class FsProcessor : FileProcessor
         if (additionalFiles != null) seq = seq.Concat(additionalFiles);
         var layer1 = new SegmentedFileSystemSource(FileSystem, true, seq);
         child.Prepare(layer1, InputRootDirectory, OutputRootDirectory, main.BasePath,
-            new ProcessorConfiguration(args ?? Array.Empty<string>(), Preload, Debug, Nop, LogReceiver));
+            new ProcessorConfiguration(args ?? Array.Empty<string>(), Preload, Debug, Nop, LogWriter));
         return child;
     }
 

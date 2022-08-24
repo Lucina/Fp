@@ -25,7 +25,7 @@ public partial class Processor : IDisposable
     /// <summary>
     /// Per-thread instance.
     /// </summary>
-    public static Processor Instance => s_instance ??= new Processor { LogReceiver = NullLog.Instance };
+    public static Processor Instance => s_instance ??= new Processor { LogWriter = NullLog.Instance };
 
     [ThreadStatic] private static Processor? s_instance;
 
@@ -53,7 +53,7 @@ public partial class Processor : IDisposable
     /// <summary>
     /// Log output target.
     /// </summary>
-    public ILogReceiver LogReceiver = NullLog.Instance;
+    public ILogWriter LogWriter = NullLog.Instance;
 
     /// <summary>
     /// Whether to preload newly opened file input streams to <see cref="MemoryStream"/>.
@@ -177,7 +177,7 @@ public partial class Processor : IDisposable
     public T Initialize<T>(string[]? args = null) where T : Processor, new()
     {
         T child = new();
-        child.Prepare(new ProcessorConfiguration(args ?? Array.Empty<string>(), Preload, Debug, Nop, LogReceiver));
+        child.Prepare(new ProcessorConfiguration(args ?? Array.Empty<string>(), Preload, Debug, Nop, LogWriter));
         return child;
     }
 
@@ -212,7 +212,7 @@ public partial class Processor : IDisposable
         Debug = configuration.Debug;
         Nop = configuration.Nop;
         Preload = configuration.Preload;
-        LogReceiver = configuration.LogReceiver ?? NullLog.Instance;
+        LogWriter = configuration.LogWriter ?? NullLog.Instance;
         Args = configuration.Args;
         SetupArgs();
     }
@@ -233,26 +233,26 @@ public partial class Processor : IDisposable
     /// Invoke logger with formatted string containing specified log.
     /// </summary>
     /// <param name="log">Message.</param>
-    public void LogInfo(string log) => LogReceiver.LogInformation(log);
+    public void LogInfo(string log) => LogWriter.WriteInformation(log);
 
     /// <summary>
     /// Invoke logger with formatted string containing specified log.
     /// </summary>
     /// <param name="log">Message.</param>
-    public void LogWarn(string log) => LogReceiver.LogWarning(log);
+    public void LogWarn(string log) => LogWriter.WriteWarning(log);
 
     /// <summary>
     /// Invoke logger with formatted string containing specified log.
     /// </summary>
     /// <param name="log">Message.</param>
-    public void LogFail(string log) => LogReceiver.LogError(log);
+    public void LogFail(string log) => LogWriter.WriteError(log);
 
     /// <summary>
     /// Invoke logger with formatted string containing specified log chunk.
     /// </summary>
     /// <param name="log">Message.</param>
     /// <param name="tail">If true, final chunk.</param>
-    public void LogChunk(string log, bool tail) => LogReceiver.LogChunk(log, tail);
+    public void LogChunk(string log, bool tail) => LogWriter.WriteChunk(log, tail);
 
     #endregion
 
@@ -360,14 +360,14 @@ public partial class Processor : IDisposable
         if (_inputStream != null)
         {
             _inputStream.Dispose();
-            if (warn) LogReceiver.LogWarning("Input stream was not disposed prior to cleanup call");
+            if (warn) LogWriter.WriteWarning("Input stream was not disposed prior to cleanup call");
             InputStream = null;
         }
 
         if (OutputStream != null)
         {
             OutputStream.Dispose();
-            if (warn) LogReceiver.LogWarning("Output stream was not disposed prior to cleanup call");
+            if (warn) LogWriter.WriteWarning("Output stream was not disposed prior to cleanup call");
             OutputStream = null;
         }
 

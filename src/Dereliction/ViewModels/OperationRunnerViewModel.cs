@@ -398,15 +398,15 @@ public class OperationRunnerViewModel : ViewModelBase
         _are.Set();
     }
 
-    private class MsLogger : ILogReceiver
+    private class MsLogger : ILogWriter
     {
         private readonly OperationRunnerViewModel _parent;
         public MsLogger(OperationRunnerViewModel parent) => _parent = parent;
-        public void LogChunk(string log, bool tail, ConsoleColor? color = null) => _parent.Log(log, tail);
-        public void LogInformation(string log, ConsoleColor? color = null) => _parent.Log(log);
+        public void WriteChunk(string log, bool tail, ConsoleColor? color = null) => _parent.Log(log, tail);
+        public void WriteInformation(string log, ConsoleColor? color = null) => _parent.Log(log);
 
-        public void LogWarning(string log, ConsoleColor? color = null) => _parent.Log(log);
+        public void WriteWarning(string log, ConsoleColor? color = null) => _parent.Log(log);
 
-        public void LogError(string log, ConsoleColor? color = null) => _parent.Log(log);
+        public void WriteError(string log, ConsoleColor? color = null) => _parent.Log(log);
     }
 }

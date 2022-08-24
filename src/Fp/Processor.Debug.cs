@@ -99,7 +99,7 @@ public partial class Processor
     public void MemPrint(ReadOnlyMemory<byte> memory, bool space = true, bool pow2Modulus = true)
     {
         if (!Debug) return;
-        HexPrint.Print(memory.Span, LogReceiver,
+        HexPrint.Print(memory.Span, LogWriter,
             MemAnnotations.TryGetValue(memory,
                 out SortedList<int, MemAnnotation>? list)
                 ? list.Values.ToArray()

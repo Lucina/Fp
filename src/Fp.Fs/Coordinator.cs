@@ -56,17 +56,17 @@ public static class Coordinator
     /// </summary>
     /// <param name="exeName">Executable name.</param>
     /// <param name="args">Command-line arguments.</param>
-    /// <param name="logReceiver">Log receiver for errors.</param>
+    /// <param name="logWriter">Log receiver for errors.</param>
     /// <param name="enableParallel">If true, enable async options.</param>
     /// <param name="configuration">Generated configuration.</param>
     /// <param name="executionSettings">Generated execution settings.</param>
     /// <param name="inputs">Generated input sources.</param>
     /// <returns>True if parsing succeeded.</returns>
     public static bool CliGetConfiguration(IList<string> exeName, IReadOnlyList<string> args,
-        ILogReceiver? logReceiver, bool enableParallel, [NotNullWhen(true)] out ProcessorConfiguration? configuration,
+        ILogWriter? logWriter, bool enableParallel, [NotNullWhen(true)] out ProcessorConfiguration? configuration,
         [NotNullWhen(true)] out ExecutionSettings? executionSettings, out List<FpInput> inputs)
     {
-        logReceiver ??= NullLog.Instance;
+        logWriter ??= NullLog.Instance;
         configuration = null;
         executionSettings = null;
         inputs = new List<FpInput>();
@@ -108,26 +108,26 @@ public static class Coordinator
                 case "-multithread":
                     if (!enableParallel)
                     {
-                        logReceiver.LogWarning($"Multithreading is not currently supported, ignoring switch {str}");
+                        logWriter.WriteWarning($"Multithreading is not currently supported, ignoring switch {str}");
                         break;
                     }
 
                     string? arg = GetArgValue(args, i);
                     if (arg == null)
                     {
-                        logReceiver.LogError($"No argument specified for switch {str}, requires int");
+                        logWriter.WriteError($"No argument specified for switch {str}, requires int");
                         return false;
                     }
 
                     if (!int.TryParse(arg, out int maxParallelRes))
                     {
-                        logReceiver.LogError($"Switch {str} requires int, got {arg}");
+                        logWriter.WriteError($"Switch {str} requires int, got {arg}");
                         return false;
                     }
 
                     if (maxParallelRes < 1)
                     {
-                        logReceiver.LogError($"Switch {str} requires value >= 1, got {maxParallelRes}");
+                        logWriter.WriteError($"Switch {str} requires value >= 1, got {maxParallelRes}");
                         return false;
                     }
 
@@ -148,7 +148,7 @@ public static class Coordinator
                     preload = true;
                     break;
                 default:
-                    logReceiver.LogError($"Unknown switch {str}");
+                    logWriter.WriteError($"Unknown switch {str}");
                     return false;
             }
         }
@@ -173,7 +173,7 @@ public static class Coordinator
                     .Append("    ").Append(i.ExtendedDescription.Replace("\n", "\n    ")).AppendLine();
             }
 
-            logReceiver.LogInformation(@$"Usage:
+            logWriter.WriteInformation(@$"Usage:
     {sb} <inputs...> [options/flags] [-- [args...]]
 
 {sb2}
@@ -204,7 +204,7 @@ Flags:
                     DefaultOutputFolderName);
         }
 
-        configuration = new ProcessorConfiguration(exArgs, preload, debug, nop, logReceiver);
+        configuration = new ProcessorConfiguration(exArgs, preload, debug, nop, logWriter);
         executionSettings = new ExecutionSettings(outputRootDirectory, parallel);
         return true;
     }
@@ -215,12 +215,12 @@ Flags:
     /// <param name="args">Command-line argument.s.</param>
     /// <param name="exeName">Executable name.</param>
     /// <param name="fileSystem">Filesystem to read from.</param>
-    /// <param name="logReceiver">Log output target.</param>
+    /// <param name="logWriter">Log output target.</param>
     /// <returns>A task that will execute recursively.</returns>
     /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
     public static void CliRunFilesystem<T>(string[] args, IList<string>? exeName = null,
-        ILogReceiver? logReceiver = null, FileSystemSource? fileSystem = null) where T : FsProcessor, new() =>
-        CliRunFilesystem(args, exeName, logReceiver, fileSystem, FsProcessor.GetFsFactory<T>());
+        ILogWriter? logWriter = null, FileSystemSource? fileSystem = null) where T : FsProcessor, new() =>
+        CliRunFilesystem(args, exeName, logWriter, fileSystem, FsProcessor.GetFsFactory<T>());
 
     /// <summary>
     /// Processes filesystem tree using command-line argument inputs.
@@ -229,16 +229,16 @@ Flags:
     /// <param name="args">Command-line arguments.</param>
     /// <param name="fileSystem">Filesystem to read from.</param>
     /// <param name="processorFactories">Functions that create new processor instances.</param>
-    /// <param name="logReceiver">Log output target.</param>
+    /// <param name="logWriter">Log output target.</param>
     /// <returns>A task that will execute recursively.</returns>
     /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
-    public static void CliRunFilesystem(string[] args, IList<string>? exeName, ILogReceiver? logReceiver,
+    public static void CliRunFilesystem(string[] args, IList<string>? exeName, ILogWriter? logWriter,
         FileSystemSource? fileSystem, params FsProcessorFactory[] processorFactories)
     {
         exeName ??= GuessExe(args);
-        logReceiver ??= ConsoleLog.Default;
+        logWriter ??= ConsoleLog.Default;
         fileSystem ??= FileSystemSource.Default;
-        if (!CliGetConfiguration(exeName, args, logReceiver, false, out ProcessorConfiguration? conf,
+        if (!CliGetConfiguration(exeName, args, logWriter, false, out ProcessorConfiguration? conf,
                 out ExecutionSettings? exec, out var inputs)) return;
         switch (exec.Parallel)
         {
@@ -257,12 +257,12 @@ Flags:
     /// <param name="args">Command-line arguments.</param>
     /// <param name="exeName">Executable name.</param>
     /// <param name="fileSystem">Filesystem to read from.</param>
-    /// <param name="logReceiver">Log output target.</param>
+    /// <param name="logWriter">Log output target.</param>
     /// <returns>A task that will execute recursively.</returns>
     /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
     public static async Task CliRunFilesystemAsync<T>(string[] args, IList<string>? exeName = null,
-        ILogReceiver? logReceiver = null, FileSystemSource? fileSystem = null) where T : FsProcessor, new() =>
-        await CliRunFilesystemAsync(args, exeName, logReceiver, fileSystem, FsProcessor.GetFsFactory<T>());
+        ILogWriter? logWriter = null, FileSystemSource? fileSystem = null) where T : FsProcessor, new() =>
+        await CliRunFilesystemAsync(args, exeName, logWriter, fileSystem, FsProcessor.GetFsFactory<T>());
 
     /// <summary>
     /// Processes filesystem tree using command-line argument inputs.
@@ -271,16 +271,16 @@ Flags:
     /// <param name="exeName">Executable name.</param>
     /// <param name="fileSystem">Filesystem to read from.</param>
     /// <param name="processorFactories">Functions that create new processor instances.</param>
-    /// <param name="logReceiver">Log output target.</param>
+    /// <param name="logWriter">Log output target.</param>
     /// <returns>A task that will execute recursively.</returns>
     /// <exception cref="ArgumentException">Thrown if an invalid number of arguments is provided.</exception>
     public static async Task CliRunFilesystemAsync(string[] args, IList<string>? exeName,
-        ILogReceiver? logReceiver, FileSystemSource? fileSystem, params FsProcessorFactory[] processorFactories)
+        ILogWriter? logWriter, FileSystemSource? fileSystem, params FsProcessorFactory[] processorFactories)
     {
         exeName ??= GuessExe(args);
-        logReceiver ??= ConsoleLog.Default;
+        logWriter ??= ConsoleLog.Default;
         fileSystem ??= FileSystemSource.Default;
-        if (!CliGetConfiguration(exeName, args, logReceiver, true, out ProcessorConfiguration? conf,
+        if (!CliGetConfiguration(exeName, args, logWriter, true, out ProcessorConfiguration? conf,
                 out ExecutionSettings? exec, out var inputs)) return;
         switch (exec.Parallel)
         {
@@ -402,7 +402,7 @@ Flags:
                 }
                 catch (Exception e)
                 {
-                    src.Config.LogReceiver?.LogError($"Exception occurred during processing:\n{e}");
+                    src.Config.LogWriter?.WriteError($"Exception occurred during processing:\n{e}");
                     success = false;
                 }
             }
@@ -441,7 +441,7 @@ Flags:
                 }
                 catch (Exception e)
                 {
-                    src.Config.LogReceiver?.LogError($"Exception occurred during processing:\n{e}");
+                    src.Config.LogWriter?.WriteError($"Exception occurred during processing:\n{e}");
                     return Enumerable.Empty<Data>();
                 }
             }
