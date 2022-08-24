@@ -112,6 +112,58 @@ public class Processor_Main : ProcessorTestBase
     }
 
     [Test]
+    public void Region_ExitAfterChangingStreamInside_RestoresStreamOutside()
+    {
+        var ms1 = new MemoryStream();
+        P.UseStream(ms1);
+        using (_ = P.Region(0, 0))
+        {
+            Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+            Assert.That(P.InputStream!, Is.Not.Null);
+            var sub = P.InputStream;
+            var ms2 = new MemoryStream();
+            P.UseStream(ms2);
+            Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+            Assert.That(ReferenceEquals(sub, P.InputStream), Is.False);
+            Assert.That(ReferenceEquals(ms2, P.InputStream), Is.True);
+        }
+        Assert.That(ReferenceEquals(ms1, P.InputStream), Is.True);
+    }
+
+    [Test]
+    public void Region_NestedEnterExitAfterChangingStream_RestoresChangedStream()
+    {
+        var ms1 = new MemoryStream(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7 });
+        P.UseStream(ms1);
+        using (_ = P.Region(1, 4))
+        {
+            Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+            Assert.That(P.InputStream!, Is.Not.Null);
+            var sub = P.InputStream;
+            var ms2 = new MemoryStream();
+            P.UseStream(ms2);
+            Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+            Assert.That(ReferenceEquals(sub, P.InputStream), Is.False);
+            Assert.That(ReferenceEquals(ms2, P.InputStream), Is.True);
+            using (_ = P.Region(1, 2))
+            {
+                Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+                Assert.That(ReferenceEquals(sub, P.InputStream), Is.False);
+                Assert.That(ReferenceEquals(ms2, P.InputStream), Is.False);
+                Assert.That(P.InputStream!, Is.Not.Null);
+                var ms3 = new MemoryStream();
+                P.UseStream(ms3);
+                Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+                Assert.That(ReferenceEquals(sub, P.InputStream), Is.False);
+                Assert.That(ReferenceEquals(ms2, P.InputStream), Is.False);
+                Assert.That(ReferenceEquals(ms3, P.InputStream), Is.True);
+            }
+            Assert.That(ReferenceEquals(ms2, P.InputStream), Is.True);
+        }
+        Assert.That(ReferenceEquals(ms1, P.InputStream), Is.True);
+    }
+
+    [Test]
     public void Region_CreatesCorrectSubStream()
     {
         var ms1 = new MemoryStream(new byte[] { 0, 1, 2, 3 });
