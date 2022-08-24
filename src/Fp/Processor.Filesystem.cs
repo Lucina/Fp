@@ -13,10 +13,9 @@ public partial class Processor
     #region Filesystem utilities
 
     /// <summary>
-    /// Sets stream for reading.
+    /// Sets <see cref="InputStream"/> for reading, disposing existing stream if applicable.
     /// </summary>
     /// <param name="stream">Stream to use.</param>
-    /// <returns>Created stream.</returns>
     public void UseStream(Stream? stream)
     {
         _inputStream?.Dispose();
