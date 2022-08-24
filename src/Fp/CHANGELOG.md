@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+- `MemAnnotation` record struct for memory annotations
 - `Processor.DecodeHex(ReadOnlySpan<char>, Span<byte>, bool)` overload
 - `Processor.GetHexByteCount(ReadOnlySpan<char>, out int)`
 - `Processor.Initialize(ProcessorConfiguration)` overload

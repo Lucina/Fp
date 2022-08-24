@@ -30,13 +30,10 @@ public static class HexPrint
     /// <param name="pow2Modulus">Only display power of 2 per line.</param>
     /// <param name="displayWidth">Available display width.</param>
     public static void Print(ReadOnlySpan<byte> data, ILogReceiver target,
-        IEnumerable<(int offset, int length, string? label, ConsoleColor color)>? annotations = null,
+        IEnumerable<MemAnnotation>? annotations = null,
         bool space = true, bool pow2Modulus = false, int? displayWidth = null)
     {
-        var annotationsList =
-            new List<(int offset, int length, string? label, ConsoleColor color)>(
-                annotations?.OrderBy(a => a.offset) ??
-                Enumerable.Empty<(int offset, int length, string? label, ConsoleColor color)>());
+        var annotationsList = new List<MemAnnotation>(annotations?.OrderBy(a => a.Offset) ?? Enumerable.Empty<MemAnnotation>());
         int width = displayWidth ?? Console.WindowWidth;
         int availableSpace = width - TextWidth - PosWidth - 2 - 1;
         int charWidth = space ? 3 : 2;
@@ -58,11 +55,8 @@ public static class HexPrint
         while (left > 0)
         {
             int curLine = 0;
-            foreach ((int offset, int length, string? label, ConsoleColor color) x in
-                     annotationsList.Skip(annotationOffset)
-                    )
+            foreach ((int xOf, int xLe, string? xLa, ConsoleColor xCo) in annotationsList.Skip(annotationOffset))
             {
-                (int xOf, int xLe, string? xLa, ConsoleColor xCo) = x;
                 if (xOf >= cur + w) break;
                 annotationQueue.Enqueue((xOf, xLe, xCo));
                 if (xLa != null)

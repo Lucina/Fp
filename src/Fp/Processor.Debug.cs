@@ -21,10 +21,7 @@ public partial class Processor
     /// <summary>
     /// Annotations for memory.
     /// </summary>
-    public readonly Dictionary<ReadOnlyMemory<byte>,
-            SortedList<int, (int offset, int length, string? label, ConsoleColor color)>>
-        MemAnnotations = new();
-
+    public readonly Dictionary<ReadOnlyMemory<byte>, SortedList<int, MemAnnotation>> MemAnnotations = new();
     private int _memColorIdx;
 
     /// <summary>
@@ -50,10 +47,8 @@ public partial class Processor
         ConsoleColor? color = null)
     {
         if (!Debug) return;
-        if (!MemAnnotations.TryGetValue(memory,
-                out SortedList<int, (int offset, int length, string? label, ConsoleColor color)>? list))
-            list = MemAnnotations[memory] =
-                new SortedList<int, (int offset, int length, string? label, ConsoleColor color)>();
+        if (!MemAnnotations.TryGetValue(memory, out SortedList<int, MemAnnotation>? list))
+            list = MemAnnotations[memory] = new SortedList<int, MemAnnotation>();
         if (color == null)
         {
             color = ConsoleLog.Colors[_memColorIdx];
@@ -61,7 +56,7 @@ public partial class Processor
         }
 
         if (!list.ContainsKey(offset))
-            list.Add(offset, (offset, length, label, color.Value));
+            list.Add(offset, new MemAnnotation(offset, length, label, color.Value));
     }
 
     /// <summary>
@@ -79,12 +74,15 @@ public partial class Processor
         List<int> matches = Match(memory.Span, 0, memory.Length, sequence);
         if (!Debug) return matches;
         int sl = sequence.Length;
-        for (int i = 0; i + 1 < matches.Count; i++)
+        for (int i = 0; i < matches.Count; i++)
         {
-            int count = 0;
             int offset = matches[i];
-            while (i + 1 < matches.Count && offset + ++count * sl == matches[i + 1])
+            int count = 1;
+            while (i + 1 < matches.Count && offset + count * sl == matches[i + 1])
+            {
                 matches.RemoveAt(i + 1);
+                count++;
+            }
             MemLabel(memory, offset, count * sl, label, color);
         }
 
@@ -103,9 +101,9 @@ public partial class Processor
         if (!Debug) return;
         HexPrint.Print(memory.Span, LogReceiver,
             MemAnnotations.TryGetValue(memory,
-                out SortedList<int, (int offset, int length, string? label, ConsoleColor color)>? list)
+                out SortedList<int, MemAnnotation>? list)
                 ? list.Values.ToArray()
-                : Array.Empty<(int offset, int length, string? label, ConsoleColor color)>(), space,
+                : Array.Empty<MemAnnotation>(), space,
             pow2Modulus);
     }
 
