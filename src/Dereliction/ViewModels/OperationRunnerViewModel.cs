@@ -149,7 +149,7 @@ public class OperationRunnerViewModel : ViewModelBase
                     var processors = FsProcessor.Registered.Factories
                         .Select(f => (name: f.Info.Name, processor: f.CreateProcessor())).ToArray();
                     var configuration =
-                        new ProcessorConfiguration(false, true, false, _msLogger, Array.Empty<string>());
+                        new ProcessorConfiguration(Array.Empty<string>(), false, true, false, _msLogger);
 
                     Log("Loading input tree...");
                     var inputModel = InputModel.Create(Inputs);

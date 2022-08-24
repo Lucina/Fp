@@ -146,7 +146,7 @@ public partial class FsProcessor : FileProcessor
         if (additionalFiles != null) seq = seq.Concat(additionalFiles);
         var layer1 = new SegmentedFileSystemSource(FileSystem, true, seq);
         child.Prepare(layer1, InputRootDirectory, OutputRootDirectory, main.BasePath,
-            new ProcessorConfiguration(Preload, Debug, Nop, LogReceiver, args ?? Array.Empty<string>()));
+            new ProcessorConfiguration(args ?? Array.Empty<string>(), Preload, Debug, Nop, LogReceiver));
         return child;
     }
 

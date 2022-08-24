@@ -48,12 +48,12 @@ public partial class Processor : IDisposable
     /// <summary>
     /// Arguments.
     /// </summary>
-    public IReadOnlyList<string> Args = null!;
+    public IReadOnlyList<string> Args = Array.Empty<string>();
 
     /// <summary>
     /// Log output target.
     /// </summary>
-    public ILogReceiver LogReceiver = null!;
+    public ILogReceiver LogReceiver = NullLog.Instance;
 
     /// <summary>
     /// Whether to preload newly opened file input streams to <see cref="MemoryStream"/>.
@@ -87,7 +87,7 @@ public partial class Processor : IDisposable
     public Stream? OutputStream { get; set; }
 
     /// <summary>
-    /// Whether to read input as little-endian.
+    /// Whether to read and write data as little-endian.
     /// </summary>
     public bool LittleEndian
     {
@@ -98,6 +98,11 @@ public partial class Processor : IDisposable
             _swap = BitConverter.IsLittleEndian ^ _littleEndian;
         }
     }
+
+    /// <summary>
+    /// True if current value of <see cref="LittleEndian"/> requires an endianness swap for this platform.
+    /// </summary>
+    public bool EndiannessSwap => _swap;
 
     private bool _littleEndian;
 
@@ -172,7 +177,20 @@ public partial class Processor : IDisposable
     public T Initialize<T>(string[]? args = null) where T : Processor, new()
     {
         T child = new();
-        child.Prepare(new ProcessorConfiguration(Preload, Debug, Nop, LogReceiver, args ?? Array.Empty<string>()));
+        child.Prepare(new ProcessorConfiguration(args ?? Array.Empty<string>(), Preload, Debug, Nop, LogReceiver));
+        return child;
+    }
+
+    /// <summary>
+    /// Initializes a new processor.
+    /// </summary>
+    /// <param name="configuration">Configuration for created processor.</param>
+    /// <typeparam name="T">Processor type.</typeparam>
+    /// <returns>Created processor.</returns>
+    public static T Initialize<T>(ProcessorConfiguration configuration) where T : Processor, new()
+    {
+        T child = new();
+        child.Prepare(configuration);
         return child;
     }
 
@@ -194,7 +212,7 @@ public partial class Processor : IDisposable
         Debug = configuration.Debug;
         Nop = configuration.Nop;
         Preload = configuration.Preload;
-        LogReceiver = configuration.LogReceiver;
+        LogReceiver = configuration.LogReceiver ?? NullLog.Instance;
         Args = configuration.Args;
         SetupArgs();
     }
@@ -228,6 +246,13 @@ public partial class Processor : IDisposable
     /// </summary>
     /// <param name="log">Message.</param>
     public void LogFail(string log) => LogReceiver.LogError(log);
+
+    /// <summary>
+    /// Invoke logger with formatted string containing specified log chunk.
+    /// </summary>
+    /// <param name="log">Message.</param>
+    /// <param name="tail">If true, final chunk.</param>
+    public void LogChunk(string log, bool tail) => LogReceiver.LogChunk(log, tail);
 
     #endregion
 

@@ -204,7 +204,7 @@ Flags:
                     DefaultOutputFolderName);
         }
 
-        configuration = new ProcessorConfiguration(preload, debug, nop, logReceiver, exArgs);
+        configuration = new ProcessorConfiguration(exArgs, preload, debug, nop, logReceiver);
         executionSettings = new ExecutionSettings(outputRootDirectory, parallel);
         return true;
     }
@@ -402,7 +402,7 @@ Flags:
                 }
                 catch (Exception e)
                 {
-                    src.Config.LogReceiver.LogError($"Exception occurred during processing:\n{e}");
+                    src.Config.LogReceiver?.LogError($"Exception occurred during processing:\n{e}");
                     success = false;
                 }
             }
@@ -441,7 +441,7 @@ Flags:
                 }
                 catch (Exception e)
                 {
-                    src.Config.LogReceiver.LogError($"Exception occurred during processing:\n{e}");
+                    src.Config.LogReceiver?.LogError($"Exception occurred during processing:\n{e}");
                     return Enumerable.Empty<Data>();
                 }
             }

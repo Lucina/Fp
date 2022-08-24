@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Fp;
@@ -8,14 +9,19 @@ namespace Fp;
 public record ProcessorConfiguration
 {
     /// <summary>
+    /// Default configuration.
+    /// </summary>
+    public static readonly ProcessorConfiguration Default = new(Array.Empty<string>());
+
+    /// <summary>
     /// Creates configuration.
     /// </summary>
+    /// <param name="args">Arguments.</param>
     /// <param name="preload">Whether to read all streams to memory.</param>
     /// <param name="debug">Whether to enable <see cref="Processor.Debug"/></param>
     /// <param name="nop">Whether to disable outputs.</param>
     /// <param name="logReceiver">Log writer.</param>
-    /// <param name="args">Arguments.</param>
-    public ProcessorConfiguration(bool preload, bool debug, bool nop, ILogReceiver logReceiver, IReadOnlyList<string> args)
+    public ProcessorConfiguration(IReadOnlyList<string> args, bool preload = false, bool debug = false, bool nop = false, ILogReceiver? logReceiver = default)
     {
         Preload = preload;
         Debug = debug;
@@ -42,7 +48,7 @@ public record ProcessorConfiguration
     /// <summary>
     /// Log writer.
     /// </summary>
-    public ILogReceiver LogReceiver { get; init; }
+    public ILogReceiver? LogReceiver { get; init; }
 
     /// <summary>
     /// Arguments.

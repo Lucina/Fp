@@ -7,13 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
-- Non-allocating Processor.DecodeHex overload
-- Processor.GetHexByteCount
+- `Processor.DecodeHex(ReadOnlySpan<char>, Span<byte>, bool)` overload
+- `Processor.GetHexByteCount(ReadOnlySpan<char>, out int)`
+- `Processor.Initialize(ProcessorConfiguration)` overload
+- `Processor.LogChunk(string, bool)`
+- `string StringBuilderLog.Delimiter { get; set; }` for control over default line delimiter
+- `StringBuilderLog.GetContent()` / `StringBuilderLog.Clear()`
 
 ## Changed
-- StringData is now a record struct
-- DataUtil renamed to BufferExtensions
-- Processor.DecodeHex uses `ReadOnlySpan<char>` instead of `string`
+- `StringData` is now a record struct
+- `DataUtil` renamed to `BufferExtensions`
+- `Processor.DecodeHex(string, bool)` now uses `ReadOnlySpan<char>` instead of `string`
+- `ProcessorConfiguration` constructor parameter order adjusted with defaults for most args
+- `ProcessorConfiguration.LogReceiver` is nullable
+- `Processor` now uses `NullLog.Instance` as default log receiver
+- `Processor` now uses `Array.Empty<string>()` as default args
 
 ## [0.26.0] 2022-1-30
 

@@ -7,7 +7,7 @@ using System.Text;
 using NUnit.Framework;
 using Aes = System.Security.Cryptography.Aes;
 
-namespace Fp.Tests;
+namespace Fp.Tests.Dino;
 
 public class ProcessorTests
 {

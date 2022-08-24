@@ -6,7 +6,7 @@ using Fp.Fs;
 using Fp.Plus.Ciphers;
 using NUnit.Framework;
 
-namespace Fp.Tests;
+namespace Fp.Tests.Dino;
 
 public class ApiTests
 {
