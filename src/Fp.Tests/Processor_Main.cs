@@ -212,6 +212,7 @@ public class Processor_Main : ProcessorTestBase
             Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
             var stream = P.InputStream as SStream;
             Assert.That(stream!, Is.Not.Null);
+            Assert.That(ReferenceEquals(ms1, stream.BaseStream), Is.True);
             Assert.That(stream.Length, Is.EqualTo(2));
             Assert.That(stream.ReadByte(), Is.EqualTo(3));
             Assert.That(stream.ReadByte(), Is.EqualTo(4));
