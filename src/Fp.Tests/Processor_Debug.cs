@@ -296,6 +296,4 @@ public class Processor_Debug : ProcessorTestBase
         P.MemPrint(data, space: true, pow2Modulus: false, displayWidth: 41);
         Assert.That(sbl.GetContent(), Is.EqualTo(expected));
     }
-
-    // TODO
 }
