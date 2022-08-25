@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Hex writing now uses `IChunkWriter` interface type
 - `ILogReceiver.LogLevel` moved to outer scope
 - `ILogReceiver` renamed to `ILogWriter` with base interface `IChunkWriter`
+- `Processor.MemClear()` always clears annotations
+- `Processor.MemPrint(ReadOnlyMemory<byte>,bool,bool)` added `int displayWidth` parameter
 
 ## [0.26.0] 2022-1-30
 

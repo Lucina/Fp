@@ -27,10 +27,8 @@ public partial class Processor
     /// <summary>
     /// Clears stored memories and annotations.
     /// </summary>
-    /// <remarks>No-op if <see cref="Debug"/> is false.</remarks>
     public void MemClear()
     {
-        if (!Debug) return;
         MemAnnotations.Clear();
     }
 
@@ -95,8 +93,9 @@ public partial class Processor
     /// <param name="memory">Target memory.</param>
     /// <param name="space">Space between bytes.</param>
     /// <param name="pow2Modulus">Only display power of 2 per line.</param>
+    /// <param name="displayWidth">Available display width.</param>
     /// <remarks>No-op if <see cref="Debug"/> is false.<br/>Users should not slice memory struct between label and print, uses <see cref="MemAnnotations"/> which uses the memory as a key.</remarks>
-    public void MemPrint(ReadOnlyMemory<byte> memory, bool space = true, bool pow2Modulus = true)
+    public void MemPrint(ReadOnlyMemory<byte> memory, bool space = true, bool pow2Modulus = true, int? displayWidth = null)
     {
         if (!Debug) return;
         HexPrint.Print(memory.Span, LogWriter,
@@ -104,7 +103,7 @@ public partial class Processor
                 out SortedList<int, MemAnnotation>? list)
                 ? list.Values.ToArray()
                 : Array.Empty<MemAnnotation>(), space,
-            pow2Modulus);
+            pow2Modulus, displayWidth);
     }
 
     #endregion
