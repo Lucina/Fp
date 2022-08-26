@@ -88,7 +88,7 @@ public partial class Processor
     /// </summary>
     /// <param name="paths">Elements to join.</param>
     /// <returns>Path.</returns>
-    /// <exception cref="Exception">Thrown if separator is encountered by itself.</exception>
+    /// <exception cref="ArgumentException">Thrown if separator is encountered by itself.</exception>
     public string Join(params string[] paths)
         => Join(SupportBackSlash, paths);
 

@@ -51,7 +51,7 @@ public class Processor_Filesystem : ProcessorTestBase
     }
 
     [Test]
-    public void CloseFile_AsMainFalse_ClosesAndDisposesInputStreamAndUnsets()
+    public void CloseFile_AsMainTrue_ClosesAndDisposesInputStreamAndUnsets()
     {
         var ms1 = new MemoryStream();
         P.UseStream(ms1);
@@ -59,11 +59,11 @@ public class Processor_Filesystem : ProcessorTestBase
         Assert.That(ms1.ReadByte(), Is.EqualTo(-1));
         P.CloseFile(true);
         Assert.That(() => ms1.ReadByte(), Throws.InstanceOf<ObjectDisposedException>());
-        Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+        Assert.That(P.InputStream, Is.Null);
     }
 
     [Test]
-    public void CloseFile_AsMainFalseCustomStream_ClosesAndDisposesStreamAndUnsets()
+    public void CloseFile_AsMainTrueCustomStream_ClosesAndDisposesStreamAndUnsets()
     {
         var ms1 = new MemoryStream();
         P.UseStream(ms1);
@@ -74,7 +74,7 @@ public class Processor_Filesystem : ProcessorTestBase
         P.CloseFile(true, ms2);
         Assert.That(ms1.ReadByte(), Is.EqualTo(-1));
         Assert.That(() => ms2.ReadByte(), Throws.InstanceOf<ObjectDisposedException>());
-        Assert.That(ReferenceEquals(ms1, P.InputStream), Is.False);
+        Assert.That(P.InputStream, Is.Null);
     }
 
     [Test]
@@ -127,7 +127,7 @@ public class Processor_Filesystem : ProcessorTestBase
     }
 
     [Test]
-    public void CloseOutputFile_AsMainFalse_ClosesAndDisposesInputStreamAndUnsets()
+    public void CloseOutputFile_AsMainTrue_ClosesAndDisposesInputStreamAndUnsets()
     {
         var ms1 = new MemoryStream();
         P.UseOutputStream(ms1);
@@ -135,11 +135,11 @@ public class Processor_Filesystem : ProcessorTestBase
         Assert.That(ms1.ReadByte(), Is.EqualTo(-1));
         P.CloseOutputFile(true);
         Assert.That(() => ms1.ReadByte(), Throws.InstanceOf<ObjectDisposedException>());
-        Assert.That(ReferenceEquals(ms1, P.OutputStream), Is.False);
+        Assert.That(P.OutputStream, Is.Null);
     }
 
     [Test]
-    public void CloseOutputFile_AsMainFalseCustomStream_ClosesAndDisposesStreamAndUnsets()
+    public void CloseOutputFile_AsMainTrueCustomStream_ClosesAndDisposesStreamAndUnsets()
     {
         var ms1 = new MemoryStream();
         P.UseOutputStream(ms1);
@@ -150,7 +150,7 @@ public class Processor_Filesystem : ProcessorTestBase
         P.CloseOutputFile(true, ms2);
         Assert.That(ms1.ReadByte(), Is.EqualTo(-1));
         Assert.That(() => ms2.ReadByte(), Throws.InstanceOf<ObjectDisposedException>());
-        Assert.That(ReferenceEquals(ms1, P.OutputStream), Is.False);
+        Assert.That(P.OutputStream, Is.Null);
     }
 
     // TODO
