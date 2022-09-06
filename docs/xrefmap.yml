@@ -7,6 +7,11 @@ references:
   commentId: N:Fp
   fullName: Fp
   nameWithType: Fp
+- uid: Fp.
+  name: ''
+  href: api/Fp/Fp..html
+  commentId: T:Fp.
+  fullName: Fp.
 - uid: Fp.BitUtil
   name: BitUtil
   href: api/Fp/Fp.BitUtil.html
@@ -699,12 +704,12 @@ references:
   commentId: M:Fp.ConsoleLog.Config.#ctor
   fullName: Fp.ConsoleLog.Config.Config()
   nameWithType: ConsoleLog.Config.Config()
-- uid: Fp.ConsoleLog.Config.#ctor(Fp.ILogReceiver.LogLevel)
-  name: Config(ILogReceiver.LogLevel)
-  href: api/Fp/Fp.ConsoleLog.Config.html#Fp_ConsoleLog_Config__ctor_Fp_ILogReceiver_LogLevel_
-  commentId: M:Fp.ConsoleLog.Config.#ctor(Fp.ILogReceiver.LogLevel)
-  fullName: Fp.ConsoleLog.Config.Config(Fp.ILogReceiver.LogLevel)
-  nameWithType: ConsoleLog.Config.Config(ILogReceiver.LogLevel)
+- uid: Fp.ConsoleLog.Config.#ctor(Fp.LogLevel)
+  name: Config(LogLevel)
+  href: api/Fp/Fp.ConsoleLog.Config.html#Fp_ConsoleLog_Config__ctor_Fp_LogLevel_
+  commentId: M:Fp.ConsoleLog.Config.#ctor(Fp.LogLevel)
+  fullName: Fp.ConsoleLog.Config.Config(Fp.LogLevel)
+  nameWithType: ConsoleLog.Config.Config(LogLevel)
 - uid: Fp.ConsoleLog.Config.#ctor*
   name: Config
   href: api/Fp/Fp.ConsoleLog.Config.html#Fp_ConsoleLog_Config__ctor_
@@ -731,76 +736,76 @@ references:
   commentId: F:Fp.ConsoleLog.Default
   fullName: Fp.ConsoleLog.Default
   nameWithType: ConsoleLog.Default
-- uid: Fp.ConsoleLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name: LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ConsoleLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name.vb: LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-  fullName: Fp.ConsoleLog.LogChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ConsoleLog.LogChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ConsoleLog.LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  nameWithType.vb: ConsoleLog.LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-- uid: Fp.ConsoleLog.LogChunk*
-  name: LogChunk
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogChunk_
-  commentId: Overload:Fp.ConsoleLog.LogChunk
-  isSpec: "True"
-  fullName: Fp.ConsoleLog.LogChunk
-  nameWithType: ConsoleLog.LogChunk
-- uid: Fp.ConsoleLog.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name: LogError(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogError_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ConsoleLog.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogError(String, Nullable(Of ConsoleColor))
-  fullName: Fp.ConsoleLog.LogError(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ConsoleLog.LogError(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ConsoleLog.LogError(String, Nullable<ConsoleColor>)
-  nameWithType.vb: ConsoleLog.LogError(String, Nullable(Of ConsoleColor))
-- uid: Fp.ConsoleLog.LogError*
-  name: LogError
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogError_
-  commentId: Overload:Fp.ConsoleLog.LogError
-  isSpec: "True"
-  fullName: Fp.ConsoleLog.LogError
-  nameWithType: ConsoleLog.LogError
-- uid: Fp.ConsoleLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name: LogInformation(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogInformation_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ConsoleLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogInformation(String, Nullable(Of ConsoleColor))
-  fullName: Fp.ConsoleLog.LogInformation(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ConsoleLog.LogInformation(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ConsoleLog.LogInformation(String, Nullable<ConsoleColor>)
-  nameWithType.vb: ConsoleLog.LogInformation(String, Nullable(Of ConsoleColor))
-- uid: Fp.ConsoleLog.LogInformation*
-  name: LogInformation
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogInformation_
-  commentId: Overload:Fp.ConsoleLog.LogInformation
-  isSpec: "True"
-  fullName: Fp.ConsoleLog.LogInformation
-  nameWithType: ConsoleLog.LogInformation
-- uid: Fp.ConsoleLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name: LogWarning(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogWarning_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ConsoleLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogWarning(String, Nullable(Of ConsoleColor))
-  fullName: Fp.ConsoleLog.LogWarning(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ConsoleLog.LogWarning(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ConsoleLog.LogWarning(String, Nullable<ConsoleColor>)
-  nameWithType.vb: ConsoleLog.LogWarning(String, Nullable(Of ConsoleColor))
-- uid: Fp.ConsoleLog.LogWarning*
-  name: LogWarning
-  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_LogWarning_
-  commentId: Overload:Fp.ConsoleLog.LogWarning
-  isSpec: "True"
-  fullName: Fp.ConsoleLog.LogWarning
-  nameWithType: ConsoleLog.LogWarning
 - uid: Fp.ConsoleLog.Sequences
   name: Sequences
   href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_Sequences
   commentId: F:Fp.ConsoleLog.Sequences
   fullName: Fp.ConsoleLog.Sequences
   nameWithType: ConsoleLog.Sequences
+- uid: Fp.ConsoleLog.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name: WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ConsoleLog.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name.vb: WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+  fullName: Fp.ConsoleLog.WriteChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ConsoleLog.WriteChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ConsoleLog.WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  nameWithType.vb: ConsoleLog.WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+- uid: Fp.ConsoleLog.WriteChunk*
+  name: WriteChunk
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteChunk_
+  commentId: Overload:Fp.ConsoleLog.WriteChunk
+  isSpec: "True"
+  fullName: Fp.ConsoleLog.WriteChunk
+  nameWithType: ConsoleLog.WriteChunk
+- uid: Fp.ConsoleLog.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteError(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteError_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ConsoleLog.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteError(String, Nullable(Of ConsoleColor))
+  fullName: Fp.ConsoleLog.WriteError(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ConsoleLog.WriteError(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ConsoleLog.WriteError(String, Nullable<ConsoleColor>)
+  nameWithType.vb: ConsoleLog.WriteError(String, Nullable(Of ConsoleColor))
+- uid: Fp.ConsoleLog.WriteError*
+  name: WriteError
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteError_
+  commentId: Overload:Fp.ConsoleLog.WriteError
+  isSpec: "True"
+  fullName: Fp.ConsoleLog.WriteError
+  nameWithType: ConsoleLog.WriteError
+- uid: Fp.ConsoleLog.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteInformation(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteInformation_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ConsoleLog.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteInformation(String, Nullable(Of ConsoleColor))
+  fullName: Fp.ConsoleLog.WriteInformation(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ConsoleLog.WriteInformation(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ConsoleLog.WriteInformation(String, Nullable<ConsoleColor>)
+  nameWithType.vb: ConsoleLog.WriteInformation(String, Nullable(Of ConsoleColor))
+- uid: Fp.ConsoleLog.WriteInformation*
+  name: WriteInformation
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteInformation_
+  commentId: Overload:Fp.ConsoleLog.WriteInformation
+  isSpec: "True"
+  fullName: Fp.ConsoleLog.WriteInformation
+  nameWithType: ConsoleLog.WriteInformation
+- uid: Fp.ConsoleLog.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteWarning(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteWarning_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ConsoleLog.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteWarning(String, Nullable(Of ConsoleColor))
+  fullName: Fp.ConsoleLog.WriteWarning(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ConsoleLog.WriteWarning(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ConsoleLog.WriteWarning(String, Nullable<ConsoleColor>)
+  nameWithType.vb: ConsoleLog.WriteWarning(String, Nullable(Of ConsoleColor))
+- uid: Fp.ConsoleLog.WriteWarning*
+  name: WriteWarning
+  href: api/Fp/Fp.ConsoleLog.html#Fp_ConsoleLog_WriteWarning_
+  commentId: Overload:Fp.ConsoleLog.WriteWarning
+  isSpec: "True"
+  fullName: Fp.ConsoleLog.WriteWarning
+  nameWithType: ConsoleLog.WriteWarning
 - uid: Fp.Data
   name: Data
   href: api/Fp/Fp.Data.html
@@ -2197,15 +2202,15 @@ references:
   commentId: T:Fp.Fs.Coordinator.
   fullName: Fp.Fs.Coordinator.
   nameWithType: Coordinator.
-- uid: Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IReadOnlyList{System.String},Fp.ILogReceiver,System.Boolean,Fp.ProcessorConfiguration@,Fp.Fs.Coordinator.ExecutionSettings@,System.Collections.Generic.List{Fp.Fs.Coordinator.FpInput}@)
-  name: CliGetConfiguration(IList<String>, IReadOnlyList<String>, ILogReceiver, Boolean, out ProcessorConfiguration, out Coordinator.ExecutionSettings, out List<Coordinator.FpInput>)
-  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliGetConfiguration_System_Collections_Generic_IList_System_String__System_Collections_Generic_IReadOnlyList_System_String__Fp_ILogReceiver_System_Boolean_Fp_ProcessorConfiguration__Fp_Fs_Coordinator_ExecutionSettings__System_Collections_Generic_List_Fp_Fs_Coordinator_FpInput___
-  commentId: M:Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IReadOnlyList{System.String},Fp.ILogReceiver,System.Boolean,Fp.ProcessorConfiguration@,Fp.Fs.Coordinator.ExecutionSettings@,System.Collections.Generic.List{Fp.Fs.Coordinator.FpInput}@)
-  name.vb: CliGetConfiguration(IList(Of String), IReadOnlyList(Of String), ILogReceiver, Boolean, ByRef ProcessorConfiguration, ByRef Coordinator.ExecutionSettings, ByRef List(Of Coordinator.FpInput))
-  fullName: Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList<System.String>, System.Collections.Generic.IReadOnlyList<System.String>, Fp.ILogReceiver, System.Boolean, out Fp.ProcessorConfiguration, out Fp.Fs.Coordinator.ExecutionSettings, out System.Collections.Generic.List<Fp.Fs.Coordinator.FpInput>)
-  fullName.vb: Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList(Of System.String), System.Collections.Generic.IReadOnlyList(Of System.String), Fp.ILogReceiver, System.Boolean, ByRef Fp.ProcessorConfiguration, ByRef Fp.Fs.Coordinator.ExecutionSettings, ByRef System.Collections.Generic.List(Of Fp.Fs.Coordinator.FpInput))
-  nameWithType: Coordinator.CliGetConfiguration(IList<String>, IReadOnlyList<String>, ILogReceiver, Boolean, out ProcessorConfiguration, out Coordinator.ExecutionSettings, out List<Coordinator.FpInput>)
-  nameWithType.vb: Coordinator.CliGetConfiguration(IList(Of String), IReadOnlyList(Of String), ILogReceiver, Boolean, ByRef ProcessorConfiguration, ByRef Coordinator.ExecutionSettings, ByRef List(Of Coordinator.FpInput))
+- uid: Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IReadOnlyList{System.String},Fp.ILogWriter,System.Boolean,Fp.ProcessorConfiguration@,Fp.Fs.Coordinator.ExecutionSettings@,System.Collections.Generic.List{Fp.Fs.Coordinator.FpInput}@)
+  name: CliGetConfiguration(IList<String>, IReadOnlyList<String>, ILogWriter, Boolean, out ProcessorConfiguration, out Coordinator.ExecutionSettings, out List<Coordinator.FpInput>)
+  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliGetConfiguration_System_Collections_Generic_IList_System_String__System_Collections_Generic_IReadOnlyList_System_String__Fp_ILogWriter_System_Boolean_Fp_ProcessorConfiguration__Fp_Fs_Coordinator_ExecutionSettings__System_Collections_Generic_List_Fp_Fs_Coordinator_FpInput___
+  commentId: M:Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IReadOnlyList{System.String},Fp.ILogWriter,System.Boolean,Fp.ProcessorConfiguration@,Fp.Fs.Coordinator.ExecutionSettings@,System.Collections.Generic.List{Fp.Fs.Coordinator.FpInput}@)
+  name.vb: CliGetConfiguration(IList(Of String), IReadOnlyList(Of String), ILogWriter, Boolean, ByRef ProcessorConfiguration, ByRef Coordinator.ExecutionSettings, ByRef List(Of Coordinator.FpInput))
+  fullName: Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList<System.String>, System.Collections.Generic.IReadOnlyList<System.String>, Fp.ILogWriter, System.Boolean, out Fp.ProcessorConfiguration, out Fp.Fs.Coordinator.ExecutionSettings, out System.Collections.Generic.List<Fp.Fs.Coordinator.FpInput>)
+  fullName.vb: Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList(Of System.String), System.Collections.Generic.IReadOnlyList(Of System.String), Fp.ILogWriter, System.Boolean, ByRef Fp.ProcessorConfiguration, ByRef Fp.Fs.Coordinator.ExecutionSettings, ByRef System.Collections.Generic.List(Of Fp.Fs.Coordinator.FpInput))
+  nameWithType: Coordinator.CliGetConfiguration(IList<String>, IReadOnlyList<String>, ILogWriter, Boolean, out ProcessorConfiguration, out Coordinator.ExecutionSettings, out List<Coordinator.FpInput>)
+  nameWithType.vb: Coordinator.CliGetConfiguration(IList(Of String), IReadOnlyList(Of String), ILogWriter, Boolean, ByRef ProcessorConfiguration, ByRef Coordinator.ExecutionSettings, ByRef List(Of Coordinator.FpInput))
 - uid: Fp.Fs.Coordinator.CliGetConfiguration*
   name: CliGetConfiguration
   href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliGetConfiguration_
@@ -2213,15 +2218,15 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.Coordinator.CliGetConfiguration
   nameWithType: Coordinator.CliGetConfiguration
-- uid: Fp.Fs.Coordinator.CliRunFilesystem(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
-  name: CliRunFilesystem(String[], IList<String>, ILogReceiver, FileSystemSource, FsProcessorFactory[])
-  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystem_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___
-  commentId: M:Fp.Fs.Coordinator.CliRunFilesystem(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
-  name.vb: CliRunFilesystem(String(), IList(Of String), ILogReceiver, FileSystemSource, FsProcessorFactory())
-  fullName: Fp.Fs.Coordinator.CliRunFilesystem(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogReceiver, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory[])
-  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystem(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogReceiver, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory())
-  nameWithType: Coordinator.CliRunFilesystem(String[], IList<String>, ILogReceiver, FileSystemSource, FsProcessorFactory[])
-  nameWithType.vb: Coordinator.CliRunFilesystem(String(), IList(Of String), ILogReceiver, FileSystemSource, FsProcessorFactory())
+- uid: Fp.Fs.Coordinator.CliRunFilesystem(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
+  name: CliRunFilesystem(String[], IList<String>, ILogWriter, FileSystemSource, FsProcessorFactory[])
+  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystem_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___
+  commentId: M:Fp.Fs.Coordinator.CliRunFilesystem(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
+  name.vb: CliRunFilesystem(String(), IList(Of String), ILogWriter, FileSystemSource, FsProcessorFactory())
+  fullName: Fp.Fs.Coordinator.CliRunFilesystem(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogWriter, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory[])
+  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystem(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogWriter, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory())
+  nameWithType: Coordinator.CliRunFilesystem(String[], IList<String>, ILogWriter, FileSystemSource, FsProcessorFactory[])
+  nameWithType.vb: Coordinator.CliRunFilesystem(String(), IList(Of String), ILogWriter, FileSystemSource, FsProcessorFactory())
 - uid: Fp.Fs.Coordinator.CliRunFilesystem*
   name: CliRunFilesystem
   href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystem_
@@ -2229,24 +2234,24 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.Coordinator.CliRunFilesystem
   nameWithType: Coordinator.CliRunFilesystem
-- uid: Fp.Fs.Coordinator.CliRunFilesystem``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource)
-  name: CliRunFilesystem<T>(String[], IList<String>, ILogReceiver, FileSystemSource)
-  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystem__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_
-  commentId: M:Fp.Fs.Coordinator.CliRunFilesystem``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource)
-  name.vb: CliRunFilesystem(Of T)(String(), IList(Of String), ILogReceiver, FileSystemSource)
-  fullName: Fp.Fs.Coordinator.CliRunFilesystem<T>(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogReceiver, Fp.Fs.FileSystemSource)
-  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystem(Of T)(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogReceiver, Fp.Fs.FileSystemSource)
-  nameWithType: Coordinator.CliRunFilesystem<T>(String[], IList<String>, ILogReceiver, FileSystemSource)
-  nameWithType.vb: Coordinator.CliRunFilesystem(Of T)(String(), IList(Of String), ILogReceiver, FileSystemSource)
-- uid: Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
-  name: CliRunFilesystemAsync(String[], IList<String>, ILogReceiver, FileSystemSource, FsProcessorFactory[])
-  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystemAsync_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___
-  commentId: M:Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
-  name.vb: CliRunFilesystemAsync(String(), IList(Of String), ILogReceiver, FileSystemSource, FsProcessorFactory())
-  fullName: Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogReceiver, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory[])
-  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogReceiver, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory())
-  nameWithType: Coordinator.CliRunFilesystemAsync(String[], IList<String>, ILogReceiver, FileSystemSource, FsProcessorFactory[])
-  nameWithType.vb: Coordinator.CliRunFilesystemAsync(String(), IList(Of String), ILogReceiver, FileSystemSource, FsProcessorFactory())
+- uid: Fp.Fs.Coordinator.CliRunFilesystem``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource)
+  name: CliRunFilesystem<T>(String[], IList<String>, ILogWriter, FileSystemSource)
+  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystem__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_
+  commentId: M:Fp.Fs.Coordinator.CliRunFilesystem``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource)
+  name.vb: CliRunFilesystem(Of T)(String(), IList(Of String), ILogWriter, FileSystemSource)
+  fullName: Fp.Fs.Coordinator.CliRunFilesystem<T>(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogWriter, Fp.Fs.FileSystemSource)
+  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystem(Of T)(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogWriter, Fp.Fs.FileSystemSource)
+  nameWithType: Coordinator.CliRunFilesystem<T>(String[], IList<String>, ILogWriter, FileSystemSource)
+  nameWithType.vb: Coordinator.CliRunFilesystem(Of T)(String(), IList(Of String), ILogWriter, FileSystemSource)
+- uid: Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
+  name: CliRunFilesystemAsync(String[], IList<String>, ILogWriter, FileSystemSource, FsProcessorFactory[])
+  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystemAsync_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___
+  commentId: M:Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])
+  name.vb: CliRunFilesystemAsync(String(), IList(Of String), ILogWriter, FileSystemSource, FsProcessorFactory())
+  fullName: Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogWriter, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory[])
+  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogWriter, Fp.Fs.FileSystemSource, Fp.Fs.FsProcessorFactory())
+  nameWithType: Coordinator.CliRunFilesystemAsync(String[], IList<String>, ILogWriter, FileSystemSource, FsProcessorFactory[])
+  nameWithType.vb: Coordinator.CliRunFilesystemAsync(String(), IList(Of String), ILogWriter, FileSystemSource, FsProcessorFactory())
 - uid: Fp.Fs.Coordinator.CliRunFilesystemAsync*
   name: CliRunFilesystemAsync
   href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystemAsync_
@@ -2254,15 +2259,15 @@ references:
   isSpec: "True"
   fullName: Fp.Fs.Coordinator.CliRunFilesystemAsync
   nameWithType: Coordinator.CliRunFilesystemAsync
-- uid: Fp.Fs.Coordinator.CliRunFilesystemAsync``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource)
-  name: CliRunFilesystemAsync<T>(String[], IList<String>, ILogReceiver, FileSystemSource)
-  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystemAsync__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_
-  commentId: M:Fp.Fs.Coordinator.CliRunFilesystemAsync``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource)
-  name.vb: CliRunFilesystemAsync(Of T)(String(), IList(Of String), ILogReceiver, FileSystemSource)
-  fullName: Fp.Fs.Coordinator.CliRunFilesystemAsync<T>(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogReceiver, Fp.Fs.FileSystemSource)
-  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystemAsync(Of T)(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogReceiver, Fp.Fs.FileSystemSource)
-  nameWithType: Coordinator.CliRunFilesystemAsync<T>(String[], IList<String>, ILogReceiver, FileSystemSource)
-  nameWithType.vb: Coordinator.CliRunFilesystemAsync(Of T)(String(), IList(Of String), ILogReceiver, FileSystemSource)
+- uid: Fp.Fs.Coordinator.CliRunFilesystemAsync``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource)
+  name: CliRunFilesystemAsync<T>(String[], IList<String>, ILogWriter, FileSystemSource)
+  href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_CliRunFilesystemAsync__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_
+  commentId: M:Fp.Fs.Coordinator.CliRunFilesystemAsync``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource)
+  name.vb: CliRunFilesystemAsync(Of T)(String(), IList(Of String), ILogWriter, FileSystemSource)
+  fullName: Fp.Fs.Coordinator.CliRunFilesystemAsync<T>(System.String[], System.Collections.Generic.IList<System.String>, Fp.ILogWriter, Fp.Fs.FileSystemSource)
+  fullName.vb: Fp.Fs.Coordinator.CliRunFilesystemAsync(Of T)(System.String(), System.Collections.Generic.IList(Of System.String), Fp.ILogWriter, Fp.Fs.FileSystemSource)
+  nameWithType: Coordinator.CliRunFilesystemAsync<T>(String[], IList<String>, ILogWriter, FileSystemSource)
+  nameWithType.vb: Coordinator.CliRunFilesystemAsync(Of T)(String(), IList(Of String), ILogWriter, FileSystemSource)
 - uid: Fp.Fs.Coordinator.DefaultCurrentExecutableName
   name: DefaultCurrentExecutableName
   href: api/Fp.Fs/Fp.Fs.Coordinator.html#Fp_Fs_Coordinator_DefaultCurrentExecutableName
@@ -3882,6 +3887,11 @@ references:
   commentId: N:Fp.Helpers
   fullName: Fp.Helpers
   nameWithType: Fp.Helpers
+- uid: Fp.Helpers.
+  name: ''
+  href: api/Fp/Fp.Helpers..html
+  commentId: T:Fp.Helpers.
+  fullName: Fp.Helpers.
 - uid: Fp.Helpers.AsciiStringHelper
   name: AsciiStringHelper
   href: api/Fp/Fp.Helpers.AsciiStringHelper.html
@@ -5470,72 +5480,6 @@ references:
   isSpec: "True"
   fullName: Fp.Helpers.S8Helper.Parent
   nameWithType: S8Helper.Parent
-- uid: Fp.Helpers.StringData
-  name: StringData
-  href: api/Fp/Fp.Helpers.StringData.html
-  commentId: T:Fp.Helpers.StringData
-  fullName: Fp.Helpers.StringData
-  nameWithType: StringData
-- uid: Fp.Helpers.StringData.#ctor(System.String,System.Int32)
-  name: StringData(String, Int32)
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData__ctor_System_String_System_Int32_
-  commentId: M:Fp.Helpers.StringData.#ctor(System.String,System.Int32)
-  fullName: Fp.Helpers.StringData.StringData(System.String, System.Int32)
-  nameWithType: StringData.StringData(String, Int32)
-- uid: Fp.Helpers.StringData.#ctor*
-  name: StringData
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData__ctor_
-  commentId: Overload:Fp.Helpers.StringData.#ctor
-  isSpec: "True"
-  fullName: Fp.Helpers.StringData.StringData
-  nameWithType: StringData.StringData
-- uid: Fp.Helpers.StringData.ByteLength
-  name: ByteLength
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData_ByteLength
-  commentId: F:Fp.Helpers.StringData.ByteLength
-  fullName: Fp.Helpers.StringData.ByteLength
-  nameWithType: StringData.ByteLength
-- uid: Fp.Helpers.StringData.Deconstruct(System.String@,System.Int32@)
-  name: Deconstruct(out String, out Int32)
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData_Deconstruct_System_String__System_Int32__
-  commentId: M:Fp.Helpers.StringData.Deconstruct(System.String@,System.Int32@)
-  name.vb: Deconstruct(ByRef String, ByRef Int32)
-  fullName: Fp.Helpers.StringData.Deconstruct(out System.String, out System.Int32)
-  fullName.vb: Fp.Helpers.StringData.Deconstruct(ByRef System.String, ByRef System.Int32)
-  nameWithType: StringData.Deconstruct(out String, out Int32)
-  nameWithType.vb: StringData.Deconstruct(ByRef String, ByRef Int32)
-- uid: Fp.Helpers.StringData.Deconstruct*
-  name: Deconstruct
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData_Deconstruct_
-  commentId: Overload:Fp.Helpers.StringData.Deconstruct
-  isSpec: "True"
-  fullName: Fp.Helpers.StringData.Deconstruct
-  nameWithType: StringData.Deconstruct
-- uid: Fp.Helpers.StringData.op_Implicit(System.String)~Fp.Helpers.StringData
-  name: Implicit(String to StringData)
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData_op_Implicit_System_String__Fp_Helpers_StringData
-  commentId: M:Fp.Helpers.StringData.op_Implicit(System.String)~Fp.Helpers.StringData
-  name.vb: Widening(String to StringData)
-  fullName: Fp.Helpers.StringData.Implicit(System.String to Fp.Helpers.StringData)
-  fullName.vb: Fp.Helpers.StringData.Widening(System.String to Fp.Helpers.StringData)
-  nameWithType: StringData.Implicit(String to StringData)
-  nameWithType.vb: StringData.Widening(String to StringData)
-- uid: Fp.Helpers.StringData.op_Implicit*
-  name: Implicit
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData_op_Implicit_
-  commentId: Overload:Fp.Helpers.StringData.op_Implicit
-  isSpec: "True"
-  name.vb: Widening
-  fullName: Fp.Helpers.StringData.Implicit
-  fullName.vb: Fp.Helpers.StringData.Widening
-  nameWithType: StringData.Implicit
-  nameWithType.vb: StringData.Widening
-- uid: Fp.Helpers.StringData.String
-  name: String
-  href: api/Fp/Fp.Helpers.StringData.html#Fp_Helpers_StringData_String
-  commentId: F:Fp.Helpers.StringData.String
-  fullName: Fp.Helpers.StringData.String
-  nameWithType: StringData.String
 - uid: Fp.Helpers.TArrayHelper`1
   name: TArrayHelper<T>
   href: api/Fp/Fp.Helpers.TArrayHelper-1.html
@@ -6700,15 +6644,15 @@ references:
   commentId: F:Fp.HexPrint.PosWidth
   fullName: Fp.HexPrint.PosWidth
   nameWithType: HexPrint.PosWidth
-- uid: Fp.HexPrint.Print(System.ReadOnlySpan{System.Byte},Fp.ILogReceiver,System.Collections.Generic.IEnumerable{System.ValueTuple{System.Int32,System.Int32,System.String,System.ConsoleColor}},System.Boolean,System.Boolean,System.Nullable{System.Int32})
-  name: Print(ReadOnlySpan<Byte>, ILogReceiver, IEnumerable<(Int32 offset, Int32 length, String label, ConsoleColor color)>, Boolean, Boolean, Nullable<Int32>)
-  href: api/Fp/Fp.HexPrint.html#Fp_HexPrint_Print_System_ReadOnlySpan_System_Byte__Fp_ILogReceiver_System_Collections_Generic_IEnumerable_System_ValueTuple_System_Int32_System_Int32_System_String_System_ConsoleColor___System_Boolean_System_Boolean_System_Nullable_System_Int32__
-  commentId: M:Fp.HexPrint.Print(System.ReadOnlySpan{System.Byte},Fp.ILogReceiver,System.Collections.Generic.IEnumerable{System.ValueTuple{System.Int32,System.Int32,System.String,System.ConsoleColor}},System.Boolean,System.Boolean,System.Nullable{System.Int32})
-  name.vb: Print(ReadOnlySpan(Of Byte), ILogReceiver, IEnumerable(Of (offset As Int32, length As Int32, label As String, color As ConsoleColor)(Of Int32, Int32, String, ConsoleColor)), Boolean, Boolean, Nullable(Of Int32))
-  fullName: Fp.HexPrint.Print(System.ReadOnlySpan<System.Byte>, Fp.ILogReceiver, System.Collections.Generic.IEnumerable<System.ValueTuple<System.Int32, System.Int32, System.String, System.ConsoleColor>>, System.Boolean, System.Boolean, System.Nullable<System.Int32>)
-  fullName.vb: Fp.HexPrint.Print(System.ReadOnlySpan(Of System.Byte), Fp.ILogReceiver, System.Collections.Generic.IEnumerable(Of System.ValueTuple(Of System.Int32, System.Int32, System.String, System.ConsoleColor)), System.Boolean, System.Boolean, System.Nullable(Of System.Int32))
-  nameWithType: HexPrint.Print(ReadOnlySpan<Byte>, ILogReceiver, IEnumerable<(Int32 offset, Int32 length, String label, ConsoleColor color)>, Boolean, Boolean, Nullable<Int32>)
-  nameWithType.vb: HexPrint.Print(ReadOnlySpan(Of Byte), ILogReceiver, IEnumerable(Of (offset As Int32, length As Int32, label As String, color As ConsoleColor)(Of Int32, Int32, String, ConsoleColor)), Boolean, Boolean, Nullable(Of Int32))
+- uid: Fp.HexPrint.Print(System.ReadOnlySpan{System.Byte},Fp.IChunkWriter,System.Collections.Generic.IEnumerable{Fp.MemAnnotation},System.Boolean,System.Boolean,System.Nullable{System.Int32})
+  name: Print(ReadOnlySpan<Byte>, IChunkWriter, IEnumerable<MemAnnotation>, Boolean, Boolean, Nullable<Int32>)
+  href: api/Fp/Fp.HexPrint.html#Fp_HexPrint_Print_System_ReadOnlySpan_System_Byte__Fp_IChunkWriter_System_Collections_Generic_IEnumerable_Fp_MemAnnotation__System_Boolean_System_Boolean_System_Nullable_System_Int32__
+  commentId: M:Fp.HexPrint.Print(System.ReadOnlySpan{System.Byte},Fp.IChunkWriter,System.Collections.Generic.IEnumerable{Fp.MemAnnotation},System.Boolean,System.Boolean,System.Nullable{System.Int32})
+  name.vb: Print(ReadOnlySpan(Of Byte), IChunkWriter, IEnumerable(Of MemAnnotation), Boolean, Boolean, Nullable(Of Int32))
+  fullName: Fp.HexPrint.Print(System.ReadOnlySpan<System.Byte>, Fp.IChunkWriter, System.Collections.Generic.IEnumerable<Fp.MemAnnotation>, System.Boolean, System.Boolean, System.Nullable<System.Int32>)
+  fullName.vb: Fp.HexPrint.Print(System.ReadOnlySpan(Of System.Byte), Fp.IChunkWriter, System.Collections.Generic.IEnumerable(Of Fp.MemAnnotation), System.Boolean, System.Boolean, System.Nullable(Of System.Int32))
+  nameWithType: HexPrint.Print(ReadOnlySpan<Byte>, IChunkWriter, IEnumerable<MemAnnotation>, Boolean, Boolean, Nullable<Int32>)
+  nameWithType.vb: HexPrint.Print(ReadOnlySpan(Of Byte), IChunkWriter, IEnumerable(Of MemAnnotation), Boolean, Boolean, Nullable(Of Int32))
 - uid: Fp.HexPrint.Print*
   name: Print
   href: api/Fp/Fp.HexPrint.html#Fp_HexPrint_Print_
@@ -6722,100 +6666,106 @@ references:
   commentId: F:Fp.HexPrint.TextWidth
   fullName: Fp.HexPrint.TextWidth
   nameWithType: HexPrint.TextWidth
-- uid: Fp.ILogReceiver
-  name: ILogReceiver
-  href: api/Fp/Fp.ILogReceiver.html
-  commentId: T:Fp.ILogReceiver
-  fullName: Fp.ILogReceiver
-  nameWithType: ILogReceiver
-- uid: Fp.ILogReceiver.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name: LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ILogReceiver.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name.vb: LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-  fullName: Fp.ILogReceiver.LogChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ILogReceiver.LogChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ILogReceiver.LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  nameWithType.vb: ILogReceiver.LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-- uid: Fp.ILogReceiver.LogChunk*
-  name: LogChunk
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogChunk_
-  commentId: Overload:Fp.ILogReceiver.LogChunk
+- uid: Fp.IChunkWriter
+  name: IChunkWriter
+  href: api/Fp/Fp.IChunkWriter.html
+  commentId: T:Fp.IChunkWriter
+  fullName: Fp.IChunkWriter
+  nameWithType: IChunkWriter
+- uid: Fp.IChunkWriter.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name: WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.IChunkWriter.html#Fp_IChunkWriter_WriteChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.IChunkWriter.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name.vb: WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+  fullName: Fp.IChunkWriter.WriteChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.IChunkWriter.WriteChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
+  nameWithType: IChunkWriter.WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  nameWithType.vb: IChunkWriter.WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+- uid: Fp.IChunkWriter.WriteChunk*
+  name: WriteChunk
+  href: api/Fp/Fp.IChunkWriter.html#Fp_IChunkWriter_WriteChunk_
+  commentId: Overload:Fp.IChunkWriter.WriteChunk
   isSpec: "True"
-  fullName: Fp.ILogReceiver.LogChunk
-  nameWithType: ILogReceiver.LogChunk
-- uid: Fp.ILogReceiver.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name: LogError(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogError_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ILogReceiver.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogError(String, Nullable(Of ConsoleColor))
-  fullName: Fp.ILogReceiver.LogError(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ILogReceiver.LogError(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ILogReceiver.LogError(String, Nullable<ConsoleColor>)
-  nameWithType.vb: ILogReceiver.LogError(String, Nullable(Of ConsoleColor))
-- uid: Fp.ILogReceiver.LogError*
-  name: LogError
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogError_
-  commentId: Overload:Fp.ILogReceiver.LogError
+  fullName: Fp.IChunkWriter.WriteChunk
+  nameWithType: IChunkWriter.WriteChunk
+- uid: Fp.ILogWriter
+  name: ILogWriter
+  href: api/Fp/Fp.ILogWriter.html
+  commentId: T:Fp.ILogWriter
+  fullName: Fp.ILogWriter
+  nameWithType: ILogWriter
+- uid: Fp.ILogWriter.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteError(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ILogWriter.html#Fp_ILogWriter_WriteError_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ILogWriter.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteError(String, Nullable(Of ConsoleColor))
+  fullName: Fp.ILogWriter.WriteError(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ILogWriter.WriteError(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ILogWriter.WriteError(String, Nullable<ConsoleColor>)
+  nameWithType.vb: ILogWriter.WriteError(String, Nullable(Of ConsoleColor))
+- uid: Fp.ILogWriter.WriteError*
+  name: WriteError
+  href: api/Fp/Fp.ILogWriter.html#Fp_ILogWriter_WriteError_
+  commentId: Overload:Fp.ILogWriter.WriteError
   isSpec: "True"
-  fullName: Fp.ILogReceiver.LogError
-  nameWithType: ILogReceiver.LogError
-- uid: Fp.ILogReceiver.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name: LogInformation(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogInformation_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ILogReceiver.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogInformation(String, Nullable(Of ConsoleColor))
-  fullName: Fp.ILogReceiver.LogInformation(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ILogReceiver.LogInformation(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ILogReceiver.LogInformation(String, Nullable<ConsoleColor>)
-  nameWithType.vb: ILogReceiver.LogInformation(String, Nullable(Of ConsoleColor))
-- uid: Fp.ILogReceiver.LogInformation*
-  name: LogInformation
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogInformation_
-  commentId: Overload:Fp.ILogReceiver.LogInformation
+  fullName: Fp.ILogWriter.WriteError
+  nameWithType: ILogWriter.WriteError
+- uid: Fp.ILogWriter.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteInformation(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ILogWriter.html#Fp_ILogWriter_WriteInformation_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ILogWriter.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteInformation(String, Nullable(Of ConsoleColor))
+  fullName: Fp.ILogWriter.WriteInformation(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ILogWriter.WriteInformation(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ILogWriter.WriteInformation(String, Nullable<ConsoleColor>)
+  nameWithType.vb: ILogWriter.WriteInformation(String, Nullable(Of ConsoleColor))
+- uid: Fp.ILogWriter.WriteInformation*
+  name: WriteInformation
+  href: api/Fp/Fp.ILogWriter.html#Fp_ILogWriter_WriteInformation_
+  commentId: Overload:Fp.ILogWriter.WriteInformation
   isSpec: "True"
-  fullName: Fp.ILogReceiver.LogInformation
-  nameWithType: ILogReceiver.LogInformation
-- uid: Fp.ILogReceiver.LogLevel
-  name: ILogReceiver.LogLevel
-  href: api/Fp/Fp.ILogReceiver.LogLevel.html
-  commentId: T:Fp.ILogReceiver.LogLevel
-  fullName: Fp.ILogReceiver.LogLevel
-  nameWithType: ILogReceiver.LogLevel
-- uid: Fp.ILogReceiver.LogLevel.Error
+  fullName: Fp.ILogWriter.WriteInformation
+  nameWithType: ILogWriter.WriteInformation
+- uid: Fp.ILogWriter.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteWarning(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.ILogWriter.html#Fp_ILogWriter_WriteWarning_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.ILogWriter.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteWarning(String, Nullable(Of ConsoleColor))
+  fullName: Fp.ILogWriter.WriteWarning(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.ILogWriter.WriteWarning(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: ILogWriter.WriteWarning(String, Nullable<ConsoleColor>)
+  nameWithType.vb: ILogWriter.WriteWarning(String, Nullable(Of ConsoleColor))
+- uid: Fp.ILogWriter.WriteWarning*
+  name: WriteWarning
+  href: api/Fp/Fp.ILogWriter.html#Fp_ILogWriter_WriteWarning_
+  commentId: Overload:Fp.ILogWriter.WriteWarning
+  isSpec: "True"
+  fullName: Fp.ILogWriter.WriteWarning
+  nameWithType: ILogWriter.WriteWarning
+- uid: Fp.LogLevel
+  name: LogLevel
+  href: api/Fp/Fp.LogLevel.html
+  commentId: T:Fp.LogLevel
+  fullName: Fp.LogLevel
+  nameWithType: LogLevel
+- uid: Fp.LogLevel.Error
   name: Error
-  href: api/Fp/Fp.ILogReceiver.LogLevel.html#Fp_ILogReceiver_LogLevel_Error
-  commentId: F:Fp.ILogReceiver.LogLevel.Error
-  fullName: Fp.ILogReceiver.LogLevel.Error
-  nameWithType: ILogReceiver.LogLevel.Error
-- uid: Fp.ILogReceiver.LogLevel.Information
+  href: api/Fp/Fp.LogLevel.html#Fp_LogLevel_Error
+  commentId: F:Fp.LogLevel.Error
+  fullName: Fp.LogLevel.Error
+  nameWithType: LogLevel.Error
+- uid: Fp.LogLevel.Information
   name: Information
-  href: api/Fp/Fp.ILogReceiver.LogLevel.html#Fp_ILogReceiver_LogLevel_Information
-  commentId: F:Fp.ILogReceiver.LogLevel.Information
-  fullName: Fp.ILogReceiver.LogLevel.Information
-  nameWithType: ILogReceiver.LogLevel.Information
-- uid: Fp.ILogReceiver.LogLevel.Warning
+  href: api/Fp/Fp.LogLevel.html#Fp_LogLevel_Information
+  commentId: F:Fp.LogLevel.Information
+  fullName: Fp.LogLevel.Information
+  nameWithType: LogLevel.Information
+- uid: Fp.LogLevel.Warning
   name: Warning
-  href: api/Fp/Fp.ILogReceiver.LogLevel.html#Fp_ILogReceiver_LogLevel_Warning
-  commentId: F:Fp.ILogReceiver.LogLevel.Warning
-  fullName: Fp.ILogReceiver.LogLevel.Warning
-  nameWithType: ILogReceiver.LogLevel.Warning
-- uid: Fp.ILogReceiver.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name: LogWarning(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogWarning_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.ILogReceiver.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogWarning(String, Nullable(Of ConsoleColor))
-  fullName: Fp.ILogReceiver.LogWarning(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.ILogReceiver.LogWarning(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: ILogReceiver.LogWarning(String, Nullable<ConsoleColor>)
-  nameWithType.vb: ILogReceiver.LogWarning(String, Nullable(Of ConsoleColor))
-- uid: Fp.ILogReceiver.LogWarning*
-  name: LogWarning
-  href: api/Fp/Fp.ILogReceiver.html#Fp_ILogReceiver_LogWarning_
-  commentId: Overload:Fp.ILogReceiver.LogWarning
-  isSpec: "True"
-  fullName: Fp.ILogReceiver.LogWarning
-  nameWithType: ILogReceiver.LogWarning
+  href: api/Fp/Fp.LogLevel.html#Fp_LogLevel_Warning
+  commentId: F:Fp.LogLevel.Warning
+  fullName: Fp.LogLevel.Warning
+  nameWithType: LogLevel.Warning
 - uid: Fp.MetaData
   name: MetaData
   href: api/Fp/Fp.MetaData.html
@@ -7311,70 +7261,70 @@ references:
   commentId: F:Fp.NullLog.Instance
   fullName: Fp.NullLog.Instance
   nameWithType: NullLog.Instance
-- uid: Fp.NullLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name: LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.NullLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name.vb: LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-  fullName: Fp.NullLog.LogChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.NullLog.LogChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
-  nameWithType: NullLog.LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  nameWithType.vb: NullLog.LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-- uid: Fp.NullLog.LogChunk*
-  name: LogChunk
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogChunk_
-  commentId: Overload:Fp.NullLog.LogChunk
+- uid: Fp.NullLog.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name: WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.NullLog.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name.vb: WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+  fullName: Fp.NullLog.WriteChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.NullLog.WriteChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
+  nameWithType: NullLog.WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  nameWithType.vb: NullLog.WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+- uid: Fp.NullLog.WriteChunk*
+  name: WriteChunk
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteChunk_
+  commentId: Overload:Fp.NullLog.WriteChunk
   isSpec: "True"
-  fullName: Fp.NullLog.LogChunk
-  nameWithType: NullLog.LogChunk
-- uid: Fp.NullLog.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name: LogError(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogError_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.NullLog.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogError(String, Nullable(Of ConsoleColor))
-  fullName: Fp.NullLog.LogError(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.NullLog.LogError(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: NullLog.LogError(String, Nullable<ConsoleColor>)
-  nameWithType.vb: NullLog.LogError(String, Nullable(Of ConsoleColor))
-- uid: Fp.NullLog.LogError*
-  name: LogError
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogError_
-  commentId: Overload:Fp.NullLog.LogError
+  fullName: Fp.NullLog.WriteChunk
+  nameWithType: NullLog.WriteChunk
+- uid: Fp.NullLog.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteError(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteError_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.NullLog.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteError(String, Nullable(Of ConsoleColor))
+  fullName: Fp.NullLog.WriteError(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.NullLog.WriteError(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: NullLog.WriteError(String, Nullable<ConsoleColor>)
+  nameWithType.vb: NullLog.WriteError(String, Nullable(Of ConsoleColor))
+- uid: Fp.NullLog.WriteError*
+  name: WriteError
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteError_
+  commentId: Overload:Fp.NullLog.WriteError
   isSpec: "True"
-  fullName: Fp.NullLog.LogError
-  nameWithType: NullLog.LogError
-- uid: Fp.NullLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name: LogInformation(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogInformation_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.NullLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogInformation(String, Nullable(Of ConsoleColor))
-  fullName: Fp.NullLog.LogInformation(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.NullLog.LogInformation(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: NullLog.LogInformation(String, Nullable<ConsoleColor>)
-  nameWithType.vb: NullLog.LogInformation(String, Nullable(Of ConsoleColor))
-- uid: Fp.NullLog.LogInformation*
-  name: LogInformation
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogInformation_
-  commentId: Overload:Fp.NullLog.LogInformation
+  fullName: Fp.NullLog.WriteError
+  nameWithType: NullLog.WriteError
+- uid: Fp.NullLog.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteInformation(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteInformation_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.NullLog.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteInformation(String, Nullable(Of ConsoleColor))
+  fullName: Fp.NullLog.WriteInformation(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.NullLog.WriteInformation(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: NullLog.WriteInformation(String, Nullable<ConsoleColor>)
+  nameWithType.vb: NullLog.WriteInformation(String, Nullable(Of ConsoleColor))
+- uid: Fp.NullLog.WriteInformation*
+  name: WriteInformation
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteInformation_
+  commentId: Overload:Fp.NullLog.WriteInformation
   isSpec: "True"
-  fullName: Fp.NullLog.LogInformation
-  nameWithType: NullLog.LogInformation
-- uid: Fp.NullLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name: LogWarning(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogWarning_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.NullLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogWarning(String, Nullable(Of ConsoleColor))
-  fullName: Fp.NullLog.LogWarning(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.NullLog.LogWarning(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: NullLog.LogWarning(String, Nullable<ConsoleColor>)
-  nameWithType.vb: NullLog.LogWarning(String, Nullable(Of ConsoleColor))
-- uid: Fp.NullLog.LogWarning*
-  name: LogWarning
-  href: api/Fp/Fp.NullLog.html#Fp_NullLog_LogWarning_
-  commentId: Overload:Fp.NullLog.LogWarning
+  fullName: Fp.NullLog.WriteInformation
+  nameWithType: NullLog.WriteInformation
+- uid: Fp.NullLog.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteWarning(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteWarning_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.NullLog.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteWarning(String, Nullable(Of ConsoleColor))
+  fullName: Fp.NullLog.WriteWarning(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.NullLog.WriteWarning(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: NullLog.WriteWarning(String, Nullable<ConsoleColor>)
+  nameWithType.vb: NullLog.WriteWarning(String, Nullable(Of ConsoleColor))
+- uid: Fp.NullLog.WriteWarning*
+  name: WriteWarning
+  href: api/Fp/Fp.NullLog.html#Fp_NullLog_WriteWarning_
+  commentId: Overload:Fp.NullLog.WriteWarning
   isSpec: "True"
-  fullName: Fp.NullLog.LogWarning
-  nameWithType: NullLog.LogWarning
+  fullName: Fp.NullLog.WriteWarning
+  nameWithType: NullLog.WriteWarning
 - uid: Fp.One
   name: One
   href: api/Fp/Fp.One.html
@@ -9456,22 +9406,22 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.ApplyAnd
   nameWithType: Processor.ApplyAnd
-- uid: Fp.Processor.ApplyAndArm(System.Span{System.Byte},System.Byte)
-  name: ApplyAndArm(Span<Byte>, Byte)
-  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndArm_System_Span_System_Byte__System_Byte_
-  commentId: M:Fp.Processor.ApplyAndArm(System.Span{System.Byte},System.Byte)
-  name.vb: ApplyAndArm(Span(Of Byte), Byte)
-  fullName: Fp.Processor.ApplyAndArm(System.Span<System.Byte>, System.Byte)
-  fullName.vb: Fp.Processor.ApplyAndArm(System.Span(Of System.Byte), System.Byte)
-  nameWithType: Processor.ApplyAndArm(Span<Byte>, Byte)
-  nameWithType.vb: Processor.ApplyAndArm(Span(Of Byte), Byte)
-- uid: Fp.Processor.ApplyAndArm*
-  name: ApplyAndArm
-  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndArm_
-  commentId: Overload:Fp.Processor.ApplyAndArm
+- uid: Fp.Processor.ApplyAndAdvSimd(System.Span{System.Byte},System.Byte)
+  name: ApplyAndAdvSimd(Span<Byte>, Byte)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndAdvSimd_System_Span_System_Byte__System_Byte_
+  commentId: M:Fp.Processor.ApplyAndAdvSimd(System.Span{System.Byte},System.Byte)
+  name.vb: ApplyAndAdvSimd(Span(Of Byte), Byte)
+  fullName: Fp.Processor.ApplyAndAdvSimd(System.Span<System.Byte>, System.Byte)
+  fullName.vb: Fp.Processor.ApplyAndAdvSimd(System.Span(Of System.Byte), System.Byte)
+  nameWithType: Processor.ApplyAndAdvSimd(Span<Byte>, Byte)
+  nameWithType.vb: Processor.ApplyAndAdvSimd(Span(Of Byte), Byte)
+- uid: Fp.Processor.ApplyAndAdvSimd*
+  name: ApplyAndAdvSimd
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndAdvSimd_
+  commentId: Overload:Fp.Processor.ApplyAndAdvSimd
   isSpec: "True"
-  fullName: Fp.Processor.ApplyAndArm
-  nameWithType: Processor.ApplyAndArm
+  fullName: Fp.Processor.ApplyAndAdvSimd
+  nameWithType: Processor.ApplyAndAdvSimd
 - uid: Fp.Processor.ApplyAndAvx2(System.Span{System.Byte},System.Byte)
   name: ApplyAndAvx2(Span<Byte>, Byte)
   href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndAvx2_System_Span_System_Byte__System_Byte_
@@ -9529,6 +9479,31 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.ApplyAndSse2
   nameWithType: Processor.ApplyAndSse2
+- uid: Fp.Processor.ApplyAndVectorized(System.Span{System.Byte},System.Byte)
+  name: ApplyAndVectorized(Span<Byte>, Byte)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndVectorized_System_Span_System_Byte__System_Byte_
+  commentId: M:Fp.Processor.ApplyAndVectorized(System.Span{System.Byte},System.Byte)
+  name.vb: ApplyAndVectorized(Span(Of Byte), Byte)
+  fullName: Fp.Processor.ApplyAndVectorized(System.Span<System.Byte>, System.Byte)
+  fullName.vb: Fp.Processor.ApplyAndVectorized(System.Span(Of System.Byte), System.Byte)
+  nameWithType: Processor.ApplyAndVectorized(Span<Byte>, Byte)
+  nameWithType.vb: Processor.ApplyAndVectorized(Span(Of Byte), Byte)
+- uid: Fp.Processor.ApplyAndVectorized(System.Span{System.Byte},System.ReadOnlySpan{System.Byte},Fp.SequenceBehaviour)
+  name: ApplyAndVectorized(Span<Byte>, ReadOnlySpan<Byte>, SequenceBehaviour)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndVectorized_System_Span_System_Byte__System_ReadOnlySpan_System_Byte__Fp_SequenceBehaviour_
+  commentId: M:Fp.Processor.ApplyAndVectorized(System.Span{System.Byte},System.ReadOnlySpan{System.Byte},Fp.SequenceBehaviour)
+  name.vb: ApplyAndVectorized(Span(Of Byte), ReadOnlySpan(Of Byte), SequenceBehaviour)
+  fullName: Fp.Processor.ApplyAndVectorized(System.Span<System.Byte>, System.ReadOnlySpan<System.Byte>, Fp.SequenceBehaviour)
+  fullName.vb: Fp.Processor.ApplyAndVectorized(System.Span(Of System.Byte), System.ReadOnlySpan(Of System.Byte), Fp.SequenceBehaviour)
+  nameWithType: Processor.ApplyAndVectorized(Span<Byte>, ReadOnlySpan<Byte>, SequenceBehaviour)
+  nameWithType.vb: Processor.ApplyAndVectorized(Span(Of Byte), ReadOnlySpan(Of Byte), SequenceBehaviour)
+- uid: Fp.Processor.ApplyAndVectorized*
+  name: ApplyAndVectorized
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyAndVectorized_
+  commentId: Overload:Fp.Processor.ApplyAndVectorized
+  isSpec: "True"
+  fullName: Fp.Processor.ApplyAndVectorized
+  nameWithType: Processor.ApplyAndVectorized
 - uid: Fp.Processor.ApplyOr(System.Span{System.Byte},System.Byte)
   name: ApplyOr(Span<Byte>, Byte)
   href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOr_System_Span_System_Byte__System_Byte_
@@ -9554,22 +9529,22 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.ApplyOr
   nameWithType: Processor.ApplyOr
-- uid: Fp.Processor.ApplyOrArm(System.Span{System.Byte},System.Byte)
-  name: ApplyOrArm(Span<Byte>, Byte)
-  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrArm_System_Span_System_Byte__System_Byte_
-  commentId: M:Fp.Processor.ApplyOrArm(System.Span{System.Byte},System.Byte)
-  name.vb: ApplyOrArm(Span(Of Byte), Byte)
-  fullName: Fp.Processor.ApplyOrArm(System.Span<System.Byte>, System.Byte)
-  fullName.vb: Fp.Processor.ApplyOrArm(System.Span(Of System.Byte), System.Byte)
-  nameWithType: Processor.ApplyOrArm(Span<Byte>, Byte)
-  nameWithType.vb: Processor.ApplyOrArm(Span(Of Byte), Byte)
-- uid: Fp.Processor.ApplyOrArm*
-  name: ApplyOrArm
-  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrArm_
-  commentId: Overload:Fp.Processor.ApplyOrArm
+- uid: Fp.Processor.ApplyOrAdvSimd(System.Span{System.Byte},System.Byte)
+  name: ApplyOrAdvSimd(Span<Byte>, Byte)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrAdvSimd_System_Span_System_Byte__System_Byte_
+  commentId: M:Fp.Processor.ApplyOrAdvSimd(System.Span{System.Byte},System.Byte)
+  name.vb: ApplyOrAdvSimd(Span(Of Byte), Byte)
+  fullName: Fp.Processor.ApplyOrAdvSimd(System.Span<System.Byte>, System.Byte)
+  fullName.vb: Fp.Processor.ApplyOrAdvSimd(System.Span(Of System.Byte), System.Byte)
+  nameWithType: Processor.ApplyOrAdvSimd(Span<Byte>, Byte)
+  nameWithType.vb: Processor.ApplyOrAdvSimd(Span(Of Byte), Byte)
+- uid: Fp.Processor.ApplyOrAdvSimd*
+  name: ApplyOrAdvSimd
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrAdvSimd_
+  commentId: Overload:Fp.Processor.ApplyOrAdvSimd
   isSpec: "True"
-  fullName: Fp.Processor.ApplyOrArm
-  nameWithType: Processor.ApplyOrArm
+  fullName: Fp.Processor.ApplyOrAdvSimd
+  nameWithType: Processor.ApplyOrAdvSimd
 - uid: Fp.Processor.ApplyOrAvx2(System.Span{System.Byte},System.Byte)
   name: ApplyOrAvx2(Span<Byte>, Byte)
   href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrAvx2_System_Span_System_Byte__System_Byte_
@@ -9627,6 +9602,31 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.ApplyOrSse2
   nameWithType: Processor.ApplyOrSse2
+- uid: Fp.Processor.ApplyOrVectorized(System.Span{System.Byte},System.Byte)
+  name: ApplyOrVectorized(Span<Byte>, Byte)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrVectorized_System_Span_System_Byte__System_Byte_
+  commentId: M:Fp.Processor.ApplyOrVectorized(System.Span{System.Byte},System.Byte)
+  name.vb: ApplyOrVectorized(Span(Of Byte), Byte)
+  fullName: Fp.Processor.ApplyOrVectorized(System.Span<System.Byte>, System.Byte)
+  fullName.vb: Fp.Processor.ApplyOrVectorized(System.Span(Of System.Byte), System.Byte)
+  nameWithType: Processor.ApplyOrVectorized(Span<Byte>, Byte)
+  nameWithType.vb: Processor.ApplyOrVectorized(Span(Of Byte), Byte)
+- uid: Fp.Processor.ApplyOrVectorized(System.Span{System.Byte},System.ReadOnlySpan{System.Byte},Fp.SequenceBehaviour)
+  name: ApplyOrVectorized(Span<Byte>, ReadOnlySpan<Byte>, SequenceBehaviour)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrVectorized_System_Span_System_Byte__System_ReadOnlySpan_System_Byte__Fp_SequenceBehaviour_
+  commentId: M:Fp.Processor.ApplyOrVectorized(System.Span{System.Byte},System.ReadOnlySpan{System.Byte},Fp.SequenceBehaviour)
+  name.vb: ApplyOrVectorized(Span(Of Byte), ReadOnlySpan(Of Byte), SequenceBehaviour)
+  fullName: Fp.Processor.ApplyOrVectorized(System.Span<System.Byte>, System.ReadOnlySpan<System.Byte>, Fp.SequenceBehaviour)
+  fullName.vb: Fp.Processor.ApplyOrVectorized(System.Span(Of System.Byte), System.ReadOnlySpan(Of System.Byte), Fp.SequenceBehaviour)
+  nameWithType: Processor.ApplyOrVectorized(Span<Byte>, ReadOnlySpan<Byte>, SequenceBehaviour)
+  nameWithType.vb: Processor.ApplyOrVectorized(Span(Of Byte), ReadOnlySpan(Of Byte), SequenceBehaviour)
+- uid: Fp.Processor.ApplyOrVectorized*
+  name: ApplyOrVectorized
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyOrVectorized_
+  commentId: Overload:Fp.Processor.ApplyOrVectorized
+  isSpec: "True"
+  fullName: Fp.Processor.ApplyOrVectorized
+  nameWithType: Processor.ApplyOrVectorized
 - uid: Fp.Processor.ApplyTransform(System.Span{System.Byte},Fp.Processor.TransformDelegate)
   name: ApplyTransform(Span<Byte>, Processor.TransformDelegate)
   href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyTransform_System_Span_System_Byte__Fp_Processor_TransformDelegate_
@@ -9668,22 +9668,22 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.ApplyXor
   nameWithType: Processor.ApplyXor
-- uid: Fp.Processor.ApplyXorArm(System.Span{System.Byte},System.Byte)
-  name: ApplyXorArm(Span<Byte>, Byte)
-  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorArm_System_Span_System_Byte__System_Byte_
-  commentId: M:Fp.Processor.ApplyXorArm(System.Span{System.Byte},System.Byte)
-  name.vb: ApplyXorArm(Span(Of Byte), Byte)
-  fullName: Fp.Processor.ApplyXorArm(System.Span<System.Byte>, System.Byte)
-  fullName.vb: Fp.Processor.ApplyXorArm(System.Span(Of System.Byte), System.Byte)
-  nameWithType: Processor.ApplyXorArm(Span<Byte>, Byte)
-  nameWithType.vb: Processor.ApplyXorArm(Span(Of Byte), Byte)
-- uid: Fp.Processor.ApplyXorArm*
-  name: ApplyXorArm
-  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorArm_
-  commentId: Overload:Fp.Processor.ApplyXorArm
+- uid: Fp.Processor.ApplyXorAdvSimd(System.Span{System.Byte},System.Byte)
+  name: ApplyXorAdvSimd(Span<Byte>, Byte)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorAdvSimd_System_Span_System_Byte__System_Byte_
+  commentId: M:Fp.Processor.ApplyXorAdvSimd(System.Span{System.Byte},System.Byte)
+  name.vb: ApplyXorAdvSimd(Span(Of Byte), Byte)
+  fullName: Fp.Processor.ApplyXorAdvSimd(System.Span<System.Byte>, System.Byte)
+  fullName.vb: Fp.Processor.ApplyXorAdvSimd(System.Span(Of System.Byte), System.Byte)
+  nameWithType: Processor.ApplyXorAdvSimd(Span<Byte>, Byte)
+  nameWithType.vb: Processor.ApplyXorAdvSimd(Span(Of Byte), Byte)
+- uid: Fp.Processor.ApplyXorAdvSimd*
+  name: ApplyXorAdvSimd
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorAdvSimd_
+  commentId: Overload:Fp.Processor.ApplyXorAdvSimd
   isSpec: "True"
-  fullName: Fp.Processor.ApplyXorArm
-  nameWithType: Processor.ApplyXorArm
+  fullName: Fp.Processor.ApplyXorAdvSimd
+  nameWithType: Processor.ApplyXorAdvSimd
 - uid: Fp.Processor.ApplyXorAvx2(System.Span{System.Byte},System.Byte)
   name: ApplyXorAvx2(Span<Byte>, Byte)
   href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorAvx2_System_Span_System_Byte__System_Byte_
@@ -9741,6 +9741,31 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.ApplyXorSse2
   nameWithType: Processor.ApplyXorSse2
+- uid: Fp.Processor.ApplyXorVectorized(System.Span{System.Byte},System.Byte)
+  name: ApplyXorVectorized(Span<Byte>, Byte)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorVectorized_System_Span_System_Byte__System_Byte_
+  commentId: M:Fp.Processor.ApplyXorVectorized(System.Span{System.Byte},System.Byte)
+  name.vb: ApplyXorVectorized(Span(Of Byte), Byte)
+  fullName: Fp.Processor.ApplyXorVectorized(System.Span<System.Byte>, System.Byte)
+  fullName.vb: Fp.Processor.ApplyXorVectorized(System.Span(Of System.Byte), System.Byte)
+  nameWithType: Processor.ApplyXorVectorized(Span<Byte>, Byte)
+  nameWithType.vb: Processor.ApplyXorVectorized(Span(Of Byte), Byte)
+- uid: Fp.Processor.ApplyXorVectorized(System.Span{System.Byte},System.ReadOnlySpan{System.Byte},Fp.SequenceBehaviour)
+  name: ApplyXorVectorized(Span<Byte>, ReadOnlySpan<Byte>, SequenceBehaviour)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorVectorized_System_Span_System_Byte__System_ReadOnlySpan_System_Byte__Fp_SequenceBehaviour_
+  commentId: M:Fp.Processor.ApplyXorVectorized(System.Span{System.Byte},System.ReadOnlySpan{System.Byte},Fp.SequenceBehaviour)
+  name.vb: ApplyXorVectorized(Span(Of Byte), ReadOnlySpan(Of Byte), SequenceBehaviour)
+  fullName: Fp.Processor.ApplyXorVectorized(System.Span<System.Byte>, System.ReadOnlySpan<System.Byte>, Fp.SequenceBehaviour)
+  fullName.vb: Fp.Processor.ApplyXorVectorized(System.Span(Of System.Byte), System.ReadOnlySpan(Of System.Byte), Fp.SequenceBehaviour)
+  nameWithType: Processor.ApplyXorVectorized(Span<Byte>, ReadOnlySpan<Byte>, SequenceBehaviour)
+  nameWithType.vb: Processor.ApplyXorVectorized(Span(Of Byte), ReadOnlySpan(Of Byte), SequenceBehaviour)
+- uid: Fp.Processor.ApplyXorVectorized*
+  name: ApplyXorVectorized
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ApplyXorVectorized_
+  commentId: Overload:Fp.Processor.ApplyXorVectorized
+  isSpec: "True"
+  fullName: Fp.Processor.ApplyXorVectorized
+  nameWithType: Processor.ApplyXorVectorized
 - uid: Fp.Processor.Args
   name: Args
   href: api/Fp/Fp.Processor.html#Fp_Processor_Args
@@ -9857,6 +9882,22 @@ references:
   commentId: F:Fp.Processor.Configuration
   fullName: Fp.Processor.Configuration
   nameWithType: Processor.Configuration
+- uid: Fp.Processor.ContainsAtLeastOneAligned(System.ReadOnlySpan{System.Byte},System.Int32)
+  name: ContainsAtLeastOneAligned(ReadOnlySpan<Byte>, Int32)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ContainsAtLeastOneAligned_System_ReadOnlySpan_System_Byte__System_Int32_
+  commentId: M:Fp.Processor.ContainsAtLeastOneAligned(System.ReadOnlySpan{System.Byte},System.Int32)
+  name.vb: ContainsAtLeastOneAligned(ReadOnlySpan(Of Byte), Int32)
+  fullName: Fp.Processor.ContainsAtLeastOneAligned(System.ReadOnlySpan<System.Byte>, System.Int32)
+  fullName.vb: Fp.Processor.ContainsAtLeastOneAligned(System.ReadOnlySpan(Of System.Byte), System.Int32)
+  nameWithType: Processor.ContainsAtLeastOneAligned(ReadOnlySpan<Byte>, Int32)
+  nameWithType.vb: Processor.ContainsAtLeastOneAligned(ReadOnlySpan(Of Byte), Int32)
+- uid: Fp.Processor.ContainsAtLeastOneAligned*
+  name: ContainsAtLeastOneAligned
+  href: api/Fp/Fp.Processor.html#Fp_Processor_ContainsAtLeastOneAligned_
+  commentId: Overload:Fp.Processor.ContainsAtLeastOneAligned
+  isSpec: "True"
+  fullName: Fp.Processor.ContainsAtLeastOneAligned
+  nameWithType: Processor.ContainsAtLeastOneAligned
 - uid: Fp.Processor.ConvertFloatArrayToHalf(System.ReadOnlySpan{System.Single},System.Span{System.Byte})
   name: ConvertFloatArrayToHalf(ReadOnlySpan<Single>, Span<Byte>)
   href: api/Fp/Fp.Processor.html#Fp_Processor_ConvertFloatArrayToHalf_System_ReadOnlySpan_System_Single__System_Span_System_Byte__
@@ -10153,12 +10194,24 @@ references:
   commentId: F:Fp.Processor.Debug
   fullName: Fp.Processor.Debug
   nameWithType: Processor.Debug
-- uid: Fp.Processor.DecodeHex(System.String,System.Boolean)
-  name: DecodeHex(String, Boolean)
-  href: api/Fp/Fp.Processor.html#Fp_Processor_DecodeHex_System_String_System_Boolean_
-  commentId: M:Fp.Processor.DecodeHex(System.String,System.Boolean)
-  fullName: Fp.Processor.DecodeHex(System.String, System.Boolean)
-  nameWithType: Processor.DecodeHex(String, Boolean)
+- uid: Fp.Processor.DecodeHex(System.ReadOnlySpan{System.Char},System.Boolean)
+  name: DecodeHex(ReadOnlySpan<Char>, Boolean)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_DecodeHex_System_ReadOnlySpan_System_Char__System_Boolean_
+  commentId: M:Fp.Processor.DecodeHex(System.ReadOnlySpan{System.Char},System.Boolean)
+  name.vb: DecodeHex(ReadOnlySpan(Of Char), Boolean)
+  fullName: Fp.Processor.DecodeHex(System.ReadOnlySpan<System.Char>, System.Boolean)
+  fullName.vb: Fp.Processor.DecodeHex(System.ReadOnlySpan(Of System.Char), System.Boolean)
+  nameWithType: Processor.DecodeHex(ReadOnlySpan<Char>, Boolean)
+  nameWithType.vb: Processor.DecodeHex(ReadOnlySpan(Of Char), Boolean)
+- uid: Fp.Processor.DecodeHex(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Boolean)
+  name: DecodeHex(ReadOnlySpan<Char>, Span<Byte>, Boolean)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_DecodeHex_System_ReadOnlySpan_System_Char__System_Span_System_Byte__System_Boolean_
+  commentId: M:Fp.Processor.DecodeHex(System.ReadOnlySpan{System.Char},System.Span{System.Byte},System.Boolean)
+  name.vb: DecodeHex(ReadOnlySpan(Of Char), Span(Of Byte), Boolean)
+  fullName: Fp.Processor.DecodeHex(System.ReadOnlySpan<System.Char>, System.Span<System.Byte>, System.Boolean)
+  fullName.vb: Fp.Processor.DecodeHex(System.ReadOnlySpan(Of System.Char), System.Span(Of System.Byte), System.Boolean)
+  nameWithType: Processor.DecodeHex(ReadOnlySpan<Char>, Span<Byte>, Boolean)
+  nameWithType.vb: Processor.DecodeHex(ReadOnlySpan(Of Char), Span(Of Byte), Boolean)
 - uid: Fp.Processor.DecodeHex*
   name: DecodeHex
   href: api/Fp/Fp.Processor.html#Fp_Processor_DecodeHex_
@@ -10204,6 +10257,19 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.Dump
   nameWithType: Processor.Dump
+- uid: Fp.Processor.EndiannessSwap
+  name: EndiannessSwap
+  href: api/Fp/Fp.Processor.html#Fp_Processor_EndiannessSwap
+  commentId: P:Fp.Processor.EndiannessSwap
+  fullName: Fp.Processor.EndiannessSwap
+  nameWithType: Processor.EndiannessSwap
+- uid: Fp.Processor.EndiannessSwap*
+  name: EndiannessSwap
+  href: api/Fp/Fp.Processor.html#Fp_Processor_EndiannessSwap_
+  commentId: Overload:Fp.Processor.EndiannessSwap
+  isSpec: "True"
+  fullName: Fp.Processor.EndiannessSwap
+  nameWithType: Processor.EndiannessSwap
 - uid: Fp.Processor.EnsureFile(System.Memory{System.Byte}@,System.Boolean@,System.Func{System.IO.Stream},System.Func{System.IO.Stream,System.Memory{System.Byte}})
   name: EnsureFile(ref Memory<Byte>, ref Boolean, Func<Stream>, Func<Stream, Memory<Byte>>)
   href: api/Fp/Fp.Processor.html#Fp_Processor_EnsureFile_System_Memory_System_Byte___System_Boolean__System_Func_System_IO_Stream__System_Func_System_IO_Stream_System_Memory_System_Byte___
@@ -10282,6 +10348,22 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.Flags
   nameWithType: Processor.Flags
+- uid: Fp.Processor.GetAlignmentStart(System.ReadOnlySpan{System.Byte},System.Int32)
+  name: GetAlignmentStart(ReadOnlySpan<Byte>, Int32)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_GetAlignmentStart_System_ReadOnlySpan_System_Byte__System_Int32_
+  commentId: M:Fp.Processor.GetAlignmentStart(System.ReadOnlySpan{System.Byte},System.Int32)
+  name.vb: GetAlignmentStart(ReadOnlySpan(Of Byte), Int32)
+  fullName: Fp.Processor.GetAlignmentStart(System.ReadOnlySpan<System.Byte>, System.Int32)
+  fullName.vb: Fp.Processor.GetAlignmentStart(System.ReadOnlySpan(Of System.Byte), System.Int32)
+  nameWithType: Processor.GetAlignmentStart(ReadOnlySpan<Byte>, Int32)
+  nameWithType.vb: Processor.GetAlignmentStart(ReadOnlySpan(Of Byte), Int32)
+- uid: Fp.Processor.GetAlignmentStart*
+  name: GetAlignmentStart
+  href: api/Fp/Fp.Processor.html#Fp_Processor_GetAlignmentStart_
+  commentId: Overload:Fp.Processor.GetAlignmentStart
+  isSpec: "True"
+  fullName: Fp.Processor.GetAlignmentStart
+  nameWithType: Processor.GetAlignmentStart
 - uid: Fp.Processor.GetArray(System.Boolean)
   name: GetArray(Boolean)
   href: api/Fp/Fp.Processor.html#Fp_Processor_GetArray_System_Boolean_
@@ -10591,6 +10673,22 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.GetHalf
   nameWithType: Processor.GetHalf
+- uid: Fp.Processor.GetHexByteCount(System.ReadOnlySpan{System.Char},System.Int32@)
+  name: GetHexByteCount(ReadOnlySpan<Char>, out Int32)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_GetHexByteCount_System_ReadOnlySpan_System_Char__System_Int32__
+  commentId: M:Fp.Processor.GetHexByteCount(System.ReadOnlySpan{System.Char},System.Int32@)
+  name.vb: GetHexByteCount(ReadOnlySpan(Of Char), ByRef Int32)
+  fullName: Fp.Processor.GetHexByteCount(System.ReadOnlySpan<System.Char>, out System.Int32)
+  fullName.vb: Fp.Processor.GetHexByteCount(System.ReadOnlySpan(Of System.Char), ByRef System.Int32)
+  nameWithType: Processor.GetHexByteCount(ReadOnlySpan<Char>, out Int32)
+  nameWithType.vb: Processor.GetHexByteCount(ReadOnlySpan(Of Char), ByRef Int32)
+- uid: Fp.Processor.GetHexByteCount*
+  name: GetHexByteCount
+  href: api/Fp/Fp.Processor.html#Fp_Processor_GetHexByteCount_
+  commentId: Overload:Fp.Processor.GetHexByteCount
+  isSpec: "True"
+  fullName: Fp.Processor.GetHexByteCount
+  nameWithType: Processor.GetHexByteCount
 - uid: Fp.Processor.GetMemory
   name: GetMemory()
   href: api/Fp/Fp.Processor.html#Fp_Processor_GetMemory
@@ -11224,6 +11322,15 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.Initialize
   nameWithType: Processor.Initialize
+- uid: Fp.Processor.Initialize``1(Fp.ProcessorConfiguration)
+  name: Initialize<T>(ProcessorConfiguration)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_Initialize__1_Fp_ProcessorConfiguration_
+  commentId: M:Fp.Processor.Initialize``1(Fp.ProcessorConfiguration)
+  name.vb: Initialize(Of T)(ProcessorConfiguration)
+  fullName: Fp.Processor.Initialize<T>(Fp.ProcessorConfiguration)
+  fullName.vb: Fp.Processor.Initialize(Of T)(Fp.ProcessorConfiguration)
+  nameWithType: Processor.Initialize<T>(ProcessorConfiguration)
+  nameWithType.vb: Processor.Initialize(Of T)(ProcessorConfiguration)
 - uid: Fp.Processor.Initialize``1(System.String[])
   name: Initialize<T>(String[])
   href: api/Fp/Fp.Processor.html#Fp_Processor_Initialize__1_System_String___
@@ -11323,6 +11430,19 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.Load
   nameWithType: Processor.Load
+- uid: Fp.Processor.LogChunk(System.String,System.Boolean)
+  name: LogChunk(String, Boolean)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_LogChunk_System_String_System_Boolean_
+  commentId: M:Fp.Processor.LogChunk(System.String,System.Boolean)
+  fullName: Fp.Processor.LogChunk(System.String, System.Boolean)
+  nameWithType: Processor.LogChunk(String, Boolean)
+- uid: Fp.Processor.LogChunk*
+  name: LogChunk
+  href: api/Fp/Fp.Processor.html#Fp_Processor_LogChunk_
+  commentId: Overload:Fp.Processor.LogChunk
+  isSpec: "True"
+  fullName: Fp.Processor.LogChunk
+  nameWithType: Processor.LogChunk
 - uid: Fp.Processor.LogFail(System.String)
   name: LogFail(String)
   href: api/Fp/Fp.Processor.html#Fp_Processor_LogFail_System_String_
@@ -11349,12 +11469,6 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.LogInfo
   nameWithType: Processor.LogInfo
-- uid: Fp.Processor.LogReceiver
-  name: LogReceiver
-  href: api/Fp/Fp.Processor.html#Fp_Processor_LogReceiver
-  commentId: F:Fp.Processor.LogReceiver
-  fullName: Fp.Processor.LogReceiver
-  nameWithType: Processor.LogReceiver
 - uid: Fp.Processor.LogWarn(System.String)
   name: LogWarn(String)
   href: api/Fp/Fp.Processor.html#Fp_Processor_LogWarn_System_String_
@@ -11368,6 +11482,12 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.LogWarn
   nameWithType: Processor.LogWarn
+- uid: Fp.Processor.LogWriter
+  name: LogWriter
+  href: api/Fp/Fp.Processor.html#Fp_Processor_LogWriter
+  commentId: F:Fp.Processor.LogWriter
+  fullName: Fp.Processor.LogWriter
+  nameWithType: Processor.LogWriter
 - uid: Fp.Processor.MakeNative(System.String)
   name: MakeNative(String)
   href: api/Fp/Fp.Processor.html#Fp_Processor_MakeNative_System_String_
@@ -12139,15 +12259,15 @@ references:
   isSpec: "True"
   fullName: Fp.Processor.MemLabel
   nameWithType: Processor.MemLabel
-- uid: Fp.Processor.MemPrint(System.ReadOnlyMemory{System.Byte},System.Boolean,System.Boolean)
-  name: MemPrint(ReadOnlyMemory<Byte>, Boolean, Boolean)
-  href: api/Fp/Fp.Processor.html#Fp_Processor_MemPrint_System_ReadOnlyMemory_System_Byte__System_Boolean_System_Boolean_
-  commentId: M:Fp.Processor.MemPrint(System.ReadOnlyMemory{System.Byte},System.Boolean,System.Boolean)
-  name.vb: MemPrint(ReadOnlyMemory(Of Byte), Boolean, Boolean)
-  fullName: Fp.Processor.MemPrint(System.ReadOnlyMemory<System.Byte>, System.Boolean, System.Boolean)
-  fullName.vb: Fp.Processor.MemPrint(System.ReadOnlyMemory(Of System.Byte), System.Boolean, System.Boolean)
-  nameWithType: Processor.MemPrint(ReadOnlyMemory<Byte>, Boolean, Boolean)
-  nameWithType.vb: Processor.MemPrint(ReadOnlyMemory(Of Byte), Boolean, Boolean)
+- uid: Fp.Processor.MemPrint(System.ReadOnlyMemory{System.Byte},System.Boolean,System.Boolean,System.Nullable{System.Int32})
+  name: MemPrint(ReadOnlyMemory<Byte>, Boolean, Boolean, Nullable<Int32>)
+  href: api/Fp/Fp.Processor.html#Fp_Processor_MemPrint_System_ReadOnlyMemory_System_Byte__System_Boolean_System_Boolean_System_Nullable_System_Int32__
+  commentId: M:Fp.Processor.MemPrint(System.ReadOnlyMemory{System.Byte},System.Boolean,System.Boolean,System.Nullable{System.Int32})
+  name.vb: MemPrint(ReadOnlyMemory(Of Byte), Boolean, Boolean, Nullable(Of Int32))
+  fullName: Fp.Processor.MemPrint(System.ReadOnlyMemory<System.Byte>, System.Boolean, System.Boolean, System.Nullable<System.Int32>)
+  fullName.vb: Fp.Processor.MemPrint(System.ReadOnlyMemory(Of System.Byte), System.Boolean, System.Boolean, System.Nullable(Of System.Int32))
+  nameWithType: Processor.MemPrint(ReadOnlyMemory<Byte>, Boolean, Boolean, Nullable<Int32>)
+  nameWithType.vb: Processor.MemPrint(ReadOnlyMemory(Of Byte), Boolean, Boolean, Nullable(Of Int32))
 - uid: Fp.Processor.MemPrint*
   name: MemPrint
   href: api/Fp/Fp.Processor.html#Fp_Processor_MemPrint_
@@ -14348,15 +14468,15 @@ references:
   commentId: T:Fp.ProcessorConfiguration
   fullName: Fp.ProcessorConfiguration
   nameWithType: ProcessorConfiguration
-- uid: Fp.ProcessorConfiguration.#ctor(System.Boolean,System.Boolean,System.Boolean,Fp.ILogReceiver,System.Collections.Generic.IReadOnlyList{System.String})
-  name: ProcessorConfiguration(Boolean, Boolean, Boolean, ILogReceiver, IReadOnlyList<String>)
-  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration__ctor_System_Boolean_System_Boolean_System_Boolean_Fp_ILogReceiver_System_Collections_Generic_IReadOnlyList_System_String__
-  commentId: M:Fp.ProcessorConfiguration.#ctor(System.Boolean,System.Boolean,System.Boolean,Fp.ILogReceiver,System.Collections.Generic.IReadOnlyList{System.String})
-  name.vb: ProcessorConfiguration(Boolean, Boolean, Boolean, ILogReceiver, IReadOnlyList(Of String))
-  fullName: Fp.ProcessorConfiguration.ProcessorConfiguration(System.Boolean, System.Boolean, System.Boolean, Fp.ILogReceiver, System.Collections.Generic.IReadOnlyList<System.String>)
-  fullName.vb: Fp.ProcessorConfiguration.ProcessorConfiguration(System.Boolean, System.Boolean, System.Boolean, Fp.ILogReceiver, System.Collections.Generic.IReadOnlyList(Of System.String))
-  nameWithType: ProcessorConfiguration.ProcessorConfiguration(Boolean, Boolean, Boolean, ILogReceiver, IReadOnlyList<String>)
-  nameWithType.vb: ProcessorConfiguration.ProcessorConfiguration(Boolean, Boolean, Boolean, ILogReceiver, IReadOnlyList(Of String))
+- uid: Fp.ProcessorConfiguration.#ctor(System.Collections.Generic.IReadOnlyList{System.String},System.Boolean,System.Boolean,System.Boolean,Fp.ILogWriter)
+  name: ProcessorConfiguration(IReadOnlyList<String>, Boolean, Boolean, Boolean, ILogWriter)
+  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration__ctor_System_Collections_Generic_IReadOnlyList_System_String__System_Boolean_System_Boolean_System_Boolean_Fp_ILogWriter_
+  commentId: M:Fp.ProcessorConfiguration.#ctor(System.Collections.Generic.IReadOnlyList{System.String},System.Boolean,System.Boolean,System.Boolean,Fp.ILogWriter)
+  name.vb: ProcessorConfiguration(IReadOnlyList(Of String), Boolean, Boolean, Boolean, ILogWriter)
+  fullName: Fp.ProcessorConfiguration.ProcessorConfiguration(System.Collections.Generic.IReadOnlyList<System.String>, System.Boolean, System.Boolean, System.Boolean, Fp.ILogWriter)
+  fullName.vb: Fp.ProcessorConfiguration.ProcessorConfiguration(System.Collections.Generic.IReadOnlyList(Of System.String), System.Boolean, System.Boolean, System.Boolean, Fp.ILogWriter)
+  nameWithType: ProcessorConfiguration.ProcessorConfiguration(IReadOnlyList<String>, Boolean, Boolean, Boolean, ILogWriter)
+  nameWithType.vb: ProcessorConfiguration.ProcessorConfiguration(IReadOnlyList(Of String), Boolean, Boolean, Boolean, ILogWriter)
 - uid: Fp.ProcessorConfiguration.#ctor*
   name: ProcessorConfiguration
   href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration__ctor_
@@ -14390,19 +14510,25 @@ references:
   isSpec: "True"
   fullName: Fp.ProcessorConfiguration.Debug
   nameWithType: ProcessorConfiguration.Debug
-- uid: Fp.ProcessorConfiguration.LogReceiver
-  name: LogReceiver
-  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration_LogReceiver
-  commentId: P:Fp.ProcessorConfiguration.LogReceiver
-  fullName: Fp.ProcessorConfiguration.LogReceiver
-  nameWithType: ProcessorConfiguration.LogReceiver
-- uid: Fp.ProcessorConfiguration.LogReceiver*
-  name: LogReceiver
-  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration_LogReceiver_
-  commentId: Overload:Fp.ProcessorConfiguration.LogReceiver
+- uid: Fp.ProcessorConfiguration.Default
+  name: Default
+  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration_Default
+  commentId: F:Fp.ProcessorConfiguration.Default
+  fullName: Fp.ProcessorConfiguration.Default
+  nameWithType: ProcessorConfiguration.Default
+- uid: Fp.ProcessorConfiguration.LogWriter
+  name: LogWriter
+  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration_LogWriter
+  commentId: P:Fp.ProcessorConfiguration.LogWriter
+  fullName: Fp.ProcessorConfiguration.LogWriter
+  nameWithType: ProcessorConfiguration.LogWriter
+- uid: Fp.ProcessorConfiguration.LogWriter*
+  name: LogWriter
+  href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration_LogWriter_
+  commentId: Overload:Fp.ProcessorConfiguration.LogWriter
   isSpec: "True"
-  fullName: Fp.ProcessorConfiguration.LogReceiver
-  nameWithType: ProcessorConfiguration.LogReceiver
+  fullName: Fp.ProcessorConfiguration.LogWriter
+  nameWithType: ProcessorConfiguration.LogWriter
 - uid: Fp.ProcessorConfiguration.Nop
   name: Nop
   href: api/Fp/Fp.ProcessorConfiguration.html#Fp_ProcessorConfiguration_Nop
@@ -15952,76 +16078,134 @@ references:
   commentId: T:Fp.StringBuilderLog
   fullName: Fp.StringBuilderLog
   nameWithType: StringBuilderLog
-- uid: Fp.StringBuilderLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name: LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.StringBuilderLog.LogChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
-  name.vb: LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-  fullName: Fp.StringBuilderLog.LogChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.StringBuilderLog.LogChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
-  nameWithType: StringBuilderLog.LogChunk(String, Boolean, Nullable<ConsoleColor>)
-  nameWithType.vb: StringBuilderLog.LogChunk(String, Boolean, Nullable(Of ConsoleColor))
-- uid: Fp.StringBuilderLog.LogChunk*
-  name: LogChunk
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogChunk_
-  commentId: Overload:Fp.StringBuilderLog.LogChunk
+- uid: Fp.StringBuilderLog.#ctor
+  name: StringBuilderLog()
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog__ctor
+  commentId: M:Fp.StringBuilderLog.#ctor
+  fullName: Fp.StringBuilderLog.StringBuilderLog()
+  nameWithType: StringBuilderLog.StringBuilderLog()
+- uid: Fp.StringBuilderLog.#ctor(System.String)
+  name: StringBuilderLog(String)
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog__ctor_System_String_
+  commentId: M:Fp.StringBuilderLog.#ctor(System.String)
+  fullName: Fp.StringBuilderLog.StringBuilderLog(System.String)
+  nameWithType: StringBuilderLog.StringBuilderLog(String)
+- uid: Fp.StringBuilderLog.#ctor*
+  name: StringBuilderLog
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog__ctor_
+  commentId: Overload:Fp.StringBuilderLog.#ctor
   isSpec: "True"
-  fullName: Fp.StringBuilderLog.LogChunk
-  nameWithType: StringBuilderLog.LogChunk
-- uid: Fp.StringBuilderLog.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name: LogError(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogError_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.StringBuilderLog.LogError(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogError(String, Nullable(Of ConsoleColor))
-  fullName: Fp.StringBuilderLog.LogError(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.StringBuilderLog.LogError(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: StringBuilderLog.LogError(String, Nullable<ConsoleColor>)
-  nameWithType.vb: StringBuilderLog.LogError(String, Nullable(Of ConsoleColor))
-- uid: Fp.StringBuilderLog.LogError*
-  name: LogError
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogError_
-  commentId: Overload:Fp.StringBuilderLog.LogError
+  fullName: Fp.StringBuilderLog.StringBuilderLog
+  nameWithType: StringBuilderLog.StringBuilderLog
+- uid: Fp.StringBuilderLog.Clear
+  name: Clear()
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_Clear
+  commentId: M:Fp.StringBuilderLog.Clear
+  fullName: Fp.StringBuilderLog.Clear()
+  nameWithType: StringBuilderLog.Clear()
+- uid: Fp.StringBuilderLog.Clear*
+  name: Clear
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_Clear_
+  commentId: Overload:Fp.StringBuilderLog.Clear
   isSpec: "True"
-  fullName: Fp.StringBuilderLog.LogError
-  nameWithType: StringBuilderLog.LogError
-- uid: Fp.StringBuilderLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name: LogInformation(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogInformation_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.StringBuilderLog.LogInformation(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogInformation(String, Nullable(Of ConsoleColor))
-  fullName: Fp.StringBuilderLog.LogInformation(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.StringBuilderLog.LogInformation(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: StringBuilderLog.LogInformation(String, Nullable<ConsoleColor>)
-  nameWithType.vb: StringBuilderLog.LogInformation(String, Nullable(Of ConsoleColor))
-- uid: Fp.StringBuilderLog.LogInformation*
-  name: LogInformation
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogInformation_
-  commentId: Overload:Fp.StringBuilderLog.LogInformation
+  fullName: Fp.StringBuilderLog.Clear
+  nameWithType: StringBuilderLog.Clear
+- uid: Fp.StringBuilderLog.Delimiter
+  name: Delimiter
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_Delimiter
+  commentId: P:Fp.StringBuilderLog.Delimiter
+  fullName: Fp.StringBuilderLog.Delimiter
+  nameWithType: StringBuilderLog.Delimiter
+- uid: Fp.StringBuilderLog.Delimiter*
+  name: Delimiter
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_Delimiter_
+  commentId: Overload:Fp.StringBuilderLog.Delimiter
   isSpec: "True"
-  fullName: Fp.StringBuilderLog.LogInformation
-  nameWithType: StringBuilderLog.LogInformation
-- uid: Fp.StringBuilderLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name: LogWarning(String, Nullable<ConsoleColor>)
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogWarning_System_String_System_Nullable_System_ConsoleColor__
-  commentId: M:Fp.StringBuilderLog.LogWarning(System.String,System.Nullable{System.ConsoleColor})
-  name.vb: LogWarning(String, Nullable(Of ConsoleColor))
-  fullName: Fp.StringBuilderLog.LogWarning(System.String, System.Nullable<System.ConsoleColor>)
-  fullName.vb: Fp.StringBuilderLog.LogWarning(System.String, System.Nullable(Of System.ConsoleColor))
-  nameWithType: StringBuilderLog.LogWarning(String, Nullable<ConsoleColor>)
-  nameWithType.vb: StringBuilderLog.LogWarning(String, Nullable(Of ConsoleColor))
-- uid: Fp.StringBuilderLog.LogWarning*
-  name: LogWarning
-  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_LogWarning_
-  commentId: Overload:Fp.StringBuilderLog.LogWarning
+  fullName: Fp.StringBuilderLog.Delimiter
+  nameWithType: StringBuilderLog.Delimiter
+- uid: Fp.StringBuilderLog.GetContent
+  name: GetContent()
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_GetContent
+  commentId: M:Fp.StringBuilderLog.GetContent
+  fullName: Fp.StringBuilderLog.GetContent()
+  nameWithType: StringBuilderLog.GetContent()
+- uid: Fp.StringBuilderLog.GetContent*
+  name: GetContent
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_GetContent_
+  commentId: Overload:Fp.StringBuilderLog.GetContent
   isSpec: "True"
-  fullName: Fp.StringBuilderLog.LogWarning
-  nameWithType: StringBuilderLog.LogWarning
+  fullName: Fp.StringBuilderLog.GetContent
+  nameWithType: StringBuilderLog.GetContent
 - uid: Fp.StringBuilderLog.StringBuilder
   name: StringBuilder
   href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_StringBuilder
   commentId: F:Fp.StringBuilderLog.StringBuilder
   fullName: Fp.StringBuilderLog.StringBuilder
   nameWithType: StringBuilderLog.StringBuilder
+- uid: Fp.StringBuilderLog.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name: WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteChunk_System_String_System_Boolean_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.StringBuilderLog.WriteChunk(System.String,System.Boolean,System.Nullable{System.ConsoleColor})
+  name.vb: WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+  fullName: Fp.StringBuilderLog.WriteChunk(System.String, System.Boolean, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.StringBuilderLog.WriteChunk(System.String, System.Boolean, System.Nullable(Of System.ConsoleColor))
+  nameWithType: StringBuilderLog.WriteChunk(String, Boolean, Nullable<ConsoleColor>)
+  nameWithType.vb: StringBuilderLog.WriteChunk(String, Boolean, Nullable(Of ConsoleColor))
+- uid: Fp.StringBuilderLog.WriteChunk*
+  name: WriteChunk
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteChunk_
+  commentId: Overload:Fp.StringBuilderLog.WriteChunk
+  isSpec: "True"
+  fullName: Fp.StringBuilderLog.WriteChunk
+  nameWithType: StringBuilderLog.WriteChunk
+- uid: Fp.StringBuilderLog.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteError(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteError_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.StringBuilderLog.WriteError(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteError(String, Nullable(Of ConsoleColor))
+  fullName: Fp.StringBuilderLog.WriteError(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.StringBuilderLog.WriteError(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: StringBuilderLog.WriteError(String, Nullable<ConsoleColor>)
+  nameWithType.vb: StringBuilderLog.WriteError(String, Nullable(Of ConsoleColor))
+- uid: Fp.StringBuilderLog.WriteError*
+  name: WriteError
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteError_
+  commentId: Overload:Fp.StringBuilderLog.WriteError
+  isSpec: "True"
+  fullName: Fp.StringBuilderLog.WriteError
+  nameWithType: StringBuilderLog.WriteError
+- uid: Fp.StringBuilderLog.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteInformation(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteInformation_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.StringBuilderLog.WriteInformation(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteInformation(String, Nullable(Of ConsoleColor))
+  fullName: Fp.StringBuilderLog.WriteInformation(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.StringBuilderLog.WriteInformation(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: StringBuilderLog.WriteInformation(String, Nullable<ConsoleColor>)
+  nameWithType.vb: StringBuilderLog.WriteInformation(String, Nullable(Of ConsoleColor))
+- uid: Fp.StringBuilderLog.WriteInformation*
+  name: WriteInformation
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteInformation_
+  commentId: Overload:Fp.StringBuilderLog.WriteInformation
+  isSpec: "True"
+  fullName: Fp.StringBuilderLog.WriteInformation
+  nameWithType: StringBuilderLog.WriteInformation
+- uid: Fp.StringBuilderLog.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name: WriteWarning(String, Nullable<ConsoleColor>)
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteWarning_System_String_System_Nullable_System_ConsoleColor__
+  commentId: M:Fp.StringBuilderLog.WriteWarning(System.String,System.Nullable{System.ConsoleColor})
+  name.vb: WriteWarning(String, Nullable(Of ConsoleColor))
+  fullName: Fp.StringBuilderLog.WriteWarning(System.String, System.Nullable<System.ConsoleColor>)
+  fullName.vb: Fp.StringBuilderLog.WriteWarning(System.String, System.Nullable(Of System.ConsoleColor))
+  nameWithType: StringBuilderLog.WriteWarning(String, Nullable<ConsoleColor>)
+  nameWithType.vb: StringBuilderLog.WriteWarning(String, Nullable(Of ConsoleColor))
+- uid: Fp.StringBuilderLog.WriteWarning*
+  name: WriteWarning
+  href: api/Fp/Fp.StringBuilderLog.html#Fp_StringBuilderLog_WriteWarning_
+  commentId: Overload:Fp.StringBuilderLog.WriteWarning
+  isSpec: "True"
+  fullName: Fp.StringBuilderLog.WriteWarning
+  nameWithType: StringBuilderLog.WriteWarning
 - uid: Fp.StringData
   name: StringData
   href: api/Fp/Fp.StringData.html

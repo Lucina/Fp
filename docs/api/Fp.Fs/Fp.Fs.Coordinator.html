@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Coordinator
    ">
-    <meta name="generator" content="docfx 2.58.9.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -180,19 +180,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliGetConfiguration_System_Collections_Generic_IList_System_String__System_Collections_Generic_IReadOnlyList_System_String__Fp_ILogReceiver_System_Boolean_Fp_ProcessorConfiguration__Fp_Fs_Coordinator_ExecutionSettings__System_Collections_Generic_List_Fp_Fs_Coordinator_FpInput___.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList%7BSystem.String%7D%2CSystem.Collections.Generic.IReadOnlyList%7BSystem.String%7D%2CFp.ILogReceiver%2CSystem.Boolean%2CFp.ProcessorConfiguration%40%2CFp.Fs.Coordinator.ExecutionSettings%40%2CSystem.Collections.Generic.List%7BFp.Fs.Coordinator.FpInput%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliGetConfiguration_System_Collections_Generic_IList_System_String__System_Collections_Generic_IReadOnlyList_System_String__Fp_ILogWriter_System_Boolean_Fp_ProcessorConfiguration__Fp_Fs_Coordinator_ExecutionSettings__System_Collections_Generic_List_Fp_Fs_Coordinator_FpInput___.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList%7BSystem.String%7D%2CSystem.Collections.Generic.IReadOnlyList%7BSystem.String%7D%2CFp.ILogWriter%2CSystem.Boolean%2CFp.ProcessorConfiguration%40%2CFp.Fs.Coordinator.ExecutionSettings%40%2CSystem.Collections.Generic.List%7BFp.Fs.Coordinator.FpInput%7D%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/Coordinator.cs/#L65">View Source</a>
   </span>
   <a id="Fp_Fs_Coordinator_CliGetConfiguration_" data-uid="Fp.Fs.Coordinator.CliGetConfiguration*"></a>
-  <h4 id="Fp_Fs_Coordinator_CliGetConfiguration_System_Collections_Generic_IList_System_String__System_Collections_Generic_IReadOnlyList_System_String__Fp_ILogReceiver_System_Boolean_Fp_ProcessorConfiguration__Fp_Fs_Coordinator_ExecutionSettings__System_Collections_Generic_List_Fp_Fs_Coordinator_FpInput___" data-uid="Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IReadOnlyList{System.String},Fp.ILogReceiver,System.Boolean,Fp.ProcessorConfiguration@,Fp.Fs.Coordinator.ExecutionSettings@,System.Collections.Generic.List{Fp.Fs.Coordinator.FpInput}@)">CliGetConfiguration(IList&lt;String&gt;, IReadOnlyList&lt;String&gt;, ILogReceiver, Boolean, out ProcessorConfiguration, out Coordinator.ExecutionSettings, out List&lt;Coordinator.FpInput&gt;)</h4>
+  <h4 id="Fp_Fs_Coordinator_CliGetConfiguration_System_Collections_Generic_IList_System_String__System_Collections_Generic_IReadOnlyList_System_String__Fp_ILogWriter_System_Boolean_Fp_ProcessorConfiguration__Fp_Fs_Coordinator_ExecutionSettings__System_Collections_Generic_List_Fp_Fs_Coordinator_FpInput___" data-uid="Fp.Fs.Coordinator.CliGetConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IReadOnlyList{System.String},Fp.ILogWriter,System.Boolean,Fp.ProcessorConfiguration@,Fp.Fs.Coordinator.ExecutionSettings@,System.Collections.Generic.List{Fp.Fs.Coordinator.FpInput}@)">CliGetConfiguration(IList&lt;String&gt;, IReadOnlyList&lt;String&gt;, ILogWriter, Boolean, out ProcessorConfiguration, out Coordinator.ExecutionSettings, out List&lt;Coordinator.FpInput&gt;)</h4>
   <div class="markdown level1 summary"><p>Gets processor configuration from cli.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool CliGetConfiguration(IList&lt;string&gt; exeName, IReadOnlyList&lt;string&gt; args, ILogReceiver logReceiver, bool enableParallel, out ProcessorConfiguration configuration, out Coordinator.ExecutionSettings executionSettings, out List&lt;Coordinator.FpInput&gt; inputs)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool CliGetConfiguration(IList&lt;string&gt; exeName, IReadOnlyList&lt;string&gt; args, ILogWriter logWriter, bool enableParallel, out ProcessorConfiguration configuration, out Coordinator.ExecutionSettings executionSettings, out List&lt;Coordinator.FpInput&gt; inputs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -217,8 +217,8 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="../Fp/Fp.ILogReceiver.html">ILogReceiver</a></td>
-        <td><span class="parametername">logReceiver</span></td>
+        <td><a class="xref" href="../Fp/Fp.ILogWriter.html">ILogWriter</a></td>
+        <td><span class="parametername">logWriter</span></td>
         <td><p>Log receiver for errors.</p>
 </td>
       </tr>
@@ -266,19 +266,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystem_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystem(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogReceiver%2CFp.Fs.FileSystemSource%2CFp.Fs.FsProcessorFactory%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystem_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystem(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogWriter%2CFp.Fs.FileSystemSource%2CFp.Fs.FsProcessorFactory%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/Coordinator.cs/#L235">View Source</a>
   </span>
   <a id="Fp_Fs_Coordinator_CliRunFilesystem_" data-uid="Fp.Fs.Coordinator.CliRunFilesystem*"></a>
-  <h4 id="Fp_Fs_Coordinator_CliRunFilesystem_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___" data-uid="Fp.Fs.Coordinator.CliRunFilesystem(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])">CliRunFilesystem(String[], IList&lt;String&gt;, ILogReceiver, FileSystemSource, FsProcessorFactory[])</h4>
+  <h4 id="Fp_Fs_Coordinator_CliRunFilesystem_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___" data-uid="Fp.Fs.Coordinator.CliRunFilesystem(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])">CliRunFilesystem(String[], IList&lt;String&gt;, ILogWriter, FileSystemSource, FsProcessorFactory[])</h4>
   <div class="markdown level1 summary"><p>Processes filesystem tree using command-line argument inputs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CliRunFilesystem(string[] args, IList&lt;string&gt; exeName, ILogReceiver logReceiver, FileSystemSource fileSystem, params FsProcessorFactory[] processorFactories)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void CliRunFilesystem(string[] args, IList&lt;string&gt; exeName, ILogWriter logWriter, FileSystemSource fileSystem, params FsProcessorFactory[] processorFactories)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -303,8 +303,8 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="../Fp/Fp.ILogReceiver.html">ILogReceiver</a></td>
-        <td><span class="parametername">logReceiver</span></td>
+        <td><a class="xref" href="../Fp/Fp.ILogWriter.html">ILogWriter</a></td>
+        <td><span class="parametername">logWriter</span></td>
         <td><p>Log output target.</p>
 </td>
       </tr>
@@ -340,19 +340,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystem__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystem%60%601(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogReceiver%2CFp.Fs.FileSystemSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystem__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystem%60%601(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogWriter%2CFp.Fs.FileSystemSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/Coordinator.cs/#L221">View Source</a>
   </span>
   <a id="Fp_Fs_Coordinator_CliRunFilesystem_" data-uid="Fp.Fs.Coordinator.CliRunFilesystem*"></a>
-  <h4 id="Fp_Fs_Coordinator_CliRunFilesystem__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_" data-uid="Fp.Fs.Coordinator.CliRunFilesystem``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource)">CliRunFilesystem&lt;T&gt;(String[], IList&lt;String&gt;, ILogReceiver, FileSystemSource)</h4>
+  <h4 id="Fp_Fs_Coordinator_CliRunFilesystem__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_" data-uid="Fp.Fs.Coordinator.CliRunFilesystem``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource)">CliRunFilesystem&lt;T&gt;(String[], IList&lt;String&gt;, ILogWriter, FileSystemSource)</h4>
   <div class="markdown level1 summary"><p>Processes filesystem tree using command-line argument inputs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CliRunFilesystem&lt;T&gt;(string[] args, IList&lt;string&gt; exeName = null, ILogReceiver logReceiver = null, FileSystemSource fileSystem = null)
+    <pre><code class="lang-csharp hljs">public static void CliRunFilesystem&lt;T&gt;(string[] args, IList&lt;string&gt; exeName = null, ILogWriter logWriter = null, FileSystemSource fileSystem = null)
     where T : FsProcessor, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -378,8 +378,8 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="../Fp/Fp.ILogReceiver.html">ILogReceiver</a></td>
-        <td><span class="parametername">logReceiver</span></td>
+        <td><a class="xref" href="../Fp/Fp.ILogWriter.html">ILogWriter</a></td>
+        <td><span class="parametername">logWriter</span></td>
         <td><p>Log output target.</p>
 </td>
       </tr>
@@ -424,19 +424,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystemAsync_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogReceiver%2CFp.Fs.FileSystemSource%2CFp.Fs.FsProcessorFactory%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystemAsync_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogWriter%2CFp.Fs.FileSystemSource%2CFp.Fs.FsProcessorFactory%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/Coordinator.cs/#L277">View Source</a>
   </span>
   <a id="Fp_Fs_Coordinator_CliRunFilesystemAsync_" data-uid="Fp.Fs.Coordinator.CliRunFilesystemAsync*"></a>
-  <h4 id="Fp_Fs_Coordinator_CliRunFilesystemAsync_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___" data-uid="Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])">CliRunFilesystemAsync(String[], IList&lt;String&gt;, ILogReceiver, FileSystemSource, FsProcessorFactory[])</h4>
+  <h4 id="Fp_Fs_Coordinator_CliRunFilesystemAsync_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_Fp_Fs_FsProcessorFactory___" data-uid="Fp.Fs.Coordinator.CliRunFilesystemAsync(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource,Fp.Fs.FsProcessorFactory[])">CliRunFilesystemAsync(String[], IList&lt;String&gt;, ILogWriter, FileSystemSource, FsProcessorFactory[])</h4>
   <div class="markdown level1 summary"><p>Processes filesystem tree using command-line argument inputs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async Task CliRunFilesystemAsync(string[] args, IList&lt;string&gt; exeName, ILogReceiver logReceiver, FileSystemSource fileSystem, params FsProcessorFactory[] processorFactories)</code></pre>
+    <pre><code class="lang-csharp hljs">public static async Task CliRunFilesystemAsync(string[] args, IList&lt;string&gt; exeName, ILogWriter logWriter, FileSystemSource fileSystem, params FsProcessorFactory[] processorFactories)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -461,8 +461,8 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="../Fp/Fp.ILogReceiver.html">ILogReceiver</a></td>
-        <td><span class="parametername">logReceiver</span></td>
+        <td><a class="xref" href="../Fp/Fp.ILogWriter.html">ILogWriter</a></td>
+        <td><span class="parametername">logWriter</span></td>
         <td><p>Log output target.</p>
 </td>
       </tr>
@@ -514,19 +514,19 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystemAsync__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystemAsync%60%601(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogReceiver%2CFp.Fs.FileSystemSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_Fs_Coordinator_CliRunFilesystemAsync__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_.md&amp;value=---%0Auid%3A%20Fp.Fs.Coordinator.CliRunFilesystemAsync%60%601(System.String%5B%5D%2CSystem.Collections.Generic.IList%7BSystem.String%7D%2CFp.ILogWriter%2CFp.Fs.FileSystemSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp.Fs/Coordinator.cs/#L263">View Source</a>
   </span>
   <a id="Fp_Fs_Coordinator_CliRunFilesystemAsync_" data-uid="Fp.Fs.Coordinator.CliRunFilesystemAsync*"></a>
-  <h4 id="Fp_Fs_Coordinator_CliRunFilesystemAsync__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogReceiver_Fp_Fs_FileSystemSource_" data-uid="Fp.Fs.Coordinator.CliRunFilesystemAsync``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogReceiver,Fp.Fs.FileSystemSource)">CliRunFilesystemAsync&lt;T&gt;(String[], IList&lt;String&gt;, ILogReceiver, FileSystemSource)</h4>
+  <h4 id="Fp_Fs_Coordinator_CliRunFilesystemAsync__1_System_String___System_Collections_Generic_IList_System_String__Fp_ILogWriter_Fp_Fs_FileSystemSource_" data-uid="Fp.Fs.Coordinator.CliRunFilesystemAsync``1(System.String[],System.Collections.Generic.IList{System.String},Fp.ILogWriter,Fp.Fs.FileSystemSource)">CliRunFilesystemAsync&lt;T&gt;(String[], IList&lt;String&gt;, ILogWriter, FileSystemSource)</h4>
   <div class="markdown level1 summary"><p>Processes filesystem tree using command-line argument inputs.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async Task CliRunFilesystemAsync&lt;T&gt;(string[] args, IList&lt;string&gt; exeName = null, ILogReceiver logReceiver = null, FileSystemSource fileSystem = null)
+    <pre><code class="lang-csharp hljs">public static async Task CliRunFilesystemAsync&lt;T&gt;(string[] args, IList&lt;string&gt; exeName = null, ILogWriter logWriter = null, FileSystemSource fileSystem = null)
     where T : FsProcessor, new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -552,8 +552,8 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="../Fp/Fp.ILogReceiver.html">ILogReceiver</a></td>
-        <td><span class="parametername">logReceiver</span></td>
+        <td><a class="xref" href="../Fp/Fp.ILogWriter.html">ILogWriter</a></td>
+        <td><span class="parametername">logWriter</span></td>
         <td><p>Log output target.</p>
 </td>
       </tr>

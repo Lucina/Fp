@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class HexPrint
    ">
-    <meta name="generator" content="docfx 2.58.9.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -177,19 +177,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_HexPrint_Print_System_ReadOnlySpan_System_Byte__Fp_ILogReceiver_System_Collections_Generic_IEnumerable_System_ValueTuple_System_Int32_System_Int32_System_String_System_ConsoleColor___System_Boolean_System_Boolean_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Fp.HexPrint.Print(System.ReadOnlySpan%7BSystem.Byte%7D%2CFp.ILogReceiver%2CSystem.Collections.Generic.IEnumerable%7BSystem.ValueTuple%7BSystem.Int32%2CSystem.Int32%2CSystem.String%2CSystem.ConsoleColor%7D%7D%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/collectioneering/Fp/new/main/apiSpec/new?filename=Fp_HexPrint_Print_System_ReadOnlySpan_System_Byte__Fp_IChunkWriter_System_Collections_Generic_IEnumerable_Fp_MemAnnotation__System_Boolean_System_Boolean_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Fp.HexPrint.Print(System.ReadOnlySpan%7BSystem.Byte%7D%2CFp.IChunkWriter%2CSystem.Collections.Generic.IEnumerable%7BFp.MemAnnotation%7D%2CSystem.Boolean%2CSystem.Boolean%2CSystem.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/collectioneering/Fp/blob/main/src/Fp/HexPrint.cs/#L32">View Source</a>
   </span>
   <a id="Fp_HexPrint_Print_" data-uid="Fp.HexPrint.Print*"></a>
-  <h4 id="Fp_HexPrint_Print_System_ReadOnlySpan_System_Byte__Fp_ILogReceiver_System_Collections_Generic_IEnumerable_System_ValueTuple_System_Int32_System_Int32_System_String_System_ConsoleColor___System_Boolean_System_Boolean_System_Nullable_System_Int32__" data-uid="Fp.HexPrint.Print(System.ReadOnlySpan{System.Byte},Fp.ILogReceiver,System.Collections.Generic.IEnumerable{System.ValueTuple{System.Int32,System.Int32,System.String,System.ConsoleColor}},System.Boolean,System.Boolean,System.Nullable{System.Int32})">Print(ReadOnlySpan&lt;Byte&gt;, ILogReceiver, IEnumerable&lt;(Int32 offset, Int32 length, String label, ConsoleColor color)&gt;, Boolean, Boolean, Nullable&lt;Int32&gt;)</h4>
+  <h4 id="Fp_HexPrint_Print_System_ReadOnlySpan_System_Byte__Fp_IChunkWriter_System_Collections_Generic_IEnumerable_Fp_MemAnnotation__System_Boolean_System_Boolean_System_Nullable_System_Int32__" data-uid="Fp.HexPrint.Print(System.ReadOnlySpan{System.Byte},Fp.IChunkWriter,System.Collections.Generic.IEnumerable{Fp.MemAnnotation},System.Boolean,System.Boolean,System.Nullable{System.Int32})">Print(ReadOnlySpan&lt;Byte&gt;, IChunkWriter, IEnumerable&lt;MemAnnotation&gt;, Boolean, Boolean, Nullable&lt;Int32&gt;)</h4>
   <div class="markdown level1 summary"><p>Prints hex text.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void Print(ReadOnlySpan&lt;byte&gt; data, ILogReceiver target, IEnumerable&lt;(int offset, int length, string label, ConsoleColor color)&gt; annotations = null, bool space = true, bool pow2Modulus = false, int? displayWidth = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static void Print(ReadOnlySpan&lt;byte&gt; data, IChunkWriter target, IEnumerable&lt;MemAnnotation&gt; annotations = null, bool space = true, bool pow2Modulus = false, int? displayWidth = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -208,13 +208,13 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Fp.ILogReceiver.html">ILogReceiver</a></td>
+        <td><a class="xref" href="Fp.IChunkWriter.html">IChunkWriter</a></td>
         <td><span class="parametername">target</span></td>
         <td><p>Log target.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Int32</span>, <span class="xref">System.String</span>, <span class="xref">System.ConsoleColor</span>&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">Fp.MemAnnotation</span>&gt;</td>
         <td><span class="parametername">annotations</span></td>
         <td><p>Data annotations.</p>
 </td>
