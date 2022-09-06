@@ -13,7 +13,7 @@ public class Processor_Bitwise : ProcessorTestBase
     [Test]
     public void SingleByteApplyXorArm_LargeBuffer_MatchesExpected()
     {
-        if (!AdvSimd.IsSupported) Assert.Inconclusive("AdvSimd intrinsics not supported");
+        if (!AdvSimd.IsSupported) Assert.Ignore("AdvSimd intrinsics not supported");
 
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
@@ -30,7 +30,7 @@ public class Processor_Bitwise : ProcessorTestBase
     [Test]
     public void SingleByteApplyXorArm_Misaligned_MatchesExpected()
     {
-        if (!AdvSimd.IsSupported) Assert.Inconclusive("AdvSimd intrinsics not supported");
+        if (!AdvSimd.IsSupported) Assert.Ignore("AdvSimd intrinsics not supported");
 
         // Cut somewhere in 0..31 for misalignment
         Span<byte> arr = new byte[1097].AsSpan()[14..];
@@ -47,7 +47,7 @@ public class Processor_Bitwise : ProcessorTestBase
     [Test]
     public void SingleByteApplyXorSse2_LargeBuffer_MatchesExpected()
     {
-        if (!Sse2.IsSupported) Assert.Inconclusive("Sse2 intrinsics not supported");
+        if (!Sse2.IsSupported) Assert.Ignore("Sse2 intrinsics not supported");
 
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
@@ -64,7 +64,7 @@ public class Processor_Bitwise : ProcessorTestBase
     [Test]
     public void SingleByteApplyXorSse2_Misaligned_MatchesExpected()
     {
-        if (!Sse2.IsSupported) Assert.Inconclusive("Sse2 intrinsics not supported");
+        if (!Sse2.IsSupported) Assert.Ignore("Sse2 intrinsics not supported");
 
         // Cut somewhere in 0..31 for misalignment
         Span<byte> arr = new byte[1097].AsSpan()[14..];
@@ -81,7 +81,7 @@ public class Processor_Bitwise : ProcessorTestBase
     [Test]
     public void SingleByteApplyXorAvx2_LargeBuffer_MatchesExpected()
     {
-        if (!Avx2.IsSupported) Assert.Inconclusive("Avx2 intrinsics not supported");
+        if (!Avx2.IsSupported) Assert.Ignore("Avx2 intrinsics not supported");
 
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
@@ -98,7 +98,7 @@ public class Processor_Bitwise : ProcessorTestBase
     [Test]
     public void SingleByteApplyXorAvx2_Misaligned_MatchesExpected()
     {
-        if (!Avx2.IsSupported) Assert.Inconclusive("Avx2 intrinsics not supported");
+        if (!Avx2.IsSupported) Assert.Ignore("Avx2 intrinsics not supported");
 
         // Cut somewhere in 0..31 for misalignment
         Span<byte> arr = new byte[1097].AsSpan()[14..];
