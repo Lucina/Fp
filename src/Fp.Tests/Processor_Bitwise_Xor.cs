@@ -21,7 +21,6 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-
         Processor.ApplyXorAdvSimd(arr, XorByte);
         Processor.ApplyXorFallback(arr2, XorByte);
 

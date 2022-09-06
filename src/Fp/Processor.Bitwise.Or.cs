@@ -70,7 +70,7 @@ public partial class Processor
             int kill1Idx = Math.Min((int)unchecked((ulong)(split - (long)pSource) % split), l);
             while (i < kill1Idx)
             {
-                pSource[i] &= value;
+                pSource[i] |= value;
                 i++;
             }
 
@@ -86,7 +86,7 @@ public partial class Processor
 
             while (i < span.Length)
             {
-                pSource[i] &= value;
+                pSource[i] |= value;
                 i++;
             }
         }

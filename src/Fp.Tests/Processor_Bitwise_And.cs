@@ -21,7 +21,6 @@ public class Processor_Bitwise_And : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-
         Processor.ApplyAndAdvSimd(arr, AndByte);
         Processor.ApplyAndFallback(arr2, AndByte);
 

@@ -21,7 +21,6 @@ public class Processor_Bitwise_Or : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-
         Processor.ApplyOrAdvSimd(arr, OrByte);
         Processor.ApplyOrFallback(arr2, OrByte);
 
