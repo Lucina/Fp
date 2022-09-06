@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace Fp.Tests;
 
-public class Processor_Bitwise : ProcessorTestBase
+public class Processor_Bitwise_Xor : ProcessorTestBase
 {
     private const byte XorByte = 0xd5;
 
