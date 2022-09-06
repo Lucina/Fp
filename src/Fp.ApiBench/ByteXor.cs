@@ -47,7 +47,7 @@ public class ByteXor
     [Benchmark]
     public void XorRepeat_Vectorized() => ApplyXorVectorized(_baseBuffer.AsSpan(_alignedVectorized, Size), XorByte);
 
-#if true
+#if false
     [Benchmark]
     public void XorRepeat_AdvSimd() => ApplyXorAdvSimd(_baseBuffer.AsSpan(_aligned16, Size), XorByte);
 
@@ -341,49 +341,53 @@ Intel Core i5-9400 CPU 2.90GHz (Coffee Lake), 1 CPU, 6 logical and 6 physical co
   DefaultJob : .NET 6.0.8 (6.0.822.36306), X64 RyuJIT
 
 
-|                Method |    Size |             Mean |         Error |        StdDev | Ratio | RatioSD |
-|---------------------- |-------- |-----------------:|--------------:|--------------:|------:|--------:|
-|    XorRepeat_Fallback |      16 |         6.247 ns |     0.0432 ns |     0.0383 ns |  1.00 |    0.00 |
-| XorRepeat_Vectorized2 |      16 |        10.985 ns |     0.1166 ns |     0.1091 ns |  1.76 |    0.02 |
-|        XorRepeat_Sse2 |      16 |         9.539 ns |     0.1150 ns |     0.1075 ns |  1.53 |    0.02 |
-|        XorRepeat_Avx2 |      16 |        16.231 ns |     0.0509 ns |     0.0451 ns |  2.60 |    0.02 |
-|                       |         |                  |               |               |       |         |
-|    XorRepeat_Fallback |      32 |        13.912 ns |     0.0690 ns |     0.0646 ns |  1.00 |    0.00 |
-| XorRepeat_Vectorized2 |      32 |         3.538 ns |     0.0195 ns |     0.0173 ns |  0.25 |    0.00 |
-|        XorRepeat_Sse2 |      32 |         9.803 ns |     0.0470 ns |     0.0393 ns |  0.70 |    0.00 |
-|        XorRepeat_Avx2 |      32 |        10.986 ns |     0.0126 ns |     0.0106 ns |  0.79 |    0.00 |
-|                       |         |                  |               |               |       |         |
-|    XorRepeat_Fallback |    4096 |     1,864.825 ns |     5.1206 ns |     4.5393 ns |  1.00 |    0.00 |
-| XorRepeat_Vectorized2 |    4096 |       127.881 ns |     0.3723 ns |     0.3483 ns |  0.07 |    0.00 |
-|        XorRepeat_Sse2 |    4096 |       137.984 ns |     0.4310 ns |     0.3821 ns |  0.07 |    0.00 |
-|        XorRepeat_Avx2 |    4096 |        62.001 ns |     0.1815 ns |     0.1609 ns |  0.03 |    0.00 |
-|                       |         |                  |               |               |       |         |
-|    XorRepeat_Fallback | 1048576 |   477,130.500 ns | 2,345.6853 ns | 2,079.3890 ns |  1.00 |    0.00 |
-| XorRepeat_Vectorized2 | 1048576 |    31,874.629 ns |   166.1419 ns |   155.4093 ns |  0.07 |    0.00 |
-|        XorRepeat_Sse2 | 1048576 |    32,877.899 ns |   120.7607 ns |   112.9596 ns |  0.07 |    0.00 |
-|        XorRepeat_Avx2 | 1048576 |    24,398.031 ns |    98.6297 ns |    82.3603 ns |  0.05 |    0.00 |
-|                       |         |                  |               |               |       |         |
-|    XorRepeat_Fallback | 4194304 | 1,903,779.241 ns | 2,785.7655 ns | 2,469.5086 ns |  1.00 |    0.00 |
-| XorRepeat_Vectorized2 | 4194304 |   128,346.387 ns |   524.0453 ns |   437.6015 ns |  0.07 |    0.00 |
-|        XorRepeat_Sse2 | 4194304 |   133,745.558 ns |   389.9702 ns |   345.6984 ns |  0.07 |    0.00 |
-|        XorRepeat_Avx2 | 4194304 |    98,846.070 ns |   549.8972 ns |   429.3236 ns |  0.05 |    0.00 |
+|                    Method |    Size |             Mean |         Error |        StdDev | Ratio | RatioSD |
+|-------------------------- |-------- |-----------------:|--------------:|--------------:|------:|--------:|
+|        XorRepeat_Fallback |      16 |         6.315 ns |     0.0391 ns |     0.0347 ns |  1.00 |    0.00 |
+| XorRepeat_FallbackPointer |      16 |         5.601 ns |     0.0180 ns |     0.0159 ns |  0.89 |    0.01 |
+|      XorRepeat_Vectorized |      16 |        11.068 ns |     0.1574 ns |     0.1473 ns |  1.75 |    0.02 |
+|            XorRepeat_Sse2 |      16 |         9.476 ns |     0.0363 ns |     0.0303 ns |  1.50 |    0.01 |
+|            XorRepeat_Avx2 |      16 |        16.245 ns |     0.0246 ns |     0.0205 ns |  2.57 |    0.01 |
+|                           |         |                  |               |               |       |         |
+|        XorRepeat_Fallback |      32 |        13.308 ns |     0.0393 ns |     0.0368 ns |  1.00 |    0.00 |
+| XorRepeat_FallbackPointer |      32 |        10.561 ns |     0.0313 ns |     0.0278 ns |  0.79 |    0.00 |
+|      XorRepeat_Vectorized |      32 |         3.554 ns |     0.0153 ns |     0.0143 ns |  0.27 |    0.00 |
+|            XorRepeat_Sse2 |      32 |         9.815 ns |     0.0291 ns |     0.0272 ns |  0.74 |    0.00 |
+|            XorRepeat_Avx2 |      32 |        11.042 ns |     0.0405 ns |     0.0378 ns |  0.83 |    0.00 |
+|                           |         |                  |               |               |       |         |
+|        XorRepeat_Fallback |    4096 |     1,869.205 ns |     5.0987 ns |     4.2577 ns |  1.00 |    0.00 |
+| XorRepeat_FallbackPointer |    4096 |     1,315.012 ns |     4.2031 ns |     3.9315 ns |  0.70 |    0.00 |
+|      XorRepeat_Vectorized |    4096 |       128.710 ns |     0.6018 ns |     0.5335 ns |  0.07 |    0.00 |
+|            XorRepeat_Sse2 |    4096 |       139.200 ns |     0.9984 ns |     0.9339 ns |  0.07 |    0.00 |
+|            XorRepeat_Avx2 |    4096 |        62.403 ns |     0.1853 ns |     0.1733 ns |  0.03 |    0.00 |
+|                           |         |                  |               |               |       |         |
+|        XorRepeat_Fallback | 1048576 |   477,502.868 ns | 1,185.0122 ns | 1,108.4612 ns |  1.00 |    0.00 |
+| XorRepeat_FallbackPointer | 1048576 |   335,597.478 ns |   833.8725 ns |   739.2062 ns |  0.70 |    0.00 |
+|      XorRepeat_Vectorized | 1048576 |    32,112.854 ns |   216.9945 ns |   181.2002 ns |  0.07 |    0.00 |
+|            XorRepeat_Sse2 | 1048576 |    33,110.120 ns |   157.4663 ns |   139.5898 ns |  0.07 |    0.00 |
+|            XorRepeat_Avx2 | 1048576 |    24,469.970 ns |   268.9253 ns |   251.5529 ns |  0.05 |    0.00 |
+|                           |         |                  |               |               |       |         |
+|        XorRepeat_Fallback | 4194304 | 1,912,791.281 ns | 5,377.9736 ns | 4,767.4335 ns |  1.00 |    0.00 |
+| XorRepeat_FallbackPointer | 4194304 | 1,343,790.026 ns | 3,614.7721 ns | 3,381.2601 ns |  0.70 |    0.00 |
+|      XorRepeat_Vectorized | 4194304 |   133,176.628 ns | 1,018.8052 ns |   952.9910 ns |  0.07 |    0.00 |
+|            XorRepeat_Sse2 | 4194304 |   134,661.053 ns |   491.4082 ns |   383.6592 ns |  0.07 |    0.00 |
+|            XorRepeat_Avx2 | 4194304 |    99,243.445 ns |   882.6967 ns |   782.4876 ns |  0.05 |    0.00 |
 
 // * Hints *
 Outliers
-  ByteXor.XorRepeat_Fallback: Default    -> 1 outlier  was  removed (7.91 ns)
-  ByteXor.XorRepeat_Avx2: Default        -> 1 outlier  was  removed (17.87 ns)
-  ByteXor.XorRepeat_Vectorized2: Default -> 1 outlier  was  removed (5.09 ns)
-  ByteXor.XorRepeat_Sse2: Default        -> 2 outliers were removed (11.43 ns, 11.43 ns)
-  ByteXor.XorRepeat_Avx2: Default        -> 2 outliers were removed (12.53 ns, 12.54 ns)
-  ByteXor.XorRepeat_Fallback: Default    -> 1 outlier  was  removed (1.89 us)
-  ByteXor.XorRepeat_Sse2: Default        -> 1 outlier  was  removed (141.26 ns)
-  ByteXor.XorRepeat_Avx2: Default        -> 1 outlier  was  removed (64.78 ns)
-  ByteXor.XorRepeat_Fallback: Default    -> 1 outlier  was  removed (485.45 us)
-  ByteXor.XorRepeat_Avx2: Default        -> 2 outliers were removed (24.69 us, 24.91 us)
-  ByteXor.XorRepeat_Fallback: Default    -> 1 outlier  was  removed (1.91 ms)
-  ByteXor.XorRepeat_Vectorized2: Default -> 2 outliers were removed (130.70 us, 131.15 us)
-  ByteXor.XorRepeat_Sse2: Default        -> 1 outlier  was  removed (136.74 us)
-  ByteXor.XorRepeat_Avx2: Default        -> 3 outliers were removed (100.82 us..101.30 us)
+  ByteXor.XorRepeat_Fallback: Default        -> 1 outlier  was  removed (7.97 ns)
+  ByteXor.XorRepeat_FallbackPointer: Default -> 1 outlier  was  removed (7.18 ns)
+  ByteXor.XorRepeat_Sse2: Default            -> 2 outliers were removed (11.13 ns, 11.25 ns)
+  ByteXor.XorRepeat_Avx2: Default            -> 2 outliers were removed, 5 outliers were detected (17.71 ns..17.71 ns, 17.80 ns, 17.95 ns)
+  ByteXor.XorRepeat_FallbackPointer: Default -> 1 outlier  was  removed (12.14 ns)
+  ByteXor.XorRepeat_Fallback: Default        -> 2 outliers were removed (1.88 us, 1.90 us)
+  ByteXor.XorRepeat_Vectorized: Default      -> 1 outlier  was  removed (132.50 ns)
+  ByteXor.XorRepeat_FallbackPointer: Default -> 1 outlier  was  removed (337.81 us)
+  ByteXor.XorRepeat_Vectorized: Default      -> 2 outliers were removed (33.04 us, 33.17 us)
+  ByteXor.XorRepeat_Sse2: Default            -> 1 outlier  was  removed (33.52 us)
+  ByteXor.XorRepeat_Fallback: Default        -> 1 outlier  was  removed (1.93 ms)
+  ByteXor.XorRepeat_Sse2: Default            -> 3 outliers were removed (136.48 us..137.47 us)
+  ByteXor.XorRepeat_Avx2: Default            -> 1 outlier  was  removed (102.62 us)
 
 // * Legends *
   Size    : Value of the 'Size' parameter
