@@ -1,7 +1,5 @@
 using System;
 using System.IO;
-using System.Runtime.Intrinsics.Arm;
-using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Text;
 using NUnit.Framework;
@@ -181,99 +179,4 @@ public class ProcessorTests
         Assert.IsTrue(data.AsSpan().SequenceEqual(encData));
     }
 
-    [Test]
-    public void TestIntrinsicsArm()
-    {
-        if (!AdvSimd.IsSupported) Assert.Inconclusive("AdvSimd intrinsics not supported");
-
-        #region Xor
-
-        Span<byte> arr = new byte[1097];
-        Span<byte> arr2 = new byte[arr.Length];
-        arr.CopyTo(arr2);
-
-        const byte xor = 48;
-
-        Processor.ApplyXorArm(arr, xor);
-        Processor.ApplyXorFallback(arr2, xor);
-
-        Assert.IsTrue(arr.SequenceEqual(arr2));
-
-        // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr3 = arr.Slice(14);
-        Span<byte> arr4 = arr2.Slice(14);
-
-        const byte xor2 = 93;
-
-        Processor.ApplyXorArm(arr3, xor2);
-        Processor.ApplyXorFallback(arr4, xor2);
-
-        Assert.IsTrue(arr3.SequenceEqual(arr4));
-
-        #endregion
-    }
-
-    [Test]
-    public void TestIntrinsicsSse2()
-    {
-        if (!Sse2.IsSupported) Assert.Inconclusive("Sse2 intrinsics not supported");
-
-        #region Xor
-
-        Span<byte> arr = new byte[1097];
-        Span<byte> arr2 = new byte[arr.Length];
-        arr.CopyTo(arr2);
-
-        const byte xor = 48;
-
-        Processor.ApplyXorSse2(arr, xor);
-        Processor.ApplyXorFallback(arr2, xor);
-
-        Assert.IsTrue(arr.SequenceEqual(arr2));
-
-        // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr3 = arr.Slice(14);
-        Span<byte> arr4 = arr2.Slice(14);
-
-        const byte xor2 = 93;
-
-        Processor.ApplyXorSse2(arr3, xor2);
-        Processor.ApplyXorFallback(arr4, xor2);
-
-        Assert.IsTrue(arr3.SequenceEqual(arr4));
-
-        #endregion
-    }
-
-    [Test]
-    public void TestIntrinsicsAvx2()
-    {
-        if (!Avx2.IsSupported) Assert.Inconclusive("Avx2 intrinsics not supported");
-
-        #region Xor
-
-        Span<byte> arr = new byte[1097];
-        Span<byte> arr2 = new byte[arr.Length];
-        arr.CopyTo(arr2);
-
-        const byte xor = 48;
-
-        Processor.ApplyXorAvx2(arr, xor);
-        Processor.ApplyXorFallback(arr2, xor);
-
-        Assert.IsTrue(arr.SequenceEqual(arr2));
-
-        // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr3 = arr.Slice(14);
-        Span<byte> arr4 = arr2.Slice(14);
-
-        const byte xor2 = 93;
-
-        Processor.ApplyXorAvx2(arr3, xor2);
-        Processor.ApplyXorFallback(arr4, xor2);
-
-        Assert.IsTrue(arr3.SequenceEqual(arr4));
-
-        #endregion
-    }
 }
