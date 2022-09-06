@@ -74,6 +74,8 @@ public class SnOProcessor : FormatMultiProcessor
                 }
             case "RYHP":
                 {
+                    // ?????????????????
+
                     // BEN_BT_C1_s.png.phyre
                     // offset 494015
                     // 113992 bytes
