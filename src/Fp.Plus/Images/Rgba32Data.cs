@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Advanced;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Png;
 using SixLabors.ImageSharp.PixelFormats;
@@ -31,7 +32,7 @@ public class Rgba32Data : BufferData<uint>
     public override Guid DefaultFormat => PngDeflate;
 
     /// <inheritdoc />
-    public override  IReadOnlyCollection<Guid> SupportedFormats { get; } = new[] { PngDeflate, Jpeg };
+    public override IReadOnlyCollection<Guid> SupportedFormats { get; } = new[] { PngDeflate, Jpeg };
 
     /// <summary>
     /// Provides option keys for <see cref="Rgba32Data"/>.
@@ -103,21 +104,21 @@ public class Rgba32Data : BufferData<uint>
         return format == PngDeflate || format == Jpeg;
     }
 
+    private static readonly Configuration s_configuration = new() { PreferContiguousImageBuffers = true };
+
     /// <inheritdoc />
-    public override bool WriteConvertedData(Stream outputStream, Guid format,
-        Dictionary<object, object>? formatOptions = null)
+    public override bool WriteConvertedData(Stream outputStream, Guid format, Dictionary<object, object>? formatOptions = null)
     {
         if (Dry) throw new InvalidOperationException("Cannot convert a dry data container");
         if (_disposed) throw new ObjectDisposedException(nameof(Rgba32Data));
         if (format == PngDeflate || format == Jpeg)
         {
-            Image<Rgba32> image = new(Width, Height);
-            if (image.TryGetSinglePixelSpan(out Span<Rgba32> span))
-                Buffer.Span.Slice(0, Width * Height).CopyTo(MemoryMarshal.Cast<Rgba32, uint>(span));
+            Image<Rgba32> image = new(s_configuration, Width, Height);
+            if (image.DangerousTryGetSinglePixelMemory(out var memory))
+                Buffer.Span.Slice(0, Width * Height).CopyTo(MemoryMarshal.Cast<Rgba32, uint>(memory.Span));
             else
                 for (int y = 0; y < Height; y++)
-                    Buffer.Span.Slice(Width * y, Width)
-                        .CopyTo(MemoryMarshal.Cast<Rgba32, uint>(image.GetPixelRowSpan(y)));
+                    Buffer.Span.Slice(Width * y, Width).CopyTo(MemoryMarshal.Cast<Rgba32, uint>(image.DangerousGetPixelRowMemory(y).Span));
 
             if (format == PngDeflate)
                 image.SaveAsPng(outputStream, s_pngEncoder);

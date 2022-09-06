@@ -261,15 +261,6 @@ public static partial class FpUtil
 
     #region Numbers
 
-    #region Code copied / tweaked from ProjectOtori
-
-    /*
-     * ProjectOtori\Assets\Astolfo\CadmonCommon.cs
-     * Obtained 10/6/2020
-     * TODO copy back modifications to astolfo codebase for convenience
-     * (supports boxed input, automatically redirects string to parsed)
-     */
-
     /// <summary>
     /// Casts number.
     /// </summary>
@@ -544,8 +535,6 @@ public static partial class FpUtil
                 $"Could not cast from type {number?.GetType().FullName ?? "null"} to {typeof(double)}")
         };
     }
-
-    #endregion
 
     #endregion
 }
