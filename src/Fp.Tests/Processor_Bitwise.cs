@@ -112,5 +112,40 @@ public class Processor_Bitwise : ProcessorTestBase
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
+    internal static void ApplyXor(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
+    {
+        switch (sequenceBehaviour)
+        {
+            case SequenceBehaviour.Truncate:
+                if (pattern.Length < span.Length)
+                    for (int i = 0; i < pattern.Length; i++)
+                        span[i] ^= pattern[i];
+                else
+                    for (int i = 0; i < span.Length; i++)
+                        span[i] ^= pattern[i];
+                break;
+            case SequenceBehaviour.Repeat:
+                Span<byte> segment = span;
+                while (true)
+                {
+                    if (pattern.Length < segment.Length)
+                    {
+                        for (int i = 0; i < pattern.Length; i++)
+                            segment[i] ^= pattern[i];
+                        segment = segment[pattern.Length..];
+                    }
+                    else
+                    {
+                        for (int i = 0; i < segment.Length; i++)
+                            segment[i] ^= pattern[i];
+                        break;
+                    }
+                }
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(sequenceBehaviour), sequenceBehaviour, null);
+        }
+    }
+
     // TODO
 }
