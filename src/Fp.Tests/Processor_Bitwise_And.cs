@@ -7,12 +7,12 @@ using NUnit.Framework;
 
 namespace Fp.Tests;
 
-public class Processor_Bitwise_Xor : ProcessorTestBase
+public class Processor_Bitwise_And : ProcessorTestBase
 {
-    private const byte XorByte = 0xd5;
+    private const byte AndByte = 0xd5;
 
     [Test]
-    public void SingleByteApplyXorArm_LargeBuffer_MatchesExpected()
+    public void SingleByteApplyAndArm_LargeBuffer_MatchesExpected()
     {
         if (!AdvSimd.IsSupported) Assert.Ignore("AdvSimd intrinsics not supported");
 
@@ -22,14 +22,14 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         arr.CopyTo(arr2);
 
 
-        Processor.ApplyXorAdvSimd(arr, XorByte);
-        Processor.ApplyXorFallback(arr2, XorByte);
+        Processor.ApplyAndAdvSimd(arr, AndByte);
+        Processor.ApplyAndFallback(arr2, AndByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void SingleByteApplyXorArm_Misaligned_MatchesExpected()
+    public void SingleByteApplyAndArm_Misaligned_MatchesExpected()
     {
         if (!AdvSimd.IsSupported) Assert.Ignore("AdvSimd intrinsics not supported");
 
@@ -39,14 +39,14 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorAdvSimd(arr, XorByte);
-        Processor.ApplyXorFallback(arr2, XorByte);
+        Processor.ApplyAndAdvSimd(arr, AndByte);
+        Processor.ApplyAndFallback(arr2, AndByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void SingleByteApplyXorSse2_LargeBuffer_MatchesExpected()
+    public void SingleByteApplyAndSse2_LargeBuffer_MatchesExpected()
     {
         if (!Sse2.IsSupported) Assert.Ignore("Sse2 intrinsics not supported");
 
@@ -56,14 +56,14 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         arr.CopyTo(arr2);
 
 
-        Processor.ApplyXorSse2(arr, XorByte);
-        Processor.ApplyXorFallback(arr2, XorByte);
+        Processor.ApplyAndSse2(arr, AndByte);
+        Processor.ApplyAndFallback(arr2, AndByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void SingleByteApplyXorSse2_Misaligned_MatchesExpected()
+    public void SingleByteApplyAndSse2_Misaligned_MatchesExpected()
     {
         if (!Sse2.IsSupported) Assert.Ignore("Sse2 intrinsics not supported");
 
@@ -73,14 +73,14 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorSse2(arr, XorByte);
-        Processor.ApplyXorFallback(arr2, XorByte);
+        Processor.ApplyAndSse2(arr, AndByte);
+        Processor.ApplyAndFallback(arr2, AndByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void SingleByteApplyXorAvx2_LargeBuffer_MatchesExpected()
+    public void SingleByteApplyAndAvx2_LargeBuffer_MatchesExpected()
     {
         if (!Avx2.IsSupported) Assert.Ignore("Avx2 intrinsics not supported");
 
@@ -90,14 +90,14 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         arr.CopyTo(arr2);
 
 
-        Processor.ApplyXorAvx2(arr, XorByte);
-        Processor.ApplyXorFallback(arr2, XorByte);
+        Processor.ApplyAndAvx2(arr, AndByte);
+        Processor.ApplyAndFallback(arr2, AndByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void SingleByteApplyXorAvx2_Misaligned_MatchesExpected()
+    public void SingleByteApplyAndAvx2_Misaligned_MatchesExpected()
     {
         if (!Avx2.IsSupported) Assert.Ignore("Avx2 intrinsics not supported");
 
@@ -107,76 +107,76 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorAvx2(arr, XorByte);
-        Processor.ApplyXorFallback(arr2, XorByte);
+        Processor.ApplyAndAvx2(arr, AndByte);
+        Processor.ApplyAndFallback(arr2, AndByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void BufferApplyXor_SmallBufferTruncate_MatchesExpected()
+    public void BufferApplyAnd_SmallBufferTruncate_MatchesExpected()
     {
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[91];
         Random.Shared.NextBytes(arr);
-        Span<byte> xorArr = new byte[1843];
-        Random.Shared.NextBytes(xorArr);
+        Span<byte> AndArr = new byte[1843];
+        Random.Shared.NextBytes(AndArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
-        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Truncate);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void BufferApplyXor_LargeBufferTruncate_MatchesExpected()
+    public void BufferApplyAnd_LargeBufferTruncate_MatchesExpected()
     {
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
-        Span<byte> xorArr = new byte[53];
-        Random.Shared.NextBytes(xorArr);
+        Span<byte> AndArr = new byte[53];
+        Random.Shared.NextBytes(AndArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
-        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Truncate);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void BufferApplyXor_SmallBufferRepeat_MatchesExpected()
+    public void BufferApplyAnd_SmallBufferRepeat_MatchesExpected()
     {
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[91];
         Random.Shared.NextBytes(arr);
-        Span<byte> xorArr = new byte[1843];
-        Random.Shared.NextBytes(xorArr);
+        Span<byte> AndArr = new byte[1843];
+        Random.Shared.NextBytes(AndArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
-        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Repeat);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 
     [Test]
-    public void BufferApplyXor_LargeBufferRepeat_MatchesExpected()
+    public void BufferApplyAnd_LargeBufferRepeat_MatchesExpected()
     {
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
-        Span<byte> xorArr = new byte[53];
-        Random.Shared.NextBytes(xorArr);
+        Span<byte> AndArr = new byte[53];
+        Random.Shared.NextBytes(AndArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
-        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Repeat);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
