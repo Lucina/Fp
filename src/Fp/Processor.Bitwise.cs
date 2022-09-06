@@ -60,9 +60,23 @@ public partial class Processor
 
 #endif
 
-    private static int GetAlignmentStart(ulong ptr, uint alignment, int length)
+    /// <summary>
+    /// Gets the first aligned index or <paramref name="buffer"/>.<see cref="ReadOnlySpan{T}.Length"/> if no aligned values are contained.
+    /// </summary>
+    /// <param name="buffer">Buffer to check.</param>
+    /// <param name="alignment">Alignment value in bytes.</param>
+    /// <returns>First aligned index or <paramref name="buffer"/>.<see cref="ReadOnlySpan{T}.Length"/> if no aligned values are contained.</returns>
+    public static unsafe int GetAlignmentStart(ReadOnlySpan<byte> buffer, int alignment)
     {
-        return Math.Min((int)unchecked((alignment - ptr) % alignment), length);
+        fixed (byte* p = buffer)
+        {
+            return GetAlignmentStart((ulong)p, alignment, buffer.Length);
+        }
+    }
+
+    private static int GetAlignmentStart(ulong ptr, int alignment, int length)
+    {
+        return Math.Min((int)unchecked(((uint)alignment - ptr) % (uint)alignment), length);
     }
 
     /// <summary>
@@ -74,12 +88,9 @@ public partial class Processor
     /// <remarks>
     /// This is intended for use as a precondition for using intrinsics.
     /// </remarks>
-    public static unsafe bool ContainsAtLeastOneAligned(ReadOnlySpan<byte> buffer, uint alignment)
+    public static bool ContainsAtLeastOneAligned(ReadOnlySpan<byte> buffer, int alignment)
     {
-        fixed (byte* p = buffer)
-        {
-            return buffer.Length - GetAlignmentStart((ulong)p, alignment, buffer.Length) >= alignment;
-        }
+        return buffer.Length - GetAlignmentStart(buffer, alignment) >= alignment;
     }
 
     /// <summary>

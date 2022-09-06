@@ -9,15 +9,21 @@ namespace Fp.ApiBench;
 
 public class ByteXor
 {
-    private const int AllCount = 4 * 1024 * 1024;
+    private const int AllCount = 8 * 1024 * 1024;
     private readonly byte[] _baseBuffer;
     private const byte XorByte = 0xFD;
+    private int _alignedVectorized;
+    private int _aligned16;
+    private int _aligned32;
 
     public ByteXor()
     {
         _baseBuffer = new byte[AllCount];
         var r = new Random(42069);
         r.NextBytes(_baseBuffer);
+        _alignedVectorized = Vector.IsHardwareAccelerated ? Processor.GetAlignmentStart(_baseBuffer, Vector<byte>.Count) : 0;
+        _aligned16 = Processor.GetAlignmentStart(_baseBuffer, 16);
+        _aligned32 = Processor.GetAlignmentStart(_baseBuffer, 32);
     }
 
     public IEnumerable<int> Sizes => new[]
@@ -36,16 +42,16 @@ public class ByteXor
     public void XorRepeat_Fallback() => ApplyXorFallback(_baseBuffer.AsSpan(0, Size), XorByte);
 
     [Benchmark]
-    public void XorRepeat_Vectorized2() => ApplyXorVectorized(_baseBuffer.AsSpan(0, Size), XorByte);
+    public void XorRepeat_Vectorized2() => ApplyXorVectorized(_baseBuffer.AsSpan(_alignedVectorized, Size), XorByte);
 
     /* [Benchmark]
-    public void XorRepeat_AdvSimd() => ApplyXorAdvSimd(_baseBuffer.AsSpan(0, Size), XorByte); */
+    public void XorRepeat_AdvSimd() => ApplyXorAdvSimd(_baseBuffer.AsSpan(_aligned16, Size), XorByte); */
 
     [Benchmark]
-    public void XorRepeat_Sse2() => ApplyXorSse2(_baseBuffer.AsSpan(0, Size), XorByte);
+    public void XorRepeat_Sse2() => ApplyXorSse2(_baseBuffer.AsSpan(_aligned16, Size), XorByte);
 
     [Benchmark]
-    public void XorRepeat_Avx2() => ApplyXorAvx2(_baseBuffer.AsSpan(0, Size), XorByte);
+    public void XorRepeat_Avx2() => ApplyXorAvx2(_baseBuffer.AsSpan(_aligned32, Size), XorByte);
 
     /// <summary>
     /// Applies XOR to memory.
