@@ -94,22 +94,6 @@ public class ApiTests
     }
 
     [Test]
-    public void TestHexPrint()
-    {
-        byte[] data = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
-        var sbl = new StringBuilderLog();
-        HexPrint.Print(data, sbl, annotations: null, space: true, pow2Modulus: false, displayWidth: 20);
-        Assert.AreEqual(@"
-0x0000000000 00 01 02 03
-0x0000000004 04 05 06 07
-0x0000000008 08 09 0A 0B
-0x000000000C 0C 0D 0E 0F
-0x0000000010 10         ^
-
-".TrimStart('\r', '\n').Replace("\r", "").Replace("^", ""), sbl.StringBuilder.ToString());
-    }
-
-    [Test]
     public void TestBlowfish()
     {
         byte[] data;
