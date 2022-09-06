@@ -238,5 +238,71 @@ Outliers
   Ratio  : Mean of the ratio distribution ([Current]/[Baseline])
   1 ns   : 1 Nanosecond (0.000000001 sec)
 
+// * Summary *
+
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19044.1889 (21H2)
+Intel Core i5-9400 CPU 2.90GHz (Coffee Lake), 1 CPU, 6 logical and 6 physical cores
+.NET SDK=6.0.400
+  [Host]     : .NET 6.0.8 (6.0.822.36306), X64 RyuJIT
+  DefaultJob : .NET 6.0.8 (6.0.822.36306), X64 RyuJIT
+
+
+|               Method |            Size |            Mean |         Error |        StdDev | Ratio |
+|--------------------- |---------------- |----------------:|--------------:|--------------:|------:|
+|   XorRepeat_Fallback |   (1048576, 16) |   593,393.99 ns |  3,017.404 ns |  2,674.850 ns |  1.00 |
+| XorRepeat_Vectorized |   (1048576, 16) |   744,088.34 ns |  6,694.594 ns |  6,262.128 ns |  1.25 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |   (1048576, 32) |   563,177.14 ns |  2,379.277 ns |  2,225.577 ns |  1.00 |
+| XorRepeat_Vectorized |   (1048576, 32) |    95,397.06 ns |    192.982 ns |    161.148 ns |  0.17 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback | (1048576, 4096) |   540,800.07 ns |  1,910.665 ns |  1,787.237 ns |  1.00 |
+| XorRepeat_Vectorized | (1048576, 4096) |    60,186.24 ns |    987.324 ns |    923.544 ns |  0.11 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |        (16, 16) |        12.66 ns |      0.047 ns |      0.042 ns |  1.00 |
+| XorRepeat_Vectorized |        (16, 16) |        13.82 ns |      0.038 ns |      0.032 ns |  1.09 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |      (4096, 16) |     2,319.73 ns |      6.851 ns |      6.408 ns |  1.00 |
+| XorRepeat_Vectorized |      (4096, 16) |     2,882.61 ns |      4.953 ns |      4.391 ns |  1.24 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |      (4096, 32) |     2,216.54 ns |      6.148 ns |      5.133 ns |  1.00 |
+| XorRepeat_Vectorized |      (4096, 32) |       375.36 ns |      1.589 ns |      1.327 ns |  0.17 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |    (4096, 4096) |     2,503.45 ns |      7.550 ns |      7.063 ns |  1.00 |
+| XorRepeat_Vectorized |    (4096, 4096) |       258.03 ns |      0.658 ns |      0.550 ns |  0.10 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |   (4194304, 16) | 2,374,749.67 ns |  9,392.489 ns |  7,333.038 ns |  1.00 |
+| XorRepeat_Vectorized |   (4194304, 16) | 2,953,898.32 ns |  9,450.270 ns |  7,891.404 ns |  1.24 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback |   (4194304, 32) | 2,264,734.15 ns | 27,516.798 ns | 24,392.925 ns |  1.00 |
+| XorRepeat_Vectorized |   (4194304, 32) |   383,841.61 ns |    815.531 ns |    722.947 ns |  0.17 |
+|                      |                 |                 |               |               |       |
+|   XorRepeat_Fallback | (4194304, 4096) | 2,163,335.21 ns |  5,278.182 ns |  4,678.971 ns |  1.00 |
+| XorRepeat_Vectorized | (4194304, 4096) |   243,717.80 ns |  1,170.853 ns |  1,037.931 ns |  0.11 |
+
+// * Hints *
+Outliers
+  BufferXor.XorRepeat_Fallback: Default   -> 1 outlier  was  removed (603.38 us)
+  BufferXor.XorRepeat_Vectorized: Default -> 2 outliers were removed, 3 outliers were detected (95.06 us, 95.77 us, 96.25 us)
+  BufferXor.XorRepeat_Fallback: Default   -> 1 outlier  was  removed (14.39 ns)
+  BufferXor.XorRepeat_Vectorized: Default -> 2 outliers were removed (15.50 ns, 15.77 ns)
+  BufferXor.XorRepeat_Vectorized: Default -> 1 outlier  was  removed (2.91 us)
+  BufferXor.XorRepeat_Fallback: Default   -> 2 outliers were removed (2.24 us, 2.25 us)
+  BufferXor.XorRepeat_Vectorized: Default -> 2 outliers were removed (388.22 ns, 390.74 ns)
+  BufferXor.XorRepeat_Vectorized: Default -> 2 outliers were removed (263.22 ns, 263.37 ns)
+  BufferXor.XorRepeat_Fallback: Default   -> 3 outliers were removed (2.44 ms..2.46 ms)
+  BufferXor.XorRepeat_Vectorized: Default -> 2 outliers were removed (2.98 ms, 2.98 ms)
+  BufferXor.XorRepeat_Fallback: Default   -> 1 outlier  was  removed (2.37 ms)
+  BufferXor.XorRepeat_Vectorized: Default -> 1 outlier  was  removed (388.70 us)
+  BufferXor.XorRepeat_Fallback: Default   -> 1 outlier  was  removed (2.18 ms)
+  BufferXor.XorRepeat_Vectorized: Default -> 1 outlier  was  removed, 2 outliers were detected (241.47 us, 246.00 us)
+
+// * Legends *
+  Size   : Value of the 'Size' parameter
+  Mean   : Arithmetic mean of all measurements
+  Error  : Half of 99.9% confidence interval
+  StdDev : Standard deviation of all measurements
+  Ratio  : Mean of the ratio distribution ([Current]/[Baseline])
+  1 ns   : 1 Nanosecond (0.000000001 sec)
+
  */
 }

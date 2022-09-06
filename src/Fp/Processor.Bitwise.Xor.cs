@@ -26,7 +26,7 @@ public partial class Processor
             ApplyXorSse2(span, value);
         else if (AdvSimd.IsSupported)
             ApplyXorAdvSimd(span, value);
-        else if (Vector.IsHardwareAccelerated)
+        else if (Vector.IsHardwareAccelerated && span.Length >= Vector<byte>.Count)
             ApplyXorVectorized(span, value);
         else
             ApplyXorFallback(span, value);
@@ -44,7 +44,7 @@ public partial class Processor
     public static void ApplyXor(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour)
     {
 #if NET6_0_OR_GREATER
-        if (Vector.IsHardwareAccelerated)
+        if (Vector.IsHardwareAccelerated && span.Length >= Vector<byte>.Count && pattern.Length >= Vector<byte>.Count)
             ApplyXorVectorized(span, pattern, sequenceBehaviour);
         else
             ApplyXorFallback(span, pattern, sequenceBehaviour);

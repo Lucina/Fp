@@ -26,7 +26,7 @@ public partial class Processor
             ApplyAndSse2(span, value);
         else if (AdvSimd.IsSupported)
             ApplyAndAdvSimd(span, value);
-        else if (Vector.IsHardwareAccelerated)
+        else if (Vector.IsHardwareAccelerated && span.Length >= Vector<byte>.Count)
             ApplyAndVectorized(span, value);
         else
             ApplyAndFallback(span, value);
@@ -44,7 +44,7 @@ public partial class Processor
     public static void ApplyAnd(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour)
     {
 #if NET6_0_OR_GREATER
-        if (Vector.IsHardwareAccelerated)
+        if (Vector.IsHardwareAccelerated && span.Length >= Vector<byte>.Count && pattern.Length >= Vector<byte>.Count)
             ApplyAndVectorized(span, pattern, sequenceBehaviour);
         else
             ApplyAndFallback(span, pattern, sequenceBehaviour);
