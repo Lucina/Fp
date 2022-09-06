@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 #if NET6_0_OR_GREATER
+using System.Numerics;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.Intrinsics.X86;
 #endif
@@ -11,7 +12,6 @@ namespace Fp;
 [SuppressMessage("ReSharper", "UnusedMember.Global")]
 public partial class Processor
 {
-
     /// <summary>
     /// Applies OR to memory.
     /// </summary>
@@ -37,15 +37,17 @@ public partial class Processor
     /// Applies OR to memory.
     /// </summary>
     /// <param name="span">Memory to modify.</param>
-    /// <param name="value">AND value.</param>
-    /// <param name="behaviour">Key behaviour.</param>
-    public static void ApplyOr(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    /// <param name="pattern">AND value.</param>
+    /// <param name="sequenceBehaviour">Key behaviour.</param>
+    public static void ApplyOr(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour)
     {
 #if NET6_0_OR_GREATER
-        // TODO intrinsics
-        ApplyOrFallback(span, value, behaviour);
+        if (Vector.IsHardwareAccelerated)
+            ApplyOrVectorized(span, pattern, sequenceBehaviour);
+        else
+            ApplyOrFallback(span, pattern, sequenceBehaviour);
 #else
-        ApplyOrFallback(span, value, behaviour);
+        ApplyOrFallback(span, pattern, sequenceBehaviour);
 #endif
     }
 
@@ -168,6 +170,93 @@ public partial class Processor
         }
     }
 
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="pattern">OR value.</param>
+    /// <param name="sequenceBehaviour">Key behaviour.</param>
+    public static void ApplyOrVectorized(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
+    {
+        if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
+        if (span.IsEmpty || pattern.IsEmpty) return;
+        switch (sequenceBehaviour)
+        {
+            case SequenceBehaviour.Truncate:
+                {
+                    if (pattern.Length < span.Length)
+                    {
+                        int index = 0;
+                        while (index + Vector<byte>.Count <= pattern.Length)
+                        {
+                            Span<byte> targetMemory = span[index..];
+                            Vector<byte> sourceVec = new(targetMemory);
+                            sourceVec = Vector.BitwiseOr(sourceVec, new Vector<byte>(pattern[index..]));
+                            sourceVec.CopyTo(targetMemory);
+                            index += Vector<byte>.Count;
+                        }
+                        for (int i = index; i < pattern.Length; i++)
+                            span[i] |= pattern[i];
+                    }
+                    else
+                    {
+                        int index = 0;
+                        while (index + Vector<byte>.Count <= span.Length)
+                        {
+                            Span<byte> targetMemory = span[index..];
+                            Vector<byte> sourceVec = new(targetMemory);
+                            sourceVec = Vector.BitwiseOr(sourceVec, new Vector<byte>(pattern[index..]));
+                            sourceVec.CopyTo(targetMemory);
+                            index += Vector<byte>.Count;
+                        }
+                        for (int i = index; i < span.Length; i++)
+                            span[i] |= pattern[i];
+                    }
+                    break;
+                }
+            case SequenceBehaviour.Repeat:
+                {
+                    Span<byte> segment = span;
+                    while (true)
+                    {
+                        if (pattern.Length < segment.Length)
+                        {
+                            int index = 0;
+                            while (index + Vector<byte>.Count <= pattern.Length)
+                            {
+                                Span<byte> targetMemory = segment[index..];
+                                Vector<byte> sourceVec = new(targetMemory);
+                                sourceVec = Vector.BitwiseOr(sourceVec, new Vector<byte>(pattern[index..]));
+                                sourceVec.CopyTo(targetMemory);
+                                index += Vector<byte>.Count;
+                            }
+                            for (int i = index; i < pattern.Length; i++)
+                                segment[i] |= pattern[i];
+                            segment = segment[pattern.Length..];
+                        }
+                        else
+                        {
+                            int index = 0;
+                            while (index + Vector<byte>.Count <= segment.Length)
+                            {
+                                Span<byte> targetMemory = segment[index..];
+                                Vector<byte> sourceVec = new(targetMemory);
+                                sourceVec = Vector.BitwiseOr(sourceVec, new Vector<byte>(pattern[index..]));
+                                sourceVec.CopyTo(targetMemory);
+                                index += Vector<byte>.Count;
+                            }
+                            for (int i = index; i < segment.Length; i++)
+                                segment[i] |= pattern[i];
+                            break;
+                        }
+                    }
+                    break;
+                }
+            default:
+                throw new ArgumentOutOfRangeException(nameof(sequenceBehaviour), sequenceBehaviour, null);
+        }
+    }
+
 #endif
 
     /// <summary>
@@ -184,13 +273,45 @@ public partial class Processor
     /// Applies XOR to memory.
     /// </summary>
     /// <param name="span">Memory to modify.</param>
-    /// <param name="value">XOR value.</param>
-    /// <param name="behaviour">Key behaviour.</param>
-    public static void ApplyOrFallback(Span<byte> span, ReadOnlySpan<byte> value, SequenceBehaviour behaviour)
+    /// <param name="pattern">XOR value.</param>
+    /// <param name="sequenceBehaviour">Key behaviour.</param>
+    public static void ApplyOrFallback(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour)
     {
-        int i = 0, sl = span.Length, kl = value.Length;
-        for (; i < sl && i < kl; i++) span[i] |= value[i];
-        if (behaviour == SequenceBehaviour.Truncate) return;
-        for (; i < sl; i++) span[i] |= value[i % kl];
+        if (span.IsEmpty || pattern.IsEmpty) return;
+        switch (sequenceBehaviour)
+        {
+            case SequenceBehaviour.Truncate:
+                {
+                    if (pattern.Length < span.Length)
+                        for (int i = 0; i < pattern.Length; i++)
+                            span[i] |= pattern[i];
+                    else
+                        for (int i = 0; i < span.Length; i++)
+                            span[i] |= pattern[i];
+                    break;
+                }
+            case SequenceBehaviour.Repeat:
+                {
+                    Span<byte> segment = span;
+                    while (true)
+                    {
+                        if (pattern.Length < segment.Length)
+                        {
+                            for (int i = 0; i < pattern.Length; i++)
+                                segment[i] |= pattern[i];
+                            segment = segment[pattern.Length..];
+                        }
+                        else
+                        {
+                            for (int i = 0; i < segment.Length; i++)
+                                segment[i] |= pattern[i];
+                            break;
+                        }
+                    }
+                    break;
+                }
+            default:
+                throw new ArgumentOutOfRangeException(nameof(sequenceBehaviour), sequenceBehaviour, null);
+        }
     }
 }

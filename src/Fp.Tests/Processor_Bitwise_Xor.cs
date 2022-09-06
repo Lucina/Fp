@@ -124,8 +124,8 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
-        ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
+        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
+        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
@@ -141,8 +141,8 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
-        ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
+        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
+        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
@@ -158,8 +158,8 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
-        ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
+        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
+        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
@@ -175,131 +175,10 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
-        ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
+        Processor.ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
+        Processor.ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
-    }
-
-    internal static void ApplyXorVectorized(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
-    {
-        if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
-        if (span.IsEmpty || pattern.IsEmpty) return;
-        switch (sequenceBehaviour)
-        {
-            case SequenceBehaviour.Truncate:
-                {
-                    if (pattern.Length < span.Length)
-                    {
-                        int index = 0;
-                        while (index + Vector<byte>.Count <= pattern.Length)
-                        {
-                            Span<byte> targetMemory = span[index..];
-                            Vector<byte> sourceVec = new(targetMemory);
-                            sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
-                            sourceVec.CopyTo(targetMemory);
-                            index += Vector<byte>.Count;
-                        }
-                        for (int i = index; i < pattern.Length; i++)
-                            span[i] ^= pattern[i];
-                    }
-                    else
-                    {
-                        int index = 0;
-                        while (index + Vector<byte>.Count <= span.Length)
-                        {
-                            Span<byte> targetMemory = span[index..];
-                            Vector<byte> sourceVec = new(targetMemory);
-                            sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
-                            sourceVec.CopyTo(targetMemory);
-                            index += Vector<byte>.Count;
-                        }
-                        for (int i = index; i < span.Length; i++)
-                            span[i] ^= pattern[i];
-                    }
-                    break;
-                }
-            case SequenceBehaviour.Repeat:
-                {
-                    Span<byte> segment = span;
-                    while (true)
-                    {
-                        if (pattern.Length < segment.Length)
-                        {
-                            int index = 0;
-                            while (index + Vector<byte>.Count <= pattern.Length)
-                            {
-                                Span<byte> targetMemory = segment[index..];
-                                Vector<byte> sourceVec = new(targetMemory);
-                                sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
-                                sourceVec.CopyTo(targetMemory);
-                                index += Vector<byte>.Count;
-                            }
-                            for (int i = index; i < pattern.Length; i++)
-                                segment[i] ^= pattern[i];
-                            segment = segment[pattern.Length..];
-                        }
-                        else
-                        {
-                            int index = 0;
-                            while (index + Vector<byte>.Count <= segment.Length)
-                            {
-                                Span<byte> targetMemory = segment[index..];
-                                Vector<byte> sourceVec = new(targetMemory);
-                                sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
-                                sourceVec.CopyTo(targetMemory);
-                                index += Vector<byte>.Count;
-                            }
-                            for (int i = index; i < segment.Length; i++)
-                                segment[i] ^= pattern[i];
-                            break;
-                        }
-                    }
-                    break;
-                }
-            default:
-                throw new ArgumentOutOfRangeException(nameof(sequenceBehaviour), sequenceBehaviour, null);
-        }
-    }
-
-    internal static void ApplyXorFallback(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
-    {
-        if (span.IsEmpty || pattern.IsEmpty) return;
-        switch (sequenceBehaviour)
-        {
-            case SequenceBehaviour.Truncate:
-                {
-                    if (pattern.Length < span.Length)
-                        for (int i = 0; i < pattern.Length; i++)
-                            span[i] ^= pattern[i];
-                    else
-                        for (int i = 0; i < span.Length; i++)
-                            span[i] ^= pattern[i];
-                    break;
-                }
-            case SequenceBehaviour.Repeat:
-                {
-                    Span<byte> segment = span;
-                    while (true)
-                    {
-                        if (pattern.Length < segment.Length)
-                        {
-                            for (int i = 0; i < pattern.Length; i++)
-                                segment[i] ^= pattern[i];
-                            segment = segment[pattern.Length..];
-                        }
-                        else
-                        {
-                            for (int i = 0; i < segment.Length; i++)
-                                segment[i] ^= pattern[i];
-                            break;
-                        }
-                    }
-                    break;
-                }
-            default:
-                throw new ArgumentOutOfRangeException(nameof(sequenceBehaviour), sequenceBehaviour, null);
-        }
     }
 
     // TODO

@@ -63,13 +63,7 @@ public record FpPath(string Name, FpPath? Previous = null)
     public static FpPath? GetFromString(string? value) =>
         string.IsNullOrEmpty(value)
             ? null
-            : new FpPath(
-#if NET6_0_OR_GREATER
-                value,
-#else
-                    value!,
-#endif
-                GetFromString(Path.GetDirectoryName(value)));
+            : new FpPath(value, GetFromString(Path.GetDirectoryName(value)));
 
     /// <summary>
     /// Gets a path from a string.
