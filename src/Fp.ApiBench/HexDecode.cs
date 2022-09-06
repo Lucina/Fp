@@ -15,7 +15,7 @@ public class HexDecode
         _pair = new TestPair(strRepr, data);
     }
 
-    [Params(128 / 8, 258 / 8, 4 * 1024, 256 * 1024, 4 * 1024 * 1024)]
+    [Params(128 / 8, 256 / 8, 4 * 1024, 256 * 1024, 4 * 1024 * 1024)]
     public int MessageSize { get; set; }
 
     [Benchmark]

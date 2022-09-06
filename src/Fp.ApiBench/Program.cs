@@ -3,4 +3,4 @@
 using BenchmarkDotNet.Running;
 using Fp.ApiBench;
 
-BenchmarkRunner.Run<HexDecode>();
+BenchmarkRunner.Run<ByteXor>();
