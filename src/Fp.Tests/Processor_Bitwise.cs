@@ -21,7 +21,7 @@ public class Processor_Bitwise : ProcessorTestBase
         arr.CopyTo(arr2);
 
 
-        Processor.ApplyXorArm(arr, XorByte);
+        Processor.ApplyXorAdvSimd(arr, XorByte);
         Processor.ApplyXorFallback(arr2, XorByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
@@ -38,7 +38,7 @@ public class Processor_Bitwise : ProcessorTestBase
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyXorArm(arr, XorByte);
+        Processor.ApplyXorAdvSimd(arr, XorByte);
         Processor.ApplyXorFallback(arr2, XorByte);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);

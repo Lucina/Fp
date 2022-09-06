@@ -30,7 +30,7 @@ public partial class Processor
         else if (Sse2.IsSupported)
             ApplyAndSse2(span, value);
         else if (AdvSimd.IsSupported)
-            ApplyAndArm(span, value);
+            ApplyAndAdvSimd(span, value);
         else
             ApplyAndFallback(span, value);
 #else
@@ -67,7 +67,7 @@ public partial class Processor
         else if (Sse2.IsSupported)
             ApplyOrSse2(span, value);
         else if (AdvSimd.IsSupported)
-            ApplyOrArm(span, value);
+            ApplyOrAdvSimd(span, value);
         else
             ApplyOrFallback(span, value);
 #else
@@ -104,7 +104,7 @@ public partial class Processor
         else if (Sse2.IsSupported)
             ApplyXorSse2(span, value);
         else if (AdvSimd.IsSupported)
-            ApplyXorArm(span, value);
+            ApplyXorAdvSimd(span, value);
         else
             ApplyXorFallback(span, value);
 #else
@@ -152,8 +152,9 @@ public partial class Processor
     /// </summary>
     /// <param name="span">Memory to modify.</param>
     /// <param name="value">AND value.</param>
-    public static unsafe void ApplyAndArm(Span<byte> span, byte value)
+    public static unsafe void ApplyAndAdvSimd(Span<byte> span, byte value)
     {
+        if (!AdvSimd.IsSupported) throw new PlatformNotSupportedException();
         const int split = 128 / 8;
         fixed (byte* pSource = span)
         {
@@ -202,8 +203,9 @@ public partial class Processor
     /// </summary>
     /// <param name="span">Memory to modify.</param>
     /// <param name="value">OR value.</param>
-    public static unsafe void ApplyOrArm(Span<byte> span, byte value)
+    public static unsafe void ApplyOrAdvSimd(Span<byte> span, byte value)
     {
+        if (!AdvSimd.IsSupported) throw new PlatformNotSupportedException();
         const int split = 128 / 8;
         fixed (byte* pSource = span)
         {
@@ -252,8 +254,9 @@ public partial class Processor
     /// </summary>
     /// <param name="span">Memory to modify.</param>
     /// <param name="value">XOR value.</param>
-    public static unsafe void ApplyXorArm(Span<byte> span, byte value)
+    public static unsafe void ApplyXorAdvSimd(Span<byte> span, byte value)
     {
+        if (!AdvSimd.IsSupported) throw new PlatformNotSupportedException();
         const int split = 128 / 8;
         fixed (byte* pSource = span)
         {
@@ -321,6 +324,7 @@ public partial class Processor
     /// <param name="value">AND value.</param>
     public static unsafe void ApplyAndSse2(Span<byte> span, byte value)
     {
+        if (!Sse2.IsSupported) throw new PlatformNotSupportedException();
         const int split = 128 / 8;
         fixed (byte* pSource = span)
         {
@@ -371,6 +375,7 @@ public partial class Processor
     /// <param name="value">OR value.</param>
     public static unsafe void ApplyOrSse2(Span<byte> span, byte value)
     {
+        if (!Sse2.IsSupported) throw new PlatformNotSupportedException();
         const int split = 128 / 8;
         fixed (byte* pSource = span)
         {
@@ -421,6 +426,7 @@ public partial class Processor
     /// <param name="value">XOR value.</param>
     public static unsafe void ApplyXorSse2(Span<byte> span, byte value)
     {
+        if (!Sse2.IsSupported) throw new PlatformNotSupportedException();
         const int split = 128 / 8;
         fixed (byte* pSource = span)
         {
@@ -492,6 +498,7 @@ public partial class Processor
     /// <param name="value">AND value.</param>
     public static unsafe void ApplyAndAvx2(Span<byte> span, byte value)
     {
+        if (!Avx2.IsSupported) throw new PlatformNotSupportedException();
         const int split = 256 / 8;
         fixed (byte* pSource = span)
         {
@@ -542,6 +549,7 @@ public partial class Processor
     /// <param name="value">OR value.</param>
     public static unsafe void ApplyOrAvx2(Span<byte> span, byte value)
     {
+        if (!Avx2.IsSupported) throw new PlatformNotSupportedException();
         const int split = 256 / 8;
         fixed (byte* pSource = span)
         {
@@ -592,6 +600,7 @@ public partial class Processor
     /// <param name="value">XOR value.</param>
     public static unsafe void ApplyXorAvx2(Span<byte> span, byte value)
     {
+        if (!Avx2.IsSupported) throw new PlatformNotSupportedException();
         const int split = 256 / 8;
         fixed (byte* pSource = span)
         {
