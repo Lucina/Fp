@@ -2,16 +2,15 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net472;net6.0;netstandard2.0</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="7.0.0-*" Condition="'$(TargetFramework)'=='net6.0' And $(RuntimeIdentifier.EndsWith(`-x64`))" />
-    <PackageReference Include="Fp.Fs" Version="0.26.0" />
-    <PackageReference Include="Fp.Plus" Version="0.26.0" />
+    <PackageReference Include="Fp.Fs" Version="0.27.1" />
+    <PackageReference Include="Fp.Plus" Version="0.27.0" />
   </ItemGroup>
 
 </Project>
