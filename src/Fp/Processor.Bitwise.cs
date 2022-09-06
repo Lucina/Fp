@@ -60,6 +60,28 @@ public partial class Processor
 
 #endif
 
+    private static int GetAlignmentStart(ulong ptr, uint alignment, int length)
+    {
+        return Math.Min((int)unchecked((alignment - ptr) % alignment), length);
+    }
+
+    /// <summary>
+    /// Checks if a buffer contains at least one element aligned to the specified number of bytes.
+    /// </summary>
+    /// <param name="buffer">Buffer to check.</param>
+    /// <param name="alignment">Alignment value in bytes.</param>
+    /// <returns>True if buffer has at least one aligned value.</returns>
+    /// <remarks>
+    /// This is intended for use as a precondition for using intrinsics.
+    /// </remarks>
+    public static unsafe bool ContainsAtLeastOneAligned(ReadOnlySpan<byte> buffer, uint alignment)
+    {
+        fixed (byte* p = buffer)
+        {
+            return buffer.Length - GetAlignmentStart((ulong)p, alignment, buffer.Length) >= alignment;
+        }
+    }
+
     /// <summary>
     /// Transform delegate.
     /// </summary>

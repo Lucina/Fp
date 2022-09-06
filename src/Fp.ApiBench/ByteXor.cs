@@ -154,32 +154,6 @@ public class ByteXor
         }
     }
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static unsafe Vector128<byte> FillVector128AdvSimd(byte value)
-    {
-        int* srcPtr = stackalloc int[128 / 8 / 4];
-        int iValue = (value << 8) | value;
-        iValue |= iValue << 16;
-        srcPtr[0] = iValue;
-        srcPtr[1] = iValue;
-        srcPtr[2] = iValue;
-        srcPtr[3] = iValue;
-        return AdvSimd.LoadVector128((byte*)srcPtr);
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static unsafe Vector128<byte> FillVector128Sse2(byte value)
-    {
-        int* srcPtr = stackalloc int[128 / 8 / 4];
-        int iValue = (value << 8) | value;
-        iValue |= iValue << 16;
-        srcPtr[0] = iValue;
-        srcPtr[1] = iValue;
-        srcPtr[2] = iValue;
-        srcPtr[3] = iValue;
-        return Sse2.LoadVector128((byte*)srcPtr);
-    }
-
     /// <summary>
     /// Applies XOR to memory.
     /// </summary>
@@ -217,6 +191,32 @@ public class ByteXor
                 i++;
             }
         }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static unsafe Vector128<byte> FillVector128AdvSimd(byte value)
+    {
+        int* srcPtr = stackalloc int[128 / 8 / 4];
+        int iValue = (value << 8) | value;
+        iValue |= iValue << 16;
+        srcPtr[0] = iValue;
+        srcPtr[1] = iValue;
+        srcPtr[2] = iValue;
+        srcPtr[3] = iValue;
+        return AdvSimd.LoadVector128((byte*)srcPtr);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static unsafe Vector128<byte> FillVector128Sse2(byte value)
+    {
+        int* srcPtr = stackalloc int[128 / 8 / 4];
+        int iValue = (value << 8) | value;
+        iValue |= iValue << 16;
+        srcPtr[0] = iValue;
+        srcPtr[1] = iValue;
+        srcPtr[2] = iValue;
+        srcPtr[3] = iValue;
+        return Sse2.LoadVector128((byte*)srcPtr);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

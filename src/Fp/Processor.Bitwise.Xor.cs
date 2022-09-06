@@ -20,11 +20,11 @@ public partial class Processor
     public static void ApplyXor(Span<byte> span, byte value)
     {
 #if NET6_0_OR_GREATER
-        if (Avx2.IsSupported)
+        if (Avx2.IsSupported && ContainsAtLeastOneAligned(span, 32))
             ApplyXorAvx2(span, value);
-        else if (Sse2.IsSupported)
+        else if (Sse2.IsSupported && ContainsAtLeastOneAligned(span, 16))
             ApplyXorSse2(span, value);
-        else if (AdvSimd.IsSupported)
+        else if (AdvSimd.IsSupported && ContainsAtLeastOneAligned(span, 16))
             ApplyXorAdvSimd(span, value);
         else if (Vector.IsHardwareAccelerated && span.Length >= Vector<byte>.Count)
             ApplyXorVectorized(span, value);
