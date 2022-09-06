@@ -113,6 +113,38 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
     }
 
     [Test]
+    public void SingleByteApplyXor_LargeBuffer_MatchesExpected()
+    {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
+        Span<byte> arr = new byte[1097];
+        Random.Shared.NextBytes(arr);
+        Span<byte> arr2 = new byte[arr.Length];
+        arr.CopyTo(arr2);
+
+
+        Processor.ApplyXorVectorized(arr, XorByte);
+        Processor.ApplyXorFallback(arr2, XorByte);
+
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+    }
+
+    [Test]
+    public void SingleByteApplyXor_Misaligned_MatchesExpected()
+    {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
+        // Cut somewhere in 0..31 for misalignment
+        Span<byte> arr = new byte[1097].AsSpan()[14..];
+        Random.Shared.NextBytes(arr);
+        Span<byte> arr2 = new byte[arr.Length];
+        arr.CopyTo(arr2);
+
+        Processor.ApplyXorVectorized(arr, XorByte);
+        Processor.ApplyXorFallback(arr2, XorByte);
+
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+    }
+
+    [Test]
     public void BufferApplyXor_SmallBufferTruncate_MatchesExpected()
     {
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");

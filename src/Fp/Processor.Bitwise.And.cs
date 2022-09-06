@@ -26,6 +26,8 @@ public partial class Processor
             ApplyAndSse2(span, value);
         else if (AdvSimd.IsSupported)
             ApplyAndAdvSimd(span, value);
+        else if (Vector.IsHardwareAccelerated)
+            ApplyAndVectorized(span, value);
         else
             ApplyAndFallback(span, value);
 #else
@@ -168,6 +170,25 @@ public partial class Processor
                 i++;
             }
         }
+    }
+
+    /// <summary>
+    /// Applies AND to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">AND value.</param>
+    public static void ApplyAndVectorized(Span<byte> span, byte value)
+    {
+        if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
+        int index = 0;
+        Vector<byte> pattern = new(value);
+        while (index + Vector<byte>.Count <= span.Length)
+        {
+            Vector.BitwiseAnd(new Vector<byte>(span.Slice(index)), pattern).CopyTo(span.Slice(index));
+            index += Vector<byte>.Count;
+        }
+        for (int i = index; i < span.Length; i++)
+            span[i] &= value;
     }
 
     /// <summary>

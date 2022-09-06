@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `string StringBuilderLog.Delimiter { get; set; }` for control over default line delimiter
 - `StringBuilderLog.GetContent()` / `StringBuilderLog.Clear()`
 - `IChunkWriter`
-- Vectorized bitwise operations with multibyte patterns
+- Vectorized (System.Numerics) bitwise operations
 
 ### Fixed
 - Fixed vectorized Bitwise OR on single byte

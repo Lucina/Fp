@@ -26,6 +26,8 @@ public partial class Processor
             ApplyOrSse2(span, value);
         else if (AdvSimd.IsSupported)
             ApplyOrAdvSimd(span, value);
+        else if (Vector.IsHardwareAccelerated)
+            ApplyOrVectorized(span, value);
         else
             ApplyOrFallback(span, value);
 #else
@@ -168,6 +170,25 @@ public partial class Processor
                 i++;
             }
         }
+    }
+
+    /// <summary>
+    /// Applies OR to memory.
+    /// </summary>
+    /// <param name="span">Memory to modify.</param>
+    /// <param name="value">OR value.</param>
+    public static void ApplyOrVectorized(Span<byte> span, byte value)
+    {
+        if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
+        int index = 0;
+        Vector<byte> pattern = new(value);
+        while (index + Vector<byte>.Count <= span.Length)
+        {
+            Vector.BitwiseOr(new Vector<byte>(span.Slice(index)), pattern).CopyTo(span.Slice(index));
+            index += Vector<byte>.Count;
+        }
+        for (int i = index; i < span.Length; i++)
+            span[i] |= value;
     }
 
     /// <summary>
