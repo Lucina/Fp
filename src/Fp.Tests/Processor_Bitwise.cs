@@ -1,4 +1,5 @@
 using System;
+using System.Numerics;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.Intrinsics.X86;
 using Fp.Tests.Utility;
@@ -113,8 +114,26 @@ public class Processor_Bitwise : ProcessorTestBase
     }
 
     [Test]
+    public void BufferApplyXor_SmallBufferTruncate_MatchesExpected()
+    {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
+        Span<byte> arr = new byte[91];
+        Random.Shared.NextBytes(arr);
+        Span<byte> xorArr = new byte[1843];
+        Random.Shared.NextBytes(xorArr);
+        Span<byte> arr2 = new byte[arr.Length];
+        arr.CopyTo(arr2);
+
+        ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Truncate);
+        ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Truncate);
+
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+    }
+
+    [Test]
     public void BufferApplyXor_LargeBufferTruncate_MatchesExpected()
     {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
         Span<byte> xorArr = new byte[53];
@@ -129,8 +148,26 @@ public class Processor_Bitwise : ProcessorTestBase
     }
 
     [Test]
+    public void BufferApplyXor_SmallBufferRepeat_MatchesExpected()
+    {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
+        Span<byte> arr = new byte[91];
+        Random.Shared.NextBytes(arr);
+        Span<byte> xorArr = new byte[1843];
+        Random.Shared.NextBytes(xorArr);
+        Span<byte> arr2 = new byte[arr.Length];
+        arr.CopyTo(arr2);
+
+        ApplyXorVectorized(arr, xorArr, SequenceBehaviour.Repeat);
+        ApplyXorFallback(arr2, xorArr, SequenceBehaviour.Repeat);
+
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+    }
+
+    [Test]
     public void BufferApplyXor_LargeBufferRepeat_MatchesExpected()
     {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
         Span<byte> xorArr = new byte[53];
@@ -146,16 +183,77 @@ public class Processor_Bitwise : ProcessorTestBase
 
     internal static void ApplyXorVectorized(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
     {
+        if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
         switch (sequenceBehaviour)
         {
             case SequenceBehaviour.Truncate:
                 {
-                    // TODO
+                    if (pattern.Length < span.Length)
+                    {
+                        int index = 0;
+                        while (index + Vector<byte>.Count <= pattern.Length)
+                        {
+                            Span<byte> targetMemory = span[index..];
+                            Vector<byte> sourceVec = new(targetMemory);
+                            sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
+                            sourceVec.CopyTo(targetMemory);
+                            index += Vector<byte>.Count;
+                        }
+                        for (int i = index; i < pattern.Length; i++)
+                            span[i] ^= pattern[i];
+                    }
+                    else
+                    {
+                        int index = 0;
+                        while (index + Vector<byte>.Count <= span.Length)
+                        {
+                            Span<byte> targetMemory = span[index..];
+                            Vector<byte> sourceVec = new(targetMemory);
+                            sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
+                            sourceVec.CopyTo(targetMemory);
+                            index += Vector<byte>.Count;
+                        }
+                        for (int i = index; i < span.Length; i++)
+                            span[i] ^= pattern[i];
+                    }
                     break;
                 }
             case SequenceBehaviour.Repeat:
                 {
-                    // TODO
+                    Span<byte> segment = span;
+                    while (true)
+                    {
+                        if (pattern.Length < segment.Length)
+                        {
+                            int index = 0;
+                            while (index + Vector<byte>.Count <= pattern.Length)
+                            {
+                                Span<byte> targetMemory = segment[index..];
+                                Vector<byte> sourceVec = new(targetMemory);
+                                sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
+                                sourceVec.CopyTo(targetMemory);
+                                index += Vector<byte>.Count;
+                            }
+                            for (int i = index; i < pattern.Length; i++)
+                                segment[i] ^= pattern[i];
+                            segment = segment[pattern.Length..];
+                        }
+                        else
+                        {
+                            int index = 0;
+                            while (index + Vector<byte>.Count <= segment.Length)
+                            {
+                                Span<byte> targetMemory = segment[index..];
+                                Vector<byte> sourceVec = new(targetMemory);
+                                sourceVec = Vector.Xor(sourceVec, new Vector<byte>(pattern[index..]));
+                                sourceVec.CopyTo(targetMemory);
+                                index += Vector<byte>.Count;
+                            }
+                            for (int i = index; i < segment.Length; i++)
+                                segment[i] ^= pattern[i];
+                            break;
+                        }
+                    }
                     break;
                 }
             default:
