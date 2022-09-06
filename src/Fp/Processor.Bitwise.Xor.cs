@@ -176,7 +176,7 @@ public partial class Processor
     /// <param name="span">Memory to modify.</param>
     /// <param name="pattern">XOR value.</param>
     /// <param name="sequenceBehaviour">Key behaviour.</param>
-    public static void ApplyXorVectorized(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
+    public static void ApplyXorVectorized(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour)
     {
         if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
         if (span.IsEmpty || pattern.IsEmpty) return;

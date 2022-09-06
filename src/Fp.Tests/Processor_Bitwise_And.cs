@@ -119,13 +119,13 @@ public class Processor_Bitwise_And : ProcessorTestBase
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[91];
         Random.Shared.NextBytes(arr);
-        Span<byte> AndArr = new byte[1843];
-        Random.Shared.NextBytes(AndArr);
+        Span<byte> andArr = new byte[1843];
+        Random.Shared.NextBytes(andArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Truncate);
-        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndVectorized(arr, andArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndFallback(arr2, andArr, SequenceBehaviour.Truncate);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
@@ -136,13 +136,13 @@ public class Processor_Bitwise_And : ProcessorTestBase
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
-        Span<byte> AndArr = new byte[53];
-        Random.Shared.NextBytes(AndArr);
+        Span<byte> andArr = new byte[53];
+        Random.Shared.NextBytes(andArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Truncate);
-        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndVectorized(arr, andArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndFallback(arr2, andArr, SequenceBehaviour.Truncate);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
@@ -153,13 +153,13 @@ public class Processor_Bitwise_And : ProcessorTestBase
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[91];
         Random.Shared.NextBytes(arr);
-        Span<byte> AndArr = new byte[1843];
-        Random.Shared.NextBytes(AndArr);
+        Span<byte> andArr = new byte[1843];
+        Random.Shared.NextBytes(andArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Repeat);
-        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndVectorized(arr, andArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndFallback(arr2, andArr, SequenceBehaviour.Repeat);
 
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
@@ -170,14 +170,46 @@ public class Processor_Bitwise_And : ProcessorTestBase
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         Span<byte> arr = new byte[1097];
         Random.Shared.NextBytes(arr);
-        Span<byte> AndArr = new byte[53];
-        Random.Shared.NextBytes(AndArr);
+        Span<byte> andArr = new byte[53];
+        Random.Shared.NextBytes(andArr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
 
-        Processor.ApplyAndVectorized(arr, AndArr, SequenceBehaviour.Repeat);
-        Processor.ApplyAndFallback(arr2, AndArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndVectorized(arr, andArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndFallback(arr2, andArr, SequenceBehaviour.Repeat);
 
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+    }
+
+    [Test]
+    public void BufferApplyAnd_EmptyBuffer_Noop()
+    {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
+        Span<byte> andArr = new byte[53];
+        Random.Shared.NextBytes(andArr);
+
+        Processor.ApplyAndVectorized(Span<byte>.Empty, andArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndVectorized(Span<byte>.Empty, andArr, SequenceBehaviour.Truncate);
+        Processor.ApplyAndFallback(Span<byte>.Empty, andArr, SequenceBehaviour.Repeat);
+        Processor.ApplyAndFallback(Span<byte>.Empty, andArr, SequenceBehaviour.Truncate);
+    }
+
+    [Test]
+    public void BufferApplyAnd_EmptyPattern_Noop()
+    {
+        if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
+        Span<byte> arr = new byte[1097];
+        Random.Shared.NextBytes(arr);
+        Span<byte> arr2 = new byte[arr.Length];
+        arr.CopyTo(arr2);
+
+        Processor.ApplyAndVectorized(arr, ReadOnlySpan<byte>.Empty, SequenceBehaviour.Repeat);
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+        Processor.ApplyAndFallback(arr, ReadOnlySpan<byte>.Empty, SequenceBehaviour.Repeat);
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+        Processor.ApplyAndVectorized(arr, ReadOnlySpan<byte>.Empty, SequenceBehaviour.Truncate);
+        Assert.That(arr.SequenceEqual(arr2), Is.True);
+        Processor.ApplyAndFallback(arr, ReadOnlySpan<byte>.Empty, SequenceBehaviour.Truncate);
         Assert.That(arr.SequenceEqual(arr2), Is.True);
     }
 }
