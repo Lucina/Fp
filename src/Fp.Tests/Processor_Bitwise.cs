@@ -184,6 +184,7 @@ public class Processor_Bitwise : ProcessorTestBase
     internal static void ApplyXorVectorized(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
     {
         if (!Vector.IsHardwareAccelerated) throw new PlatformNotSupportedException();
+        if (span.IsEmpty || pattern.IsEmpty) return;
         switch (sequenceBehaviour)
         {
             case SequenceBehaviour.Truncate:
@@ -263,6 +264,7 @@ public class Processor_Bitwise : ProcessorTestBase
 
     internal static void ApplyXorFallback(Span<byte> span, ReadOnlySpan<byte> pattern, SequenceBehaviour sequenceBehaviour = SequenceBehaviour.Repeat)
     {
+        if (span.IsEmpty || pattern.IsEmpty) return;
         switch (sequenceBehaviour)
         {
             case SequenceBehaviour.Truncate:
