@@ -511,6 +511,30 @@ namespace Fp
         }
 
         /// <summary>
+        /// Attempts to read data from stream at the specified offset.
+        /// </summary>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Result buffer, valid if completed read (buffer filled and returned true).</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
+        public static bool TryRead(Stream stream, long offset, int length, out Span<byte> span, bool forceNew = false)
+        {
+            long position = stream.Position;
+            try
+            {
+                stream.Position = offset;
+                return TryRead(stream, length, out span, forceNew);
+            }
+            finally
+            {
+                stream.Position = position;
+            }
+        }
+
+        /// <summary>
         /// Reads data from stream at the specified offset.
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
@@ -536,6 +560,29 @@ namespace Fp
             }
         }
 
+        /// <summary>
+        /// Attempts to read data from stream at the specified offset.
+        /// </summary>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="readCount">Number of successfully read bytes.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
+        public static bool TryRead(Stream stream, long offset, Span<byte> span, out int readCount)
+        {
+            long position = stream.Position;
+            try
+            {
+                stream.Position = offset;
+                return TryRead(stream, span, out readCount);
+            }
+            finally
+            {
+                stream.Position = position;
+            }
+        }
+
         #endregion
 
         #region Offset implicit input stream to span
@@ -548,6 +595,7 @@ namespace Fp
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use provided span.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
@@ -563,11 +611,25 @@ namespace Fp
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, length, out span, lenient, forceNew);
+
+        /// <summary>
+        /// Attempts to read data from current file's input stream at the specified offset.
+        /// </summary>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Result buffer, valid if completed read (buffer filled and returned true).</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
+        public bool TryRead(long offset, int length, out Span<byte> span, bool forceNew = false)
+            => TryRead(_inputStream ?? throw new InvalidOperationException(), offset, length, out span, forceNew);
 
         /// <summary>
         /// Reads data from current file's input stream at the specified offset.
@@ -576,11 +638,24 @@ namespace Fp
         /// <param name="span">Target to copy to.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, Span<byte> span, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, span, lenient);
+
+        /// <summary>
+        /// Attempts to read data from current file's input stream at the specified offset.
+        /// </summary>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="readCount">Number of successfully read bytes.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
+        public bool TryRead(long offset, Span<byte> span, out int readCount)
+            => TryRead(_inputStream ?? throw new InvalidOperationException(), offset, span, out readCount);
 
         #endregion
 
@@ -624,6 +699,7 @@ namespace Fp
         /// <param name="arrayLength">Length to write.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         public int Read(byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
@@ -635,6 +711,7 @@ namespace Fp
         /// <param name="array">Target to copy to.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         public int Read(byte[] array, bool lenient = true)
@@ -700,6 +777,7 @@ namespace Fp
         /// <param name="arrayLength">Length to write.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
@@ -714,6 +792,7 @@ namespace Fp
         /// <param name="array">Target to copy to.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
@@ -758,17 +837,19 @@ namespace Fp
         }
 
         /// <summary>
-        /// Loads newly allocated byte array from input stream.
+        /// Loads newly allocated byte array from current file's input stream.
         /// </summary>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         public byte[] Load()
             => GetArray(_inputStream ?? throw new InvalidOperationException(), true);
 
         /// <summary>
-        /// Gets byte array from input stream.
+        /// Gets byte array from current file's input stream.
         /// </summary>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         public byte[] GetArray(bool forceNew = false)
             => GetArray(_inputStream ?? throw new InvalidOperationException(), forceNew);
 
@@ -815,12 +896,13 @@ namespace Fp
         }
 
         /// <summary>
-        /// Gets byte array from input stream.
+        /// Gets byte array from curernt file's input stream.
         /// </summary>
         /// <param name="offset">Offset in stream.</param>
         /// <param name="length">Length of segment.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         public byte[] GetArray(int offset, int length, bool forceNew = false)
             => GetArray(offset, length, _inputStream ?? throw new InvalidOperationException(), forceNew);
 
@@ -838,10 +920,11 @@ namespace Fp
         }
 
         /// <summary>
-        /// Dumps remaining content from input stream to byte array.
+        /// Dumps remaining content from current file's input stream to byte array.
         /// </summary>
         /// <param name="maxLength">Maximum length.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         public byte[] Dump(int maxLength = int.MaxValue)
             => Dump(_inputStream ?? throw new InvalidOperationException(), maxLength);
 
@@ -881,9 +964,10 @@ namespace Fp
         }
 
         /// <summary>
-        /// Gets read-only memory from input stream.
+        /// Gets read-only memory from current file's input stream.
         /// </summary>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public ReadOnlyMemory<byte> GetMemory()
             => GetMemory(_inputStream ?? throw new InvalidOperationException());
@@ -928,11 +1012,12 @@ namespace Fp
         }
 
         /// <summary>
-        /// Gets read-only memory from input stream.
+        /// Gets read-only memory from current file's input stream.
         /// </summary>
         /// <param name="offset">Offset in stream.</param>
         /// <param name="length">Length of segment.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public ReadOnlyMemory<byte> GetMemory(long offset, int length)
             => GetMemory(offset, length, _inputStream ?? throw new InvalidOperationException());
@@ -944,7 +1029,7 @@ namespace Fp
         /// <param name="init">Initialization flag.</param>
         /// <param name="openDelegate">Delegate for opening file (stream will be disposed).</param>
         /// <param name="storeDelegate">Delegate for getting data.</param>
-        /// <returns>true if file is loaded.</returns>
+        /// <returns>True if file is loaded.</returns>
         public bool EnsureFile(ref Memory<byte> target, ref bool init, Func<Stream> openDelegate,
             Func<Stream, Memory<byte>> storeDelegate)
         {
