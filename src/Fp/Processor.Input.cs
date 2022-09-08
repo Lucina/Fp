@@ -254,7 +254,7 @@ namespace Fp
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
         /// <param name="length">Number of bytes to try to read.</param>
-        /// <param name="span">Result buffer, valid if completed read or <see cref="lenient"/> is true.</param>
+        /// <param name="span">Result buffer, valid if completed read or <paramref name="lenient"/> is true.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Number of bytes read.</returns>
@@ -418,7 +418,7 @@ namespace Fp
         /// Reads data from current file's input stream.
         /// </summary>
         /// <param name="length">Number of bytes to try to read.</param>
-        /// <param name="span">Result buffer, valid if completed read or <see cref="lenient"/> is true.</param>
+        /// <param name="span">Result buffer, valid if completed read or <paramref name="lenient"/> is true.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Number of bytes read.</returns>

@@ -227,7 +227,7 @@ public static partial class FpUtil
     /// <param name="text">String to process.</param>
     /// <param name="result">Result buffer.</param>
     /// <returns>Byte array containing lower byte of each code unit in the string.</returns>
-    /// <exception cref="ArgumentException">Thrown if <see cref="result"/> is too small.</exception>
+    /// <exception cref="ArgumentException">Thrown if <paramref name="result"/> is too small.</exception>
     public static byte[] Ascii(this string text, byte[]? result = null)
     {
         var sp = text.AsSpan();
@@ -244,7 +244,7 @@ public static partial class FpUtil
     /// </summary>
     /// <param name="text">String to process.</param>
     /// <param name="result">Result buffer.</param>
-    /// <exception cref="ArgumentException">Thrown if <see cref="result"/> is too small.</exception>
+    /// <exception cref="ArgumentException">Thrown if <paramref name="result"/> is too small.</exception>
     public static void Ascii(this string text, Span<byte> result)
     {
         var sp = text.AsSpan();
