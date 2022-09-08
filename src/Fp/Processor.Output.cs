@@ -153,6 +153,7 @@ public partial class Processor
     /// <param name="stream">Stream to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <param name="array">Span to read from.</param>
+    [Obsolete("Succeeded by: public static void Write(Stream stream, long offset, ReadOnlySpan<byte> span)")]
     public static void Write(Stream stream, long offset, byte[] array)
     {
         stream.Position = offset;
@@ -167,6 +168,7 @@ public partial class Processor
     /// <param name="array">Span to read from.</param>
     /// <param name="arrayOffset">Array offset.</param>
     /// <param name="arrayLength">Array length.</param>
+    [Obsolete("Succeeded by: public static void Write(Stream stream, long offset, ReadOnlySpan<byte> span)")]
     public static void Write(Stream stream, long offset, byte[] array, int arrayOffset, int arrayLength)
     {
         stream.Position = offset;
@@ -178,6 +180,7 @@ public partial class Processor
     /// </summary>
     /// <param name="stream">Stream to write to.</param>
     /// <param name="array">Span to read from.</param>
+    [Obsolete("Succeeded by: public void Stream.Write(ReadOnlySpan<byte> buffer)")]
     public static void Write(Stream stream, byte[] array) =>
         WriteBaseArray(stream, array, 0, array.Length);
 
@@ -188,6 +191,7 @@ public partial class Processor
     /// <param name="array">Span to read from.</param>
     /// <param name="arrayOffset">Array offset.</param>
     /// <param name="arrayLength">Array length.</param>
+    [Obsolete("Succeeded by: public void Stream.Write(ReadOnlySpan<byte> buffer)")]
     public static void Write(Stream stream, byte[] array, int arrayOffset, int arrayLength) =>
         WriteBaseArray(stream, array, arrayOffset, arrayLength);
 
@@ -196,8 +200,9 @@ public partial class Processor
     /// </summary>
     /// <param name="array">Array to read from.</param>
     /// <param name="outputStream">Stream to write to.</param>
+    [Obsolete("Succeeded by: public void Stream.Write(ReadOnlySpan<byte> buffer)")]
     public void OutputAll(byte[] array, Stream outputStream)
-        => Output(array, 0, array.Length, outputStream);
+        => WriteBaseArray(outputStream, array, 0, array.Length);
 
     /// <summary>
     /// Outputs data from array to stream.
@@ -205,7 +210,9 @@ public partial class Processor
     /// <param name="array">Array to read from.</param>
     /// <param name="offset">Offset in stream to read from.</param>
     /// <param name="length">Number of bytes to read.</param>
-    /// <param name="outputStream">Stream to write to.</param>
+    /// <param name="outputStream">Stream to write to, or <see cref="OutputStream"/> if null.</param>
+    /// <exception cref="InvalidOperationException">Thrown when no stream is provided and <see cref="OutputStream"/> is not set.</exception>
+    [Obsolete("Succeeded by: public void Stream.Write(ReadOnlySpan<byte> buffer)")]
     public void Output(byte[] array, int offset, int length, Stream? outputStream = null) =>
         WriteBaseArray(outputStream ?? OutputStream ?? throw new InvalidOperationException(), array, offset, length);
 
@@ -230,16 +237,14 @@ public partial class Processor
     /// </summary>
     /// <param name="stream">Stream to write to.</param>
     /// <param name="span">Span to read from.</param>
-    public static void Write(Stream stream, ReadOnlySpan<byte> span) =>
-        stream.Write(span);
+    public static void Write(Stream stream, ReadOnlySpan<byte> span) => stream.Write(span);
 
     /// <summary>
-    /// Outputs data from span to stream.
+    /// Outputs data from span to current file's output stream.
     /// </summary>
     /// <param name="span">Span to read from.</param>
-    /// <param name="outputStream">Stream to write to.</param>
-    public void OutputAll(ReadOnlySpan<byte> span, Stream? outputStream = null) =>
-        (outputStream ?? OutputStream ?? throw new InvalidOperationException()).Write(span);
+    /// <exception cref="InvalidOperationException">Thrown when <see cref="OutputStream"/> is not set.</exception>
+    public void OutputAll(ReadOnlySpan<byte> span) => (OutputStream ?? throw new InvalidOperationException()).Write(span);
 
     #endregion
 }
