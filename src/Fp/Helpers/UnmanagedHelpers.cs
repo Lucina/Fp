@@ -30,7 +30,7 @@ public record S8Helper(Processor Parent) : BaseUnmanagedHelper<sbyte>
 /// <summary>
 /// Signed 8-bit array helper.
 /// </summary>
-public record S8ArrayHelper(Processor Parent) : BaseUnmanagedIntegerArrayHelper<sbyte>
+public record S8ArrayHelper(Processor Parent) : BaseUnmanagedArrayHelper<sbyte>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -74,7 +74,7 @@ public record S16Helper(Processor Parent, bool LittleEndian) : BaseUnmanagedHelp
 /// <summary>
 /// Signed 16-bit array helper.
 /// </summary>
-public record S16ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedIntegerArrayHelper<short>
+public record S16ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedArrayHelper<short>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -118,7 +118,7 @@ public record S32Helper(Processor Parent, bool LittleEndian) : BaseUnmanagedHelp
 /// <summary>
 /// Signed 32-bit helper.
 /// </summary>
-public record S32ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedIntegerArrayHelper<int>
+public record S32ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedArrayHelper<int>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -162,7 +162,7 @@ public record S64Helper(Processor Parent, bool LittleEndian) : BaseUnmanagedHelp
 /// <summary>
 /// Signed 64-bit helper.
 /// </summary>
-public record S64ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedIntegerArrayHelper<long>
+public record S64ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedArrayHelper<long>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -206,7 +206,7 @@ public record U8Helper(Processor Parent) : BaseUnmanagedHelper<byte>
 /// <summary>
 /// Unsigned 8-bit helper.
 /// </summary>
-public record U8ArrayHelper(Processor Parent) : BaseUnmanagedIntegerArrayHelper<byte>
+public record U8ArrayHelper(Processor Parent) : BaseUnmanagedArrayHelper<byte>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -250,7 +250,7 @@ public record U16Helper(Processor Parent, bool LittleEndian) : BaseUnmanagedHelp
 /// <summary>
 /// Unsigned 16-bit helper.
 /// </summary>
-public record U16ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedIntegerArrayHelper<ushort>
+public record U16ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedArrayHelper<ushort>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -294,7 +294,7 @@ public record U32Helper(Processor Parent, bool LittleEndian) : BaseUnmanagedHelp
 /// <summary>
 /// Unsigned 32-bit helper.
 /// </summary>
-public record U32ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedIntegerArrayHelper<uint>
+public record U32ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedArrayHelper<uint>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();
@@ -338,7 +338,7 @@ public record U64Helper(Processor Parent, bool LittleEndian) : BaseUnmanagedHelp
 /// <summary>
 /// Unsigned 64-bit helper.
 /// </summary>
-public record U64ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedIntegerArrayHelper<ulong>
+public record U64ArrayHelper(Processor Parent, bool LittleEndian) : BaseUnmanagedArrayHelper<ulong>
 {
     /// <inheritdoc />
     public override Stream InputStream => Parent.InputStream ?? throw new InvalidOperationException();

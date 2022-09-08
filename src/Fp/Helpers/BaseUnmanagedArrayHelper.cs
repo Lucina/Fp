@@ -1,8 +1,5 @@
 using System;
 using System.IO;
-#if NET7_0_OR_GREATER
-using System.Numerics;
-#endif
 using static System.Buffers.ArrayPool<byte>;
 
 namespace Fp.Helpers;
@@ -191,30 +188,4 @@ public abstract unsafe record BaseUnmanagedArrayHelper<T> : Helper where T : unm
             }
         }
     }
-}
-
-/// <summary>
-/// Base unmanaged integer array data helper.
-/// </summary>
-/// <typeparam name="T">Element type.</typeparam>
-public abstract record BaseUnmanagedIntegerArrayHelper<T> : BaseUnmanagedArrayHelper<T> where T : unmanaged
-#if NET7_0_OR_GREATER
-    , INumber<T>
-#endif
-{
-#if NET7_0_OR_GREATER
-    /// <summary>
-    /// Skips to the next nonzero entry.
-    /// </summary>
-    /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with nonzero value.</param>
-    /// <param name="value">Retrieved value or 0 if no nonzero values found.</param>
-    /// <returns>True if a nonzero value is found.</returns>
-    public bool SkipToNonzero(int baseOffset, ref int index, out T value)
-    {
-        // TODO
-        value = default;
-        return false;
-    }
-#endif
 }
