@@ -418,8 +418,9 @@ namespace Fp
         /// <remarks>
         /// This method advances <see cref="InputStream"/> to the end of the read data.
         /// </remarks>
-        public  bool TryRead(int length, out Span<byte> span, bool forceNew = false)
+        public bool TryRead(int length, out Span<byte> span, bool forceNew = false)
             => TryRead(_inputStream ?? throw new InvalidOperationException(), length, out span, forceNew);
+
         /// <summary>
         /// Reads data from current file's input stream.
         /// </summary>
@@ -451,32 +452,6 @@ namespace Fp
         #endregion
 
         #region Offset stream to span
-
-        /// <summary>
-        /// Reads data from stream at the specified offset.
-        /// </summary>
-        /// <param name="stream">Stream to read from.</param>
-        /// <param name="offset">Offset to read from.</param>
-        /// <param name="span">Target to copy to.</param>
-        /// <param name="lenient">If false, throws when failed to fill target.</param>
-        /// <returns>Number of bytes read.</returns>
-        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
-        /// and stream cannot provide enough data to fill target.</exception>
-        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
-        public static int Read(Stream stream, long offset, Span<byte> span, bool lenient = true)
-        {
-            long position = stream.Position;
-            try
-            {
-                stream.Position = offset;
-                int count = Read(stream, span, lenient);
-                return count;
-            }
-            finally
-            {
-                stream.Position = position;
-            }
-        }
 
         /// <summary>
         /// Reads data from stream at the specified offset.
@@ -535,22 +510,35 @@ namespace Fp
             }
         }
 
-        #endregion
-
-        #region Offset implicit input stream to span
-
         /// <summary>
-        /// Reads data from current file's input stream at the specified offset.
+        /// Reads data from stream at the specified offset.
         /// </summary>
+        /// <param name="stream">Stream to read from.</param>
         /// <param name="offset">Offset to read from.</param>
         /// <param name="span">Target to copy to.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
-        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
-        public int Read(long offset, Span<byte> span, bool lenient = true)
-            => Read(_inputStream ?? throw new InvalidOperationException(), offset, span, lenient);
+        /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
+        public static int Read(Stream stream, long offset, Span<byte> span, bool lenient = true)
+        {
+            long position = stream.Position;
+            try
+            {
+                stream.Position = offset;
+                int count = Read(stream, span, lenient);
+                return count;
+            }
+            finally
+            {
+                stream.Position = position;
+            }
+        }
+
+        #endregion
+
+        #region Offset implicit input stream to span
 
         /// <summary>
         /// Reads data from current file's input stream at the specified offset.
@@ -580,6 +568,19 @@ namespace Fp
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
         public int Read(long offset, int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), offset, length, out span, lenient, forceNew);
+
+        /// <summary>
+        /// Reads data from current file's input stream at the specified offset.
+        /// </summary>
+        /// <param name="offset">Offset to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="lenient">If false, throws when failed to fill target.</param>
+        /// <returns>Number of bytes read.</returns>
+        /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
+        /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
+        public int Read(long offset, Span<byte> span, bool lenient = true)
+            => Read(_inputStream ?? throw new InvalidOperationException(), offset, span, lenient);
 
         #endregion
 
