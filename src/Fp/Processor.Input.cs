@@ -138,8 +138,20 @@ namespace Fp
 
         private static bool TryGetRawMemoryFromStream(Stream stream, out Memory<byte> buffer, out int position)
         {
+            if (!stream.CanWrite)
+            {
+                buffer = Memory<byte>.Empty;
+                position = -1;
+                return false;
+            }
             switch (stream)
             {
+                case MStream mStream:
+                    {
+                        buffer = mStream.GetWriteableMemory();
+                        position = Math.Clamp((int)mStream.Position, 0, buffer.Length);
+                        break;
+                    }
                 case MemoryStream ms:
                     {
                         if (ms.TryGetBuffer(out ArraySegment<byte> buf))
@@ -158,14 +170,26 @@ namespace Fp
 
         private static bool TryGetRawReadOnlyMemoryFromStream(Stream stream, out ReadOnlyMemory<byte> buffer, out int position)
         {
+            if (!stream.CanRead)
+            {
+                buffer = ReadOnlyMemory<byte>.Empty;
+                position = -1;
+                return false;
+            }
             switch (stream)
             {
-                case MemoryStream ms:
+                case MStream mStream:
                     {
-                        if (ms.TryGetBuffer(out ArraySegment<byte> buf))
+                        buffer = mStream.GetMemory();
+                        position = Math.Clamp((int)mStream.Position, 0, buffer.Length);
+                        break;
+                    }
+                case MemoryStream memoryStream:
+                    {
+                        if (memoryStream.TryGetBuffer(out ArraySegment<byte> buf))
                         {
                             buffer = buf;
-                            position = Math.Clamp((int)ms.Position, 0, buffer.Length);
+                            position = Math.Clamp((int)memoryStream.Position, 0, buffer.Length);
                             return true;
                         }
                         break;
@@ -929,45 +953,40 @@ namespace Fp
             => Dump(_inputStream ?? throw new InvalidOperationException(), maxLength);
 
         /// <summary>
-        /// Gets read-only memory from stream.
+        /// Gets read-only memory from stream from the beginning of the stream.
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="NotSupportedException">Thrown for non-seekable streams (<see cref="Stream.CanSeek"/> is false).</exception>
         /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public static ReadOnlyMemory<byte> GetMemory(Stream stream)
         {
             if (!stream.CanSeek)
                 throw new NotSupportedException("Getting memory from non-seekable stream is unsupported");
-            switch (stream)
+            if (TryGetRawReadOnlyMemoryFromStream(stream, out var rawBuffer, out _)) return rawBuffer;
+            stream.Position = 0;
+            try
             {
-                case MStream mes:
-                    return mes.GetMemory();
-                case MemoryStream ms when ms.TryGetBuffer(out ArraySegment<byte> buffer):
-                    return buffer;
-                default:
-                    stream.Position = 0;
-                    try
-                    {
-                        byte[] arr = new byte[stream.Length];
-                        Read(stream, arr, false);
-                        return arr;
-                    }
-                    catch (Exception)
-                    {
-                        // Fallback to MemoryStream copy
-                        stream.Position = 0;
-                        MemoryStream ms2 = new();
-                        stream.CopyTo(ms2);
-                        return ms2.GetBuffer().AsMemory(0, (int)ms2.Length);
-                    }
+                byte[] arr = new byte[stream.Length];
+                Read(stream, arr, false);
+                return arr;
+            }
+            catch (Exception)
+            {
+                // Fallback to MemoryStream copy
+                stream.Position = 0;
+                MemoryStream ms2 = new();
+                stream.CopyTo(ms2);
+                return ms2.GetBuffer().AsMemory(0, (int)ms2.Length);
             }
         }
 
         /// <summary>
-        /// Gets read-only memory from current file's input stream.
+        /// Gets read-only memory from current file's input stream from the beginning of the stream.
         /// </summary>
         /// <returns>Array with file contents.</returns>
         /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
+        /// <exception cref="NotSupportedException">Thrown for non-seekable streams (<see cref="Stream.CanSeek"/> is false).</exception>
         /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public ReadOnlyMemory<byte> GetMemory()
             => GetMemory(_inputStream ?? throw new InvalidOperationException());
@@ -979,35 +998,31 @@ namespace Fp
         /// <param name="length">Length of segment.</param>
         /// <param name="stream">Stream to read from.</param>
         /// <returns>Array with file contents.</returns>
+        /// <exception cref="NotSupportedException">Thrown for non-seekable streams (<see cref="Stream.CanSeek"/> is false).</exception>
+        /// <exception cref="IOException">Thrown for I/O errors, including a stream with insufficient data to fulfill the request.</exception>
         /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public static ReadOnlyMemory<byte> GetMemory(long offset, int length, Stream stream)
         {
             if (!stream.CanSeek)
                 throw new NotSupportedException("Getting memory from non-seekable stream is unsupported");
-            switch (stream)
+            if (offset + length > stream.Length)
+                throw new IOException("Target range exceeds stream bounds");
+            stream.Position = offset;
+            if (TryGetRawReadOnlyMemoryFromStream(stream, out var rawBuffer, out int rawBufferPosition))
+                return rawBuffer.Slice(rawBufferPosition, length);
+            try
             {
-                case MStream mes:
-                    return mes.GetMemory().Slice((int)offset, length);
-                case MemoryStream ms when ms.TryGetBuffer(out ArraySegment<byte> buffer):
-                    return buffer.AsMemory((int)offset, length);
-                default:
-                    if (offset + length > stream.Length)
-                        throw new IOException("Target range exceeds stream bounds");
-                    stream.Position = offset;
-                    try
-                    {
-                        byte[] arr = new byte[length];
-                        Read(stream, arr, false);
-                        return arr;
-                    }
-                    catch (Exception)
-                    {
-                        // Fallback to MemoryStream copy
-                        stream.Position = offset;
-                        MemoryStream ms2 = new();
-                        new SStream(stream, length).CopyTo(ms2);
-                        return ms2.GetBuffer().AsMemory(0, length);
-                    }
+                byte[] arr = new byte[length];
+                Read(stream, arr, false);
+                return arr;
+            }
+            catch (Exception)
+            {
+                // Fallback to MemoryStream copy
+                stream.Position = offset;
+                MemoryStream ms2 = new();
+                new SStream(stream, length).CopyTo(ms2);
+                return ms2.GetBuffer().AsMemory(0, length);
             }
         }
 
@@ -1018,6 +1033,8 @@ namespace Fp
         /// <param name="length">Length of segment.</param>
         /// <returns>Array with file contents.</returns>
         /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
+        /// <exception cref="NotSupportedException">Thrown for non-seekable streams (<see cref="Stream.CanSeek"/> is false).</exception>
+        /// <exception cref="IOException">Thrown for I/O errors, including a stream with insufficient data to fulfill the request.</exception>
         /// <remarks>Non-allocating requisition of memory from <see cref="MemoryStream"/> and <see cref="MStream"/> is supported.</remarks>
         public ReadOnlyMemory<byte> GetMemory(long offset, int length)
             => GetMemory(offset, length, _inputStream ?? throw new InvalidOperationException());
@@ -1030,8 +1047,7 @@ namespace Fp
         /// <param name="openDelegate">Delegate for opening file (stream will be disposed).</param>
         /// <param name="storeDelegate">Delegate for getting data.</param>
         /// <returns>True if file is loaded.</returns>
-        public bool EnsureFile(ref Memory<byte> target, ref bool init, Func<Stream> openDelegate,
-            Func<Stream, Memory<byte>> storeDelegate)
+        public bool EnsureFile(ref Memory<byte> target, ref bool init, Func<Stream> openDelegate, Func<Stream, Memory<byte>> storeDelegate)
         {
             if (init) return target.Length != 0;
             init = true;
