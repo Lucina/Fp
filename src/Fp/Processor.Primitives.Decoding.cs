@@ -26,8 +26,9 @@ public partial class Processor
             return (sbyte)b.AsSpan((int)ms.Position)[0];
         }
 
-        Read(stream, TempBuffer, 0, 1, false);
-        return (sbyte)TempBuffer[0];
+        int read = stream.ReadByte();
+        if (read == -1) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; 0 bytes available, 1 bytes requested");
+        return (sbyte)read;
     }
 
     /// <summary>
@@ -44,8 +45,9 @@ public partial class Processor
             return (sbyte)b.AsSpan((int)offset)[0];
         }
 
-        Read(stream, offset, TempBuffer, 0, 1, false);
-        return (sbyte)TempBuffer[0];
+        int read = stream.ReadByte();
+        if (read == -1) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; 0 bytes available, 1 bytes requested");
+        return (sbyte)read;
     }
 
     /// <summary>
@@ -78,8 +80,9 @@ public partial class Processor
             return b.AsSpan((int)ms.Position)[0];
         }
 
-        Read(stream, TempBuffer, 0, 1, false);
-        return TempBuffer[0];
+        int read = stream.ReadByte();
+        if (read == -1) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; 0 bytes available, 1 bytes requested");
+        return (byte)read;
     }
 
     /// <summary>
@@ -96,8 +99,9 @@ public partial class Processor
             return b.AsSpan((int)offset)[0];
         }
 
-        Read(stream, offset, TempBuffer, 0, 1, false);
-        return TempBuffer[0];
+        int read = stream.ReadByte();
+        if (read == -1) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; 0 bytes available, 1 bytes requested");
+        return (byte)read;
     }
 
     /// <summary>

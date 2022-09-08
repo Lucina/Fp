@@ -174,13 +174,14 @@ public partial class Processor
             TempMs.SetLength(0);
             read = 0;
             numBytes = 0;
+            Span<byte> span = stackalloc byte[2];
             do
             {
-                int cc = Read(stream, TempBuffer, 0, 2);
+                int cc = Read(stream, span);
                 read += cc;
-                if (cc != 2 || TempBuffer[0] == 0 && TempBuffer[1] == 0) break;
+                if (cc != 2 || span[0] == 0 && span[1] == 0) break;
                 numBytes += 2;
-                TempMs.Write(TempBuffer, 0, 2);
+                TempMs.Write(span);
             } while (read < maxLength);
 
             if (strict)
@@ -353,8 +354,7 @@ public partial class Processor
                 return;
             }
 
-            TempBuffer[0] = 0;
-            stream.Write(TempBuffer, 0, 1);
+            stream.WriteByte(0);
         }
         finally
         {
@@ -415,9 +415,10 @@ public partial class Processor
                 return;
             }
 
-            TempBuffer[0] = 0;
-            TempBuffer[1] = 0;
-            stream.Write(TempBuffer, 0, 2);
+            Span<byte> span = stackalloc byte[2];
+            span[0] = 0;
+            span[1] = 0;
+            stream.Write(span);
         }
         finally
         {

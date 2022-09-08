@@ -65,7 +65,8 @@ public partial class Processor
     public void WriteS8(sbyte value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(sbyte)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -74,7 +75,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(sbyte));
+            stream.Write(span);
         }
         finally
         {
@@ -94,7 +95,8 @@ public partial class Processor
     public void WriteU8(byte value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(byte)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -103,7 +105,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(byte));
+            stream.Write(span);
         }
         finally
         {
@@ -175,7 +177,8 @@ public partial class Processor
     public void WriteS16(short value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(short)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -184,7 +187,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(short));
+            stream.Write(span);
         }
         finally
         {
@@ -204,7 +207,8 @@ public partial class Processor
     public void WriteU16(ushort value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(ushort)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -213,7 +217,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(ushort));
+            stream.Write(span);
         }
         finally
         {
@@ -285,7 +289,8 @@ public partial class Processor
     public void WriteS32(int value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(int)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -294,7 +299,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(int));
+            stream.Write(span);
         }
         finally
         {
@@ -314,7 +319,8 @@ public partial class Processor
     public void WriteU32(uint value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(uint)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -323,7 +329,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(uint));
+            stream.Write(span);
         }
         finally
         {
@@ -395,7 +401,8 @@ public partial class Processor
     public void WriteS64(long value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(long)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -404,7 +411,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(long));
+            stream.Write(span);
         }
         finally
         {
@@ -424,7 +431,8 @@ public partial class Processor
     public void WriteU64(ulong value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(ulong)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -433,7 +441,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(ulong));
+            stream.Write(span);
         }
         finally
         {
@@ -502,7 +510,8 @@ public partial class Processor
     public void WriteHalf(ushort value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytesHalf(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(ushort)];
+        GetBytesHalf(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -511,7 +520,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(ushort));
+            stream.Write(span);
         }
         finally
         {
@@ -531,7 +540,8 @@ public partial class Processor
     public void WriteHalf(float value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytesHalf(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(ushort)];
+        GetBytesHalf(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -540,7 +550,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(ushort));
+            stream.Write(span);
         }
         finally
         {
@@ -583,7 +593,8 @@ public partial class Processor
     public void WriteSingle(float value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(float)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -592,7 +603,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(float));
+            stream.Write(span);
         }
         finally
         {
@@ -635,7 +646,8 @@ public partial class Processor
     public void WriteDouble(double value, Stream? stream = null, long? offset = null)
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
-        GetBytes(value, TempBuffer);
+        Span<byte> span = stackalloc byte[sizeof(double)];
+        GetBytes(value, span);
         long origPos = offset.HasValue ? stream.Position : -1;
         try
         {
@@ -644,7 +656,7 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
-            stream.Write(TempBuffer, 0, sizeof(double));
+            stream.Write(span);
         }
         finally
         {

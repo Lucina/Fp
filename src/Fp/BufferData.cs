@@ -116,7 +116,7 @@ public class BufferData<T> : BufferData where T : unmanaged
         if (_disposed) throw new ObjectDisposedException(nameof(BufferData<T>));
         if (format == Generic)
         {
-            Processor.WriteBaseSpan(outputStream, MemoryMarshal.Cast<T, byte>(Buffer.Span));
+            outputStream.Write(MemoryMarshal.Cast<T, byte>(Buffer.Span));
             return true;
         }
 

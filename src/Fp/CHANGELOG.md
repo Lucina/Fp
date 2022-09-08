@@ -5,6 +5,29 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+
+- `Processor.TryRead` overloads for better C# pattern
+
+- `FpUtil.Ascii(string, Span<byte>)`
+
+### Changed
+
+- Added intermediary type `BaseUnmanagedIntegerArrayHelper<T>` for array helpers to provide additional functionality in
+  .NET 7
+- Deprecated array-based `Processor.Read` / `Processor.Write` etc. overloads
+- `public void Processor.OutputAll(ReadOnlySpan<byte> span, Stream? outputStream = null)` changed to `public void Processor.OutputAll(ReadOnlySpan<byte> span)` for minimal utility gain
+
+### Fixed
+
+- `Processor.Read` leniency behaviour when performing operations on MemoryStream
+
+### Removed
+
+- Internal member `Processor.WriteBaseSpan` - not necessary for all targets
+
 ## [0.27.1] 2022-09-06
 
 ### Changed
