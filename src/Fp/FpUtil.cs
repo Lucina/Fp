@@ -227,6 +227,7 @@ public static partial class FpUtil
     /// <param name="text">String to process.</param>
     /// <param name="result">Result buffer.</param>
     /// <returns>Byte array containing lower byte of each code unit in the string.</returns>
+    /// <exception cref="ArgumentException">Thrown if <see cref="result"/> is too small.</exception>
     public static byte[] Ascii(this string text, byte[]? result = null)
     {
         var sp = text.AsSpan();
@@ -236,6 +237,21 @@ public static partial class FpUtil
         result ??= new byte[l];
         for (int i = 0; i < l; i++) result[i] = (byte)sp[i];
         return result;
+    }
+
+    /// <summary>
+    /// Populates a span with a string's content assuming 8-bit characters.
+    /// </summary>
+    /// <param name="text">String to process.</param>
+    /// <param name="result">Result buffer.</param>
+    /// <exception cref="ArgumentException">Thrown if <see cref="result"/> is too small.</exception>
+    public static void Ascii(this string text, Span<byte> result)
+    {
+        var sp = text.AsSpan();
+        int l = sp.Length;
+        if (result.Length < l)
+            throw new ArgumentException("Buffer not long enough to contain string", nameof(result));
+        for (int i = 0; i < l; i++) result[i] = (byte)sp[i];
     }
 
     #endregion

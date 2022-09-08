@@ -214,8 +214,9 @@ public record AsciiStringHelper(Processor Parent) : BaseStringHelper
             try
             {
                 Ascii(value.String, res);
-                if (offset != -1) Write(stream, offset, res);
-                else Write(stream, res);
+                ReadOnlySpan<byte> span = res.AsSpan(0, value.String.Length);
+                if (offset != -1) Write(stream, offset, span);
+                else stream.Write(span);
             }
             finally
             {

@@ -26,8 +26,9 @@ public partial class Processor
             return (sbyte)b.AsSpan((int)ms.Position)[0];
         }
 
-        Read(stream, TempBuffer, 0, 1, false);
-        return (sbyte)TempBuffer[0];
+        Span<byte> span = TempBuffer.AsSpan(0, 1);
+        Read(stream, span, false);
+        return (sbyte)span[0];
     }
 
     /// <summary>
@@ -44,8 +45,9 @@ public partial class Processor
             return (sbyte)b.AsSpan((int)offset)[0];
         }
 
-        Read(stream, offset, TempBuffer, 0, 1, false);
-        return (sbyte)TempBuffer[0];
+        Span<byte> span = TempBuffer.AsSpan(0, 1);
+        Read(stream, offset, span, false);
+        return (sbyte)span[0];
     }
 
     /// <summary>
@@ -78,8 +80,9 @@ public partial class Processor
             return b.AsSpan((int)ms.Position)[0];
         }
 
-        Read(stream, TempBuffer, 0, 1, false);
-        return TempBuffer[0];
+        Span<byte> span = TempBuffer.AsSpan(0, 1);
+        Read(stream, span, false);
+        return span[0];
     }
 
     /// <summary>
@@ -96,8 +99,9 @@ public partial class Processor
             return b.AsSpan((int)offset)[0];
         }
 
-        Read(stream, offset, TempBuffer, 0, 1, false);
-        return TempBuffer[0];
+        Span<byte> span = TempBuffer.AsSpan(0, 1);
+        Read(stream, offset, span, false);
+        return span[0];
     }
 
     /// <summary>

@@ -174,13 +174,14 @@ public partial class Processor
             TempMs.SetLength(0);
             read = 0;
             numBytes = 0;
+            Span<byte> span = TempBuffer.AsSpan(0, 2);
             do
             {
-                int cc = Read(stream, TempBuffer, 0, 2);
+                int cc = Read(stream, span);
                 read += cc;
-                if (cc != 2 || TempBuffer[0] == 0 && TempBuffer[1] == 0) break;
+                if (cc != 2 || span[0] == 0 && span[1] == 0) break;
                 numBytes += 2;
-                TempMs.Write(TempBuffer, 0, 2);
+                TempMs.Write(span);
             } while (read < maxLength);
 
             if (strict)

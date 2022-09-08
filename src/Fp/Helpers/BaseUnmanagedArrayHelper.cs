@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+#if NET7_0_OR_GREATER
 using System.Numerics;
+#endif
 using static System.Buffers.ArrayPool<byte>;
 
 namespace Fp.Helpers;
@@ -153,8 +155,9 @@ public abstract unsafe record BaseUnmanagedArrayHelper<T> : Helper where T : unm
             byte[] arr = Shared.Rent(llenn);
             try
             {
-                if (offset != -1) Processor.Read(stream, offset, arr, 0, llenn, false);
-                else Processor.Read(stream, arr, 0, llenn, false);
+                Span<byte> span = arr.AsSpan(0, llenn);
+                if (offset != -1) Processor.Read(stream, offset, span, false);
+                else Processor.Read(stream, span, false);
                 return this[arr, 0, count].ToArray();
             }
             finally
@@ -173,10 +176,19 @@ public abstract unsafe record BaseUnmanagedArrayHelper<T> : Helper where T : unm
     {
         set
         {
-            byte[] arr = new byte[value.Length * ElementSize];
-            this[arr, 0] = value;
-            if (offset != -1) Processor.Write(stream, offset, arr);
-            else Processor.Write(stream, arr);
+            int llenn = value.Length * ElementSize;
+            byte[] arr = Shared.Rent(llenn);
+            try
+            {
+                this[arr, 0] = value;
+                ReadOnlySpan<byte> span = arr.AsSpan(0, llenn);
+                if (offset != -1) Processor.Write(stream, offset, span);
+                else stream.Write(span);
+            }
+            finally
+            {
+                Shared.Return(arr);
+            }
         }
     }
 }
@@ -185,7 +197,7 @@ public abstract unsafe record BaseUnmanagedArrayHelper<T> : Helper where T : unm
 /// Base unmanaged integer array data helper.
 /// </summary>
 /// <typeparam name="T">Element type.</typeparam>
-public abstract unsafe record BaseUnmanagedIntegerArrayHelper<T> : BaseUnmanagedArrayHelper<T> where T : unmanaged
+public abstract record BaseUnmanagedIntegerArrayHelper<T> : BaseUnmanagedArrayHelper<T> where T : unmanaged
 #if NET7_0_OR_GREATER
     , INumber<T>
 #endif

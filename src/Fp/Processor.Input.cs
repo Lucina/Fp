@@ -696,6 +696,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        [Obsolete("Succeeded by: public static int Read(Stream stream, Span<byte> span, bool lenient)")]
         public static int Read(Stream stream, byte[] array, int arrayOffset, int arrayLength, bool lenient = true) =>
             ReadBaseArray(stream, array, arrayOffset, arrayLength, lenient);
 
@@ -708,6 +709,7 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        [Obsolete("Succeeded by: public static int Read(Stream stream, Span<byte> span, bool lenient)")]
         public static int Read(Stream stream, byte[] array, bool lenient = true)
             => Read(stream, array, 0, array.Length, lenient);
 
@@ -726,6 +728,7 @@ namespace Fp
         /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        [Obsolete("Succeeded by: public static int Read(Span<byte> span, bool lenient)")]
         public int Read(byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), array, arrayOffset, arrayLength, lenient);
 
@@ -738,6 +741,7 @@ namespace Fp
         /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        [Obsolete("Succeeded by: public static int Read(Span<byte> span, bool lenient)")]
         public int Read(byte[] array, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), array, 0, array.Length, lenient);
 
@@ -758,8 +762,8 @@ namespace Fp
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
-        public static int Read(Stream stream, long offset, byte[] array, int arrayOffset, int arrayLength,
-            bool lenient = true)
+        [Obsolete("Succeeded by: public static int Read(Stream stream, long offset, Span<byte> span, bool lenient)")]
+        public static int Read(Stream stream, long offset, byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
         {
             long position = stream.Position;
             try
@@ -785,6 +789,7 @@ namespace Fp
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <paramref name="stream"/> is restored on completion.</remarks>
+        [Obsolete("Succeeded by: public static int Read(Stream stream, long offset, Span<byte> span, bool lenient)")]
         public static int Read(Stream stream, long offset, byte[] array, bool lenient = true)
             => Read(stream, offset, array, 0, array.Length, lenient);
 
@@ -805,9 +810,9 @@ namespace Fp
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
+        [Obsolete("Succeeded by: public static int Read(long offset, Span<byte> span, bool lenient)")]
         public int Read(long offset, byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
-            => Read(_inputStream ?? throw new InvalidOperationException(), offset, array, arrayOffset, arrayLength,
-                lenient);
+            => Read(_inputStream ?? throw new InvalidOperationException(), offset, array, arrayOffset, arrayLength, lenient);
 
         /// <summary>
         /// Reads data from current file's input stream at the specified offset.
@@ -820,6 +825,7 @@ namespace Fp
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>Original position of <see cref="InputStream"/> is restored on completion.</remarks>
+        [Obsolete("Succeeded by: public static int Read(long offset, Span<byte> span, bool lenient)")]
         public int Read(long offset, byte[] array, bool lenient = true)
             => Read(offset, array, 0, array.Length, lenient);
 
@@ -846,7 +852,7 @@ namespace Fp
                     try
                     {
                         byte[] arr = new byte[stream.Length];
-                        Read(stream, arr, false);
+                        Read(stream, (Span<byte>)arr, false);
                         return arr;
                     }
                     catch (Exception)
@@ -905,7 +911,7 @@ namespace Fp
                     try
                     {
                         byte[] arr = new byte[length];
-                        Read(stream, arr, false);
+                        Read(stream, (Span<byte>)arr, false);
                         return arr;
                     }
                     catch (Exception)
@@ -968,7 +974,7 @@ namespace Fp
             try
             {
                 byte[] arr = new byte[stream.Length];
-                Read(stream, arr, false);
+                Read(stream, (Span<byte>)arr, false);
                 return arr;
             }
             catch (Exception)
@@ -1013,7 +1019,7 @@ namespace Fp
             try
             {
                 byte[] arr = new byte[length];
-                Read(stream, arr, false);
+                Read(stream, (Span<byte>)arr, false);
                 return arr;
             }
             catch (Exception)

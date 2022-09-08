@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `Processor.TryRead` overloads for better C# pattern
 
+- `FpUtil.Ascii(string, Span<byte>)`
+
 ### Changed
 
 - Added intermediary type `BaseUnmanagedIntegerArrayHelper<T>` for array helpers to provide additional functionality in
