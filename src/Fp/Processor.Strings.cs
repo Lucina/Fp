@@ -174,7 +174,7 @@ public partial class Processor
             TempMs.SetLength(0);
             read = 0;
             numBytes = 0;
-            Span<byte> span = TempBuffer.AsSpan(0, 2);
+            Span<byte> span = stackalloc byte[2];
             do
             {
                 int cc = Read(stream, span);
@@ -354,8 +354,7 @@ public partial class Processor
                 return;
             }
 
-            TempBuffer[0] = 0;
-            stream.Write(TempBuffer, 0, 1);
+            stream.WriteByte(0);
         }
         finally
         {
@@ -416,9 +415,10 @@ public partial class Processor
                 return;
             }
 
-            TempBuffer[0] = 0;
-            TempBuffer[1] = 0;
-            stream.Write(TempBuffer, 0, 2);
+            Span<byte> span = stackalloc byte[2];
+            span[0] = 0;
+            span[1] = 0;
+            stream.Write(span);
         }
         finally
         {

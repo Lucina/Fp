@@ -110,8 +110,6 @@ public partial class Processor : IDisposable
 
     private MemoryStream TempMs => _tempMs ??= new MemoryStream();
     private MemoryStream? _tempMs;
-    private static byte[] TempBuffer => s_tempBuffer ??= new byte[sizeof(long)];
-    [ThreadStatic] private static byte[]? s_tempBuffer;
 
     private Encoder Utf8Encoder => _utf8Encoder ??= Encoding.UTF8.GetEncoder();
     private Encoder? _utf8Encoder;
