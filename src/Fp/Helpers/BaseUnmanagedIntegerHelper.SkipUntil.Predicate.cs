@@ -6,22 +6,22 @@ namespace Fp.Helpers;
 public abstract partial record BaseUnmanagedIntegerHelper<T>
 {
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="stream">Data source.</param>
     /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(Stream stream, long baseOffset, ref int index, T toFind, out T value)
+    public unsafe bool SkipUntil(Stream stream, long baseOffset, ref int index, Predicate<T> predicate, out T value)
     {
         stream.Position = baseOffset + sizeof(T) * index;
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (Processor.TryRead(stream, elementBuffer, out _))
         {
             value = this[elementBuffer];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
         }
         value = default;
@@ -29,16 +29,16 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="stream">Data source.</param>
     /// <param name="baseOffset">Base offset.</param>
     /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(Stream stream, long baseOffset, long maxOffset, ref int index, T toFind, out T value)
+    public unsafe bool SkipUntil(Stream stream, long baseOffset, long maxOffset, ref int index, Predicate<T> predicate, out T value)
     {
         long position = baseOffset + sizeof(T) * index;
         stream.Position = position;
@@ -46,7 +46,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (position + sizeof(T) <= maxOffset && Processor.TryRead(stream, elementBuffer, out _))
         {
             value = this[elementBuffer];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
             position += sizeof(T);
         }
@@ -55,23 +55,23 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="stream">Data source.</param>
     /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
     /// <param name="maxIndex">Maximum index (exclusive).</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(Stream stream, long baseOffset, ref int index, int maxIndex, T toFind, out T value)
+    public unsafe bool SkipUntil(Stream stream, long baseOffset, ref int index, int maxIndex, Predicate<T> predicate, out T value)
     {
         stream.Position = baseOffset + sizeof(T) * index;
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (index < maxIndex && Processor.TryRead(stream, elementBuffer, out _))
         {
             value = this[elementBuffer];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
         }
         value = default;
@@ -79,14 +79,14 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(long baseOffset, ref int index, T toFind, out T value)
+    public unsafe bool SkipUntil(long baseOffset, ref int index, Predicate<T> predicate, out T value)
     {
         if (InputStream == null) throw new InvalidOperationException();
         InputStream.Position = baseOffset + sizeof(T) * index;
@@ -94,7 +94,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (Processor.TryRead(InputStream, elementBuffer, out _))
         {
             value = this[elementBuffer];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
         }
         value = default;
@@ -102,15 +102,15 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="baseOffset">Base offset.</param>
     /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(long baseOffset, long maxOffset, ref int index, T toFind, out T value)
+    public unsafe bool SkipUntil(long baseOffset, long maxOffset, ref int index, Predicate<T> predicate, out T value)
     {
         if (InputStream == null) throw new InvalidOperationException();
         long position = baseOffset + sizeof(T) * index;
@@ -119,7 +119,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (position + sizeof(T) <= maxOffset && Processor.TryRead(InputStream, elementBuffer, out _))
         {
             value = this[elementBuffer];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
             position += sizeof(T);
         }
@@ -128,15 +128,15 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
     /// <param name="maxIndex">Maximum index (exclusive).</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(long baseOffset, ref int index, int maxIndex, T toFind, out T value)
+    public unsafe bool SkipUntil(long baseOffset, ref int index, int maxIndex, Predicate<T> predicate, out T value)
     {
         if (InputStream == null) throw new InvalidOperationException();
         InputStream.Position = baseOffset + sizeof(T) * index;
@@ -144,7 +144,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (index < maxIndex && Processor.TryRead(InputStream, elementBuffer, out _))
         {
             value = this[elementBuffer];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
         }
         value = default;
@@ -152,15 +152,15 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="span">Data source.</param>
     /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(ReadOnlySpan<byte> span, int baseOffset, ref int index, T toFind, out T value)
+    public unsafe bool SkipUntil(ReadOnlySpan<byte> span, int baseOffset, ref int index, Predicate<T> predicate, out T value)
     {
         int position = baseOffset + sizeof(T) * index;
         if (position + sizeof(T) > span.Length)
@@ -172,7 +172,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (span.Length >= sizeof(T))
         {
             value = this[span];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
             span = span[sizeof(T)..];
         }
@@ -181,16 +181,16 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="span">Data source.</param>
     /// <param name="baseOffset">Base offset.</param>
     /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(ReadOnlySpan<byte> span, int baseOffset, int maxOffset, ref int index, T toFind, out T value)
+    public unsafe bool SkipUntil(ReadOnlySpan<byte> span, int baseOffset, int maxOffset, ref int index, Predicate<T> predicate, out T value)
     {
         int position = baseOffset + sizeof(T) * index;
         if (position + sizeof(T) > span.Length)
@@ -202,7 +202,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (position + sizeof(T) <= maxOffset && span.Length >= sizeof(T))
         {
             value = this[span];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
             position += sizeof(T);
             span = span[sizeof(T)..];
@@ -212,16 +212,16 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     }
 
     /// <summary>
-    /// Skips to the next entry (including current) matching the specified value.
+    /// Skips to the next entry (including current) matching the specified predicate.
     /// </summary>
     /// <param name="span">Data source.</param>
     /// <param name="baseOffset">Base offset.</param>
-    /// <param name="index">Initial index, ends at first index with value <paramref name="toFind"/>.</param>
+    /// <param name="index">Initial index, ends at first index with value matching <paramref name="predicate"/>.</param>
     /// <param name="maxIndex">Maximum index (exclusive).</param>
-    /// <param name="toFind">Value to find.</param>
-    /// <param name="value">Retrieved value or 0 if no values found.</param>
+    /// <param name="predicate">Predicate to match.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no values found.</param>
     /// <returns>True if a value is found.</returns>
-    public unsafe bool SkipUntil(ReadOnlySpan<byte> span, int baseOffset, ref int index, int maxIndex, T toFind, out T value)
+    public unsafe bool SkipUntil(ReadOnlySpan<byte> span, int baseOffset, ref int index, int maxIndex, Predicate<T> predicate, out T value)
     {
         int position = baseOffset + sizeof(T) * index;
         if (position + sizeof(T) > span.Length)
@@ -233,7 +233,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
         while (index < maxIndex && span.Length >= sizeof(T))
         {
             value = this[span];
-            if (value.Equals(toFind)) return true;
+            if (predicate(value)) return true;
             index++;
             span = span[sizeof(T)..];
         }

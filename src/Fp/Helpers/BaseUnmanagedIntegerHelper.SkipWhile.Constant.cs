@@ -12,7 +12,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="baseOffset">Base offset.</param>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(Stream stream, long baseOffset, ref int index, T toSkip, out T value)
     {
@@ -36,7 +36,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(Stream stream, long baseOffset, long maxOffset, ref int index, T toSkip, out T value)
     {
@@ -62,7 +62,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="maxIndex">Maximum index (exclusive).</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(Stream stream, long baseOffset, ref int index, int maxIndex, T toSkip, out T value)
     {
@@ -84,7 +84,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="baseOffset">Base offset.</param>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(long baseOffset, ref int index, T toSkip, out T value)
     {
@@ -108,7 +108,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(long baseOffset, long maxOffset, ref int index, T toSkip, out T value)
     {
@@ -134,7 +134,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="maxIndex">Maximum index (exclusive).</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(long baseOffset, ref int index, int maxIndex, T toSkip, out T value)
     {
@@ -158,7 +158,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="baseOffset">Base offset.</param>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(ReadOnlySpan<byte> span, int baseOffset, ref int index, T toSkip, out T value)
     {
@@ -188,7 +188,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(ReadOnlySpan<byte> span, int baseOffset, int maxOffset, ref int index, T toSkip, out T value)
     {
@@ -219,7 +219,7 @@ public abstract partial record BaseUnmanagedIntegerHelper<T>
     /// <param name="index">Initial index, ends at first index with different value.</param>
     /// <param name="maxIndex">Maximum index (exclusive).</param>
     /// <param name="toSkip">Value to skip.</param>
-    /// <param name="value">Retrieved value or 0 if no different values found.</param>
+    /// <param name="value">Retrieved value or <c>default</c> if no different values found.</param>
     /// <returns>True if a different value is found.</returns>
     public unsafe bool SkipWhile(ReadOnlySpan<byte> span, int baseOffset, ref int index, int maxIndex, T toSkip, out T value)
     {
