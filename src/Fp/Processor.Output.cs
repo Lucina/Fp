@@ -12,8 +12,7 @@ public partial class Processor
 {
     #region Output from stream utilities
 
-    private static long WriteBaseStream(Stream stream, long length, Stream outputStream, bool lenient,
-        int bufferLength)
+    private static long WriteBaseStream(Stream stream, long length, Stream outputStream, bool lenient, int bufferLength)
     {
         long outLen = 0;
         byte[] buffer = Shared.Rent(bufferLength);
@@ -214,33 +213,6 @@ public partial class Processor
 
     #region Output from span utilities
 
-    internal static void WriteBaseSpan(Stream stream, ReadOnlySpan<byte> span)
-    {
-#if NET6_0_OR_GREATER
-            stream.Write(span);
-#else
-        byte[] buf = span.Length <= sizeof(long) ? TempBuffer : Shared.Rent(4096);
-        Span<byte> bufSpan = buf.AsSpan();
-        int bufLen = buf.Length;
-        try
-        {
-            int left = span.Length, tot = 0;
-            do
-            {
-                int toWrite = Math.Min(left, bufLen);
-                span.Slice(tot, toWrite).CopyTo(bufSpan);
-                stream.Write(buf, 0, toWrite);
-                tot += toWrite;
-                left -= toWrite;
-            } while (left > 0);
-        }
-        finally
-        {
-            if (buf != TempBuffer) Shared.Return(buf);
-        }
-#endif
-    }
-
     /// <summary>
     /// Outputs data from span to stream from specified offset.
     /// </summary>
@@ -250,7 +222,7 @@ public partial class Processor
     public static void Write(Stream stream, long offset, ReadOnlySpan<byte> span)
     {
         stream.Position = offset;
-        WriteBaseSpan(stream, span);
+        stream.Write(span);
     }
 
     /// <summary>
@@ -259,7 +231,7 @@ public partial class Processor
     /// <param name="stream">Stream to write to.</param>
     /// <param name="span">Span to read from.</param>
     public static void Write(Stream stream, ReadOnlySpan<byte> span) =>
-        WriteBaseSpan(stream, span);
+        stream.Write(span);
 
     /// <summary>
     /// Outputs data from span to stream.
@@ -267,7 +239,7 @@ public partial class Processor
     /// <param name="span">Span to read from.</param>
     /// <param name="outputStream">Stream to write to.</param>
     public void OutputAll(ReadOnlySpan<byte> span, Stream? outputStream = null) =>
-        WriteBaseSpan(outputStream ?? OutputStream ?? throw new InvalidOperationException(), span);
+        (outputStream ?? OutputStream ?? throw new InvalidOperationException()).Write(span);
 
     #endregion
 }
