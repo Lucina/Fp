@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Added intermediary type `BaseUnmanagedIntegerArrayHelper<T>` for array helpers to provide additional functionality in .NET 7
 
+### Fixed
+
+- `Processor.Read` leniency behaviour when performing operations on MemoryStream
+
 ### Removed
 
 - Internal member `Processor.WriteBaseSpan` - not necessary for all targets

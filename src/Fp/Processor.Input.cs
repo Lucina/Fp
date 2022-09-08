@@ -108,6 +108,7 @@ namespace Fp
             do
             {
                 read = stream.Read(span[tot..]);
+                read = Math.Clamp(read, 0, left); // sus
                 left -= read;
                 tot += read;
             } while (left > 0 && read != 0);
@@ -121,32 +122,106 @@ namespace Fp
             return tot;
         }
 
+        internal static bool TryReadBaseSpan(Stream stream, Span<byte> span, out int count)
+        {
+            int left = span.Length, read;
+            count = 0;
+            do
+            {
+                read = stream.Read(span[count..]);
+                read = Math.Clamp(read, 0, left); // sus
+                left -= read;
+                count += read;
+            } while (left > 0 && read != 0);
+            return left <= 0;
+        }
+
+        private static bool TryGetRawMemoryFromStream(Stream stream, out Memory<byte> buffer, out int position)
+        {
+            switch (stream)
+            {
+                case MemoryStream ms:
+                    {
+                        if (ms.TryGetBuffer(out ArraySegment<byte> buf))
+                        {
+                            buffer = buf;
+                            position = Math.Clamp((int)ms.Position, 0, buffer.Length);
+                            return true;
+                        }
+                        break;
+                    }
+            }
+            buffer = Memory<byte>.Empty;
+            position = -1;
+            return false;
+        }
+
+        private static bool TryGetRawReadOnlyMemoryFromStream(Stream stream, out ReadOnlyMemory<byte> buffer, out int position)
+        {
+            switch (stream)
+            {
+                case MemoryStream ms:
+                    {
+                        if (ms.TryGetBuffer(out ArraySegment<byte> buf))
+                        {
+                            buffer = buf;
+                            position = Math.Clamp((int)ms.Position, 0, buffer.Length);
+                            return true;
+                        }
+                        break;
+                    }
+            }
+            buffer = ReadOnlyMemory<byte>.Empty;
+            position = -1;
+            return false;
+        }
+
         #region Stream to span
 
         /// <summary>
         /// Reads data from stream, optionally replacing reference to provided span to prevent copy when reading from <see cref="MemoryStream"/>.
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
-        /// <param name="span">Target to copy to.</param>
+        /// <param name="span">Target to copy to, may be replaced by an internal memory buffer.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use provided span.</param>
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>
+        /// This method advances <paramref name="stream"/> to the end of the read data.
+        /// </remarks>
         public static int Read(Stream stream, ref Span<byte> span, bool lenient = true, bool forceNew = false)
         {
-            if (forceNew || stream is not MemoryStream ms || !ms.TryGetBuffer(out ArraySegment<byte> buf))
+            if (forceNew)
             {
-                return ReadBaseSpan(stream, span, lenient);
+                if (!TryGetRawReadOnlyMemoryFromStream(stream, out var buffer, out int position))
+                    return ReadBaseSpan(stream, span, lenient);
+                int availableBytes = buffer.Span.Length - position;
+                int readLength = span.Length;
+                if (availableBytes < readLength)
+                {
+                    if (!lenient) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; {availableBytes} bytes available, {readLength} bytes requested");
+                    readLength = availableBytes;
+                }
+                stream.Seek(readLength, SeekOrigin.Current);
+                buffer.Span.Slice(position, readLength).CopyTo(span);
+                return readLength;
             }
-
-            try
+            else
             {
-                return (span = buf.AsSpan((int)ms.Position, span.Length)).Length;
-            }
-            catch (ArgumentOutOfRangeException exception)
-            {
-                throw new IOException("Failed to convert span from memory stream", exception);
+                if (!TryGetRawMemoryFromStream(stream, out var buffer, out int position))
+                    return ReadBaseSpan(stream, span, lenient);
+                int availableBytes = buffer.Span.Length - position;
+                int readLength = span.Length;
+                if (availableBytes < readLength)
+                {
+                    if (!lenient) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; {availableBytes} bytes available, {readLength} bytes requested");
+                    readLength = availableBytes;
+                }
+                stream.Seek(readLength, SeekOrigin.Current);
+                span = buffer.Span.Slice(position, readLength);
+                return readLength;
             }
         }
 
@@ -161,23 +236,43 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>
+        /// This method advances <paramref name="stream"/> to the end of the read data.
+        /// </remarks>
         public static int Read(Stream stream, int length, out Span<byte> span, bool lenient = true,
             bool forceNew = false)
         {
-            if (!forceNew && stream is MemoryStream ms && ms.TryGetBuffer(out ArraySegment<byte> buf))
+            if (forceNew)
             {
-                try
+                if (!TryGetRawReadOnlyMemoryFromStream(stream, out var buffer, out int position))
+                    return ReadBaseSpan(stream, span = new Span<byte>(new byte[length]), lenient);
+                int availableBytes = buffer.Span.Length - position;
+                int readLength = length;
+                if (availableBytes < readLength)
                 {
-                    return (span = buf.AsSpan((int)stream.Position, length)).Length;
+                    if (!lenient) throw new IOException($"{nameof(stream)} does not have enough data to fill the requested number of bytes; {availableBytes} bytes available, {readLength} bytes requested");
+                    readLength = availableBytes;
                 }
-                catch (ArgumentOutOfRangeException exception)
-                {
-                    throw new IOException("Failed to convert span from memory stream", exception);
-                }
+                stream.Seek(readLength, SeekOrigin.Current);
+                span = new Span<byte>(new byte[readLength]);
+                buffer.Span.Slice(position, readLength).CopyTo(span);
+                return readLength;
             }
-
-            span = new Span<byte>(new byte[length]);
-            return ReadBaseSpan(stream, span, lenient);
+            else
+            {
+                if (!TryGetRawMemoryFromStream(stream, out var buffer, out int position))
+                    return ReadBaseSpan(stream, span = new Span<byte>(new byte[length]), lenient);
+                int availableBytes = buffer.Span.Length - position;
+                int readLength = length;
+                if (availableBytes < readLength)
+                {
+                    if (!lenient) throw new IOException($"{nameof(stream)} does not have enough data to fill the requested number of bytes; {availableBytes} bytes available, {readLength} bytes requested");
+                    readLength = availableBytes;
+                }
+                stream.Seek(readLength, SeekOrigin.Current);
+                span = buffer.Span.Slice(position, readLength);
+                return readLength;
+            }
         }
 
         /// <summary>
@@ -189,22 +284,23 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>
+        /// This method advances <paramref name="stream"/> to the end of the read data.
+        /// </remarks>
         public static int Read(Stream stream, Span<byte> span, bool lenient = true)
         {
-            if (stream is not MemoryStream ms || !ms.TryGetBuffer(out ArraySegment<byte> buf))
-            {
+            if (!TryGetRawReadOnlyMemoryFromStream(stream, out var buffer, out int position))
                 return ReadBaseSpan(stream, span, lenient);
-            }
-
-            try
+            int availableBytes = buffer.Span.Length - position;
+            int readLength = span.Length;
+            if (availableBytes < readLength)
             {
-                buf.AsSpan((int)ms.Position, span.Length).CopyTo(span);
-                return span.Length;
+                if (!lenient) throw new IOException($"{nameof(stream)} does not have enough data to fill the specified buffer; {availableBytes} bytes available, {readLength} bytes requested");
+                readLength = availableBytes;
             }
-            catch (ArgumentOutOfRangeException exception)
-            {
-                throw new IOException("Failed to convert span from memory stream", exception);
-            }
+            stream.Seek(readLength, SeekOrigin.Current);
+            buffer.Span.Slice(position, readLength).CopyTo(span);
+            return readLength;
         }
 
         #endregion
@@ -214,12 +310,15 @@ namespace Fp
         /// <summary>
         /// Reads data from current file's input stream, optionally replacing reference to provided span to prevent copy when reading from <see cref="MemoryStream"/>.
         /// </summary>
-        /// <param name="span">Target to copy to.</param>
+        /// <param name="span">Target to copy to, may be replaced by an internal memory buffer.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use provided span.</param>
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>
+        /// This method advances <see cref="InputStream"/> to the end of the read data.
+        /// </remarks>
         public int Read(ref Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), ref span, lenient, forceNew);
 
@@ -233,6 +332,9 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>
+        /// This method advances <see cref="InputStream"/> to the end of the read data.
+        /// </remarks>
         public int Read(int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
             => Read(_inputStream ?? throw new InvalidOperationException(), length, out span, lenient, forceNew);
 
@@ -244,6 +346,9 @@ namespace Fp
         /// <returns>Number of bytes read.</returns>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
+        /// <remarks>
+        /// This method advances <see cref="InputStream"/> to the end of the read data.
+        /// </remarks>
         public int Read(Span<byte> span, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), span, lenient);
 
@@ -398,7 +503,6 @@ namespace Fp
         public static int Read(Stream stream, byte[] array, int arrayOffset, int arrayLength, bool lenient = true) =>
             ReadBaseArray(stream, array, arrayOffset, arrayLength, lenient);
 
-
         /// <summary>
         /// Reads data from stream.
         /// </summary>
@@ -427,7 +531,6 @@ namespace Fp
         /// and stream cannot provide enough data to fill target.</exception>
         public int Read(byte[] array, int arrayOffset, int arrayLength, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), array, arrayOffset, arrayLength, lenient);
-
 
         /// <summary>
         /// Reads data from current file's input stream.
