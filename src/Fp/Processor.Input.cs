@@ -230,7 +230,7 @@ namespace Fp
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
         /// <param name="length">Number of bytes to try to read.</param>
-        /// <param name="span">Target to copy to.</param>
+        /// <param name="span">Result buffer, valid if completed read or <see cref="lenient"/> is true.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Number of bytes read.</returns>
@@ -239,8 +239,7 @@ namespace Fp
         /// <remarks>
         /// This method advances <paramref name="stream"/> to the end of the read data.
         /// </remarks>
-        public static int Read(Stream stream, int length, out Span<byte> span, bool lenient = true,
-            bool forceNew = false)
+        public static int Read(Stream stream, int length, out Span<byte> span, bool lenient = true, bool forceNew = false)
         {
             if (forceNew)
             {
@@ -276,6 +275,52 @@ namespace Fp
         }
 
         /// <summary>
+        /// Attempts to read data from stream.
+        /// </summary>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Result buffer, valid if completed read (buffer filled and returned true).</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <remarks>
+        /// This method advances <paramref name="stream"/> to the end of the read data.
+        /// </remarks>
+        public static bool TryRead(Stream stream, int length, out Span<byte> span, bool forceNew = false)
+        {
+            if (forceNew)
+            {
+                if (!TryGetRawReadOnlyMemoryFromStream(stream, out var buffer, out int position))
+                    return TryReadBaseSpan(stream, span = new Span<byte>(new byte[length]), out _);
+                int availableBytes = buffer.Span.Length - position;
+                if (availableBytes < length)
+                {
+                    stream.Seek(availableBytes, SeekOrigin.Current);
+                    span = Span<byte>.Empty;
+                    return false;
+                }
+                stream.Seek(length, SeekOrigin.Current);
+                span = new Span<byte>(new byte[length]);
+                buffer.Span.Slice(position, length).CopyTo(span);
+                return true;
+            }
+            else
+            {
+                if (!TryGetRawMemoryFromStream(stream, out var buffer, out int position))
+                    return TryReadBaseSpan(stream, span = new Span<byte>(new byte[length]), out _);
+                int availableBytes = buffer.Span.Length - position;
+                if (availableBytes < length)
+                {
+                    stream.Seek(length, SeekOrigin.Current);
+                    span = Span<byte>.Empty;
+                    return false;
+                }
+                stream.Seek(length, SeekOrigin.Current);
+                span = buffer.Span.Slice(position, length);
+                return true;
+            }
+        }
+
+        /// <summary>
         /// Reads data from stream.
         /// </summary>
         /// <param name="stream">Stream to read from.</param>
@@ -303,6 +348,28 @@ namespace Fp
             return readLength;
         }
 
+        /// <summary>
+        /// Attempts to read data from stream.
+        /// </summary>
+        /// <param name="stream">Stream to read from.</param>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="readBytes">Number of successfully read bytes.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <remarks>
+        /// This method advances <paramref name="stream"/> to the end of the read data.
+        /// </remarks>
+        public static bool TryRead(Stream stream, Span<byte> span, out int readBytes)
+        {
+            if (!TryGetRawReadOnlyMemoryFromStream(stream, out var buffer, out int position))
+                return TryReadBaseSpan(stream, span, out readBytes);
+            int availableBytes = buffer.Span.Length - position;
+            int requestedReadBytes = span.Length;
+            readBytes = Math.Min(availableBytes, requestedReadBytes);
+            stream.Seek(readBytes, SeekOrigin.Current);
+            buffer.Span.Slice(position, readBytes).CopyTo(span);
+            return requestedReadBytes == readBytes;
+        }
+
         #endregion
 
         #region Implicit input stream to span
@@ -314,6 +381,7 @@ namespace Fp
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use provided span.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>
@@ -326,10 +394,11 @@ namespace Fp
         /// Reads data from current file's input stream.
         /// </summary>
         /// <param name="length">Number of bytes to try to read.</param>
-        /// <param name="span">Target to copy to.</param>
+        /// <param name="span">Result buffer, valid if completed read or <see cref="lenient"/> is true.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <param name="forceNew">Force use newly allocated buffer.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>
@@ -339,11 +408,25 @@ namespace Fp
             => Read(_inputStream ?? throw new InvalidOperationException(), length, out span, lenient, forceNew);
 
         /// <summary>
+        /// Attempts to read data from current file's input stream.
+        /// </summary>
+        /// <param name="length">Number of bytes to try to read.</param>
+        /// <param name="span">Result buffer, valid if completed read (buffer filled and returned true).</param>
+        /// <param name="forceNew">Force use newly allocated buffer.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
+        /// <remarks>
+        /// This method advances <see cref="InputStream"/> to the end of the read data.
+        /// </remarks>
+        public  bool TryRead(int length, out Span<byte> span, bool forceNew = false)
+            => TryRead(_inputStream ?? throw new InvalidOperationException(), length, out span, forceNew);
+        /// <summary>
         /// Reads data from current file's input stream.
         /// </summary>
         /// <param name="span">Target to copy to.</param>
         /// <param name="lenient">If false, throws when failed to fill target.</param>
         /// <returns>Number of bytes read.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
         /// <exception cref="IOException">Thrown when <paramref name="lenient"/> is false
         /// and stream cannot provide enough data to fill target.</exception>
         /// <remarks>
@@ -351,6 +434,19 @@ namespace Fp
         /// </remarks>
         public int Read(Span<byte> span, bool lenient = true)
             => Read(_inputStream ?? throw new InvalidOperationException(), span, lenient);
+
+        /// <summary>
+        /// Attempts to read data from current file's input stream.
+        /// </summary>
+        /// <param name="span">Target to copy to.</param>
+        /// <param name="readBytes">Number of successfully read bytes.</param>
+        /// <returns>True if the buffer could be filled.</returns>
+        /// <exception cref="InvalidOperationException">Thrown if <see cref="InputStream"/> is not set.</exception>
+        /// <remarks>
+        /// This method advances <see cref="InputStream"/> to the end of the read data.
+        /// </remarks>
+        public bool TryRead(Span<byte> span, out int readBytes)
+            => TryRead(_inputStream ?? throw new InvalidOperationException(), span, out readBytes);
 
         #endregion
 

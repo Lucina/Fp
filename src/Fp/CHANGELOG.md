@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+
+- `Processor.TryRead` overloads for better C# pattern
+
 ### Changed
 
 - Added intermediary type `BaseUnmanagedIntegerArrayHelper<T>` for array helpers to provide additional functionality in .NET 7
