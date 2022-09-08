@@ -36,7 +36,6 @@ public abstract unsafe record BaseUnmanagedHelper<T> : BaseHelper<T> where T : u
 /// Base unmanaged integer array data helper.
 /// </summary>
 /// <typeparam name="T">Element type.</typeparam>
-// TODO move this
 public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> where T : unmanaged
 #if NET7_0_OR_GREATER
     , INumber<T>
@@ -57,9 +56,9 @@ public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> wh
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (Processor.TryRead(stream, elementBuffer, out _))
         {
-            value = this[elementBuffer, 0];
-            if (value == T.Zero) index++;
-            else return true;
+            value = this[elementBuffer];
+            if (value != T.Zero) return true;
+            index++;
         }
         value = T.Zero;
         return false;
@@ -81,13 +80,10 @@ public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> wh
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (position + sizeof(T) <= maxOffset && Processor.TryRead(stream, elementBuffer, out _))
         {
-            value = this[elementBuffer, 0];
-            if (value == T.Zero)
-            {
-                index++;
-                position += sizeof(T);
-            }
-            else return true;
+            value = this[elementBuffer];
+            if (value != T.Zero) return true;
+            index++;
+            position += sizeof(T);
         }
         value = T.Zero;
         return false;
@@ -108,9 +104,9 @@ public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> wh
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (index < maxIndex && Processor.TryRead(stream, elementBuffer, out _))
         {
-            value = this[elementBuffer, 0];
-            if (value == T.Zero) index++;
-            else return true;
+            value = this[elementBuffer];
+            if (value != T.Zero) return true;
+            index++;
         }
         value = T.Zero;
         return false;
@@ -130,9 +126,9 @@ public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> wh
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (Processor.TryRead(InputStream, elementBuffer, out _))
         {
-            value = this[elementBuffer, 0];
-            if (value == T.Zero) index++;
-            else return true;
+            value = this[elementBuffer];
+            if (value != T.Zero) return true;
+            index++;
         }
         value = T.Zero;
         return false;
@@ -154,13 +150,10 @@ public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> wh
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (position + sizeof(T) <= maxOffset && Processor.TryRead(InputStream, elementBuffer, out _))
         {
-            value = this[elementBuffer, 0];
-            if (value == T.Zero)
-            {
-                index++;
-                position += sizeof(T);
-            }
-            else return true;
+            value = this[elementBuffer];
+            if (value != T.Zero) return true;
+            index++;
+            position += sizeof(T);
         }
         value = T.Zero;
         return false;
@@ -181,9 +174,96 @@ public abstract record BaseUnmanagedIntegerHelper<T> : BaseUnmanagedHelper<T> wh
         Span<byte> elementBuffer = stackalloc byte[sizeof(T)];
         while (index < maxIndex && Processor.TryRead(InputStream, elementBuffer, out _))
         {
-            value = this[elementBuffer, 0];
-            if (value == T.Zero) index++;
-            else return true;
+            value = this[elementBuffer];
+            if (value != T.Zero) return true;
+            index++;
+        }
+        value = T.Zero;
+        return false;
+    }
+
+    /// <summary>
+    /// Skips to the next nonzero entry.
+    /// </summary>
+    /// <param name="span">Data source.</param>
+    /// <param name="baseOffset">Base offset.</param>
+    /// <param name="index">Initial index, ends at first index with nonzero value.</param>
+    /// <param name="value">Retrieved value or 0 if no nonzero values found.</param>
+    /// <returns>True if a nonzero value is found.</returns>
+    public unsafe bool SkipToNonzero(ReadOnlySpan<byte> span, int baseOffset, ref int index, out T value)
+    {
+        int position = baseOffset + sizeof(T) * index;
+        if (position + sizeof(T) > span.Length)
+        {
+            value = T.Zero;
+            return false;
+        }
+        span = span[position..];
+        while (span.Length >= sizeof(T))
+        {
+            value = this[span];
+            if (value != T.Zero) return true;
+            index++;
+            span = span[sizeof(T)..];
+        }
+        value = T.Zero;
+        return false;
+    }
+
+    /// <summary>
+    /// Skips to the next nonzero entry.
+    /// </summary>
+    /// <param name="span">Data source.</param>
+    /// <param name="baseOffset">Base offset.</param>
+    /// <param name="maxOffset">Maximum stream offset (exclusive including element size).</param>
+    /// <param name="index">Initial index, ends at first index with nonzero value.</param>
+    /// <param name="value">Retrieved value or 0 if no nonzero values found.</param>
+    /// <returns>True if a nonzero value is found.</returns>
+    public unsafe bool SkipToNonzero(ReadOnlySpan<byte> span, int baseOffset, int maxOffset, ref int index, out T value)
+    {
+        int position = baseOffset + sizeof(T) * index;
+        if (position + sizeof(T) > span.Length)
+        {
+            value = T.Zero;
+            return false;
+        }
+        span = span[position..];
+        while (position + sizeof(T) <= maxOffset && span.Length >= sizeof(T))
+        {
+            value = this[span];
+            if (value != T.Zero) return true;
+            index++;
+            position += sizeof(T);
+            span = span[sizeof(T)..];
+        }
+        value = T.Zero;
+        return false;
+    }
+
+    /// <summary>
+    /// Skips to the next nonzero entry.
+    /// </summary>
+    /// <param name="span">Data source.</param>
+    /// <param name="baseOffset">Base offset.</param>
+    /// <param name="index">Initial index, ends at first index with nonzero value.</param>
+    /// <param name="maxIndex">Maximum index (exclusive).</param>
+    /// <param name="value">Retrieved value or 0 if no nonzero values found.</param>
+    /// <returns>True if a nonzero value is found.</returns>
+    public unsafe bool SkipToNonzero(ReadOnlySpan<byte> span, int baseOffset, ref int index, int maxIndex, out T value)
+    {
+        int position = baseOffset + sizeof(T) * index;
+        if (position + sizeof(T) > span.Length)
+        {
+            value = T.Zero;
+            return false;
+        }
+        span = span[position..];
+        while (index < maxIndex && span.Length >= sizeof(T))
+        {
+            value = this[span];
+            if (value != T.Zero) return true;
+            index++;
+            span = span[sizeof(T)..];
         }
         value = T.Zero;
         return false;
