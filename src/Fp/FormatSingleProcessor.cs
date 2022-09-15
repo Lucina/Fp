@@ -5,7 +5,7 @@ using System.IO;
 namespace Fp;
 
 /// <summary>
-/// Represents a processor that operates on a single input and generates multiple outputs.
+/// Represents a processor that operates on a single input and generates a single output.
 /// </summary>
 public class FormatSingleProcessor : FormatProcessor
 {
