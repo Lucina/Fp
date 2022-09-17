@@ -9,13 +9,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Support for .NET 7 (preview)
+
+- Added intermediary types `BaseUnmanagedIntegerHelper<T>` and `BaseUnmanagedIntegerArrayHelper<T>` for helpers to provide additional functionality
+
 - `Processor.TryRead` overloads for better C# pattern
 
 - `FpUtil.Ascii(string, Span<byte>)`
 
 ### Changed
 
-- Added intermediary types `BaseUnmanagedIntegerHelper<T>` and `BaseUnmanagedIntegerArrayHelper<T>` for helpers to provide additional functionality
 - Deprecated array-based `Processor.Read` / `Processor.Write` etc. overloads
 - `public void Processor.OutputAll(ReadOnlySpan<byte> span, Stream? outputStream = null)` changed to `public void Processor.OutputAll(ReadOnlySpan<byte> span)` for minimal utility gain
 
