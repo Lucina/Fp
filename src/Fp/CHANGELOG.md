@@ -15,8 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Added intermediary type `BaseUnmanagedIntegerArrayHelper<T>` for array helpers to provide additional functionality in
-  .NET 7
+- Added intermediary types `BaseUnmanagedIntegerHelper<T>` and `BaseUnmanagedIntegerArrayHelper<T>` for helpers to provide additional functionality
 - Deprecated array-based `Processor.Read` / `Processor.Write` etc. overloads
 - `public void Processor.OutputAll(ReadOnlySpan<byte> span, Stream? outputStream = null)` changed to `public void Processor.OutputAll(ReadOnlySpan<byte> span)` for minimal utility gain
 
