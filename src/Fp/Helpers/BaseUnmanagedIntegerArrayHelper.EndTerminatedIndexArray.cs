@@ -13,6 +13,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="count">Number of entries in buffer.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(byte[] source, int offset, int count, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
@@ -28,6 +29,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(byte[] source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -44,6 +46,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="count">Number of entries in buffer.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(Memory<byte> source, int offset, int count, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
@@ -59,6 +62,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(Memory<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -75,6 +79,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="count">Number of entries in buffer.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(Span<byte> source, int offset, int count, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
@@ -90,6 +95,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(Span<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -106,6 +112,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="count">Number of entries in buffer.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(ReadOnlyMemory<byte> source, int offset, int count, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
@@ -121,6 +128,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(ReadOnlyMemory<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -137,6 +145,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="count">Number of entries in buffer.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(ReadOnlySpan<byte> source, int offset, int count, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
@@ -152,6 +161,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(ReadOnlySpan<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -167,6 +177,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="count">Number of entries in stream.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(long offset, int count, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[offset, count + 1], out end);
@@ -181,6 +192,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(long offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -197,6 +209,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="stream">Source stream.</param>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<T>[] GetEndTerminatedIndexArray(long offset, int count, Stream stream, out T end)
     {
         return ProcessEndTerminatedIndexArray(this[offset, count + 1, stream], out end);
@@ -212,6 +225,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
+    /// <exception cref="InvalidDataException">(.NET 7.0+) Thrown for an invalid index value (each successive element must compare greater than or equal to the previous element).</exception>
     public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(long offset, int count, Stream stream, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
@@ -233,6 +247,9 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
         for (int i = 0; i < result.Length; i++)
         {
             T next = buffer[i + 1];
+#if NET7_0_OR_GREATER
+            if (next < value) throw new InvalidDataException($"Expected smaller end index for element {i} compared to starting index {value} (got {next})");
+#endif
             result[i] = new OffsetSegment<T>(value, next);
             value = next;
         }
@@ -256,6 +273,9 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
         for (int i = 0; i < result.Length; i++)
         {
             TElement next = transform(buffer[i + 1]);
+#if NET7_0_OR_GREATER
+            if (next < value) throw new InvalidDataException($"Expected smaller end index for element {i} compared to starting index {value} (got {next})");
+#endif
             result[i] = new OffsetSegment<TElement>(value, next);
             value = next;
         }
