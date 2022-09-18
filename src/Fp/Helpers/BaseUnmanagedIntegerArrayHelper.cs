@@ -8,5 +8,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T> : BaseUnmanage
     where T : unmanaged
 #if NET7_0_OR_GREATER
     , System.Numerics.INumber<T>
+#else
+    , System.IComparable<T>
 #endif
 ;
