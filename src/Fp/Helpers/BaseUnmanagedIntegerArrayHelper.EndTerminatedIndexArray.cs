@@ -10,11 +10,12 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(byte[] source, int offset, int count)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(byte[] source, int offset, int count, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count]);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
     }
 
     /// <summary>
@@ -22,16 +23,17 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(byte[] source, int offset, int count, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(byte[] source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count], transform);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], transform, out end);
     }
 
     /// <summary>
@@ -39,11 +41,12 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(Memory<byte> source, int offset, int count)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(Memory<byte> source, int offset, int count, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count]);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
     }
 
     /// <summary>
@@ -51,16 +54,17 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(Memory<byte> source, int offset, int count, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(Memory<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count], transform);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], transform, out end);
     }
 
     /// <summary>
@@ -68,11 +72,12 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(Span<byte> source, int offset, int count)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(Span<byte> source, int offset, int count, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count]);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
     }
 
     /// <summary>
@@ -80,16 +85,17 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(Span<byte> source, int offset, int count, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(Span<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count], transform);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], transform, out end);
     }
 
     /// <summary>
@@ -97,11 +103,12 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(ReadOnlyMemory<byte> source, int offset, int count)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(ReadOnlyMemory<byte> source, int offset, int count, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count]);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
     }
 
     /// <summary>
@@ -109,16 +116,17 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(ReadOnlyMemory<byte> source, int offset, int count, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(ReadOnlyMemory<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count], transform);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], transform, out end);
     }
 
     /// <summary>
@@ -126,11 +134,12 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(ReadOnlySpan<byte> source, int offset, int count)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(ReadOnlySpan<byte> source, int offset, int count, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count]);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], out end);
     }
 
     /// <summary>
@@ -138,78 +147,87 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
     /// </summary>
     /// <param name="source">Source buffer.</param>
     /// <param name="offset">Byte offset in buffer.</param>
-    /// <param name="count">Number of indices in buffer.</param>
+    /// <param name="count">Number of entries in buffer.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(ReadOnlySpan<byte> source, int offset, int count, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(ReadOnlySpan<byte> source, int offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[source, offset, count], transform);
+        return ProcessEndTerminatedIndexArray(this[source, offset, count + 1], transform, out end);
     }
 
     /// <summary>
     /// Gets an end-terminated index array from <see cref="Helper.InputStream"/>.
     /// </summary>
     /// <param name="offset">Byte offset in stream.</param>
-    /// <param name="count">Number of indices in stream.</param>
+    /// <param name="count">Number of entries in stream.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(long offset, int count)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(long offset, int count, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[offset, count]);
+        return ProcessEndTerminatedIndexArray(this[offset, count + 1], out end);
     }
 
     /// <summary>
     /// Gets an end-terminated index array from <see cref="Helper.InputStream"/>.
     /// </summary>
     /// <param name="offset">Byte offset in stream.</param>
-    /// <param name="count">Number of indices in stream.</param>
+    /// <param name="count">Number of entries in stream.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(long offset, int count, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(long offset, int count, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[offset, count], transform);
+        return ProcessEndTerminatedIndexArray(this[offset, count + 1], transform, out end);
     }
 
     /// <summary>
     /// Gets an end-terminated index array from a stream.
     /// </summary>
     /// <param name="offset">Byte offset in stream.</param>
-    /// <param name="count">Number of indices in stream.</param>
+    /// <param name="count">Number of entries in stream.</param>
     /// <param name="stream">Source stream.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
-    public OffsetSegment<T>[] GetEndTerminatedIndexArray(long offset, int count, Stream stream)
+    public OffsetSegment<T>[] GetEndTerminatedIndexArray(long offset, int count, Stream stream, out T end)
     {
-        return ProcessEndTerminatedIndexArray(this[offset, count, stream]);
+        return ProcessEndTerminatedIndexArray(this[offset, count + 1, stream], out end);
     }
 
     /// <summary>
     /// Gets an end-terminated index array from a stream.
     /// </summary>
     /// <param name="offset">Byte offset in stream.</param>
-    /// <param name="count">Number of indices in stream.</param>
+    /// <param name="count">Number of entries in stream.</param>
     /// <param name="stream">Source stream.</param>
     /// <param name="transform">Transform to apply to input values to get final indices.</param>
+    /// <param name="end">End position (the first position beyond the bounds of the target region the array refers to).</param>
     /// <returns>Segments.</returns>
     /// <typeparam name="TElement">Output index type.</typeparam>
-    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(long offset, int count, Stream stream, Func<T, TElement> transform)
+    public OffsetSegment<TElement>[] GetEndTerminatedIndexArray<TElement>(long offset, int count, Stream stream, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        return ProcessEndTerminatedIndexArray(this[offset, count, stream], transform);
+        return ProcessEndTerminatedIndexArray(this[offset, count + 1, stream], transform, out end);
     }
 
-    private static OffsetSegment<T>[] ProcessEndTerminatedIndexArray(ReadOnlySpan<T> buffer)
+    private static OffsetSegment<T>[] ProcessEndTerminatedIndexArray(ReadOnlySpan<T> buffer, out T end)
     {
-        if (buffer.Length == 0) throw new ArgumentException();
-        if (buffer.Length == 1) return Array.Empty<OffsetSegment<T>>();
+        if (buffer.IsEmpty) throw new ArgumentException(); // >= 1
+        if (buffer.Length == 1)
+        {
+            end = buffer[0];
+            return Array.Empty<OffsetSegment<T>>();
+        }
         OffsetSegment<T>[] result = new OffsetSegment<T>[buffer.Length - 1];
         T value = buffer[0];
         for (int i = 0; i < result.Length; i++)
@@ -218,16 +236,21 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
             result[i] = new OffsetSegment<T>(value, next);
             value = next;
         }
+        end = value;
         return result;
     }
 
-    private static OffsetSegment<TElement>[] ProcessEndTerminatedIndexArray<TElement>(ReadOnlySpan<T> buffer, Func<T, TElement> transform)
+    private static OffsetSegment<TElement>[] ProcessEndTerminatedIndexArray<TElement>(ReadOnlySpan<T> buffer, Func<T, TElement> transform, out TElement end)
 #if NET7_0_OR_GREATER
         where TElement : System.Numerics.INumber<TElement>
 #endif
     {
-        if (buffer.Length == 0) throw new ArgumentException();
-        if (buffer.Length == 1) return Array.Empty<OffsetSegment<TElement>>();
+        if (buffer.IsEmpty) throw new ArgumentException(); // >= 1
+        if (buffer.Length == 1)
+        {
+            end = transform(buffer[0]);
+            return Array.Empty<OffsetSegment<TElement>>();
+        }
         OffsetSegment<TElement>[] result = new OffsetSegment<TElement>[buffer.Length - 1];
         TElement value = transform(buffer[0]);
         for (int i = 0; i < result.Length; i++)
@@ -236,6 +259,7 @@ public abstract partial record BaseUnmanagedIntegerArrayHelper<T>
             result[i] = new OffsetSegment<TElement>(value, next);
             value = next;
         }
+        end = value;
         return result;
     }
 }
