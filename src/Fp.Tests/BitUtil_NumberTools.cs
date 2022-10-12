@@ -31,9 +31,9 @@ public class BitUtil_NumberTools
     public static (int value, int expected)[] GetBitsForBytes_ValidInputs = new[]
     {
         (0, 0), //
-        (8, 1), //
-        (16, 2), //
-        (24, 3), //
+        (1, 8), //
+        (2, 16), //
+        (3, 24), //
     };
 
     public static (int value, int expected)[] GetBytesForBits_ValidInputs = new[]
