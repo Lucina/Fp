@@ -98,14 +98,16 @@ public partial class Processor
     /// </summary>
     /// <param name="input">Input value.</param>
     /// <param name="index">Index.</param>
-    public delegate byte TransformDelegate(byte input, int index);
+    /// <typeparam name="T">Element type.</typeparam>
+    public delegate T TransformDelegate<T>(T input, int index);
 
     /// <summary>
     /// Transforms memory region.
     /// </summary>
     /// <param name="span">Memory to modify.</param>
     /// <param name="func">Transformation delegate.</param>
-    public static void ApplyTransform(Span<byte> span, TransformDelegate func)
+    /// <typeparam name="T">Element type.</typeparam>
+    public static void ApplyTransform<T>(Span<T> span, TransformDelegate<T> func)
     {
         for (int i = 0; i < span.Length; i++)
             span[i] = func(span[i], i);

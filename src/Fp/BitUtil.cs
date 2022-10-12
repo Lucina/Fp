@@ -47,7 +47,6 @@ public static class BitUtil
     /// <param name="skipValue">Value to skip over.</param>
     public static void SkipBits(this BitArray array, ref int i, bool skipValue)
     {
-        // TODO test cases
         while (i < array.Length && array[i] == skipValue) i++;
     }
 
@@ -105,7 +104,7 @@ public static class BitUtil
     /// <param name="maxExc">Maximum index (exclusive).</param>
     /// <param name="i">Index to modify, set to position after last occurrence of <paramref name="skipValue"/> in a row starting at <paramref name="i"/>, or <paramref name="maxExc"/>-1 if no such value was found.</param>
     /// <param name="skipValue">Value to skip over.</param>
-    /// <returns>True if a value other than <see cref="skipValue"/> was found before termination.</returns>
+    /// <returns>True if a value other than <paramref name="skipValue"/> was found before termination.</returns>
     public static bool ConstrainedSkipBits(this BitArray array, int maxExc, ref int i, bool skipValue)
     {
         if (array.Length < maxExc) throw new ArgumentException("Invalid exclusive end index", nameof(maxExc));
@@ -138,7 +137,7 @@ public static class BitUtil
     /// <param name="i">Index to modify, set to position after last occurrence of <paramref name="skipValue"/> in a row starting at <paramref name="i"/>, or <paramref name="maxExc"/>-1 if no such value was found.</param>
     /// <param name="skipValue">Value to skip over.</param>
     /// <param name="bigEndian">If true, treats highest order bit as first bit in each byte.</param>
-    /// <returns>True if a value other than <see cref="skipValue"/> was found before termination.</returns>
+    /// <returns>True if a value other than <paramref name="skipValue"/> was found before termination.</returns>
     public static bool ConstrainedSkipBits(this ReadOnlySpan<byte> array, int maxExc, ref int i, bool skipValue, bool bigEndian = true)
     {
         if (array.Length.GetBitsForBytes() < maxExc) throw new ArgumentException("Invalid exclusive end index", nameof(maxExc));

@@ -5,10 +5,19 @@ using NUnit.Framework;
 namespace Fp.Tests;
 
 // BitArray is little endian bit order
-public class BitUtil
+public class BitUtil_SkipBits
 {
-    private static readonly byte[] s_arr = new byte[] { 0b0011_0000, 0b0000_0000, 0b1100_1111, 0b1111_1111, 0b1111_1111, 0b0000_0000, 0b1111_1111, 0b0000_0000 };
-
+    private static readonly byte[] s_arr =
+    {
+        0b0011_0000, //
+        0b0000_0000, //
+        0b1100_1111, //
+        0b1111_1111, //
+        0b1111_1111, //
+        0b0000_0000, //
+        0b1111_1111, //
+        0b0000_0000 //
+    };
 
     [Test]
     public void SkipBits_BitArray_Functions()
