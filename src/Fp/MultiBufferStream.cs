@@ -17,11 +17,16 @@ public class MultiBufferStream : Stream
     private long _position;
 
     private bool _disposed;
+    private int _largeReadOverrideThreshold;
 
     /// <summary>
     /// Override large reads, don't proxy through buffers.
     /// </summary>
-    public bool LargeReadOverride = true;
+    public int LargeReadOverrideThreshold
+    {
+        get => _largeReadOverrideThreshold;
+        set => _largeReadOverrideThreshold = Math.Min(_bufferLength, Math.Max(0, value));
+    }
 
     /// <summary>
     /// Creates a new instance of <see cref="MultiBufferStream"/>.
@@ -41,6 +46,7 @@ public class MultiBufferStream : Stream
         _longRunning = longRunning;
         _bufferCount = bufferCount;
         _bufferLength = bufferLength;
+        _largeReadOverrideThreshold = bufferLength;
         _buffers = new CircleBuffer<(long chunk, int length, byte[] buffer)>(bufferCount);
         _position = 0;
         _disposed = false;
@@ -119,7 +125,7 @@ public class MultiBufferStream : Stream
     /// <inheritdoc />
     public override int Read(byte[] buffer, int offset, int count)
     {
-        if (count > _bufferLength && LargeReadOverride)
+        if (count > _largeReadOverrideThreshold)
         {
             _sourceStream.Position = _position;
             int srcRead = _sourceStream.Read(buffer, offset, count);

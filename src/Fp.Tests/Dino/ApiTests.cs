@@ -17,7 +17,7 @@ public class ApiTests
         r.NextBytes(a);
         MemoryStream ms = new(a);
         MultiBufferStream mbs = new(ms, true, 8, 128);
-        mbs.LargeReadOverride = false;
+        mbs.LargeReadOverrideThreshold = int.MaxValue;
         byte[] temp = new byte[256];
         for (int i = 0; i < 128; i++)
         {
