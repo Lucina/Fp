@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Fp.Fs;
 using Fp.Plus.Ciphers;
 using NUnit.Framework;
@@ -10,32 +8,6 @@ namespace Fp.Tests.Dino;
 
 public class ApiTests
 {
-    [Test]
-    public void TestCircleBuffer()
-    {
-        // Test some operations with circlebuffer
-        CircleBuffer<byte> cb = new(100);
-        Random r = new();
-        byte[] a = new byte[60];
-        r.NextBytes(a);
-        foreach (byte b in a)
-            cb.Add(b);
-        List<byte> list = new(a);
-        Assert.IsTrue(cb.SequenceEqual(list));
-        cb.RemoveAt(40);
-        list.RemoveAt(40);
-        Assert.IsTrue(cb.SequenceEqual(list));
-        cb.RemoveAt(10);
-        list.RemoveAt(10);
-        Assert.IsTrue(cb.SequenceEqual(list));
-        cb.Insert(5, 10);
-        list.Insert(5, 10);
-        Assert.IsTrue(cb.SequenceEqual(list));
-        cb.Insert(50, 60);
-        list.Insert(50, 60);
-        Assert.IsTrue(cb.SequenceEqual(list));
-    }
-
     [Test]
     public void TestMultiBufferStream()
     {

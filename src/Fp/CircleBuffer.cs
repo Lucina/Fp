@@ -27,6 +27,7 @@ public class CircleBuffer<T> : IList<T>
     /// <param name="capacity">Buffer capacity.</param>
     public CircleBuffer(int capacity)
     {
+        if (capacity < 0) throw new ArgumentException("Capacity cannot be less than 0", nameof(capacity));
         _capacity = capacity;
         _entries = new T[capacity];
         _first = 0;
@@ -74,7 +75,7 @@ public class CircleBuffer<T> : IList<T>
     public void Insert(int index, T value)
     {
         if (_count == _capacity)
-            throw new ArgumentException($"Cannot push with length {_count} and capacity {_capacity}");
+            throw new InvalidOperationException($"Cannot push with length {_count} and capacity {_capacity}");
         _count++;
         RangeThrow(index);
         if (index < _count / 2)
@@ -94,7 +95,7 @@ public class CircleBuffer<T> : IList<T>
 
     private void RangeThrow(int i)
     {
-        if (i < 0 || i >= _count) throw new ArgumentException($"Invalid index {i} for list of length {_count}");
+        if (i < 0 || i >= _count) throw new IndexOutOfRangeException($"Invalid index {i} for list of length {_count}");
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -125,6 +126,16 @@ public class CircleBuffer<T> : IList<T>
     public void Add(T item)
     {
         Insert(_count, item);
+    }
+
+    /// <summary>
+    /// Adds all entries from specified collection.
+    /// </summary>
+    /// <param name="span">Source collection.</param>
+    public void AddRange(ReadOnlySpan<T> span)
+    {
+        if (Count + span.Length > Capacity) throw new InvalidOperationException("Collection cannot add all elements of specified collection");
+        foreach (T value in span) Add(value); // TODO buffer op for > 1
     }
 
     /// <inheritdoc />
