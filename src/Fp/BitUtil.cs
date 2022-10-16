@@ -58,7 +58,7 @@ public static class BitUtil
     /// <param name="i">Index to modify, set to position after last occurrence of <paramref name="skipValue"/> in a row starting at <paramref name="i"/>, or <paramref name="count"/> if no such value was found.</param>
     /// <param name="skipValue">Value to skip over.</param>
     /// <param name="bigEndian">If true, treats highest order bit as first bit in each byte.</param>
-    public static void SkipBits(this ReadOnlySpan<byte> array, int count, ref int i, bool skipValue, bool bigEndian = true)
+    public static void SkipBits(this ReadOnlySpan<byte> array, int count, ref int i, bool skipValue, bool bigEndian = false)
     {
         if (array.Length.GetBitsForBytes() < count)
             throw new ArgumentException("Invalid number of bits for input array length", nameof(count));
@@ -138,7 +138,7 @@ public static class BitUtil
     /// <param name="skipValue">Value to skip over.</param>
     /// <param name="bigEndian">If true, treats highest order bit as first bit in each byte.</param>
     /// <returns>True if a value other than <paramref name="skipValue"/> was found before termination.</returns>
-    public static bool ConstrainedSkipBits(this ReadOnlySpan<byte> array, int maxExc, ref int i, bool skipValue, bool bigEndian = true)
+    public static bool ConstrainedSkipBits(this ReadOnlySpan<byte> array, int maxExc, ref int i, bool skipValue, bool bigEndian = false)
     {
         if (array.Length.GetBitsForBytes() < maxExc) throw new ArgumentException("Invalid exclusive end index", nameof(maxExc));
         byte skipMask = skipValue ? (byte)0xff : (byte)0x00;
