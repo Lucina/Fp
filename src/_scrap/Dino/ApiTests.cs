@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using Fp.Fs;
-using Fp.Plus.Ciphers;
 using NUnit.Framework;
 
 namespace Fp.Tests.Dino;
@@ -63,31 +62,5 @@ public class ApiTests
         {
             FsProcessor.ShieldDown();
         }
-    }
-
-    [Test]
-    public void TestBlowfish()
-    {
-        byte[] data;
-        byte[] tmp = File.ReadAllBytes("Watch_Dogs2020-4-3-0-57-53.png");
-        data = new byte[Processor.GetPaddedLength(tmp.Length, CipherPaddingMode.Zero, 8)];
-        tmp.AsSpan().CopyTo(data);
-
-        byte[] dataEnc = new byte[data.Length];
-        Buffer.BlockCopy(data, 0, dataEnc, 0, data.Length);
-        Blowfish bf = new();
-        byte[] ptkey = Processor.DecodeHex("1010ffff");
-        bf.SetBlankIv();
-        bf.SetKey(ptkey);
-        bf.EncryptCbc(dataEnc);
-        bf.SetBlankIv();
-        bf.SetKey(ptkey);
-        bf.DecryptCbc(dataEnc);
-        Assert.IsTrue(data.AsSpan().SequenceEqual(dataEnc));
-        bf.SetKey(ptkey);
-        bf.EncryptEcb(dataEnc);
-        bf.SetKey(ptkey);
-        bf.DecryptEcb(dataEnc);
-        Assert.IsTrue(data.AsSpan().SequenceEqual(dataEnc));
     }
 }

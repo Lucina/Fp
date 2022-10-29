@@ -373,9 +373,10 @@ public partial class Processor
     /// <param name="nullTerminate">If true, check length with null byte.</param>
     /// <param name="bom">If true, check length with byte order mark.</param>
     /// <returns>Predicted length.</returns>
-    public int GetUtf16Length(string value, bool nullTerminate = true, bool bom = false)
+    public static int GetUtf16Length(string value, bool nullTerminate = true, bool bom = false)
     {
-        return GetUtf16Encoder(false, bom).GetByteCount(value, true) + (nullTerminate ? 2 : 0);
+        var encoding = GetUtf16Encoding(false, bom);
+        return encoding.GetPreamble().Length + encoding.GetEncoder().GetByteCount(value, true) + (nullTerminate ? 2 : 0);
     }
 
     /// <summary>
@@ -392,7 +393,8 @@ public partial class Processor
     {
         stream ??= OutputStream ?? throw new InvalidOperationException();
         long origPos = offset.HasValue ? stream.Position : -1;
-        Encoder encoder = GetUtf16Encoder(bigEndian, byteOrderMark);
+        var encoding = GetUtf16Encoding(bigEndian, byteOrderMark);
+        Encoder encoder = encoding.GetEncoder();
         encoder.Reset();
         byte[] tmpBuf = Shared.Rent(4096);
         try
@@ -402,6 +404,10 @@ public partial class Processor
                 stream.Position = offset.Value;
             }
 
+            if (encoding.GetPreamble() is { Length: > 0 } preamble)
+            {
+                stream.Write(preamble, 0, preamble.Length);
+            }
             ReadOnlySpan<char> valueBuf = value;
             while (!valueBuf.IsEmpty)
             {
