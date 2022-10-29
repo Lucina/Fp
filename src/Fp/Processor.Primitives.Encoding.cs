@@ -122,6 +122,7 @@ public partial class Processor
     /// <param name="value">Value to write.</param>
     /// <param name="span">Span to write to.</param>
     /// <param name="offset">Offset to write to.</param>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public unsafe void GetBytes(short value, Span<byte> span, int offset = 0)
     {
         if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -134,6 +135,7 @@ public partial class Processor
     /// <param name="value">Value to write.</param>
     /// <param name="span">Span to write to.</param>
     /// <param name="offset">Offset to write to.</param>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public unsafe void GetBytes(ushort value, Span<byte> span, int offset = 0)
     {
         if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -147,6 +149,7 @@ public partial class Processor
     /// <param name="array">Array to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Resultant array (newly allocated if none provided).</returns>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public byte[] GetBytes(short value, byte[]? array = null, int offset = 0)
     {
         array ??= new byte[2];
@@ -161,6 +164,7 @@ public partial class Processor
     /// <param name="array">Array to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Resultant array (newly allocated if none provided).</returns>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public byte[] GetBytes(ushort value, byte[]? array = null, int offset = 0)
     {
         array ??= new byte[2];
@@ -234,6 +238,7 @@ public partial class Processor
     /// <param name="value">Value to write.</param>
     /// <param name="span">Span to write to.</param>
     /// <param name="offset">Offset to write to.</param>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public unsafe void GetBytes(int value, Span<byte> span, int offset = 0)
     {
         if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -246,6 +251,7 @@ public partial class Processor
     /// <param name="value">Value to write.</param>
     /// <param name="span">Span to write to.</param>
     /// <param name="offset">Offset to write to.</param>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public unsafe void GetBytes(uint value, Span<byte> span, int offset = 0)
     {
         if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -259,6 +265,7 @@ public partial class Processor
     /// <param name="array">Array to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Resultant array (newly allocated if none provided).</returns>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public byte[] GetBytes(int value, byte[]? array = null, int offset = 0)
     {
         array ??= new byte[4];
@@ -273,6 +280,7 @@ public partial class Processor
     /// <param name="array">Array to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Resultant array (newly allocated if none provided).</returns>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public byte[] GetBytes(uint value, byte[]? array = null, int offset = 0)
     {
         array ??= new byte[4];
@@ -346,6 +354,7 @@ public partial class Processor
     /// <param name="value">Value to write.</param>
     /// <param name="span">Span to write to.</param>
     /// <param name="offset">Offset to write to.</param>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public unsafe void GetBytes(long value, Span<byte> span, int offset = 0)
     {
         if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -358,6 +367,7 @@ public partial class Processor
     /// <param name="value">Value to write.</param>
     /// <param name="span">Span to write to.</param>
     /// <param name="offset">Offset to write to.</param>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public unsafe void GetBytes(ulong value, Span<byte> span, int offset = 0)
     {
         if (_swap) value = BinaryPrimitives.ReverseEndianness(value);
@@ -371,6 +381,7 @@ public partial class Processor
     /// <param name="array">Array to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Resultant array (newly allocated if none provided).</returns>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public byte[] GetBytes(long value, byte[]? array = null, int offset = 0)
     {
         array ??= new byte[8];
@@ -385,6 +396,7 @@ public partial class Processor
     /// <param name="array">Array to write to.</param>
     /// <param name="offset">Offset to write to.</param>
     /// <returns>Resultant array (newly allocated if none provided).</returns>
+    /// <remarks>Endianness depends on <see cref="Processor.LittleEndian"/>.</remarks>
     public byte[] GetBytes(ulong value, byte[]? array = null, int offset = 0)
     {
         array ??= new byte[8];
