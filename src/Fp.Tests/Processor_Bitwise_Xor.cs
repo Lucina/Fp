@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.Intrinsics.X86;
 using Fp.Tests.Utility;
@@ -33,7 +34,7 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         if (!AdvSimd.IsSupported) Assert.Ignore("AdvSimd intrinsics not supported");
 
         // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr = new byte[1097].AsSpan()[14..];
+        Span<byte> arr = MemoryMarshal.Cast<int, byte>(new int[(1097 + sizeof(int) - 1) / sizeof(int)])[14..1097];
         Random.Shared.NextBytes(arr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
@@ -67,7 +68,7 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         if (!Sse2.IsSupported) Assert.Ignore("Sse2 intrinsics not supported");
 
         // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr = new byte[1097].AsSpan()[14..];
+        Span<byte> arr = MemoryMarshal.Cast<int, byte>(new int[(1097 + sizeof(int) - 1) / sizeof(int)])[14..1097];
         Random.Shared.NextBytes(arr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
@@ -101,7 +102,7 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
         if (!Avx2.IsSupported) Assert.Ignore("Avx2 intrinsics not supported");
 
         // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr = new byte[1097].AsSpan()[14..];
+        Span<byte> arr = MemoryMarshal.Cast<int, byte>(new int[(1097 + sizeof(int) - 1) / sizeof(int)])[14..1097];
         Random.Shared.NextBytes(arr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
@@ -133,7 +134,7 @@ public class Processor_Bitwise_Xor : ProcessorTestBase
     {
         if (!Vector.IsHardwareAccelerated) Assert.Ignore("Hardware vector acceleration not supported");
         // Cut somewhere in 0..31 for misalignment
-        Span<byte> arr = new byte[1097].AsSpan()[14..];
+        Span<byte> arr = MemoryMarshal.Cast<int, byte>(new int[(1097 + sizeof(int) - 1) / sizeof(int)])[14..1097];
         Random.Shared.NextBytes(arr);
         Span<byte> arr2 = new byte[arr.Length];
         arr.CopyTo(arr2);
